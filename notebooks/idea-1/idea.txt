@@ -1,0 +1,244 @@
+# IDEA FINAL: SISTEMA DE ARBITRAJE ESTADÍSTICO BAYESIANO ADAPTATIVO A MÚLTIPLES REGÍMENES
+
+## I. Fundamento Técnico y Matemático
+
+La estrategia implementa un sistema de arbitraje estadístico bayesiano que identifica, valida y explota relaciones de cointegración entre pares de acciones del S&P 500, adaptándose dinámicamente a múltiples regímenes de mercado mediante inferencia estocástica.
+
+### Base Matemática:
+
+1. **Modelo de Cointegración Bayesiano**:
+   - Relación de equilibrio: $Y_t = \beta X_t + \alpha + \epsilon_t$ donde $\epsilon_t$ es un proceso estacionario
+   - Estimación bayesiana de parámetros: $p(\beta,\alpha|\text{data}) \propto p(\text{data}|\beta,\alpha)p(\beta,\alpha)$
+   - Modelado de errores: $\epsilon_t \sim \text{AR}(p)$ con $p$ determinado por BIC
+
+2. **Modelo HMM para Regímenes**:
+   - Variables de estado latentes: $S_t \in \{1,2,3\}$ (baja/media/alta volatilidad)
+   - Matriz de transición: $A_{ij} = P(S_t = j | S_t-1 = i)$
+   - Densidades de emisión: $p(O_t|S_t,\theta)$ donde $O_t$ son observables del mercado
+
+3. **Proceso de Reversión a la Media**:
+   - Half-life: $HL = \frac{\ln(0.5)}{\ln(|\phi|)}$ donde $\phi$ es coeficiente AR(1) de $\epsilon_t$
+   - Z-score normalizado: $Z_t = \frac{\epsilon_t - \mu_{\epsilon}}{\sigma_{\epsilon,S_t}}$
+
+## II. Componentes Clave del Sistema
+
+### 1. Selección y Validación de Pares
+
+**Proceso secuencial de filtrado**:
+- **Etapa 1**: Agrupación sectorial basada en GICS y clustering de correlaciones (distancia: $1-\rho_{ij}^2$)
+- **Etapa 2**: Para cada grupo, aplicar tests de cointegración:
+  - Test de Johansen (estadístico de traza con valor crítico al 1%)
+  - Test KPSS sobre residuos (H0: estacionariedad, α=0.05)
+- **Etapa 3**: Para pares cointegrados, estimar distribución posterior mediante MCMC:
+  - Prior: $\beta \sim N(1, 0.5)$, $\alpha \sim N(0, 0.1)$
+  - Muestreo: Algoritmo Metropolis-Hastings con 5,000 iteraciones (2,000 burn-in)
+
+**Criterios de selección final**:
+- P-valor del test Johansen < 0.01
+- Half-life entre 1 y 30 días
+- Intervalo de credibilidad bayesiano al 95% para β que no incluya cero
+- Histórico de al menos 10 ciclos completos de trading identificables
+
+**Implementación con yfinance**:
+- Utilizar datos ajustados diarios de cierre
+- Periodo de estimación: 252 días (1 año de trading)
+- Recalibración: Semanal con ventanas deslizantes
+- Mínimo de 30 pares evaluados para asegurar diversificación
+
+### 2. Sistema de Detección de Regímenes
+
+**Variables de entrada para HMM**:
+1. VIX (log-transformado)
+2. Term spread (10Y-2Y Treasury)
+3. Credit spread (BBB-Treasury)
+4. Índice compuesto de liquidez (volatilidad/volumen normalizado)
+
+**Configuración del modelo HMM**:
+- Tres estados latentes (mercados calmos, normales, turbulentos)
+- Inicialización: K-means sobre variables estandarizadas
+- Estimación: Algoritmo Baum-Welch (máximo 100 iteraciones)
+- Selección de estado: Algoritmo de Viterbi para decodificación óptima
+- Ventana de estimación: 504 días (2 años) con actualización semanal
+
+**Probabilidades de transición**:
+- Matriz estimada actualizada semanalmente
+- Uso de suavizado exponencial para probabilidades (α = 0.05)
+- Sistema de alerta temprana cuando P(transición a régimen turbulento) > 0.3
+
+### 3. Generación y Calibración de Señales
+
+**Cálculo dinámico de umbrales**:
+- Régimen 1 (baja volatilidad): Entrada |Z| > 1.25, Salida |Z| < 0.5
+- Régimen 2 (volatilidad normal): Entrada |Z| > 1.75, Salida |Z| < 0.75
+- Régimen 3 (alta volatilidad): Entrada |Z| > 2.25, Salida |Z| < 1.0
+
+**Sistema de señales**:
+- Entrada larga en Y, corta en X cuando Z < -umbral_entrada
+- Entrada corta en Y, larga en X cuando Z > umbral_entrada
+- Cierre de posición cuando:
+  1. |Z| < umbral_salida (reversión a media)
+  2. Tiempo en posición > 2×half-life (con cap de 30 días)
+  3. Detección de ruptura de cointegración (CUSUM > valor crítico)
+  4. Stop-loss adaptativo activado (pérdida > 2σ del par)
+
+**Filtros de calidad de señal**:
+- No entrar si volumen < media_20d × 0.7
+- Evitar señales durante ventanas de anuncios corporativos (±2 días)
+- Restricción de re-entrada: Mínimo 3 días después de cerrar posición
+- Ignorar señales con ratio retorno esperado/riesgo < 1.2
+
+### 4. Detección de Cambios Estructurales
+
+**Monitoreo continuo de estabilidad**:
+- CUSUM recursivo: $S_t = \max(0, S_{t-1} + (|\epsilon_t| - k \sigma_{\epsilon}))$ con k=0.5
+- Filtro de Kalman para estimar β variable en tiempo: Ruido proceso = 0.001
+- Test de ratio de verosimilitud secuencial cada 5 días
+
+**Protocolos de ruptura**:
+- Alerta temprana: CUSUM > 0.7 × valor crítico
+- Confirmación: 2 tests independientes señalan cambio estructural
+- Reducción gradual: Disminución de exposición 25% cada día por 4 días
+- Cuarentena: 21 días antes de reconsiderar el par
+
+### 5. Sistema de Gestión de Riesgo
+
+**Sizing de posiciones**:
+- Base: 1/√N para N pares activos
+- Ajuste por calidad: Ponderación por (1/ancho_IC) donde IC es intervalo credibilidad de β
+- Scaling por régimen: 100%/70%/40% para regímenes 1/2/3
+- Cap máximo: 5% AUM por par, 15% por sector
+
+**Neutralidad y hedging**:
+- Beta-neutralidad: Compensación diaria con SPY (futuro/ETF)
+- Exposición sector: Neutralización cuando >20% exposición neta a un sector
+- Factor exposures: PCA para identificar y neutralizar factores latentes dominantes
+
+**Stop-loss adaptativos**:
+- Nivel par: max(2σ, 1% capital) donde σ es volatilidad condicional al régimen
+- Nivel estrategia: Reducción 50% exposición si drawdown > 5% mensual
+- Circuit breaker: Cierre completo si drawdown > 3σ de distribución histórica
+
+## III. Implementación y Flujo Operativo
+
+### Arquitectura del Sistema
+
+**Datos y preprocesamiento**:
+```
+1. Extracción de datos (yfinance)
+   - Precios ajustados diarios para componentes S&P 500
+   - Datos de factores de mercado (VIX, tasas, spreads)
+   - Datos fundamentales para clasificación sectorial
+
+2. Preprocesamiento
+   - Detección y manejo de outliers (IQR con factores 3x)
+   - Imputación de datos faltantes (interpolación lineal para gaps <3 días)
+   - Normalización y transformaciones (log, diferencias, etc.)
+   - Almacenamiento en caché local (SQLite) con verificación de integridad
+```
+
+**Pipeline de ejecución**:
+```
+1. Actualización Semanal (viernes COB)
+   - Recalibración modelo HMM de regímenes
+   - Actualización universo de pares cointegrados
+   - Reestimación de parámetros bayesianos
+   - Revisión de pairs en cuarentena
+
+2. Procesamiento Diario (final de jornada)
+   - Actualización de z-scores para todos los pares activos
+   - Decodificación de régimen actual
+   - Generación de señales para día siguiente
+   - Tests de estabilidad estructural
+   - Optimización de cartera
+
+3. Ejecución (apertura mercado)
+   - Generación de órdenes para nuevas posiciones
+   - Rebalanceo de posiciones existentes
+   - Ajustes de hedging para neutralidad
+```
+
+### Validación del Sistema
+
+**Backtesting riguroso**:
+- Período: 2000-presente (múltiples ciclos económicos)
+- Método: Walk-forward con ventanas de 2 años train, 6 meses test
+- Prevención de look-ahead bias:
+  - Estimación de parámetros solo con datos disponibles al momento t
+  - One-day delay para implementación de señales
+  - Separación estricta de conjuntos train/validation/test
+
+**Métricas principales**:
+- Sharpe ratio (ajustado por autocorrelación)
+- Maximum drawdown y drawdown duration
+- Calmar ratio (retorno anualizado/max drawdown)
+- Win rate y profit factor
+- Exposición beta promedio (target <±0.1)
+- Metrics por régimen (descomposición de performance)
+
+**Tests de robustez**:
+- Bootstrap temporal (block bootstrap con bloques de 21 días)
+- Análisis de sensibilidad paramétrica (±30% en parámetros clave)
+- Monte Carlo con perturbación de precios de entrada/salida
+- Test de White's Reality Check para significancia estadística
+
+## IV. Expectativas de Rendimiento
+
+**Métricas objetivo**:
+- Sharpe ratio: 1.2-1.5
+- Volatilidad anualizada: 6-8%
+- Retorno objetivo: 8-12% anual neto de costos
+- Máximo drawdown esperado: <15%
+- Beta al mercado: -0.1 a +0.1
+
+**Descomposición por régimen**:
+- Régimen 1 (baja volatilidad): ~60% del retorno (Sharpe ~1.8)
+- Régimen 2 (volatilidad normal): ~35% del retorno (Sharpe ~1.2)
+- Régimen 3 (alta volatilidad): ~5% del retorno (Sharpe ~0.6)
+
+**Características estadísticas**:
+- Distribución de retornos: Ligera asimetría positiva (skewness >0)
+- Autocorrelación: Insignificante en retornos diarios (lag-1 <0.1)
+- Drawdown máximo típico: 8-12% en períodos normales
+- Tiempo de recuperación medio: <60 días
+
+## V. Consideraciones de Implementación con yfinance
+
+**Gestión eficiente de API**:
+- Implementación de caché local con SQLite
+- Llamadas por lotes para minimizar conexiones
+- Verificación de datos mediante cruces temporales
+- Sistema de reintentos con backoff exponencial
+
+**Optimizaciones específicas**:
+- Cálculos vectorizados con NumPy para eficiencia
+- Paralelización selectiva (solo cálculos independientes)
+- Actualización incremental de estadísticos
+- Monitoreo de uso de memoria para datasets grandes
+
+**Notas operativas**:
+- Tiempo estimado de ejecución: <15 minutos para actualización completa
+- Requisitos de almacenamiento: ~50MB por año de datos históricos
+- Manejo de sesgo de supervivencia: Usar listado histórico S&P 500
+- Verificación de dividendos/splits mediante comparación ajustada/no-ajustada
+
+## VI. Limitaciones y Mitigaciones
+
+**Riesgos identificados**:
+1. **Ruptura generalizada de cointegración en crisis**
+   - Mitigación: Exposición reducida automática en régimen 3
+   - Diversificación mínima de 8 pares activos en todo momento
+
+2. **Costos de transacción en pares ilíquidos**
+   - Mitigación: Filtro de volumen mínimo (excluir percentil inferior 20%)
+   - Penalización en sizing para pares con spreads amplios
+
+3. **Eventos corporativos no capturados**
+   - Mitigación: Sistema de detección de anomalías en series de precios
+   - Exclusión automática pre/post eventos anunciados
+
+4. **Sesgo de sobreoptimización**
+   - Mitigación: Validación cruzada temporal estricta
+   - Parámetros determinados conceptualmente, no por optimización directa
+   - Aplicación de corrección de múltiples comparaciones (FDR)
+
+Esta estrategia representa un sistema bayesiano robusto que adapta dinámicamente su comportamiento a múltiples condiciones de mercado, manteniendo un equilibrio óptimo entre sofisticación estadística e implementación práctica con las restricciones de yfinance.

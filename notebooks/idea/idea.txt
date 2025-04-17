@@ -1,0 +1,280 @@
+# IDEA FINAL: Sistema de Generación y Ranking Adaptativo Multifactorial para Estrategia de Inversión en S&P 500
+
+## 1. Descripción General
+
+Esta estrategia implementa un sistema de generación de características adaptativas específicas por ticker para crear un modelo de ranking robusto que identifique oportunidades de inversión en el S&P 500. El enfoque se basa en capturar la "huella digital" única de cada instrumento mediante la calibración automática de parámetros según las propiedades estadísticas específicas de cada activo.
+
+## 2. Generación de Features Adaptativas
+
+### 2.1 Características de Dinámica Temporal (CDT)
+
+- **Ciclo Dominante Específico (CDE)**:
+  - Metodología: Análisis espectral utilizando FFT con ventana adaptativa de 252 días
+  - Implementación: Para cada ticker, identificar el período con máxima densidad espectral
+  - Interpretación: Ciclo dominante específico de cada acción
+
+- **Oscilador de Momentum Adaptativo (OMA)**:
+  - Metodología: Momentum utilizando el ciclo dominante específico
+  - Implementación: `(precio_actual - precio_CDE_días_atrás) / std_dev_precio_CDE_días`
+  - Normalización: Z-score específico por ticker utilizando distribución histórica de 2 años
+
+- **Aceleración del Precio Adaptativa (APA)**:
+  - Metodología: Cambio en la tasa de cambio normalizado por volatilidad histórica
+  - Implementación: `(OMA_actual - OMA_5_días_atrás) / std_dev_OMA_63_días`
+  - Filtrado: Media móvil exponencial con período adaptativo para reducir ruido
+
+### 2.2 Características de Eficiencia y Persistencia (CEP)
+
+- **Exponente de Hurst Adaptativo (EHA)**:
+  - Metodología: Análisis R/S sobre ventanas adaptativas basadas en volatilidad
+  - Implementación: Estimación por regresión log-log utilizando 4 escalas temporales
+  - Actualización: Recalibración semanal con decaimiento exponencial
+
+- **Ratio de Eficiencia de Movimiento (REM)**:
+  - Metodología: Evalúa directividad del precio respecto a volatilidad
+  - Implementación: `|ln(precio_actual/precio_n_días_atrás)| / suma(true_range_diario_n_días)`
+  - Parametrización: n = máx(21, CDE/2) días, específico por ticker
+
+- **Índice de Persistencia Direccional (IPD)**:
+  - Metodología: Consistencia en la dirección del movimiento 
+  - Implementación: `media_móvil_exponencial(signo(retorno) * abs(retorno)^0.5, período=CDE/4)`
+  - Normalización: Percentil respecto a distribución histórica específica de 2 años
+
+### 2.3 Características de Microestructura (CME)
+
+- **Asimetría de Volumen-Precio (AVP)**:
+  - Metodología: Correlación entre magnitud de retornos y volumen normalizado
+  - Implementación: `correlación_spearman(|retorno_diario|, log(volumen/media_móvil_volumen_63d), ventana=21)`
+  - Procesamiento: Media móvil exponencial de 5 días para estabilizar la señal
+
+- **Elasticidad de Liquidez Estimada (ELE)**:
+  - Metodología: Sensibilidad del precio a volúmenes anormales
+  - Implementación: `pendiente_huber(|retorno_diario|, volumen_normalizado, ventana=min(63, 3*CDE))`
+  - Robustez: Regresión Huber para minimizar influencia de valores extremos
+
+- **Indicador de Presión de Compra-Venta (IPCV)**:
+  - Metodología: Desequilibrio entre volumen en días alcistas vs. bajistas
+  - Implementación: `suma(volumen*signo(cierre-apertura), días=min(21, CDE/2))/suma(volumen, días=min(21, CDE/2))`
+  - Normalización: Z-score utilizando distribución histórica específica
+
+### 2.4 Características de Complejidad y Entropía (CCE)
+
+- **Entropía de Muestra Multiescala (EMM)**:
+  - Metodología: Entropía de sample en múltiples escalas temporales
+  - Implementación: Promedio ponderado de entropía en escalas de 5, 10 y 20 días
+  - Adaptación: Pesos determinados por optimización bayesiana específica por ticker
+
+- **Complejidad de Lempel-Ziv (CLZ)**:
+  - Metodología: Compresibilidad de secuencia de retornos discretizados
+  - Implementación: Conversión de retornos a secuencia binaria usando umbrales adaptativos (±0.5*volatilidad_diaria)
+  - Interpretación: Mayor complejidad indica menor predictibilidad
+
+- **Índice de Transferencia de Información (ITI)**:
+  - Metodología: Flujo de información desde índice/sector hacia el ticker
+  - Implementación: `información_mutua(retornos_ticker, retornos_índice, lag=1) - información_mutua(retornos_ticker, retornos_índice, lag=0)`
+  - Escalas múltiples: Cálculo en horizontes de 5, 10 y 21 días con promedio ponderado
+
+### 2.5 Características de Correlación Dinámica (CCD)
+
+- **Beta Condicional Multirégimen (BCM)**:
+  - Metodología: Beta adaptativo basado en régimen de volatilidad
+  - Implementación: 
+    ```
+    # Identificación de régimen (bajo, medio, alto) basado en VIX
+    régimen = clasificar_régimen(VIX_actual)
+    # Beta condicional al régimen
+    beta_condicional = regresión(retornos_ticker, retornos_SPY, días=63, pesos=pesos_régimen[régimen])
+    ```
+  - Adaptación: Pesos específicos por régimen derivados empíricamente
+
+- **Divergencia de Correlación Sectorial (DCS)**:
+  - Metodología: Cambios en correlación ticker-sector vs correlación histórica
+  - Implementación: `(correlación_actual_21d - media_móvil_correlación_252d) / std_dev_correlación_252d`
+  - Señal: Valores extremos indican potencial reversión o continuación según dirección
+
+- **Rotación de Factor Dominante (RFD)**:
+  - Metodología: Cambios en exposición a factores principales (valor, momentum, calidad)
+  - Implementación: Tracking de cambios en la dirección de los coeficientes de regresión multifactor
+  - Cálculo: `suma(signo(beta_factor_actual) != signo(beta_factor_21d_atrás), para todos los factores)/num_factores`
+
+### 2.6 Características de Régimen Adaptativo (CRA)
+
+- **Indicador de Régimen de Volatilidad Específico (IRVE)**:
+  - Metodología: Clasificación de volatilidad actual en contexto histórico específico
+  - Implementación: `(volatilidad_actual_21d - percentil_25_vol) / (percentil_75_vol - percentil_25_vol)`
+  - Adaptatividad: Percentiles calculados específicamente para cada ticker
+
+- **Sensibilidad a Variables Macro (SVM)**:
+  - Metodología: Betas históricos contra principales variables macro (tasas, inflación)
+  - Implementación: Regresión con ventana adaptativa ponderada exponencialmente
+  - Actualización: Recalibración mensual con nuevos datos económicos
+
+- **Indicador de Cambio de Tendencia (ICT)**:
+  - Metodología: Divergencias entre osciladores en múltiples escalas temporales
+  - Implementación: `suma(signo(oscilador_escala_i - oscilador_escala_i-1)) / num_escalas`
+  - Escalas: CDE/4, CDE/2, CDE como períodos adaptados a cada ticker
+
+## 3. Framework de Integración y Ranking
+
+### 3.1 Normalización y Preprocesamiento
+
+- **Adaptación Específica por Ticker**:
+  - Transformación de cada feature a rango [0,1] utilizando CDF empírica específica por ticker
+  - Actualización de distribuciones de referencia semanalmente
+  - Winsorización adaptativa en los percentiles 1 y 99 específicos por feature
+
+- **Manejo de Datos Faltantes**:
+  - Imputación utilizando el último valor válido para discontinuidades cortas (<5 días)
+  - Exclusión de tickers con más de 10% de datos faltantes en el último año
+  - Forward-filling limitado a 3 días para evitar look-ahead bias
+
+### 3.2 Análisis de Componentes Independientes (ICA)
+
+- **Reducción de Dimensionalidad Informativa**:
+  - Aplicación de FastICA para extraer componentes estadísticamente independientes
+  - Retención de componentes que explican 95% de la información mutua
+  - Recalibración mensual para adaptarse a cambios en estructura de mercado
+
+### 3.3 Integración de Features
+
+- **Ponderación Dinámica Adaptativa**:
+  - Metodología: Optimización de pesos mediante maximización de IC (Information Coefficient)
+  - Implementación: `peso_feature = optimización_bayesiana(maximizar(IC_promedio_feature))`
+  - Restricciones: Regularización L1 para promover dispersión y robustez de pesos
+
+- **Ensamblaje Multi-horizonte**:
+  - Creación de tres modelos de ranking: corto plazo (5-10 días), medio plazo (20-30 días) y largo plazo (50-60 días)
+  - Combinación ponderada: `score_final = 0.3*score_corto + 0.4*score_medio + 0.3*score_largo`
+  - Calibración: Ajuste mensual de pesos mediante cross-validation con walk-forward
+
+### 3.4 Sistema de Ranking y Selección
+
+- **Metodología de Ranking**: 
+  - Ordenamiento del universo S&P 500 según score_final
+  - División del universo en deciles
+  - Inversión en el decil superior (long) y/o decil inferior (short)
+
+- **Filtros de Selección**:
+  - Exclusión de tickers con volumen promedio < 500,000 acciones diarias
+  - Exclusión de tickers con capitalización < $2B
+  - Restricción sectorial: máximo 25% de exposición a un solo sector
+
+- **Frecuencia de Rebalanceo**:
+  - Rebalanceo semanal (cada viernes al cierre)
+  - Recalibración completa de parámetros mensualmente
+  - Actualización diaria de scores sin cambios de posición (monitoreo)
+
+## 4. Gestión de Riesgo
+
+### 4.1 Control de Exposición
+
+- **Exposición Neta**: Estrategia long-only o market-neutral (0% exposición neta)
+- **Exposición Bruta**: Máximo 100% para versión long-only, 200% para market-neutral
+- **Exposición por Posición**: 
+  - Peso base: 1/N ponderado (donde N es el número de posiciones)
+  - Ajuste por volatilidad: `peso_ajustado = peso_base * (vol_objetivo/vol_histórica_63d)`
+  - Límite máximo: 3% por posición
+
+### 4.2 Control de Riesgo Sistemático
+
+- **Exposición a Factores**: 
+  - Monitoreo diario de exposición a factores Fama-French + Momentum
+  - Neutralización opcional mediante overlay de ETFs: `SPY` (mercado), `IWD`/`IWF` (valor/crecimiento), `MTUM` (momentum)
+
+- **Límites de Tracking Error**:
+  - Long-only: Tracking error vs. S&P 500 < 5% anualizado
+  - Market-neutral: Beta diario en rango [-0.1, 0.1]
+
+### 4.3 Stop-Loss y Gestión de Drawdowns
+
+- **Stop-Loss Individual**:
+  - Nivel: -2 desviaciones estándar del movimiento histórico a 21 días
+  - Implementación: Orden condicional a ejecutar al día siguiente
+
+- **Reducción de Exposición Sistemática**:
+  - Trigger: Drawdown de estrategia > 10% o VIX > 30
+  - Acción: Reducción de exposición bruta en 50%
+  - Reactivación: Tras 5 días consecutivos de retornos positivos o VIX < 25
+
+## 5. Implementación y Evaluación Técnica
+
+### 5.1 Arquitectura de Datos y Computación
+
+- **Fuente de Datos**: Yahoo Finance mediante biblioteca `yfinance`
+- **Frecuencia de Datos**: Diaria (OHLCV) con ajuste por splits y dividendos
+- **Almacenamiento**:
+  - Base de datos SQLite para históricos
+  - Actualización diaria automatizada
+  - Respaldo semanal
+
+- **Procesamiento**:
+  - Cálculo paralelo por ticker para optimizar rendimiento
+  - Precálculo de features básicas (retornos, volatilidades) diariamente
+  - Cálculo de features avanzadas y ranking semanalmente
+
+### 5.2 Metodología de Backtesting
+
+- **Periodo de Evaluación**: 2005-2023 (incluyendo múltiples regímenes de mercado)
+- **Out-of-Sample Validation**:
+  - Walk-forward optimization con ventana de entrenamiento de 5 años
+  - Validación en ventana de 1 año forward
+  - Evaluación final en período 2018-2023 completely out-of-sample
+
+- **Prevención de Look-Ahead Bias**:
+  - Desfase de 1 día en datos de precios para simular ejecución real
+  - Uso exclusivo de información disponible en el momento de decisión
+  - Point-in-time database para composición del S&P 500
+
+### 5.3 Consideración de Costos y Ejecución
+
+- **Costos de Transacción**:
+  - Comisión: 0.5 centavos por acción
+  - Slippage: 5 bps para activos de alta capitalización, 10 bps para media capitalización
+  - Market impact: Modelo de impacto cuadrático basado en % de ADV negociado
+
+- **Estrategia de Ejecución**:
+  - Tipo de órdenes: Límit orders al VWAP esperado ±0.5%
+  - Timing: Ejecución en primera hora para órdenes <0.5% ADV, durante todo el día para órdenes mayores
+  - Regla de inactividad: Evitar trading en los primeros/últimos 5 minutos de sesión
+
+### 5.4 Métricas de Evaluación
+
+- **Métricas de Rendimiento**:
+  - Retorno anualizado neto de costos
+  - Sharpe ratio (objetivo: >1.2)
+  - Sortino ratio (objetivo: >1.5)
+  - Maximum drawdown (objetivo: <15%)
+
+- **Métricas de Robustez**:
+  - Information ratio vs. S&P 500 (para estrategia long-only)
+  - Beta y correlación con el mercado
+  - Captura alcista/bajista
+  - Estabilidad del Sharpe (desviación estándar de Sharpe en ventanas rodantes)
+
+- **Análisis de Atribución**:
+  - Contribución a rendimiento por factor (valor, momentum, calidad, etc.)
+  - Contribución por sector
+  - Descomposición de alfa vs. beta
+
+## 6. Resultados Esperados y Limitaciones
+
+### 6.1 Expectativas de Rendimiento
+
+- **Long-Only**:
+  - Exceso de retorno anual vs. S&P 500: 3-5%
+  - Sharpe ratio: 0.8-1.2
+  - Máximo drawdown: 15-20%
+  - Turnover mensual: 30-40%
+
+- **Market-Neutral**:
+  - Retorno absoluto anual: 6-10%
+  - Sharpe ratio: 1.2-1.8
+  - Máximo drawdown: 8-12%
+  - Turnover mensual: 60-80%
+
+### 6.2 Limitaciones Conocidas
+
+- **Entorno de Baja Volatilidad**: Rendimiento potencialmente inferior en mercados con tendencia fuerte y baja volatilidad
+- **Choques Exógenos**: Vulnerable a eventos extremos que causan desacoplamiento de relaciones históricas
+- **Capacidad**: Estrategia afectada por AUM >$500M debido a impacto de mercado
+- **

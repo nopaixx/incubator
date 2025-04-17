@@ -1,0 +1,320 @@
+# IDEA FINAL: Estrategia de Arbitraje Estadístico con Detección Adaptativa de Anomalías Estructurales
+
+## Fundamento Conceptual
+
+Esta estrategia de arbitraje estadístico identifica y explota ineficiencias temporales en las relaciones estadísticas entre componentes del S&P 500. Se basa en que las relaciones estructurales entre activos tienden a mantener equilibrios a largo plazo, pero experimentan desviaciones temporales que pueden ser explotadas mediante un enfoque sistemático y adaptativo a diferentes regímenes de mercado.
+
+## Arquitectura Completa del Sistema
+
+### 1. Sistema de Detección de Regímenes
+
+**Implementación:**
+- Ensemble de 3 modelos HMM independientes:
+  * HMM-1: 2 estados, entrenado con volatilidad realizada (ventanas de 22 días) y correlaciones sectoriales cruzadas
+  * HMM-2: 3 estados, entrenado con rendimientos, volatilidad y volumen relativo
+  * HMM-3: 2 estados, entrenado con dispersión sectorial y breadth de mercado
+
+- Agregación de modelos:
+  * Ponderación bayesiana basada en rendimiento histórico en ventanas de 6 meses
+  * Filtro de persistencia que requiere >85% de probabilidad sostenida durante 3 días para confirmar cambio
+  * Retraso explícito de 2 días entre detección e implementación para evitar look-ahead bias
+
+- Regímenes finales:
+  * Régimen 1: Baja volatilidad / Alta predictibilidad (favorable para convergencia)
+  * Régimen 2: Transición / Volatilidad moderada (condiciones mixtas)
+  * Régimen 3: Crisis / Alta volatilidad (riesgo de desacoplamiento)
+
+**Parámetros específicos:**
+- Ventana de entrenamiento: Mínimo 5 años de datos diarios
+- Frecuencia de recalibración: Semanal (cada lunes después del cierre)
+- Criterio de información para selección de modelo: BIC (Bayesian Information Criterion)
+- Lookback para filtro de persistencia: 3 días
+
+### 2. Identificación y Selección de Pares
+
+**Pipeline completo:**
+
+1. **Pre-filtrado (diario):**
+   - Agrupación por sector GICS y subsector
+   - Filtros de liquidez: ADV mínimo > $10M
+   - Filtro de eventos: exclusión de acciones con anuncios de earnings en los próximos 7 días
+   - Score de similitud fundamental:
+     * Beta a 1 año (30% del score)
+     * Capitalización de mercado (25%)
+     * Volatilidad realizada a 60 días (25%)
+     * Ratios de valoración relativa (20%)
+
+2. **Análisis estadístico (semanal):**
+   - Test de cointegración de Johansen con ventanas adaptativas:
+     * 252 días en Régimen 1
+     * 180 días en Régimen 2
+     * 126 días en Régimen 3
+   - Significancia estadística: p-valor < 0.05 después de corrección FDR (Benjamini-Hochberg)
+   - Filtro de half-life: 5-25 días (dependiendo del régimen)
+   - Bootstrapping paramétrico: 1,000 simulaciones para validar robustez
+
+3. **Evaluación de estabilidad estructural:**
+   - Test de Quandt-Andrews para identificar cambios estructurales históricos
+   - CUSUM adaptativo para detectar desviaciones recientes
+   - Calificación de estabilidad (1-10) basada en consistencia histórica
+
+4. **Ranking final de pares:**
+   - Score compuesto ponderado por régimen actual:
+     * Significancia estadística (35-40%)
+     * Estabilidad histórica (30-35%)
+     * Liquidez combinada (20%)
+     * Rendimiento histórico en régimen actual (10-15%)
+
+**Parámetros específicos por régimen:**
+
+| Parámetro | Régimen 1 | Régimen 2 | Régimen 3 |
+|-----------|-----------|-----------|-----------|
+| Ventana cointegración | 252 días | 180 días | 126 días |
+| Half-life aceptable | 10-25 días | 7-20 días | 5-15 días |
+| p-valor máximo | 0.01 | 0.03 | 0.05 |
+| Máx. pares activos | 20-25 | 15-20 | 10-15 |
+
+### 3. Modelo Predictivo de Convergencia
+
+**Arquitectura del modelo:**
+- Gradient Boosting Machine (GBM) con los siguientes hiperparámetros:
+  * learning_rate: 0.01
+  * max_depth: 4
+  * n_estimators: 200
+  * subsample: 0.8
+  * regularización: alpha=0.1, lambda=1.0
+
+**Features utilizadas:**
+- Z-score actual del spread (normalizado por volatilidad condicional)
+- Cambio en z-score durante 3, 5 y 10 días
+- Volatilidad del spread relativa a su media móvil de 60 días
+- Ratio de volumen anormal (promedio ponderado de los componentes del par)
+- Breadth del sector al que pertenece el par
+- Variables dummy de régimen actual
+- Half-life histórica estimada
+
+**Implementación:**
+- Modelos separados para cada régimen
+- Entrenamiento con validación cruzada temporal (5 folds)
+- Actualización mensual con ventana expandible (mínimo 3 años)
+- Calibración de probabilidades mediante Platt scaling
+
+### 4. Generación y Ejecución de Señales
+
+**Cálculo de señales:**
+- Z-score normalizado: `z = (spread_actual - media_móvil) / desv_estándar_condicional`
+  * Media móvil: EMA con half-life = 60 días
+  * Desviación estándar condicional: EWMA con half-life = 21 días
+
+**Umbrales de entrada adaptativa por régimen:**
+
+| Régimen | Entrada Long | Entrada Short | Salida Long | Salida Short |
+|---------|-------------|--------------|-------------|--------------|
+| 1 | z < -2.0 | z > 2.0 | z > -0.5 | z < 0.5 |
+| 2 | z < -2.2 | z > 2.2 | z > -0.7 | z < 0.7 |
+| 3 | z < -2.5 | z > 2.5 | z > -1.0 | z < 1.0 |
+
+**Bandas de no-transacción:**
+- Amplitud base: 0.2 desviaciones estándar
+- Ajuste por volatilidad: +0.1 por cada 25% de aumento sobre volatilidad promedio
+- Ajuste por costos: +0.05 por cada 1bp de spread estimado
+- Bandas asimétricas: 20% más amplias para salidas que para entradas
+
+**Ejecución escalonada:**
+- División de órdenes: 25% inicial, 25% después de confirmación (1 día), 50% al tercer día si persiste
+- Límite de participación en volumen: 7% del ADV para acciones >$20M ADV, 5% para menos líquidas
+- Ventanas de ejecución: 60% en primera hora, 40% distribuido durante el día
+
+### 5. Gestión de Posiciones y Riesgo
+
+**Sizing adaptativo:**
+- Base de cálculo: Volatilidad inversa normalizada (1/σ)
+- Ajuste por convicción: Multiplicador basado en probabilidad de convergencia (0.5-1.5x)
+- Ajuste por liquidez: Factor reductor para pares menos líquidos (0.5-1.0x)
+- Límites absolutos:
+  * Máximo 3% de cartera por par en Régimen 1
+  * Máximo 2.5% de cartera por par en Régimen 2 
+  * Máximo 2% de cartera por par en Régimen 3
+
+**Stops adaptativos:**
+- Stop-loss primario: Basado en ATR multiplicado por factor específico del régimen:
+  * Régimen 1: 3.0x ATR
+  * Régimen 2: 2.5x ATR 
+  * Régimen 3: 2.0x ATR
+- Time-stop secundario: Basado en half-life estimada:
+  * Cierre forzado después de 2.5x half-life sin convergencia significativa
+
+**Gestión de riesgo de cartera:**
+- Límites de concentración:
+  * Máximo 20% de exposición por sector en Régimen 1 (15% en Régimen 3)
+  * Máximo 40% de exposición en los 3 sectores principales
+  * Correlación máxima promedio entre pares activos: 0.3
+- Volatilidad objetivo adaptativa:
+  * Régimen 1: 8-10% anualizada
+  * Régimen 2: 7-9% anualizada
+  * Régimen 3: 5-7% anualizada
+
+**Circuit breakers:**
+- Nivel 1 (reducción 25%): VIX > percentil 80 histórico Y aumento de >10% en un día
+- Nivel 2 (reducción 50%): VIX > percentil 90 histórico O correlación promedio de mercado > 0.7
+- Nivel 3 (reducción 75-100%): VIX > percentil 95 histórico Y correlación promedio > 0.8
+
+### 6. Implementación Técnica con yfinance
+
+**Adquisición y procesamiento de datos:**
+```python
+# Pseudocódigo para implementación
+import yfinance as yf
+import pandas as pd
+import numpy as np
+from statsmodels.tsa.stattools import coint, adfuller
+from sklearn.ensemble import GradientBoostingClassifier
+from hmmlearn import hmm
+
+# 1. Obtener datos para todo el S&P 500
+sp500_tickers = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]['Symbol'].tolist()
+sector_map = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0].set_index('Symbol')['GICS Sector'].to_dict()
+
+# 2. Función para obtener datos históricos
+def get_historical_data(tickers, period='2y'):
+    data = {}
+    for ticker in tickers:
+        try:
+            stock = yf.Ticker(ticker)
+            data[ticker] = stock.history(period=period)
+            time.sleep(0.1)  # Para no sobrecargar la API
+        except Exception as e:
+            print(f"Error obteniendo datos para {ticker}: {e}")
+    return data
+
+# 3. Procesar datos y calcular métricas
+def calculate_metrics(data):
+    # Calcular retornos, volatilidad, correlaciones, etc.
+    # ...
+    return metrics
+
+# 4. Implementar detección de régimen
+def detect_regime(market_data):
+    # Entrenar modelos HMM
+    # Aplicar ensemble y filtro de persistencia
+    # ...
+    return current_regime
+
+# 5. Identificar pares potenciales
+def identify_pairs(data, regime):
+    # Pre-filtrado por sector y liquidez
+    # Análisis de cointegración
+    # ...
+    return candidate_pairs
+
+# 6. Evaluar y rankear pares
+def evaluate_pairs(pairs, regime):
+    # Calcular scores compuestos
+    # Aplicar filtros específicos del régimen
+    # ...
+    return ranked_pairs
+
+# 7. Generar señales de trading
+def generate_signals(active_pairs, regime):
+    # Calcular z-scores
+    # Aplicar umbrales adaptativos
+    # ...
+    return trading_signals
+
+# 8. Optimizar cartera
+def optimize_portfolio(signals, active_positions, regime):
+    # Calcular sizing óptimo
+    # Aplicar restricciones de concentración
+    # ...
+    return target_portfolio
+
+# 9. Ejecutar operaciones
+def execute_trades(current_portfolio, target_portfolio):
+    # Determinar órdenes necesarias
+    # Implementar ejecución escalonada
+    # ...
+    return orders
+```
+
+**Frecuencia de actualización:**
+- Datos de precios y volumen: Diaria (después del cierre)
+- Detección de régimen: Semanal (lunes)
+- Selección de pares: Semanal (lunes)
+- Evaluación de señales: Diaria
+- Monitoreo de riesgos: Tiempo real (intradiario)
+
+**Manejo de datos:**
+- Detección de outliers: Filtro MAD (Median Absolute Deviation) con umbral de 3.5
+- Imputación de datos faltantes: Interpolación lineal para gaps <3 días
+- Ajustes corporativos: Utilizar precios ajustados de yfinance para dividendos y splits
+- Almacenamiento: Base de datos SQLite para histórico, pandas para procesamiento en memoria
+
+### 7. Validación y Backtest
+
+**Metodología de validación:**
+- Walk-forward testing con:
+  * Ventana inicial: 5 años (2010-2014)
+  * Ventana de validación: 1 año
+  * Ventana de prueba: 6 meses (sin solapamiento)
+  * Avance secuencial: 6 meses
+
+**Prevención de look-ahead bias:**
+- Retraso explícito entre señales y ejecución
+- Separación estricta entre datos de entrenamiento y prueba
+- Simulación de T+1 para ejecución de órdenes
+
+**Simulación de costos:**
+- Comisiones: 1bp por lado (2bp roundtrip)
+- Slippage: 1/2 spread promedio histórico
+- Market impact: Modelo de raíz cuadrada (0.1 * σ * √(%ADV))
+
+**Métricas de evaluación:**
+- Sharpe ratio (ajustado por sesgo de estimación)
+- Sortino ratio
+- Máximo drawdown y tiempo de recuperación
+- Ratio de captura alcista/bajista vs. S&P 500
+- Contribución al riesgo por factor/sector
+
+### 8. Métricas de Rendimiento Esperadas
+
+**Rendimiento ajustado por riesgo:**
+- Sharpe ratio neto esperado: 1.0-1.3
+- Volatilidad anualizada: 6-8%
+- Rendimiento anual esperado: 8-12% (neto de costos)
+
+**Perfil de riesgo:**
+- Drawdown máximo esperado: 15-18%
+- Duración típica de drawdown: 4-8 meses
+- Beta promedio al mercado: -0.1 a 0.1
+- Correlación con S&P 500: -0.2 a 0.2
+
+**Métricas operativas:**
+- Turnover anual: 300-400%
+- Número promedio de pares activos: 15-20
+- Duración promedio de posiciones: 10-15 días
+- Win rate esperado: 58-62%
+
+**Capacidad estimada:**
+- $300M-$500M antes de degradación significativa de rendimiento
+- Punto de degradación del 20%: aproximadamente $700M-$800M
+
+## Consideraciones Finales de Implementación
+
+1. **Infraestructura necesaria:**
+   - Acceso a datos diarios vía yfinance
+   - Capacidad de procesamiento para análisis semanal completo (8GB RAM mínimo)
+   - Ejecución automatizada de órdenes
+   - Sistema de monitoreo y alerta para gestión de riesgos
+
+2. **Mantenimiento continuo:**
+   - Recalibración mensual de modelos predictivos
+   - Evaluación trimestral de rendimiento vs. expectativas
+   - Monitoreo de cambios en estructura de mercado
+   - Validación periódica de supuestos estadísticos
+
+3. **Gestión adaptativa:**
+   - Ajuste trimestral de volatilidad objetivo basado en análisis de régimen
+   - Revisión semestral de parámetros para verificar degradación
+   - Monitoreo continuo de capacidad y scalabilidad
+
+La estrategia está diseñada para mantener robustez a través de diferentes ciclos de mercado, con énfasis especial en adaptabilidad a regímenes cambiantes y validación estadística rigurosa. El enfoque de arbitraje estadístico adaptativo proporciona diversificación efectiva frente a estrategias direccionales tradicionales, mientras que los controles de riesgo multinivel y la optimización de ejecución permiten preservar alpha en la implementación real.
