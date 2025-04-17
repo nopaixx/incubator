@@ -7,6 +7,7 @@ import json
 import time
 import uuid
 from dotenv import load_dotenv
+import traceback
 
 from incubator.agents.agent import Agent
 from incubator.messages.message import Message
@@ -18,12 +19,23 @@ from incubator.wf.node import Node
 class WorkflowEngine:
     """Engine to execute workflows defined as directed graphs of nodes"""
     
-    def __init__(self):
-        """Initialize the workflow engine"""
+    def __init__(self, debug: bool = False):
+        """
+        Initialize the workflow engine
+        
+        Args:
+            debug: Whether to print debug information
+        """
         self.graph = nx.MultiDiGraph()  # Use MultiDiGraph to allow multiple edges between nodes
         self.input_nodes = set()
         self.output_nodes = set()
         self.node_instances = {}  # Map of node_id -> Node instance
+        self.debug = debug
+    
+    def log(self, message: str) -> None:
+        """Log debug messages when debug mode is enabled"""
+        if self.debug:
+            print(f"[WorkflowEngine] {message}")
     
     def add_node(self, node: Node, is_input: bool = False, is_output: bool = False) -> None:
         """
@@ -110,7 +122,7 @@ class WorkflowEngine:
         
         return True
     
-    def execute(self, inputs: Dict[str, str], context: Optional[Dict[str, Any]] = None) -> Dict[str, Dict[str, str]]:
+    def execute(self, inputs: Dict[str, str], context: Optional[Dict[str, Any]] = None) -> Dict[str, Dict[str, Dict[str, Any]]]:
         """
         Execute the workflow with the given inputs
         
@@ -119,7 +131,7 @@ class WorkflowEngine:
             context: Additional context information
             
         Returns:
-            Dictionary mapping output node IDs to their port outputs
+            Dictionary mapping output node IDs to their port outputs (with full content and metadata)
         """
         if not self.validate():
             raise ValueError("Invalid workflow graph")
@@ -146,75 +158,88 @@ class WorkflowEngine:
         
         # Process nodes in topological sort order
         for node_id in nx.topological_sort(self.graph):
-            # Skip if this is an input node that we've already processed
-            if node_id in inputs:
-                continue
-            
-            # Get the node instance
-            node = self.node_instances[node_id]
-            
-            # Collect inputs from predecessor nodes based on edge connections
-            node_inputs = []
-            
-            # For each predecessor
-            for pred_id in self.graph.predecessors(node_id):
-                # Skip if the predecessor hasn't been processed yet
-                if pred_id not in node_outputs:
+            try:
+                # Skip if this is an input node that we've already processed
+                if node_id in inputs:
                     continue
                 
-                # Get all edges between this predecessor and the current node
-                edges = self.graph.get_edge_data(pred_id, node_id)
+                self.log(f"Processing node: {node_id}")
                 
-                # For each edge
-                for edge_key, edge_data in edges.items():
-                    from_port = edge_data["from_port"]
-                    to_port = edge_data["to_port"]
+                # Get the node instance
+                node = self.node_instances[node_id]
+                
+                # Collect inputs from predecessor nodes based on edge connections
+                node_inputs = []
+                
+                # For each predecessor
+                for pred_id in self.graph.predecessors(node_id):
+                    # Skip if the predecessor hasn't been processed yet
+                    if pred_id not in node_outputs:
+                        continue
                     
-                    # Check if the source port exists
-                    if from_port in node_outputs[pred_id]:
-                        port_output = node_outputs[pred_id][from_port]
+                    # Get all edges between this predecessor and the current node
+                    edges = self.graph.get_edge_data(pred_id, node_id)
+                    
+                    # For each edge
+                    for edge_key, edge_data in edges.items():
+                        from_port = edge_data["from_port"]
+                        to_port = edge_data["to_port"]
                         
-                        # Create message from this output
+                        # Check if the source port exists
+                        if from_port in node_outputs[pred_id]:
+                            port_output = node_outputs[pred_id][from_port]
+                            
+                            # Create message from this output
+                            message = Message(
+                                role="user", 
+                                content=port_output["content"],
+                                metadata=port_output.get("metadata", {})
+                            )
+                            
+                            # Add to inputs with source information and port
+                            node_inputs.append((pred_id, from_port, message))
+                
+                # Process the node
+                port_outputs = node.process(node_inputs, context)
+                
+                # Store each port output
+                output_data = {}
+                for port_id, port_output in port_outputs.items():
+                    # Create a message from the output if not already present
+                    if "message" not in port_output:
                         message = Message(
-                            role="user", 
+                            role="assistant", 
                             content=port_output["content"],
                             metadata=port_output.get("metadata", {})
                         )
-                        
-                        # Add to inputs with source information and port
-                        node_inputs.append((pred_id, from_port, message))
-            
-            # Process the node
-            port_outputs = node.process(node_inputs, context)
-            
-            # Store each port output
-            output_data = {}
-            for port_id, port_output in port_outputs.items():
-                # Create a message from the output
-                message = Message(
-                    role="assistant", 
-                    content=port_output["content"],
-                    metadata=port_output.get("metadata", {})
-                )
+                        port_output["message"] = message
+                    
+                    # Store with port information
+                    output_data[port_id] = port_output
                 
-                # Store with port information
-                output_data[port_id] = {
-                    "content": port_output["content"], 
-                    "message": message,
-                    "metadata": port_output.get("metadata", {})
+                node_outputs[node_id] = output_data
+                self.log(f"Node {node_id} processed with output ports: {list(output_data.keys())}")
+                
+            except Exception as e:
+                error_message = f"Error processing node {node_id}: {str(e)}"
+                self.log(f"ERROR: {error_message}")
+                self.log(traceback.format_exc())
+                
+                # Create error output for this node
+                node_outputs[node_id] = {
+                    "error": {
+                        "content": error_message,
+                        "metadata": {"error": True, "exception": str(e)},
+                        "message": Message(role="assistant", content=error_message)
+                    }
                 }
-            
-            node_outputs[node_id] = output_data
         
         # Collect outputs
         results = {}
         for node_id in self.output_nodes:
             if node_id in node_outputs:
-                # Collect all port outputs for this node
-                port_results = {}
-                for port_id, port_data in node_outputs[node_id].items():
-                    port_results[port_id] = port_data["content"]
-                results[node_id] = port_results
+                # Include complete port data for the output nodes
+                results[node_id] = node_outputs[node_id]
         
         return results
     
@@ -245,9 +270,11 @@ class WorkflowEngine:
                 {
                     "from": u,
                     "to": v,
+                    "from_port": data["from_port"],
+                    "to_port": data["to_port"],
                     "metadata": data.get("metadata", {})
                 }
-                for u, v, data in self.graph.edges(data=True)
+                for u, v, key, data in self.graph.edges(data=True, keys=True)
             ]
         }
         
@@ -256,13 +283,14 @@ class WorkflowEngine:
             json.dump(data, f, indent=2)
     
     @classmethod
-    def load(cls, filepath: str, llm_client: LLMClient) -> 'WorkflowEngine':
+    def load(cls, filepath: str, llm_client: LLMClient, debug: bool = False) -> 'WorkflowEngine':
         """
         Load a workflow configuration from a file
         
         Args:
             filepath: Path to the configuration file
             llm_client: LLM client to use for the agents
+            debug: Whether to enable debug mode
             
         Returns:
             Initialized WorkflowEngine
@@ -271,7 +299,7 @@ class WorkflowEngine:
             data = json.load(f)
         
         # Create a new workflow engine
-        workflow = cls()
+        workflow = cls(debug=debug)
         
         # Add nodes
         for node_data in data["nodes"]:
@@ -300,6 +328,8 @@ class WorkflowEngine:
             workflow.add_edge(
                 from_node_id=edge_data["from"],
                 to_node_id=edge_data["to"],
+                from_port=edge_data.get("from_port", "default"),
+                to_port=edge_data.get("to_port", "input"),
                 metadata=edge_data.get("metadata", {})
             )
         

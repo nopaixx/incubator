@@ -96,7 +96,12 @@ class IterativeDialogNode(Node):
         }
         
         # Return structured outputs on different ports
+        # Also include a "default" port for backward compatibility
         return {
+            "default": {
+                "content": output,
+                "metadata": {"type": "final_output"}
+            },
             "final": {
                 "content": output,
                 "metadata": {"type": "final_output"}
@@ -133,22 +138,43 @@ class IterativeDialogNode(Node):
         Returns:
             Dictionary mapping output ports to their content and metadata
         """
-        self.log(f"Processing {len(inputs)} inputs")
-        
-        # Process incoming messages using the input processor
-        processed_messages = self.input_processor(inputs)
-        self.log(f"Input processor returned {len(processed_messages)} messages")
-        
-        # Extract the initial prompt
-        initial_prompt = self._extract_initial_prompt(processed_messages)
-        
-        # Start the dialogue
-        self.log("Starting dialogue")
-        conversation, final_output = self.dialogue_controller.start_dialogue(initial_prompt, context)
-        self.log(f"Dialogue completed with {len(conversation)} messages")
-        
-        # Process the output
-        outputs = self._default_dialogue_output_processor(final_output, conversation)
-        self.log(f"Output processed with {len(outputs)} ports")
-        
-        return outputs
+        try:
+            self.log(f"Processing {len(inputs)} inputs")
+            
+            # Process incoming messages using the input processor
+            processed_messages = self.input_processor(inputs)
+            self.log(f"Input processor returned {len(processed_messages)} messages")
+            
+            # Extract the initial prompt
+            initial_prompt = self._extract_initial_prompt(processed_messages)
+            
+            # Start the dialogue
+            self.log("Starting dialogue")
+            conversation, final_output = self.dialogue_controller.start_dialogue(initial_prompt, context)
+            self.log(f"Dialogue completed with {len(conversation)} messages")
+            
+            # Process the output using the custom or default processor
+            # Important: We're passing the conversation history as well
+            if hasattr(self, 'output_processor') and self.output_processor:
+                outputs = self.output_processor(final_output, conversation)
+            else:
+                outputs = self._default_dialogue_output_processor(final_output, conversation)
+                
+            self.log(f"Output processed with {len(outputs)} ports")
+            
+            return outputs
+            
+        except Exception as e:
+            self.log(f"Error in dialogue node processing: {str(e)}")
+            # Return a basic error output
+            error_message = f"Error processing dialogue: {str(e)}"
+            return {
+                "default": {
+                    "content": error_message,
+                    "metadata": {"error": True}
+                },
+                "error": {
+                    "content": error_message,
+                    "metadata": {"error": True, "exception": str(e)}
+                }
+            }
