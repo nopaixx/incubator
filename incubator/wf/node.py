@@ -43,6 +43,9 @@ class Node:
             List of messages to pass to the agent
         """
         # Simply extract the messages and ignore the source and port
+        if not inputs:
+            # Crear un mensaje vacío para evitar errores de API
+            return [Message(role="user", content="Por favor, proporciona tu análisis basado en la información disponible.")]
         return [msg for _, _, msg in inputs]
     
     def _default_output_processor(self, output: str) -> Dict[str, Dict[str, Any]]:
@@ -73,11 +76,33 @@ class Node:
         Returns:
             Dictionary mapping output ports to their content and metadata
         """
-        # Process incoming messages
-        processed_messages = self.input_processor(inputs)
-        
-        # Generate a response using the agent
-        raw_output = self.agent.process(processed_messages, context)
-        
-        # Process the output for routing
-        return self.output_processor(raw_output)
+        try:
+            # Process incoming messages
+            processed_messages = self.input_processor(inputs)
+            
+            if not processed_messages:
+                # Si no hay mensajes después del procesamiento, añadir uno para evitar errores de API
+                processed_messages = [Message(
+                    role="user", 
+                    content="Por favor, proporciona tu análisis basado en la información disponible."
+                )]
+            
+            # Generate a response using the agent
+            raw_output = self.agent.process(processed_messages, context)
+            
+            # Process the output for routing
+            return self.output_processor(raw_output)
+            
+        except Exception as e:
+            error_message = f"Error en el nodo {self.id}: {str(e)}"
+            # Retornar un output de error
+            return {
+                "default": {
+                    "content": error_message,
+                    "metadata": {"error": True, "exception": str(e)}
+                },
+                "error": {
+                    "content": error_message,
+                    "metadata": {"error": True, "exception": str(e)}
+                }
+            }

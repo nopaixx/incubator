@@ -1,11 +1,8 @@
 import os
-import anthropic
 from typing import List, Dict, Optional, Any, Tuple, Set, Callable
-from dataclasses import dataclass, field
 import networkx as nx
 import json
-import time
-import uuid
+import logging
 from dotenv import load_dotenv
 
 from incubator.agents.agent import Agent
@@ -15,13 +12,14 @@ from incubator.messages.message import Message
 class IterativeDialogController:
     """
     Controller for managing iterative dialogues between two agents.
-    This allows agents to have back-and-forth conversations to refine ideas.
+    This allows agents to have back-and-forth conversations to refine content.
     """
     
     def __init__(self, 
                  agent_a: Agent, 
                  agent_b: Agent, 
                  max_iterations: int = 3,
+                 terminate_on_keywords: Optional[List[str]] = None,
                  termination_condition: Optional[Callable[[List[Message]], bool]] = None,
                  verbose: bool = False):
         """
@@ -31,20 +29,44 @@ class IterativeDialogController:
             agent_a: First agent in the dialogue (initiator)
             agent_b: Second agent in the dialogue (responder)
             max_iterations: Maximum number of back-and-forth exchanges
+            terminate_on_keywords: List of keywords that, if present in agent_b's response, will terminate the dialogue
             termination_condition: Optional function that determines if the dialogue should terminate early
             verbose: Whether to print debug information during dialogue execution
         """
         self.agent_a = agent_a
         self.agent_b = agent_b
         self.max_iterations = max_iterations
+        self.terminate_on_keywords = terminate_on_keywords or []
         self.termination_condition = termination_condition or (lambda _: False)
         self.conversation_history = []
         self.verbose = verbose
+        
+        # Configure logging
+        self.logger = logging.getLogger(f'DialogController.{agent_a.name}_{agent_b.name}')
+        if not self.logger.handlers:
+            handler = logging.StreamHandler()
+            formatter = logging.Formatter('[%(name)s] %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+            self.logger.setLevel(logging.INFO if verbose else logging.WARNING)
     
     def log(self, message: str) -> None:
         """Helper method for logging when verbose mode is enabled"""
+        self.logger.info(message)
         if self.verbose:
             print(f"[DialogController] {message}")
+    
+    def has_termination_keywords(self, content: str) -> bool:
+        """Check if the content contains any termination keywords"""
+        if not self.terminate_on_keywords:
+            return False
+            
+        for keyword in self.terminate_on_keywords:
+            if keyword in content:
+                self.log(f"Termination keyword found: '{keyword}'")
+                return True
+                
+        return False
     
     def start_dialogue(self, initial_prompt: str, context: Optional[Dict[str, Any]] = None) -> Tuple[List[Message], str]:
         """
@@ -88,7 +110,7 @@ class IterativeDialogController:
             if is_final_iteration and hasattr(self.agent_b, 'system_prompt'):
                 # Add a note to the system prompt for the final iteration
                 original_prompt_b = self.agent_b.system_prompt
-                final_prompt_b = original_prompt_b + "\n\nNOTE: This is the final iteration. Please provide comprehensive feedback."
+                final_prompt_b = original_prompt_b + "\n\nNOTE: This is the final iteration. Please provide your final decision or conclusion."
                 self.agent_b.system_prompt = final_prompt_b
             
             # Agent B processes agent A's response
@@ -104,9 +126,14 @@ class IterativeDialogController:
             message_b = Message(role="assistant", content=response_b, metadata={"agent": self.agent_b.name})
             self.conversation_history.append(message_b)
             
-            # Check if we should terminate early
+            # Check if we should terminate early based on termination keywords
+            if self.has_termination_keywords(response_b):
+                self.log("Termination keyword found in Agent B's response, ending dialogue early")
+                break
+                
+            # Check if we should terminate early based on custom condition
             if self.termination_condition(self.conversation_history):
-                self.log("Termination condition met, ending dialogue early")
+                self.log("Custom termination condition met, ending dialogue early")
                 break
             
             # If this is the final iteration, we're done
@@ -128,11 +155,6 @@ class IterativeDialogController:
             
             # Update current messages for the next iteration
             current_messages = [message_a]
-            
-            # Check if we should terminate early again
-            if self.termination_condition(self.conversation_history):
-                self.log("Termination condition met, ending dialogue early")
-                break
         
         # Return the full conversation history and the final output
         # (which is the last message in the conversation)
@@ -161,3 +183,46 @@ class IterativeDialogController:
             "final_message": self.conversation_history[-1].content if self.conversation_history else "",
             "formatted_conversation": self.get_formatted_conversation()
         }
+    
+    def extract_marked_content(self, marker: str) -> Optional[str]:
+        """
+        Extract content following a specific marker from the conversation.
+        Can be used to extract final decisions, ideas, code, or other specific content.
+        
+        Args:
+            marker: The text marker that indicates the beginning of the target content
+            
+        Returns:
+            The extracted text following the marker, or None if not found
+        """
+        # Look for the marker in all messages, starting from the end
+        for msg in reversed(self.conversation_history):
+            if "agent" in msg.metadata and marker in msg.content:
+                # Find the marker and extract the text after it
+                parts = msg.content.split(marker, 1)
+                if len(parts) > 1:
+                    return parts[1].strip()
+        
+        return None
+        
+    def get_agent_final_response(self, agent_name: Optional[str] = None) -> Optional[str]:
+        """
+        Get the last response from a specific agent or the last agent in the conversation.
+        
+        Args:
+            agent_name: Name of the agent whose response to retrieve, or None for the last agent
+            
+        Returns:
+            The content of the agent's final response, or None if not found
+        """
+        # If agent name is specified, look for that agent's last message
+        if agent_name:
+            for msg in reversed(self.conversation_history):
+                if "agent" in msg.metadata and msg.metadata["agent"] == agent_name:
+                    return msg.content
+        
+        # Otherwise return the last message in the conversation
+        if self.conversation_history and self.conversation_history[-1].role == "assistant":
+            return self.conversation_history[-1].content
+                
+        return None
