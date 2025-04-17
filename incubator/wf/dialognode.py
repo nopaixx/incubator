@@ -1,18 +1,13 @@
 import os
-import anthropic
 from typing import List, Dict, Optional, Any, Tuple, Set, Callable
-from dataclasses import dataclass, field
-import networkx as nx
 import json
-import time
-import uuid
+import logging
 from dotenv import load_dotenv
 
 from incubator.agents.agent import Agent
 from incubator.messages.message import Message
-
-
 from incubator.wf.node import Node
+from incubator.wf.dialogcontroller import IterativeDialogController
 
 class IterativeDialogNode(Node):
     """
@@ -25,7 +20,8 @@ class IterativeDialogNode(Node):
                  max_iterations: int = 3,
                  termination_condition: Optional[Callable[[List[Message]], bool]] = None,
                  input_processor: Optional[Callable[[List[Tuple[str, str, Message]]], List[Message]]] = None,
-                 output_processor: Optional[Callable[[str, List[Message]], Dict[str, Dict[str, Any]]]] = None):
+                 output_processor: Optional[Callable[[str, List[Message]], Dict[str, Dict[str, Any]]]] = None,
+                 verbose: bool = False):
         """
         Initialize an iterative dialogue node
         
@@ -37,6 +33,7 @@ class IterativeDialogNode(Node):
             termination_condition: Optional function that determines if dialogue should terminate early
             input_processor: Function to process incoming messages
             output_processor: Function to process the final output
+            verbose: Whether to log detailed progress information
         """
         # Create a dummy agent for the Node superclass
         # (we won't use it directly, but it satisfies the Node requirements)
@@ -56,8 +53,18 @@ class IterativeDialogNode(Node):
             agent_a=agent_a,
             agent_b=agent_b,
             max_iterations=max_iterations,
-            termination_condition=termination_condition
+            termination_condition=termination_condition,
+            verbose=verbose
         )
+        
+        self.verbose = verbose
+        self.logger = logging.getLogger(f'DialogNode.{id}')
+    
+    def log(self, message: str) -> None:
+        """Helper method for logging"""
+        if self.verbose:
+            self.logger.info(message)
+            print(f"[DialogNode.{self.id}] {message}")
     
     def _default_dialogue_output_processor(self, output: str, conversation: List[Message]) -> Dict[str, Dict[str, Any]]:
         """
@@ -70,16 +77,50 @@ class IterativeDialogNode(Node):
         Returns:
             Dictionary mapping output ports to their content and metadata
         """
+        # Create a formatted conversation string
+        formatted_conversation = []
+        for msg in conversation:
+            role = msg.role
+            if role == "assistant" and "agent" in msg.metadata:
+                role = msg.metadata["agent"]
+            formatted_conversation.append(f"[{role.upper()}]: {msg.content}")
+        
+        conversation_text = "\n\n".join(formatted_conversation)
+        
+        # Create summary with metadata
+        dialogue_summary = {
+            "iterations_completed": len(conversation) // 2,  # Approximate
+            "message_count": len(conversation),
+            "agents": [msg.metadata.get("agent", "user") for msg in conversation if "agent" in msg.metadata],
+            "final_output": output
+        }
+        
+        # Return structured outputs on different ports
         return {
             "final": {
                 "content": output,
                 "metadata": {"type": "final_output"}
             },
             "conversation": {
-                "content": "\n\n".join([f"[{msg.role.upper()}]: {msg.content}" for msg in conversation]),
+                "content": conversation_text,
                 "metadata": {"type": "conversation_history", "messages": conversation}
+            },
+            "summary": {
+                "content": json.dumps(dialogue_summary, indent=2),
+                "metadata": {"type": "dialogue_summary"}
             }
         }
+    
+    def _extract_initial_prompt(self, processed_messages: List[Message]) -> str:
+        """Extract the initial prompt from processed messages"""
+        if not processed_messages:
+            self.log("No initial messages provided, using default prompt")
+            return "Please start a discussion."
+        
+        # Use the content of the first message as the initial prompt
+        initial_prompt = processed_messages[0].content
+        self.log(f"Initial prompt extracted: {initial_prompt[:50]}...")
+        return initial_prompt
     
     def process(self, inputs: List[Tuple[str, str, Message]], context: Optional[Dict[str, Any]] = None) -> Dict[str, Dict[str, Any]]:
         """
@@ -92,19 +133,22 @@ class IterativeDialogNode(Node):
         Returns:
             Dictionary mapping output ports to their content and metadata
         """
+        self.log(f"Processing {len(inputs)} inputs")
+        
         # Process incoming messages using the input processor
         processed_messages = self.input_processor(inputs)
+        self.log(f"Input processor returned {len(processed_messages)} messages")
         
-        # Extract the initial prompt from the processed messages
-        if not processed_messages:
-            initial_prompt = "Please start a discussion."
-        else:
-            # Use the content of the first message as the initial prompt
-            initial_prompt = processed_messages[0].content
+        # Extract the initial prompt
+        initial_prompt = self._extract_initial_prompt(processed_messages)
         
         # Start the dialogue
+        self.log("Starting dialogue")
         conversation, final_output = self.dialogue_controller.start_dialogue(initial_prompt, context)
+        self.log(f"Dialogue completed with {len(conversation)} messages")
         
-        # Use the output processor to format the results
-        # We pass both the final output and the full conversation
-        return self._default_dialogue_output_processor(final_output, conversation)
+        # Process the output
+        outputs = self._default_dialogue_output_processor(final_output, conversation)
+        self.log(f"Output processed with {len(outputs)} ports")
+        
+        return outputs

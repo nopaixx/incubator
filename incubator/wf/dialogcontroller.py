@@ -12,7 +12,6 @@ from incubator.agents.agent import Agent
 from incubator.messages.message import Message
 
 
-# Patterns for complex agent interactions
 class IterativeDialogController:
     """
     Controller for managing iterative dialogues between two agents.
@@ -23,7 +22,8 @@ class IterativeDialogController:
                  agent_a: Agent, 
                  agent_b: Agent, 
                  max_iterations: int = 3,
-                 termination_condition: Optional[Callable[[List[Message]], bool]] = None):
+                 termination_condition: Optional[Callable[[List[Message]], bool]] = None,
+                 verbose: bool = False):
         """
         Initialize an iterative dialogue controller
         
@@ -32,12 +32,19 @@ class IterativeDialogController:
             agent_b: Second agent in the dialogue (responder)
             max_iterations: Maximum number of back-and-forth exchanges
             termination_condition: Optional function that determines if the dialogue should terminate early
+            verbose: Whether to print debug information during dialogue execution
         """
         self.agent_a = agent_a
         self.agent_b = agent_b
         self.max_iterations = max_iterations
         self.termination_condition = termination_condition or (lambda _: False)
         self.conversation_history = []
+        self.verbose = verbose
+    
+    def log(self, message: str) -> None:
+        """Helper method for logging when verbose mode is enabled"""
+        if self.verbose:
+            print(f"[DialogController] {message}")
     
     def start_dialogue(self, initial_prompt: str, context: Optional[Dict[str, Any]] = None) -> Tuple[List[Message], str]:
         """
@@ -56,46 +63,27 @@ class IterativeDialogController:
         # Create the initial message
         initial_message = Message(role="user", content=initial_prompt)
         self.conversation_history.append(initial_message)
+        self.log(f"Initial prompt: {initial_prompt}")
         
-        # Start with agent A
+        # First response from agent A to the initial prompt
         current_messages = [initial_message]
+        response_a = self.agent_a.process(current_messages, context)
+        self.log(f"Agent A ({self.agent_a.name}) initial response generated")
         
+        # Create and store the message
+        message_a = Message(role="assistant", content=response_a, metadata={"agent": self.agent_a.name})
+        self.conversation_history.append(message_a)
+        
+        # Update current messages for agent B
+        current_messages = [message_a]
+        
+        # Main dialogue loop
         for i in range(self.max_iterations):
+            self.log(f"Starting iteration {i+1}/{self.max_iterations}")
+            
             # Determine if this is the final iteration
             is_final_iteration = (i == self.max_iterations - 1)
             
-            # Step 1: Agent A generates a response
-            if i > 0:  # Skip first iteration for Agent A if we already have the initial prompt
-                # For the final iteration, we might want to add special instructions
-                if is_final_iteration and hasattr(self.agent_a, 'system_prompt'):
-                    # Add a note to the system prompt for the final iteration
-                    original_prompt = self.agent_a.system_prompt
-                    final_prompt = original_prompt + "\n\nNOTE: This is the final iteration. Please provide your complete and refined response."
-                    self.agent_a.system_prompt = final_prompt
-                
-                # Agent A processes the current messages
-                response_a = self.agent_a.process(current_messages, context)
-                
-                # Restore original system prompt if modified
-                if is_final_iteration and hasattr(self.agent_a, 'system_prompt'):
-                    self.agent_a.system_prompt = original_prompt
-                
-                # Create and store the message
-                message_a = Message(role="assistant", content=response_a, metadata={"agent": self.agent_a.name})
-                self.conversation_history.append(message_a)
-                
-                # Update current messages for agent B
-                current_messages = [message_a]
-            
-            # Check if we should terminate early
-            if self.termination_condition(self.conversation_history):
-                break
-            
-            # If this is the final iteration, we're done after agent A's response
-            if is_final_iteration:
-                break
-            
-            # Step 2: Agent B responds to agent A
             # For the final iteration of B, we might want to add special instructions
             if is_final_iteration and hasattr(self.agent_b, 'system_prompt'):
                 # Add a note to the system prompt for the final iteration
@@ -104,7 +92,9 @@ class IterativeDialogController:
                 self.agent_b.system_prompt = final_prompt_b
             
             # Agent B processes agent A's response
+            self.log(f"Agent B ({self.agent_b.name}) processing response")
             response_b = self.agent_b.process(current_messages, context)
+            self.log(f"Agent B response generated")
             
             # Restore original system prompt if modified
             if is_final_iteration and hasattr(self.agent_b, 'system_prompt'):
@@ -114,14 +104,60 @@ class IterativeDialogController:
             message_b = Message(role="assistant", content=response_b, metadata={"agent": self.agent_b.name})
             self.conversation_history.append(message_b)
             
+            # Check if we should terminate early
+            if self.termination_condition(self.conversation_history):
+                self.log("Termination condition met, ending dialogue early")
+                break
+            
+            # If this is the final iteration, we're done
+            if is_final_iteration:
+                self.log("Final iteration completed, ending dialogue")
+                break
+            
             # Update current messages for the next iteration
             current_messages = [message_b]
             
+            # Agent A responds to agent B (for next iteration)
+            self.log(f"Agent A ({self.agent_a.name}) processing response")
+            response_a = self.agent_a.process(current_messages, context)
+            self.log(f"Agent A response generated")
+            
+            # Create and store the message
+            message_a = Message(role="assistant", content=response_a, metadata={"agent": self.agent_a.name})
+            self.conversation_history.append(message_a)
+            
+            # Update current messages for the next iteration
+            current_messages = [message_a]
+            
             # Check if we should terminate early again
             if self.termination_condition(self.conversation_history):
+                self.log("Termination condition met, ending dialogue early")
                 break
         
         # Return the full conversation history and the final output
         # (which is the last message in the conversation)
-        return self.conversation_history, self.conversation_history[-1].content
-
+        final_message = self.conversation_history[-1]
+        self.log(f"Dialogue completed. Final message from: {final_message.metadata.get('agent', 'unknown')}")
+        
+        return self.conversation_history, final_message.content
+    
+    def get_formatted_conversation(self) -> str:
+        """Returns the conversation history as a formatted string"""
+        formatted = []
+        for msg in self.conversation_history:
+            role = msg.role
+            if role == "assistant" and "agent" in msg.metadata:
+                role = msg.metadata["agent"]
+            formatted.append(f"[{role.upper()}]: {msg.content}")
+        return "\n\n".join(formatted)
+    
+    def get_summary(self) -> Dict[str, Any]:
+        """Returns a summary of the dialogue with metadata and contents"""
+        return {
+            "iterations_completed": len(self.conversation_history) // 2,  # Approximate
+            "agent_a": self.agent_a.name,
+            "agent_b": self.agent_b.name,
+            "message_count": len(self.conversation_history),
+            "final_message": self.conversation_history[-1].content if self.conversation_history else "",
+            "formatted_conversation": self.get_formatted_conversation()
+        }
