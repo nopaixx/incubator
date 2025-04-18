@@ -1,7 +1,7 @@
-# File: incubator/orchestration.py
 from typing import Any, Dict, List, Tuple, Union, Optional
 from incubator.messages.message import Message
 from incubator.agents.agent import Agent
+from incubator.formatters import InputFormatter, DefaultFormatter
 import rich
 from rich.console import Console
 from rich.panel import Panel
@@ -27,6 +27,10 @@ class OrchestrationPipeline:
         self.visualize_graph = visualize_graph
         self.debug_mode = debug_mode
         self.conversation_id = datetime.now().strftime("%Y%m%d_%H%M%S")
+        
+        # Formatters configuration
+        self.default_formatter = DefaultFormatter()
+        self.custom_formatters: Dict[Tuple[frozenset, str], InputFormatter] = {}
 
     def add_node(self, name: str, agent: Agent) -> None:
         """Add an agent to the pipeline"""
@@ -72,6 +76,74 @@ class OrchestrationPipeline:
             if _ < rounds - 1:
                 self.graph.add_edge(second, first, iterations=1)
 
+    def register_formatter(self, formatter: InputFormatter, sources: List[str], destination: str) -> None:
+        """
+        Register a custom formatter for specific source-to-destination connections
+        
+        Args:
+            formatter: The formatter to use
+            sources: List of source agent names
+            destination: Destination agent name
+        """
+        if not all(source in self.agents for source in sources):
+            missing = [source for source in sources if source not in self.agents]
+            raise ValueError(f"Source agents not registered: {missing}")
+        
+        if destination not in self.agents:
+            raise ValueError(f"Destination agent '{destination}' not registered.")
+        
+        # Use frozenset for sources to allow unordered comparison
+        key = (frozenset(sources), destination)
+        self.custom_formatters[key] = formatter
+
+    def set_default_formatter(self, formatter: InputFormatter) -> None:
+        """
+        Set the default formatter to use when no custom formatter matches
+        
+        Args:
+            formatter: The formatter to use as default
+        """
+        self.default_formatter = formatter
+
+    def get_formatter(self, sources: List[str], destination: str) -> InputFormatter:
+        """
+        Get the appropriate formatter for the given sources and destination
+        
+        Args:
+            sources: List of source agent names
+            destination: Destination agent name
+            
+        Returns:
+            The formatter to use
+        """
+        # Check if we have a specific formatter for this exact combination
+        key = (frozenset(sources), destination)
+        if key in self.custom_formatters:
+            return self.custom_formatters[key]
+        
+        # Fall back to the default formatter
+        return self.default_formatter
+
+    def format_combined_inputs(self, inputs: List[Message], destination: str) -> str:
+        """
+        Format multiple input messages using the appropriate formatter
+        
+        Args:
+            inputs: List of messages to format
+            destination: The destination agent name
+            
+        Returns:
+            Formatted input string
+        """
+        # Extract source names from the inputs
+        sources = [msg.role for msg in inputs if msg.role != "user"]
+        
+        # Get the appropriate formatter
+        formatter = self.get_formatter(sources, destination)
+        
+        # Format the inputs
+        return formatter.format(inputs)
+
     def visualize(self, output_path: str = "agent_graph.png") -> None:
         """Generate and save a visualization of the agent pipeline"""
         if not self.visualize_graph:
@@ -109,51 +181,6 @@ class OrchestrationPipeline:
         """Log debug information if debug mode is enabled"""
         if self.debug_mode:
             console.print(f"[dim][DEBUG] {message}[/dim]")
-
-    def format_combined_inputs(self, inputs: List[Message]) -> str:
-        """Format multiple input messages in a clear way for the agent"""
-        if len(inputs) == 1:
-            return inputs[0].content
-            
-        # Para múltiples inputs, crear un formato estructurado
-        formatted = "=== ENTRADAS MÚLTIPLES ===\n\n"
-        
-        # Caso especial para el sintetizador recibiendo inputs del ideador y curador
-        if len(inputs) == 2 and "ideador" in [msg.role for msg in inputs] and "curador" in [msg.role for msg in inputs]:
-            # Encontrar los mensajes específicos
-            ideador_msg = next((msg for msg in inputs if msg.role == "ideador"), None)
-            curador_msg = next((msg for msg in inputs if msg.role == "curador"), None)
-            
-            if ideador_msg and curador_msg:
-                formatted = "=== SÍNTESIS DE IDEA ===\n\n"
-                formatted += "PROPUESTA FINAL DEL IDEADOR:\n"
-                formatted += f"{ideador_msg.content}\n\n"
-                formatted += "FEEDBACK FINAL DEL CURADOR:\n"
-                formatted += f"{curador_msg.content}\n\n"
-                formatted += "Tu tarea es sintetizar ambas contribuciones en una IDEA FINAL coherente y completa.\n"
-                return formatted
-        
-        # Caso especial para revisor de código con inputs del sintetizador (idea) y desarrollador (código)
-        elif len(inputs) == 2 and "sintetizador" in [msg.role for msg in inputs] and "desarrollador" in [msg.role for msg in inputs]:
-            # Encontrar los mensajes específicos
-            idea_msg = next((msg for msg in inputs if msg.role == "sintetizador"), None)
-            codigo_msg = next((msg for msg in inputs if msg.role == "desarrollador"), None)
-            
-            if idea_msg and codigo_msg:
-                formatted = "=== REVISIÓN DE CÓDIGO ===\n\n"
-                formatted += "IDEA CONCEPTUAL (sintetizada):\n"
-                formatted += f"{idea_msg.content}\n\n"
-                formatted += "IMPLEMENTACIÓN EN CÓDIGO (del desarrollador):\n"
-                formatted += f"{codigo_msg.content}\n\n"
-                formatted += "Por favor analiza si el código implementa correctamente la idea conceptual y sugiere mejoras específicas.\n"
-                return formatted
-        
-        # Formato general para otros casos de múltiples inputs
-        for i, msg in enumerate(inputs, 1):
-            formatted += f"ENTRADA #{i} (de {msg.role}):\n"
-            formatted += f"{msg.content}\n\n"
-            
-        return formatted
 
     def run(self, seed: Any) -> Tuple[Any, List[Tuple[str, Any]], List[Message]]:
         """Execute the pipeline with the given seed input"""
@@ -208,7 +235,7 @@ class OrchestrationPipeline:
                     
                     # If we have multiple inputs, combine them with clear separation
                     if len(inputs) > 1:
-                        combined_content = self.format_combined_inputs(inputs)
+                        combined_content = self.format_combined_inputs(inputs, agent_name)
                         inputs = [Message(role="user", content=combined_content)]
 
                 # Mostrar inputs
@@ -270,6 +297,7 @@ if __name__ == "__main__":
     from incubator.agents.multioutputagent import MultiOutputAgent
     from incubator.agents.agent import Agent
     from incubator.llm.antropic import AnthropicClient
+    from incubator.formatters import IdeadorCuradorFormatter, CodigoRevisorFormatter
 
     load_dotenv()
     llm = AnthropicClient()
@@ -285,6 +313,12 @@ if __name__ == "__main__":
         description="Refina las ideas previas.",
         llm_client=llm,
         system_prompt="Toma la última idea y mejora su claridad y precisión."
+    )
+    sintetizador = Agent(
+        name="sintetizador",
+        description="Sintetiza ideas en un concepto final.",
+        llm_client=llm,
+        system_prompt="Sintetiza las propuestas en una idea final coherente."
     )
     desarrollador = Agent(
         name="desarrollador",
@@ -302,20 +336,37 @@ if __name__ == "__main__":
     pipeline = OrchestrationPipeline(visualize_graph=True, debug_mode=True)
     pipeline.add_node("ideador", ideador)
     pipeline.add_node("curador", curador)
+    pipeline.add_node("sintetizador", sintetizador)
     pipeline.add_node("desarrollador", desarrollador)
     pipeline.add_node("revisor_codigo", revisor_codigo)
 
+    # Registrar formatters personalizados para casos específicos
+    pipeline.register_formatter(
+        IdeadorCuradorFormatter(), 
+        sources=["ideador", "curador"], 
+        destination="sintetizador"
+    )
+    
+    pipeline.register_formatter(
+        CodigoRevisorFormatter(),
+        sources=["sintetizador", "desarrollador"],
+        destination="revisor_codigo"
+    )
+
     # Fase 1: ideación y curación
-    pipeline.add_alternating("ideador", "curador", rounds=3)
+    pipeline.add_alternating("ideador", "curador", rounds=2)
+    
+    # Fase 2: sintetizar 
+    pipeline.add_edge("sintetizador", iterations=1, input_from=["ideador", "curador"])
 
-    # Fase 2: desarrollo con input del curador
-    pipeline.add_edge("desarrollador", iterations=1, input_from="curador")
+    # Fase 3: desarrollo 
+    pipeline.add_edge("desarrollador", iterations=1, input_from="sintetizador")
 
-    # Fase 3: revisión con input combinado de desarrollador + curador
-    pipeline.add_edge("revisor_codigo", iterations=1, input_from="desarrollador")
-    pipeline.add_alternating("desarrollador", "revisor_codigo", rounds=2)
+    # Fase 4: revisión de código con input combinado
+    pipeline.add_edge("revisor_codigo", iterations=1, input_from=["sintetizador", "desarrollador"])
+    pipeline.add_alternating("desarrollador", "revisor_codigo", rounds=1)
 
-    final, history, convo = pipeline.run("estrategia de inversion")
+    final, history, convo = pipeline.run("estrategia de inversion para pequeños ahorradores")
 
     console.print("\n[bold cyan]=== Código final revisado ===[/bold cyan]")
     console.print(final)
