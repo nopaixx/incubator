@@ -24,12 +24,29 @@ class AnthropicClient(LLMClient):
         if config is None:
             config = {}
         
+        # Convertir todos los mensajes a formato API con roles válidos
+        api_messages = []
+        for m in messages:
+            # Convertir mensaje a formato API
+            msg_dict = m.to_api_format()
+            
+            # Asegurar que todos los mensajes tengan un rol válido para la API de Anthropic
+            # que solo acepta "user" o "assistant"
+            if msg_dict.get("role") not in ["user", "assistant"]:
+                # Si el rol no es válido, convertirlo a "user"
+                msg_dict["role"] = "user"
+                
+                # Opcionalmente, podemos preservar el rol original en el contenido
+                # msg_dict["content"] = f"[Del agente {m.role}]: {msg_dict.get('content', '')}"
+            
+            api_messages.append(msg_dict)
+        
         # Default configuration
         params = {
             "model": config.get("model", "claude-3-7-sonnet-20250219"),
             "max_tokens": config.get("max_tokens", 20000),
             "system": system_prompt,
-            "messages": [m.to_api_format() for m in messages if m.role == "user"]
+            "messages": api_messages  # Usar los mensajes convertidos
         }
         
         # Apply optional parameters

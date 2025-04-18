@@ -1,3 +1,0 @@
-[2025-04-15 22:02:43] ERROR: Error en normalize_features: 'dict' object has no attribute 'empty'
-[2025-04-15 22:02:43] ERROR: Error ejecutando estrategia: 'dict' object has no attribute 'empty'
-[2025-04-15 22:02:43] ERROR: Error en ejecución principal: 'dict' object has no attribute 'empty'

@@ -1,44 +1,64 @@
-import os
-import anthropic
-from typing import List, Dict, Optional, Any, Tuple, Set, Callable
-from dataclasses import dataclass, field
-import networkx as nx
-import json
-import time
-import uuid
-from dotenv import load_dotenv
-
-
+# File: incubator/messages/message.py
+from typing import Dict, Any, Optional, List, Union
+from dataclasses import dataclass
 
 @dataclass
 class Message:
-    """Generic class to represent a message in any conversation"""
+    """
+    Clase base para representar mensajes en el sistema de agentes.
+    Compatible con la API de Anthropic y otras APIs de LLM.
+    """
     role: str
     content: str
-    metadata: Dict[str, Any] = field(default_factory=dict)
-    id: str = field(default_factory=lambda: str(uuid.uuid4()))
-
+    metadata: Optional[Dict[str, Any]] = None
+    
     def to_api_format(self) -> Dict[str, Any]:
-        """Converts the message to the format expected by the API"""
-        if self.role == "user":
-            return {
-                "role": self.role,
-                "content": [
-                    {
-                        "type": "text",
-                        "text": self.content
-                    }
-                ]
-            }
-        elif self.role == "assistant":
-            # Simple format for assistant messages
-            return {
-                "role": self.role,
-                "content": self.content
-            }
-        else:
-            # For system or other roles
-            return {
-                "role": self.role,
-                "content": self.content
-            }
+        """
+        Convierte el mensaje al formato adecuado para la API.
+        Los formatos compatibles con la API de Anthropic son:
+        - role: "user" o "assistant"
+        - content: string con el contenido del mensaje
+        """
+        msg = {
+            "role": self.role,
+            "content": self.content
+        }
+        
+        # Añadimos metadata si existe
+        if self.metadata:
+            msg["metadata"] = self.metadata
+            
+        return msg
+    
+    def __str__(self) -> str:
+        """Representación en string del mensaje"""
+        return self.content
+        
+    @staticmethod
+    def from_dict(data: Dict[str, Any]) -> 'Message':
+        """Crea un mensaje a partir de un diccionario"""
+        return Message(
+            role=data.get("role", "user"),
+            content=data.get("content", ""),
+            metadata=data.get("metadata")
+        )
+    
+    @staticmethod
+    def format_conversation(messages: List['Message']) -> str:
+        """
+        Formatea una lista de mensajes como una conversación
+        para presentación o debugging.
+        """
+        formatted = ""
+        for msg in messages:
+            formatted += f"[{msg.role}]: {msg.content}\n\n"
+        return formatted
+    
+    @staticmethod
+    def combine_messages(messages: List['Message'], separator: str = "\n\n") -> str:
+        """
+        Combina el contenido de varios mensajes en uno solo.
+        Útil para consolidar inputs de múltiples fuentes.
+        """
+        contents = [msg.content for msg in messages if msg.content]
+        return separator.join(contents)

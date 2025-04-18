@@ -2,3 +2,5 @@
 .ipyn*
 .env
 *.pyc
+/idea/*
+/logs/*
