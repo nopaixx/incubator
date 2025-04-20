@@ -4163,6 +4163,28 @@ files = [
 cffi = {version = "*", markers = "implementation_name == \"pypy\""}
 
 [[package]]
+name = "quantstats"
+version = "0.0.64"
+description = "Portfolio analytics for quants"
+optional = false
+python-versions = "*"
+groups = ["main"]
+files = [
+    {file = "QuantStats-0.0.64-py2.py3-none-any.whl", hash = "sha256:2dc6c2c54e0d879fc31e854c6015047366e30042d01892e127dcb07797e91107"},
+    {file = "quantstats-0.0.64.tar.gz", hash = "sha256:a1e2533d751805d47303d8c053192fca12820b06f38b6a171bda2177ac8824cf"},
+]
+
+[package.dependencies]
+matplotlib = ">=3.0.0"
+numpy = ">=1.16.5"
+pandas = ">=0.24.0"
+python-dateutil = ">=2.0"
+scipy = ">=1.2.0"
+seaborn = ">=0.9.0"
+tabulate = ">=0.8.0"
+yfinance = ">=0.1.70"
+
+[[package]]
 name = "referencing"
 version = "0.36.2"
 description = "JSON Referencing + Python"
@@ -4726,6 +4748,21 @@ scipy = ">=1.8,<1.9.2 || >1.9.2"
 build = ["cython (>=3.0.10)"]
 develop = ["colorama", "cython (>=3.0.10)", "cython (>=3.0.10,<4)", "flake8", "isort", "joblib", "matplotlib (>=3)", "pytest (>=7.3.0,<8)", "pytest-cov", "pytest-randomly", "pytest-xdist", "pywinpty ; os_name == \"nt\"", "setuptools-scm[toml] (>=8.0,<9.0)"]
 docs = ["ipykernel", "jupyter-client", "matplotlib", "nbconvert", "nbformat", "numpydoc", "pandas-datareader", "sphinx"]
+
+[[package]]
+name = "tabulate"
+version = "0.9.0"
+description = "Pretty-print tabular data"
+optional = false
+python-versions = ">=3.7"
+groups = ["main"]
+files = [
+    {file = "tabulate-0.9.0-py3-none-any.whl", hash = "sha256:024ca478df22e9340661486f85298cff5f6dcdba14f3813e8830015b9ed1948f"},
+    {file = "tabulate-0.9.0.tar.gz", hash = "sha256:0095b12bf5966de529c0feb1fa08671671b3368eec77d7ef7ab114be2c068b3c"},
+]
+
+[package.extras]
+widechars = ["wcwidth"]
 
 [[package]]
 name = "tensorboard"
@@ -5463,4 +5500,4 @@ repair = ["scipy (>=1.6.3)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "b3ad55552fbaf6a7f2f634c9e33a8edfa018558125efa2e5f7c2a981145fcb23"
+content-hash = "14b514d2744d385c51b0e684efd4bcef35981d28e4cc7d6117de00c0c5492c7b"

@@ -1,0 +1,2 @@
+poetry run python ./paper/momentumadapt/run_strategy.py --rebalance_freq W --force_rebalance --check_interval 30
+poetry run python ./paper/momentumadapt/run_strategy.py --rebalance_freq W --check_interval 30
