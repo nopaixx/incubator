@@ -14,6 +14,7 @@ from incubator.agents.agent import Agent
 from incubator.agents.multioutputagent import MultiOutputAgent
 from incubator.llm.antropic import AnthropicClient
 from incubator.orchestration import OrchestrationPipeline
+import time
 
 console = Console()
 
@@ -46,15 +47,16 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         description="Genera y refina una única idea innovadora",
         llm_client=llm,
         system_prompt="""
-        Eres el Agente Explorador en un sistema de incubación de ideas para hedge funds cuantitativos. 
+        Eres el Agente Ideador en un sistema de incubación de ideas para hedge funds cuantitativos. 
         Tu especialidad es generar estrategias algorítmicas innovadoras centradas en el S&P 500.
+        Recibiras feedback de un usuario especialita curador de estrategia debes hacerle caso 
         
-        IMPORTANTE: Debes generar UNA SOLA idea de estrategia cuantitativa por iteración, no múltiples.
+        IMPORTANTE: Debes generar UNA SOLA idea O USAR LAS SUGERENCIAS DEL ususario para refinar la estrategia cuantitativa por iteración.
         No es necesario cambiar la idea original a no ser que sea necesario, se trata de que puedas mejorarla con el feedback del ususario
         
         Tu función es:
         
-        1. Generar UNA idea de estrategia cuantitativa innovadora y detallada para operar en el S&P 500
+        1. Generar UNA o MEJORA la idea de estrategia cuantitativa innovadora y detallada para operar en el S&P 500
         2. Explicar los fundamentos matemáticos/estadísticos y el funcionamiento de la estrategia
         3. Detallar las señales específicas, timeframes, factores y métricas a utilizar
         4. Destacar las ventajas potenciales de la estrategia (alpha, Sharpe, drawdown, etc.)
@@ -87,7 +89,7 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         system_prompt="""
         Eres el Agente Curador en un sistema de incubación de ideas para hedge funds cuantitativos.
         Tienes amplia experiencia en evaluación de estrategias algorítmicas enfocadas en el S&P 500.
-        Tu función es evaluar la estrategia propuesta por el Explorador y proponer mejoras específicas. Debes:
+        Tu función es evaluar la estrategia propuesta por el Ideador y proponer mejoras específicas, pero no debes hacer ninguna estrategia solo proponer mejoras al ideador. Debes:
         
         1. Analizar críticamente la estrategia considerando:
            - Ratio de Sharpe esperado y robustez estadística
@@ -118,21 +120,9 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         
         Mantén un enfoque riguroso y escéptico, como lo haría un gestor de riesgos experimentado.
 
-        TU TAREA ES ITERAR LA IDEA Y DESCRIBIR LA IDEA FINAL PERO EVITA EN LA MEDIDA DE LO POSIBLE MOSTRAR CODIGO
+        TU TAREA ES ITERAR LA IDEA Y  MOSTRAR CODIGO
         DESARROLLAR EL CODIGO ES TAREA DE OTRO AGENTE ESPECIALIDADO EN DESAROLLO
         
-        IMPORTANTE: Si esta es la iteración final (te lo indicarán en el mensaje), debes finalizar con una
-        versión detallada y técnicamente sólida de la estrategia, lista para ser implementada en Python con yfinance.
-        En ese caso, incluye:
-           - Lógica exacta de entrada/salida
-           - Parámetros específicos
-           - Gestión de riesgo
-           - Expectativas de desempeño
-           - Metricas
-           - Backtest y walkfoward look ahead bias etc..
-           - Consideraciones de implementación técnica
-        
-        Cuando proporciones la versión final, comienza tu respuesta con "IDEA FINAL:".
         """,
         config={
         "max_tokens": 5000,  # Reducir el tamaño máximo para respuestas más cortas
@@ -157,6 +147,18 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         - Sé conciso pero completo. Asegúrate de que todos los aspectos importantes estén cubiertos.
         - La idea debe ser realizable con los datos de yfinance
         - No importa la gestion de stocks delisted o no survied
+        - Lógica exacta de entrada/salida
+        - Parámetros específicos
+        - Gestión de riesgo
+        - Expectativas de desempeño
+        - Metricas
+        - Backtest y walkfoward look ahead bias etc..
+        - Consideraciones de implementación técnica
+
+        LIMITACIONES TECNICAS
+        - Solo puede ser implementado con los datos propocionados por la libreria de yfinance
+
+        NO PROPROCIONES CODIGO solo las instrucciones tecnicas de implementacion
         
         Comienza tu respuesta con:
         "# IDEA FINAL: [TÍTULO]"
@@ -164,7 +166,7 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         Y luego organiza el contenido en secciones claras como:
         "## Descripción"
         "## Características principales"
-        "## Implementación"
+        "## Detalles de la Implementación"
         """,
         config={
         "max_tokens": 10000,  # Reducir el tamaño máximo para respuestas más cortas
@@ -229,8 +231,7 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         **provide a full error traceback into ./artifacts/error.txt for future improvements**
         
         Proporciona un programa Python completo, listo para ejecutar, que implemente la estrategia de forma óptima.
-        proporciona el codigo python y nada mas
-        ```python
+        Primero menciona las mejoras aplicadas y luego saca el programa python
         """,
         config={
         "max_tokens": 40000,  # Reducir el tamaño máximo para respuestas más cortas
@@ -255,8 +256,10 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
           * Errores en el tratamiento de datos
           * Bugs o problemas potenciales
           * Mejoras de eficiencia y legibilidad
-          * Alineación con la idea original
-        - Sé CONCISO. 
+          * Alineación con la idea original si se puede
+          
+        - Sé CONCISO Y PRIORIZA LAS REVISIONES MAS IMPORTANTES PARA QUE PODAMOS EJECUTAR EL PROGRAMA Y EVALUAR LAS METRICAS EL PROGRAMA DEBE DE FUNCIONAR EN LA EJECUCION
+        
 
         **Algunos errores conocidos**
         -No se puede usar la libreria pymc3
@@ -271,6 +274,7 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
         Estructura tus comentarios así:
         1. ¿El código implementa correctamente la idea? (Sí/No/Parcialmente)
         2. Lista numerada de sugerencias específicas
+        3. Menciona siempre las mejoras mas importantes (especialmente el look ahead bias y sobretodo que el codigo compile y funcione cuando se ejecute)
         """,
         config={
         "max_tokens": 10000,  # Reducir el tamaño máximo para respuestas más cortas
@@ -315,7 +319,7 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
     # --------------------------
     # Desarrollador implementa la idea sintetizada
     pipeline.add_edge("desarrollador", iterations=1, input_from="sintetizador")
-
+    
     # Primera revisión: analiza tanto la idea original como la implementación
     pipeline.add_edge("revisor_codigo", iterations=1, input_from=["sintetizador", "desarrollador"])
 
@@ -323,6 +327,7 @@ def setup_pipeline(seed_topic: str, ideacion_rounds: int = 3, desarrollo_rounds:
     for i in range(desarrollo_rounds-1):
         # Desarrollador mejora el código basado en la revisión
         pipeline.add_edge("desarrollador", iterations=1, input_from="revisor_codigo")
+    
         # Revisor analiza las mejoras, considerando siempre la idea original
         pipeline.add_edge("revisor_codigo", iterations=1, input_from=["sintetizador", "desarrollador"])
     

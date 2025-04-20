@@ -1,0 +1,109 @@
+# IDEA FINAL: ESTRATEGIA DE DESCOMPOSICIÓN MULTIFACTORIAL ADAPTATIVA CON INFERENCIA BAYESIANA SIMPLIFICADA
+
+## Descripción
+
+Esta estrategia aprovecha la estructura de correlación dinámica entre activos del S&P 500 mediante métodos bayesianos adaptativos para identificar patrones latentes y cambios de régimen de mercado. El enfoque combina descomposición factorial, inferencia bayesiana y gestión de riesgo adaptativa para generar alpha con baja correlación a estrategias tradicionales.
+
+## Fundamentos Matemáticos y Estadísticos
+
+La estrategia se basa en la premisa de que la estructura de correlación entre activos contiene información predictiva no completamente capitalizada por el mercado, especialmente durante transiciones entre regímenes. La metodología combina:
+
+1. **PCA Dinámico Bayesiano**: Reemplazamos la compleja descomposición tensorial CP por un enfoque de PCA dinámico con priors bayesianos para extraer factores latentes, manteniendo la interpretabilidad y reduciendo la complejidad computacional.
+
+2. **Modelo de Mezcla Gaussiana para Regímenes**: Utilizamos un modelo de mezcla gaussiana con número finito de componentes (determinado por criterio BIC) para la detección de regímenes, más implementable que el HDP-HMM original.
+
+3. **Filtrado Kalman Simplificado**: Implementamos una versión eficiente del filtro de Kalman (UKF o EKF) para rastrear la evolución temporal de los factores latentes.
+
+## Funcionamiento Detallado
+
+### 1. Extracción de Factores Latentes
+- Calculamos matrices de correlación rodantes utilizando estimadores shrinkage adaptativos (método de Ledoit-Wolf)
+- Aplicamos PCA dinámico bayesiano para extraer K factores latentes (K determinado mediante validación cruzada)
+- Implementamos regularización automática vía priors jerárquicos para evitar sobreajuste
+
+### 2. Detección de Regímenes
+- Modelamos transiciones de régimen mediante un modelo de mezcla gaussiana con número óptimo de componentes
+- Utilizamos inferencia bayesiana para estimar las probabilidades de pertenencia a cada régimen
+- Calculamos la probabilidad de transición de régimen en tiempo real
+
+### 3. Predicción y Construcción de Portafolio
+- Generamos predicciones de retorno mediante:
+  * Modelo de espacio-estado bayesiano para factores latentes
+  * Modelo GARCH multivariante simplificado
+  * Regresión con kernels adaptativos
+- Optimizamos el portafolio con restricciones de riesgo adaptativas y límites de turnover
+
+### 4. Gestión de Riesgo Adaptativa
+- Control de volatilidad objetivo (10% anualizado) con ajuste bayesiano
+- Límites de exposición a factores mediante optimización robusta
+- Overlay de liquidez basado en volumen para evitar impacto de mercado
+- Stop-loss dinámicos basados en la incertidumbre del modelo bayesiano
+
+## Señales, Timeframes y Métricas
+
+### Señales Específicas
+- **Señal principal**: Divergencia entre factores latentes actuales y su valor esperado bajo el régimen actual
+- **Señal secundaria**: Velocidad de cambio en la estructura de correlación
+- **Señal de riesgo**: Probabilidad de transición de régimen superior al 30%
+
+### Timeframes
+- Datos diarios para construcción de matrices de correlación
+- Rebalanceo semanal del portafolio base
+- Actualización del modelo completo con frecuencia semanal (no diaria) para reducir carga computacional
+
+### Métricas de Evaluación
+- Sharpe Ratio objetivo: 1.4-1.8 (neto de costos, más conservador que la estimación original)
+- Maximum Drawdown objetivo: <15%
+- Calmar Ratio esperado: >1.0
+- Beta al mercado: -0.1 a 0.3 (variable según régimen)
+
+## Implementación Práctica
+
+### Enfoque Incremental
+1. **Versión Base**: Implementar primero una versión simplificada como benchmark interno
+   - PCA estándar con ventanas rodantes
+   - Detección de regímenes mediante k-means
+   - Optimización de portafolio con restricciones básicas
+
+2. **Mejoras Graduales**:
+   - Incorporar componentes bayesianos uno a uno
+   - Validar la contribución marginal de cada componente
+   - Refinar los hiperparámetros mediante validación cruzada
+
+### Validación Robusta
+- Implementar backtesting con block bootstrap para evaluar significancia estadística
+- Utilizar walk-forward optimization con ventanas crecientes y deslizantes
+- Incorporar purging y embargo en validación cruzada para evitar data leakage
+- Análisis de sensibilidad a parámetros clave
+
+### Consideraciones Técnicas para yfinance
+- Utilizar datos diarios en lugar de intradiarios para mayor estabilidad
+- Implementar manejo de datos faltantes y ajustes por splits/dividendos
+- Reducir universo de inversión a componentes líquidos del S&P 500
+- Calcular matrices de correlación con ventanas adaptativas según volatilidad
+
+## Ventajas de la Estrategia
+
+1. **Adaptabilidad**: El enfoque bayesiano permite adaptación automática a diferentes regímenes de mercado.
+
+2. **Robustez**: La combinación de múltiples técnicas proporciona robustez frente a outliers y cambios estructurales.
+
+3. **Implementabilidad**: La versión simplificada mantiene la esencia del enfoque original pero es computacionalmente viable.
+
+4. **Diversificación**: Baja correlación con estrategias tradicionales de factores debido al enfoque en patrones latentes.
+
+5. **Validación Rigurosa**: Metodología clara para evitar sobreajuste y verificar la generación de alpha.
+
+## Limitaciones y Consideraciones
+
+1. **Complejidad Residual**: Aún con las simplificaciones, la estrategia requiere conocimientos avanzados de estadística bayesiana.
+
+2. **Dependencia de Datos**: La calidad de las matrices de correlación es crítica para el éxito de la estrategia.
+
+3. **Costos de Transacción**: Se deben modelar cuidadosamente para no erosionar el alpha generado.
+
+4. **Calibración Inicial**: Requiere un período sustancial de datos históricos para la calibración inicial.
+
+5. **Riesgo de Modelo**: La dependencia en múltiples modelos estadísticos aumenta el riesgo de error de especificación.
+
+La estrategia ofrece un equilibrio entre sofisticación matemática e implementabilidad práctica, capturando la dinámica no lineal de las correlaciones entre activos mientras mantiene un enfoque disciplinado de validación y gestión de riesgo.

@@ -1,0 +1,259 @@
+[2025-04-19 19:33:35] ERROR: Error en backtest: name 'plot_sector_exposure' is not defined
+[2025-04-19 19:33:35] ERROR: Traceback (most recent call last):
+  File "/tmp/ipykernel_439946/1044347162.py", line 1232, in backtest_strategy
+    plot_sector_exposure(
+    ^^^^^^^^^^^^^^^^^^^^
+NameError: name 'plot_sector_exposure' is not defined
+
+[2025-04-19 19:33:35] ERROR: Error en función principal: name 'make_plots' is not defined
+[2025-04-19 19:33:35] ERROR: Traceback (most recent call last):
+  File "/tmp/ipykernel_439946/1044347162.py", line 1301, in main
+    make_plots(strategy_returns, benchmark_returns, market_regimes, market_volatility, exposure_multipliers)
+    ^^^^^^^^^^
+NameError: name 'make_plots' is not defined
+
+[2025-04-19 21:22:38] ERROR: Error en función principal: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
+[2025-04-19 21:22:38] ERROR: Traceback (most recent call last):
+  File "/tmp/ipykernel_449531/975873210.py", line 1280, in main
+    end_date = datetime.now().strftime('%Y-%m-%d')- timedelta(days=1*365)
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~
+TypeError: unsupported operand type(s) for -: 'str' and 'datetime.timedelta'
+
+[2025-04-19 21:23:24] ERROR: 
+1 Failed download:
+[2025-04-19 21:23:24] ERROR: ['SW']: YFPricesMissingError('possibly delisted; no price data found  (1d 2018-04-21 -> 2024-04-19) (Yahoo error = "Data doesn\'t exist for startDate = 1524283200, endDate = 1713499200")')
+[2025-04-19 22:37:10] ERROR: 
+6 Failed downloads:
+[2025-04-19 22:37:10] ERROR: ['SW', 'GEV', 'KVUE', 'GEHC', 'VLTO', 'SOLV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2018-04-21 -> 2022-04-20) (Yahoo error = "Data doesn\'t exist for startDate = 1524283200, endDate = 1650427200")')
+[2025-04-19 22:56:38] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-19 22:56:38] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-19 22:56:39] ERROR: Error combinando señales: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2019-07-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2019-09-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2019-10-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2019-12-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-01-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-03-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-04-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-06-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-07-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-08-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-09-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-11-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2020-12-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-03-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-04-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-06-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-08-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-09-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-11-30 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2021-12-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2022-01-31 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2022-02-28 00:00:00: 'regime'
+[2025-04-19 22:56:39] ERROR: Error construyendo portafolio para 2022-03-31 00:00:00: 'regime'
+[2025-04-19 23:45:21] ERROR: 
+6 Failed downloads:
+[2025-04-19 23:45:21] ERROR: ['SW', 'GEV', 'KVUE', 'GEHC', 'VLTO', 'SOLV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2017-04-21 -> 2022-04-20) (Yahoo error = "Data doesn\'t exist for startDate = 1492747200, endDate = 1650427200")')
+[2025-04-20 00:10:11] ERROR: Error calculando características: 
+[2025-04-20 00:10:11] ERROR: Error ajustando por autocorrelación: 'date'
+[2025-04-20 00:10:11] ERROR: Error en backtest: 'date'
+[2025-04-20 00:10:11] ERROR: Traceback (most recent call last):
+  File "/tmp/ipykernel_451311/536457134.py", line 1177, in backtest_strategy
+    date_signals = combined_signals[combined_signals['date'] == date]
+                                    ~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/home/angel/.cache/pypoetry/virtualenvs/incubator-tSevgaFs-py3.11/lib/python3.11/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/angel/.cache/pypoetry/virtualenvs/incubator-tSevgaFs-py3.11/lib/python3.11/site-packages/pandas/core/indexes/range.py", line 417, in get_loc
+    raise KeyError(key)
+KeyError: 'date'
+
+[2025-04-20 00:10:11] ERROR: Error generando gráfico de drawdown: ufunc 'isfinite' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+[2025-04-20 00:10:12] ERROR: Error generando gráfico de rendimiento por régimen: ufunc 'isfinite' not supported for the input types, and the inputs could not be safely coerced to any supported types according to the casting rule ''safe''
+[2025-04-20 08:33:09] ERROR: 
+5 Failed downloads:
+[2025-04-20 08:33:09] ERROR: ['SW', 'GEV', 'KVUE', 'VLTO', 'SOLV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2020-01-02 -> 2023-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1577941200, endDate = 1672549200")')
+[2025-04-20 08:35:48] ERROR: 
+5 Failed downloads:
+[2025-04-20 08:35:48] ERROR: ['SOLV', 'GEV', 'SW', 'KVUE', 'VLTO']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2023-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1672549200")')
+[2025-04-20 08:41:43] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:41:43] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:41:43] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:41:43] ERROR: Error construyendo portafolio para 2022-05-31 00:00:00: 'regime'
+[2025-04-20 08:41:43] ERROR: Error construyendo portafolio para 2022-06-30 00:00:00: 'regime'
+[2025-04-20 08:41:43] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:41:43] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:41:43] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:41:43] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:44:12] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:44:12] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:44:12] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:44:12] ERROR: Error construyendo portafolio para 2022-05-31 00:00:00: 'regime'
+[2025-04-20 08:44:12] ERROR: Error construyendo portafolio para 2022-06-30 00:00:00: 'regime'
+[2025-04-20 08:44:12] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:44:12] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:44:12] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:44:12] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:44:50] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:44:50] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2022-05-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2022-06-30 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-01-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-02-28 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-03-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-05-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-06-30 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-07-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-08-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-10-31 00:00:00: 'regime'
+[2025-04-20 08:44:50] ERROR: Error construyendo portafolio para 2023-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:11] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:46:11] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:46:12] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2018-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2018-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2018-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2018-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2018-12-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-02-28 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-04-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-05-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2019-12-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-03-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-04-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-06-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2020-12-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-03-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-04-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-06-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2021-12-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-02-28 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-03-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-05-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-06-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-02-28 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-03-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-05-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-06-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2023-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-02-29 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-04-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-05-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2024-12-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2025-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2025-02-28 00:00:00: 'regime'
+[2025-04-20 08:46:12] ERROR: Error construyendo portafolio para 2025-03-31 00:00:00: 'regime'
+[2025-04-20 08:46:55] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:46:55] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:46:56] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-02-28 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-03-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-05-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-06-30 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-08-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2023-11-30 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-02-29 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-04-30 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-05-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-07-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-09-30 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-10-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2024-12-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2025-01-31 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2025-02-28 00:00:00: 'regime'
+[2025-04-20 08:46:56] ERROR: Error construyendo portafolio para 2025-03-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:47:36] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:47:36] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-01-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-02-28 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-03-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-05-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-06-30 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-07-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-08-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-10-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2023-11-30 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-01-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-02-29 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-04-30 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-05-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-07-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-09-30 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-10-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2024-12-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2025-01-31 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2025-02-28 00:00:00: 'regime'
+[2025-04-20 08:47:36] ERROR: Error construyendo portafolio para 2025-03-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error combinando señales: The truth value of a Series is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-04-20 08:49:44] ERROR: Error ajustando por autocorrelación: 'signal'
+[2025-04-20 08:49:44] ERROR: Error combinando señales: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2022-08-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2022-09-30 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2022-10-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2022-11-30 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-01-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-02-28 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-03-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-05-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-06-30 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-07-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-08-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-10-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2023-11-30 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-01-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-02-29 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-04-30 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-05-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-07-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-09-30 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-10-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2024-12-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2025-01-31 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2025-02-28 00:00:00: 'regime'
+[2025-04-20 08:49:44] ERROR: Error construyendo portafolio para 2025-03-31 00:00:00: 'regime'
+[2025-04-20 09:00:34] ERROR: 
+6 Failed downloads:
+[2025-04-20 09:00:34] ERROR: ['SW', 'VLTO', 'SOLV', 'GEV', 'KVUE', 'GEHC']: YFPricesMissingError('possibly delisted; no price data found  (1d 2018-04-22 -> 2022-04-21) (Yahoo error = "Data doesn\'t exist for startDate = 1524369600, endDate = 1650513600")')

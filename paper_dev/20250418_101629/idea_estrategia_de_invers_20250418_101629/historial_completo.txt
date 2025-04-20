@@ -1,0 +1,3712 @@
+
+
+==================================================
+IDEADOR
+==================================================
+
+# Estrategia Adaptativa de Alpha Puro: Descomposición Espectral con Optimización Dinámica de Factores
+
+## Concepto Fundamental
+
+Propongo una estrategia market-neutral que busca generar alpha puro con beta cercano a cero mediante la descomposición espectral de la matriz de correlaciones del S&P 500, combinada con un sistema de optimización dinámica de factores y una capa de gestión de riesgo adaptativa.
+
+## Fundamentos Matemáticos/Estadísticos
+
+La estrategia se basa en tres pilares matemáticos principales:
+
+1. **Descomposición Espectral**: Aplicamos análisis de componentes principales (PCA) a la matriz de correlaciones de los retornos de los componentes del S&P 500 para identificar los factores latentes que explican la mayor parte de la varianza común. Esto nos permite separar:
+   - Componentes sistemáticos (asociados al mercado general)
+   - Componentes sectoriales (asociados a grupos industriales)
+   - Componentes idiosincráticos (específicos de cada acción)
+
+2. **Teoría de Portafolios de Markowitz Extendida**: Utilizamos una versión extendida del modelo de optimización de media-varianza que incorpora restricciones explícitas de beta y exposición a factores:
+   - Minimizar: w'Σw - λ(w'α)
+   - Sujeto a: w'β = 0 (beta neutral)
+   - Σw = 1 (suma de pesos = 1)
+   - Restricciones de exposición a factores sectoriales
+
+3. **Aprendizaje Bayesiano Secuencial**: Implementamos un modelo bayesiano para estimar continuamente los parámetros alpha de cada activo, incorporando priors informativos y actualizando las distribuciones posteriores con datos nuevos.
+
+## Funcionamiento Detallado
+
+1. **Fase de Descomposición**:
+   - Calculamos la matriz de correlaciones de los retornos de los componentes del S&P 500 utilizando una ventana adaptativa determinada por un test de estacionariedad.
+   - Aplicamos PCA para extraer los componentes principales.
+   - Identificamos el primer componente como proxy del factor de mercado y los siguientes como factores sectoriales/temáticos.
+
+2. **Fase de Predicción Alpha**:
+   - Para cada activo, desarrollamos un modelo predictivo de sus retornos residuales (después de eliminar la exposición a factores sistemáticos).
+   - Utilizamos una combinación de modelos de estado-espacio y GARCH multivariados para capturar tanto la dinámica temporal como la volatilidad condicional.
+   - El modelo incorpora señales de:
+     * Momentum residual (ajustado por factores)
+     * Reversión a la media adaptativa
+     * Flujos de información entre sectores relacionados
+
+3. **Fase de Construcción de Portafolio**:
+   - Optimizamos el portafolio para maximizar el alpha esperado sujeto a:
+     * Beta neto = 0 (posiciones largas y cortas equilibradas respecto al mercado)
+     * Exposición neta a sectores cercana a cero
+     * Restricciones de liquidez basadas en volumen relativo
+     * Límites de concentración adaptados al riesgo idiosincrático
+
+4. **Sistema de Gestión de Riesgo Adaptativo**:
+   - Implementamos un modelo de riesgo de cola que utiliza teoría de valores extremos (EVT) para estimar el VaR condicional.
+   - Ajustamos dinámicamente la exposición bruta según las condiciones de volatilidad del mercado.
+   - Aplicamos un sistema de stop-loss probabilístico basado en la divergencia entre retornos esperados y realizados.
+
+## Señales, Timeframes y Factores
+
+**Timeframes**:
+- Estimación de factores: Semanal (con actualización diaria incremental)
+- Predicción de alpha: Horizonte de 5-20 días (adaptativo según régimen de mercado)
+- Rebalanceo: Optimización semanal con ajustes diarios basados en cambios significativos
+
+**Señales Específicas**:
+- Momentum residual adaptativo: Calculado como la tendencia en los residuos después de eliminar exposiciones factoriales
+- Divergencia de correlación sectorial: Detecta cambios en las estructuras de correlación entre sectores
+- Anomalías de precios post-eventos: Captura ineficiencias después de anuncios corporativos o macroeconómicos
+- Flujo de información cross-sectorial: Mide cómo los movimientos en un sector predicen movimientos en otros
+
+**Métricas de Seguimiento**:
+- Alpha neto diario (ajustado por exposición a factores)
+- Ratio de Información (IR) rodante
+- Drawdown condicional (CDaR)
+- Beta dinámico (asegurando que se mantiene cerca de cero)
+- Exposición bruta y neta por sector
+
+## Ventajas Potenciales
+
+1. **Alpha Puro**: Al neutralizar sistemáticamente la exposición al mercado (beta) y factores sectoriales, la estrategia busca generar retornos puramente alfas.
+
+2. **Adaptabilidad**: El sistema se ajusta automáticamente a diferentes regímenes de mercado mediante:
+   - Ventanas de estimación adaptativas
+   - Ponderación temporal de observaciones según su relevancia
+   - Detección de cambios de régimen mediante modelos de Markov ocultos
+
+3. **Gestión Superior del Riesgo**:
+   - Ratio de Sharpe objetivo: 1.5-2.0
+   - Drawdown máximo esperado: <10%
+   - Beta promedio: -0.05 a 0.05
+
+4. **Escalabilidad y Liquidez**:
+   - La estrategia puede ajustar su capacidad según la liquidez del mercado
+   - Sistema de sizing adaptativo que considera el impacto de mercado
+
+5. **Robustez Estadística**:
+   - Múltiples capas de validación para evitar data mining y overfitting
+   - Procedimientos de bootstrap para estimar la significancia estadística de las señales
+   - Pruebas de robustez en diferentes regímenes de mercado
+
+Esta estrategia combina técnicas avanzadas de econometría, aprendizaje estadístico y optimización para generar retornos descorrelacionados del mercado general, manteniendo un perfil de riesgo controlado y adaptándose continuamente a las condiciones cambiantes.
+
+==================================================
+CURADOR
+==================================================
+
+Analizaré críticamente la estrategia propuesta y sugeriré mejoras específicas para refinarla.
+
+## Análisis Crítico de la Estrategia
+
+### Fortalezas
+- El enfoque de descomposición espectral para separar componentes sistemáticos, sectoriales e idiosincráticos es sólido conceptualmente.
+- La combinación de PCA con optimización de portafolio Markowitz extendida proporciona un marco teórico robusto.
+- El aprendizaje bayesiano secuencial para la estimación de parámetros es una técnica avanzada que puede capturar la naturaleza dinámica del mercado.
+
+### Preocupaciones y Limitaciones
+
+1. **Riesgo de Sobreoptimización**:
+   - La estrategia incorpora múltiples capas de modelado (PCA, modelos estado-espacio, GARCH multivariados) que aumentan el riesgo de sobreajuste.
+   - La complejidad computacional podría limitar la capacidad de realizar pruebas de robustez exhaustivas.
+
+2. **Desafíos de Implementación con yfinance**:
+   - yfinance tiene limitaciones en cuanto a la profundidad histórica y la calidad de los datos, especialmente para componentes históricos del S&P 500 (supervivencia).
+   - La frecuencia de actualización de datos podría no ser suficiente para algunas de las señales propuestas.
+
+3. **Costos de Transacción y Slippage**:
+   - El rebalanceo semanal con ajustes diarios podría generar costos de transacción significativos que erosionen el alpha.
+   - No se especifica cómo se incorporan estos costos en la optimización del portafolio.
+
+4. **Estimación de Beta y Exposición a Factores**:
+   - La neutralidad beta perfecta es difícil de lograr en la práctica debido a la naturaleza dinámica de las betas.
+   - No se detalla cómo se manejan los cambios en la composición del índice S&P 500.
+
+5. **Gestión de Riesgo**:
+   - El modelo EVT para estimar VaR condicional requiere suficientes datos de cola, que podrían ser escasos.
+   - El sistema de stop-loss probabilístico podría ser sensible a la calibración de parámetros.
+
+## Propuestas de Mejora
+
+### 1. Refinamiento del Proceso de Descomposición Espectral
+
+- **Implementar Robust PCA**: Utilizar variantes robustas de PCA que sean menos sensibles a outliers y cambios estructurales.
+- **Ventanas Adaptativas Basadas en Cambios de Régimen**: En lugar de usar tests de estacionariedad genéricos, implementar un detector de cambios de régimen basado en modelos de Markov ocultos (HMM) para determinar dinámicamente las ventanas de estimación.
+- **Regularización de la Matriz de Correlaciones**: Aplicar técnicas de shrinkage (como Ledoit-Wolf) para estabilizar la estimación de la matriz de correlaciones, especialmente útil cuando el número de activos es grande en relación con el tamaño de la ventana.
+
+### 2. Mejora del Proceso Predictivo
+
+- **Ensamble de Modelos**: Implementar un ensamble de diferentes modelos predictivos (no solo estado-espacio y GARCH) con pesos adaptativos basados en su desempeño reciente.
+- **Incorporación de Factores Macroeconómicos**: Incluir variables macroeconómicas clave (curva de rendimiento, spreads de crédito, índices de volatilidad) como predictores adicionales.
+- **Validación Cruzada Temporal**: Implementar un esquema riguroso de validación cruzada temporal para evitar look-ahead bias y evaluar la robustez de las predicciones.
+
+### 3. Optimización de la Construcción del Portafolio
+
+- **Restricciones de Turnover**: Incorporar explícitamente restricciones de rotación de cartera en la función objetivo para controlar los costos de transacción.
+- **Optimización Multi-periodo**: Extender el marco de optimización a un horizonte multi-periodo que anticipe rebalanceos futuros.
+- **Incorporación de Costos de Implementación**: Modelar explícitamente los costos de transacción, slippage y préstamo de acciones en la función objetivo.
+- **Neutralidad Dinámica**: Implementar un enfoque de neutralidad beta que se adapte a las condiciones de mercado, permitiendo pequeñas desviaciones controladas cuando sea beneficioso.
+
+### 4. Gestión de Riesgo Mejorada
+
+- **Stress Testing Sistemático**: Implementar un framework de stress testing que evalúe el desempeño de la estrategia bajo escenarios históricos y sintéticos extremos.
+- **Monitoreo de Correlaciones Condicionales**: Desarrollar alertas para cambios significativos en la estructura de correlaciones que podrían invalidar temporalmente las suposiciones del modelo.
+- **Límites de Exposición Adaptativos**: Ajustar dinámicamente los límites de exposición basados no solo en la volatilidad sino también en medidas de liquidez de mercado y sentimiento.
+- **Incorporación de Riesgo de Modelo**: Cuantificar explícitamente la incertidumbre de los parámetros y utilizarla para ajustar el sizing de las posiciones.
+
+### 5. Implementación y Backtesting
+
+- **Simulación Realista**: Implementar un backtesting que incluya:
+  - Costos de transacción realistas y variables en el tiempo
+  - Slippage basado en la liquidez histórica
+  - Restricciones de préstamo de acciones para posiciones cortas
+  - Manejo adecuado de eventos corporativos y dividendos
+
+- **Walk-Forward Analysis**: Realizar análisis walk-forward con ventanas de entrenamiento y validación que simulen el proceso real de implementación.
+
+- **Bootstrapping de Periodos**: Evaluar la robustez mediante bootstrapping de diferentes periodos de mercado para estimar la distribución de resultados posibles.
+
+## Preguntas Técnicas para Clarificación
+
+1. ¿Cómo se determina específicamente la ventana adaptativa para la estimación de la matriz de correlaciones? ¿Qué test de estacionariedad se utiliza?
+
+2. ¿Cuál es el proceso exacto para calibrar los modelos de estado-espacio y GARCH multivariados? ¿Cómo se manejan los problemas de dimensionalidad?
+
+3. ¿Cómo se implementa específicamente el sistema de stop-loss probabilístico? ¿Qué umbrales se utilizan y cómo se calibran?
+
+4. ¿Qué medidas se toman para asegurar que la estrategia no esté simplemente capturando primas de riesgo conocidas (como valor, tamaño, momentum) en lugar de alpha genuino?
+
+5. ¿Cómo se manejan los cambios en la composición del S&P 500 durante el periodo de backtesting para evitar survivorship bias?
+
+6. ¿Qué horizonte temporal se utiliza para la estimación de los parámetros alpha de cada activo en el modelo bayesiano?
+
+7. ¿Cómo se determina la significancia estadística de las señales generadas? ¿Qué ajustes se hacen para controlar el problema de comparaciones múltiples?
+
+La estrategia propuesta es conceptualmente sólida pero requiere refinamientos significativos para asegurar su robustez estadística, implementabilidad práctica y control de costos de transacción. Con las mejoras sugeridas, podría convertirse en una estrategia viable para generar alpha puro con un perfil de riesgo controlado.
+
+==================================================
+IDEADOR
+==================================================
+
+# Análisis y Respuesta a Críticas de la Estrategia de Descomposición Espectral
+
+Agradezco profundamente tu análisis crítico y detallado. Claramente has identificado aspectos cruciales que requieren refinamiento. Permíteme abordar tus preocupaciones y proponer mejoras específicas para la estrategia.
+
+## Refinamiento de la Descomposición Espectral
+
+Tienes razón sobre los riesgos de sobreoptimización. Propongo las siguientes mejoras específicas:
+
+1. **Implementación de Robust PCA**: 
+   - Utilizaremos el algoritmo ROBPCA que combina proyección en subespacios con estimadores-M para manejar outliers
+   - Estableceremos un parámetro de contaminación adaptativo basado en la volatilidad del mercado (aumentando en periodos de alta volatilidad)
+
+2. **Ventanas Adaptativas con HMM**:
+   - Implementaremos un modelo HMM de 3 estados (baja/media/alta volatilidad) calibrado con el algoritmo Baum-Welch
+   - La longitud de la ventana será inversamente proporcional a la probabilidad del estado de alta volatilidad
+   - Incorporaremos un factor de olvido exponencial (λ) que asignará menos peso a observaciones más antiguas
+
+3. **Regularización de la Matriz de Correlaciones**:
+   - Aplicaremos el estimador de shrinkage de Ledoit-Wolf con un objetivo de identidad
+   - La intensidad del shrinkage (α) se determinará mediante validación cruzada en bloques temporales
+   - Implementaremos una restricción de semidefinición positiva mediante descomposición espectral y truncamiento de eigenvalores negativos
+
+## Mejora del Proceso Predictivo
+
+1. **Ensamble de Modelos Ponderados**:
+   - Combinaremos 5 modelos base: estado-espacio, GARCH multivariado, Random Forest, Elastic Net y XGBoost
+   - Los pesos del ensamble se actualizarán mediante un algoritmo de aprendizaje online (Follow the Regularized Leader)
+   - El periodo de evaluación para los pesos será de 63 días (un trimestre de trading)
+
+2. **Incorporación de Factores Macroeconómicos**:
+   - Incluiremos la pendiente de la curva de rendimiento (10Y-2Y), cambios en VIX, spreads de crédito corporativo, y sorpresas en datos económicos (índice Citi de sorpresas económicas)
+   - Estos factores entrarán como variables exógenas en los modelos de estado-espacio
+   - Implementaremos un modelo de factores latentes para reducir la dimensionalidad de las variables macro
+
+3. **Validación Cruzada Temporal**:
+   - Implementaremos un esquema de validación cruzada con bloques temporales no superpuestos de 6 meses
+   - Utilizaremos el método de purging para eliminar observaciones correlacionadas entre conjuntos de entrenamiento y validación
+   - Calcularemos métricas de estabilidad como el Information Stability Index para cada componente del modelo
+
+## Optimización de la Construcción del Portafolio
+
+1. **Restricciones de Turnover Explícitas**:
+   - Agregaremos una penalización L1 en los cambios de peso: λ₁∑|w_t - w_{t-1}|
+   - El parámetro λ₁ se calibrará dinámicamente en función de la volatilidad y liquidez del mercado
+   - Estableceremos un límite máximo de rotación diaria del 15% y semanal del 40%
+
+2. **Optimización Multi-periodo**:
+   - Implementaremos un marco de optimización de 5 días con descuento temporal
+   - La función objetivo incluirá el rendimiento esperado menos costos de transacción esperados en horizontes futuros
+   - Utilizaremos programación estocástica con escenarios generados mediante bootstrap histórico
+
+3. **Modelado Explícito de Costos**:
+   - Modelaremos costos de spread como función del volumen relativo: c_i = a + b·(V_i/ADV_i)^γ
+   - Incorporaremos costos de préstamo de acciones para posiciones cortas basados en datos históricos
+   - Implementaremos un modelo de impacto de mercado temporal y permanente basado en la ley de potencia de Almgren-Chriss
+
+## Gestión de Riesgo Mejorada
+
+1. **Stress Testing y Escenarios**:
+   - Implementaremos 12 escenarios históricos (incluyendo crisis de 2008, Flash Crash, Covid-19)
+   - Generaremos escenarios sintéticos mediante bootstrapping con cópulas t-Student para preservar dependencias de cola
+   - Estableceremos límites de drawdown condicional por escenario (máximo 2.5x el drawdown esperado en condiciones normales)
+
+2. **Monitoreo de Correlaciones**:
+   - Implementaremos un detector de cambios en correlaciones basado en la distancia de Frobenius entre matrices de correlación
+   - Reduciremos automáticamente la exposición cuando la distancia exceda el percentil 95 histórico
+   - Estableceremos un período de "cuarentena" para componentes que muestren cambios estructurales en correlaciones
+
+3. **Riesgo de Modelo**:
+   - Cuantificaremos la incertidumbre de parámetros mediante bootstrap bayesiano
+   - Implementaremos sizing de posiciones inversamente proporcional a la incertidumbre del modelo
+   - Estableceremos un "presupuesto de incertidumbre" global para limitar la exposición a modelos menos confiables
+
+## Respuestas a Preguntas Técnicas
+
+1. **Ventana Adaptativa**:
+   - Utilizaremos el test de Phillips-Perron para estacionariedad, complementado con el test KPSS
+   - La ventana base será de 252 días, ajustada por un factor multiplicativo (0.5-2.0) determinado por el HMM
+   - Implementaremos un algoritmo de detección de puntos de cambio (PELT) para identificar rupturas estructurales
+
+2. **Calibración de Modelos**:
+   - Para el modelo estado-espacio: filtro de Kalman con parámetros estimados por máxima verosimilitud
+   - Para GARCH multivariado: utilizaremos la especificación DCC-GARCH con estimación en dos etapas
+   - Reduciremos dimensionalidad agrupando activos en clusters basados en distancias de correlación
+
+3. **Stop-Loss Probabilístico**:
+   - Utilizaremos un umbral dinámico basado en el VaR condicional al 99%
+   - Los umbrales se calibrarán mediante backtesting para mantener una tasa de falsos positivos del 1%
+   - Implementaremos un sistema de "circuito interruptor" que reduce gradualmente la exposición en función de la magnitud de las pérdidas
+
+4. **Captura de Alpha vs. Primas de Riesgo**:
+   - Realizaremos regresiones contra los factores Fama-French-Carhart de 5 factores más momentum
+   - Implementaremos un test de Wald para verificar la significancia del alpha residual
+   - Calcularemos la Information Ratio ajustada por factores para medir el alpha genuino
+
+5. **Cambios en Composición del S&P 500**:
+   - Utilizaremos una base de datos point-in-time con la composición histórica exacta
+   - Implementaremos reglas de trading que anticipen adiciones/eliminaciones basadas en criterios públicos
+   - Simularemos el impacto de eventos corporativos (splits, fusiones) en el backtesting
+
+6. **Horizonte para Estimación Bayesiana**:
+   - Base: 252 días con un factor de decaimiento exponencial de 0.995
+   - Implementaremos un esquema de ponderación que asigna más peso a periodos con regímenes similares al actual
+   - Actualizaremos distribuciones previas semanalmente con datos diarios
+
+7. **Significancia Estadística**:
+   - Aplicaremos False Discovery Rate control mediante el procedimiento Benjamini-Hochberg
+   - Implementaremos bootstrapping en bloques para estimar p-valores robustos
+   - Utilizaremos el estadístico de White para probar la significancia del mejor modelo, controlando por data snooping
+
+¿Consideras que estas mejoras abordan adecuadamente las preocupaciones identificadas? ¿Hay algún aspecto adicional que debería refinarse antes de pasar a la implementación?
+
+==================================================
+CURADOR
+==================================================
+
+He revisado detalladamente tu propuesta refinada de estrategia de descomposición espectral. Has abordado muchas de las preocupaciones críticas con soluciones técnicamente sólidas. Permíteme evaluar los aspectos más importantes y sugerir algunas mejoras adicionales.
+
+## Evaluación de las mejoras propuestas
+
+### Fortalezas destacables:
+- La implementación de Robust PCA y regularización de matrices de correlación aborda adecuadamente el problema de ruido y outliers
+- El enfoque de ventanas adaptativas con HMM es sofisticado y teóricamente sólido
+- La validación cruzada temporal con purging es crucial para evitar el look-ahead bias
+- El modelado explícito de costos de transacción es realista y necesario
+
+### Áreas que requieren mayor refinamiento:
+
+1. **Complejidad vs. Robustez**
+   - El ensamble de 5 modelos podría introducir complejidad excesiva y riesgo de sobreajuste
+   - Recomendación: Reducir a 3 modelos base (estado-espacio, GARCH y un modelo de ML) con énfasis en parsimonia
+
+2. **Frecuencia de rebalanceo**
+   - No has especificado claramente la frecuencia de rebalanceo del portafolio
+   - Recomendación: Establecer un rebalanceo semanal con ajustes intradiarios solo cuando se activen señales de riesgo específicas
+
+3. **Evaluación de capacidad**
+   - Falta un análisis explícito de la capacidad de la estrategia (AUM máximo)
+   - Recomendación: Implementar simulaciones de market impact con diferentes niveles de AUM (50M, 100M, 500M) para determinar el punto de degradación de rendimiento
+
+4. **Métricas de evaluación**
+   - Necesitas especificar métricas más allá del Sharpe Ratio
+   - Recomendación: Incluir Calmar Ratio, Maximum Drawdown, Sortino Ratio, y especialmente métricas de consistencia como el Gain-to-Pain Ratio
+
+## Preguntas técnicas adicionales
+
+1. **Sobre la implementación del HMM**:
+   - ¿Cómo manejarás la inicialización de los estados del HMM para evitar mínimos locales?
+   - ¿Has considerado un enfoque de validación para determinar el número óptimo de estados?
+
+2. **Sobre la optimización multi-periodo**:
+   - La programación estocástica es computacionalmente intensiva. ¿Has evaluado alternativas como la aproximación de Taylor para hacerla más eficiente?
+   - ¿Cómo garantizarás que la solución sea factible en tiempo real?
+
+3. **Sobre el control de riesgo**:
+   - ¿Has considerado implementar un overlay de volatilidad objetivo para mantener un nivel de riesgo consistente?
+   - ¿Cómo manejarás específicamente los periodos de alta correlación entre activos?
+
+## Recomendaciones adicionales
+
+1. **Implementación incremental**:
+   - Desarrolla una versión simplificada (MVP) con los componentes esenciales
+   - Establece un proceso de A/B testing para añadir componentes incrementalmente
+   - Documenta el impacto marginal de cada componente en métricas clave
+
+2. **Robustez a cambios de régimen**:
+   - Implementa un detector de cambios de régimen basado en la divergencia de Kullback-Leibler
+   - Mantén un conjunto de parámetros específicos para diferentes regímenes
+   - Considera un enfoque de "ensemble of ensembles" donde cada conjunto esté optimizado para un régimen específico
+
+3. **Backtesting realista**:
+   - Implementa un framework de backtesting con ejecución T+1 para todas las señales
+   - Incluye slippage variable basado en la volatilidad intradiaria histórica
+   - Simula fallos en la ejecución de órdenes (5-10% de las señales) para evaluar robustez
+
+4. **Evaluación de alpha genuino**:
+   - Además de la regresión contra factores estándar, implementa un análisis de "performance attribution"
+   - Descompón el retorno en: alpha puro, exposición a factores, timing de factores y residual
+   - Evalúa la persistencia del alpha mediante tests de autocorrelación en diferentes horizontes
+
+Para avanzar hacia una implementación viable, necesitamos definir con mayor precisión los parámetros específicos y el flujo exacto del proceso de trading. ¿Prefieres que nos enfoquemos primero en refinar el núcleo de la estrategia (descomposición espectral y predicción) o en el framework de construcción de portafolio y gestión de riesgo?
+
+==================================================
+IDEADOR
+==================================================
+
+# Estrategia de Descomposición Multifactorial Adaptativa con Inferencia Bayesiana
+
+Esta estrategia aprovecha la descomposición multifactorial del S&P 500 utilizando métodos bayesianos adaptativos para identificar patrones latentes en la estructura de correlación de los activos.
+
+## Fundamentos Matemáticos y Estadísticos
+
+La estrategia se basa en la premisa de que la estructura de correlación entre activos del S&P 500 contiene información predictiva que no está completamente capitalizada por el mercado, especialmente durante transiciones entre regímenes. La metodología combina:
+
+1. **Descomposición Tensorial Bayesiana**: Modelamos la estructura de correlación como un tensor 3D (activos × activos × tiempo) y aplicamos descomposición tensorial CP (CANDECOMP/PARAFAC) con regularización bayesiana para extraer factores latentes dinámicos.
+
+2. **Inferencia Variacional para Cambios de Régimen**: Implementamos un modelo jerárquico bayesiano con inferencia variacional estocástica (SVI) para detectar y adaptarse a cambios de régimen de mercado sin umbrales estáticos.
+
+3. **Filtrado Kalman Robusto Multivariante**: Utilizamos filtros de Kalman con estimación robusta de covarianza para rastrear la evolución temporal de los factores latentes.
+
+## Funcionamiento Detallado
+
+### 1. Extracción de Factores Latentes
+- Calculamos matrices de correlación rodantes utilizando estimadores shrinkage adaptativos (método de Ledoit-Wolf)
+- Aplicamos descomposición tensorial CP con priors bayesianos para extraer K factores latentes (K determinado mediante validación cruzada bayesiana)
+- Implementamos regularización automática vía priors jerárquicos para evitar sobreajuste
+
+### 2. Detección de Regímenes
+- Modelamos transiciones de régimen mediante un proceso de Dirichlet jerárquico (HDP-HMM)
+- Utilizamos inferencia variacional estocástica para aproximar la distribución posterior
+- Calculamos la probabilidad de transición de régimen en tiempo real
+
+### 3. Predicción y Construcción de Portafolio
+- Generamos predicciones de retorno mediante una combinación de:
+  * Modelo de espacio-estado bayesiano para factores latentes
+  * Modelo GARCH multivariante con innovaciones t-Student
+  * Regresión de procesos gaussianos con kernels adaptativos
+- Optimizamos el portafolio mediante programación estocástica multi-periodo con restricciones de riesgo adaptativas
+
+### 4. Gestión de Riesgo Adaptativa
+- Implementamos control de volatilidad objetivo (10% anualizado) con ajuste bayesiano
+- Aplicamos límites de exposición a factores mediante optimización robusta
+- Utilizamos overlay de cola (tail risk overlay) basado en teoría de valores extremos
+
+## Señales, Timeframes y Métricas
+
+### Señales Específicas
+- **Señal principal**: Divergencia entre factores latentes actuales y su valor esperado bajo el régimen actual
+- **Señal secundaria**: Velocidad de cambio en la estructura de correlación (derivada tensorial)
+- **Señal de riesgo**: Probabilidad de transición de régimen superior al 30%
+
+### Timeframes
+- Datos diarios para construcción de matrices de correlación
+- Rebalanceo semanal del portafolio base
+- Ajustes intradiarios (15:00-16:00 ET) cuando la señal de riesgo se activa
+
+### Métricas de Evaluación
+- Sharpe Ratio esperado: 1.8-2.2 (neto de costos)
+- Maximum Drawdown objetivo: <15%
+- Calmar Ratio esperado: >1.2
+- Gain-to-Pain Ratio esperado: >1.5
+- Beta al mercado: -0.1 a 0.3 (variable según régimen)
+
+## Ventajas de la Estrategia
+
+1. **Adaptabilidad**: La inferencia bayesiana permite que la estrategia se adapte automáticamente a diferentes regímenes de mercado sin parámetros estáticos.
+
+2. **Robustez**: La combinación de múltiples técnicas bayesianas proporciona robustez frente a outliers y cambios estructurales.
+
+3. **Capacidad**: La estrategia se enfoca en los componentes principales del S&P 500, permitiendo una capacidad estimada de 300-500M USD sin degradación significativa.
+
+4. **Diversificación**: Baja correlación con estrategias tradicionales de factores debido al enfoque en patrones latentes de correlación.
+
+5. **Eficiencia Computacional**: La inferencia variacional permite actualizaciones en tiempo real incluso con modelos bayesianos complejos.
+
+## Consideraciones Técnicas
+
+- Implementación de actualización incremental de la descomposición tensorial para eficiencia computacional
+- Uso de métodos MCMC-VI híbridos para balance entre precisión y velocidad
+- Purging y embargo en validación cruzada para evitar leakage
+- Simulación realista de costos de transacción basada en datos históricos de spread y market impact
+
+La estrategia ofrece una ventaja informacional al capturar la dinámica no lineal de las correlaciones entre activos y adaptarse a cambios de régimen de forma anticipativa, sin depender de umbrales estáticos o parámetros fijos.
+
+==================================================
+CURADOR
+==================================================
+
+Analizaré críticamente esta estrategia de Descomposición Multifactorial Adaptativa con Inferencia Bayesiana y propondré mejoras específicas.
+
+## Análisis Crítico
+
+### Fortalezas
+- El enfoque bayesiano adaptativo es conceptualmente sólido para capturar cambios de régimen sin umbrales estáticos
+- La combinación de descomposición tensorial con inferencia variacional es matemáticamente sofisticada
+- La gestión de riesgo adaptativa con múltiples capas parece robusta
+
+### Preocupaciones Principales
+
+1. **Complejidad vs. Implementabilidad**:
+   - La descomposición tensorial CP con regularización bayesiana es extremadamente compleja para implementar con yfinance
+   - Los modelos HDP-HMM con inferencia variacional estocástica requieren bibliotecas especializadas y alto poder computacional
+
+2. **Riesgo de Sobreoptimización**:
+   - La estrategia utiliza múltiples técnicas sofisticadas simultáneamente, aumentando el riesgo de sobreajuste
+   - No se especifica claramente cómo se realizará la validación fuera de muestra
+
+3. **Factibilidad Computacional**:
+   - La actualización en tiempo real de modelos bayesianos complejos puede ser prohibitiva computacionalmente
+   - La inferencia variacional estocástica puede no converger adecuadamente en entornos de alta dimensionalidad
+
+4. **Verificabilidad del Alpha**:
+   - No está claro cómo se aísla el alpha verdadero de la exposición a factores conocidos
+   - El Sharpe Ratio esperado (1.8-2.2) parece optimista sin evidencia de backtest
+
+5. **Implementación con yfinance**:
+   - yfinance tiene limitaciones para datos de alta frecuencia necesarios para matrices de correlación intradiarias
+   - La estrategia requiere datos de calidad para la estructura de correlación que pueden no estar disponibles fácilmente
+
+## Propuestas de Mejora
+
+1. **Simplificación del Modelo Bayesiano**:
+   - Reemplazar la descomposición tensorial CP por un enfoque más implementable como PCA dinámico bayesiano
+   - Utilizar un modelo de mezcla gaussiana con número finito de componentes en lugar del HDP-HMM
+
+2. **Enfoque Incremental para Validación**:
+   - Implementar una versión simplificada como línea base (benchmark interno)
+   - Añadir complejidad gradualmente, validando la contribución marginal de cada componente
+
+3. **Mejora en la Detección de Regímenes**:
+   - Incorporar variables macroeconómicas como información auxiliar en el modelo bayesiano
+   - Implementar un enfoque de ensemble combinando múltiples métodos de detección de régimen
+
+4. **Robustez en Backtest**:
+   - Implementar backtesting con block bootstrap para evaluar la significancia estadística
+   - Utilizar walk-forward optimization con ventanas crecientes y deslizantes
+   - Incorporar análisis de sensibilidad a parámetros clave
+
+5. **Gestión de Riesgo Mejorada**:
+   - Añadir restricciones de turnover para controlar costos de transacción
+   - Implementar un overlay de liquidez basado en volumen para evitar impacto de mercado
+   - Incorporar stop-loss dinámicos basados en la incertidumbre del modelo bayesiano
+
+6. **Implementación Práctica**:
+   - Reducir la frecuencia de actualización del modelo completo (semanal en lugar de diaria)
+   - Utilizar aproximaciones computacionalmente eficientes para la inferencia bayesiana
+   - Implementar una versión simplificada del filtro de Kalman (UKF o EKF)
+
+## Preguntas Técnicas Específicas
+
+1. ¿Cómo se determina específicamente el número óptimo de factores latentes K en la descomposición tensorial?
+
+2. ¿Qué método específico se utilizará para evitar el look-ahead bias al detectar cambios de régimen?
+
+3. ¿Cómo se calibran los hiperparámetros del modelo bayesiano? ¿Se utiliza validación cruzada, ELBO, o algún otro criterio?
+
+4. ¿Cuál es el horizonte de predicción exacto para los retornos y cómo se incorpora la incertidumbre de la predicción?
+
+5. ¿Qué medidas específicas se implementarán para manejar periodos de baja liquidez o alta volatilidad?
+
+6. ¿Cómo se evaluará la contribución marginal de cada componente del modelo a la generación de alpha?
+
+7. ¿Qué procedimiento específico se utilizará para la calibración inicial del modelo y con qué frecuencia se recalibrará?
+
+Para avanzar hacia una implementación viable con yfinance, recomendaría desarrollar primero una versión simplificada que capture la esencia del enfoque bayesiano adaptativo, pero con componentes más manejables computacionalmente y una clara metodología de validación fuera de muestra.
+
+==================================================
+SINTETIZADOR
+==================================================
+
+# IDEA FINAL: ESTRATEGIA DE DESCOMPOSICIÓN MULTIFACTORIAL ADAPTATIVA CON INFERENCIA BAYESIANA SIMPLIFICADA
+
+## Descripción
+
+Esta estrategia aprovecha la estructura de correlación dinámica entre activos del S&P 500 mediante métodos bayesianos adaptativos para identificar patrones latentes y cambios de régimen de mercado. El enfoque combina descomposición factorial, inferencia bayesiana y gestión de riesgo adaptativa para generar alpha con baja correlación a estrategias tradicionales.
+
+## Fundamentos Matemáticos y Estadísticos
+
+La estrategia se basa en la premisa de que la estructura de correlación entre activos contiene información predictiva no completamente capitalizada por el mercado, especialmente durante transiciones entre regímenes. La metodología combina:
+
+1. **PCA Dinámico Bayesiano**: Reemplazamos la compleja descomposición tensorial CP por un enfoque de PCA dinámico con priors bayesianos para extraer factores latentes, manteniendo la interpretabilidad y reduciendo la complejidad computacional.
+
+2. **Modelo de Mezcla Gaussiana para Regímenes**: Utilizamos un modelo de mezcla gaussiana con número finito de componentes (determinado por criterio BIC) para la detección de regímenes, más implementable que el HDP-HMM original.
+
+3. **Filtrado Kalman Simplificado**: Implementamos una versión eficiente del filtro de Kalman (UKF o EKF) para rastrear la evolución temporal de los factores latentes.
+
+## Funcionamiento Detallado
+
+### 1. Extracción de Factores Latentes
+- Calculamos matrices de correlación rodantes utilizando estimadores shrinkage adaptativos (método de Ledoit-Wolf)
+- Aplicamos PCA dinámico bayesiano para extraer K factores latentes (K determinado mediante validación cruzada)
+- Implementamos regularización automática vía priors jerárquicos para evitar sobreajuste
+
+### 2. Detección de Regímenes
+- Modelamos transiciones de régimen mediante un modelo de mezcla gaussiana con número óptimo de componentes
+- Utilizamos inferencia bayesiana para estimar las probabilidades de pertenencia a cada régimen
+- Calculamos la probabilidad de transición de régimen en tiempo real
+
+### 3. Predicción y Construcción de Portafolio
+- Generamos predicciones de retorno mediante:
+  * Modelo de espacio-estado bayesiano para factores latentes
+  * Modelo GARCH multivariante simplificado
+  * Regresión con kernels adaptativos
+- Optimizamos el portafolio con restricciones de riesgo adaptativas y límites de turnover
+
+### 4. Gestión de Riesgo Adaptativa
+- Control de volatilidad objetivo (10% anualizado) con ajuste bayesiano
+- Límites de exposición a factores mediante optimización robusta
+- Overlay de liquidez basado en volumen para evitar impacto de mercado
+- Stop-loss dinámicos basados en la incertidumbre del modelo bayesiano
+
+## Señales, Timeframes y Métricas
+
+### Señales Específicas
+- **Señal principal**: Divergencia entre factores latentes actuales y su valor esperado bajo el régimen actual
+- **Señal secundaria**: Velocidad de cambio en la estructura de correlación
+- **Señal de riesgo**: Probabilidad de transición de régimen superior al 30%
+
+### Timeframes
+- Datos diarios para construcción de matrices de correlación
+- Rebalanceo semanal del portafolio base
+- Actualización del modelo completo con frecuencia semanal (no diaria) para reducir carga computacional
+
+### Métricas de Evaluación
+- Sharpe Ratio objetivo: 1.4-1.8 (neto de costos, más conservador que la estimación original)
+- Maximum Drawdown objetivo: <15%
+- Calmar Ratio esperado: >1.0
+- Beta al mercado: -0.1 a 0.3 (variable según régimen)
+
+## Implementación Práctica
+
+### Enfoque Incremental
+1. **Versión Base**: Implementar primero una versión simplificada como benchmark interno
+   - PCA estándar con ventanas rodantes
+   - Detección de regímenes mediante k-means
+   - Optimización de portafolio con restricciones básicas
+
+2. **Mejoras Graduales**:
+   - Incorporar componentes bayesianos uno a uno
+   - Validar la contribución marginal de cada componente
+   - Refinar los hiperparámetros mediante validación cruzada
+
+### Validación Robusta
+- Implementar backtesting con block bootstrap para evaluar significancia estadística
+- Utilizar walk-forward optimization con ventanas crecientes y deslizantes
+- Incorporar purging y embargo en validación cruzada para evitar data leakage
+- Análisis de sensibilidad a parámetros clave
+
+### Consideraciones Técnicas para yfinance
+- Utilizar datos diarios en lugar de intradiarios para mayor estabilidad
+- Implementar manejo de datos faltantes y ajustes por splits/dividendos
+- Reducir universo de inversión a componentes líquidos del S&P 500
+- Calcular matrices de correlación con ventanas adaptativas según volatilidad
+
+## Ventajas de la Estrategia
+
+1. **Adaptabilidad**: El enfoque bayesiano permite adaptación automática a diferentes regímenes de mercado.
+
+2. **Robustez**: La combinación de múltiples técnicas proporciona robustez frente a outliers y cambios estructurales.
+
+3. **Implementabilidad**: La versión simplificada mantiene la esencia del enfoque original pero es computacionalmente viable.
+
+4. **Diversificación**: Baja correlación con estrategias tradicionales de factores debido al enfoque en patrones latentes.
+
+5. **Validación Rigurosa**: Metodología clara para evitar sobreajuste y verificar la generación de alpha.
+
+## Limitaciones y Consideraciones
+
+1. **Complejidad Residual**: Aún con las simplificaciones, la estrategia requiere conocimientos avanzados de estadística bayesiana.
+
+2. **Dependencia de Datos**: La calidad de las matrices de correlación es crítica para el éxito de la estrategia.
+
+3. **Costos de Transacción**: Se deben modelar cuidadosamente para no erosionar el alpha generado.
+
+4. **Calibración Inicial**: Requiere un período sustancial de datos históricos para la calibración inicial.
+
+5. **Riesgo de Modelo**: La dependencia en múltiples modelos estadísticos aumenta el riesgo de error de especificación.
+
+La estrategia ofrece un equilibrio entre sofisticación matemática e implementabilidad práctica, capturando la dinámica no lineal de las correlaciones entre activos mientras mantiene un enfoque disciplinado de validación y gestión de riesgo.
+
+==================================================
+DESARROLLADOR
+==================================================
+
+```python
+import numpy as np
+import pandas as pd
+import yfinance as yf
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.decomposition import PCA
+from sklearn.mixture import GaussianMixture
+from sklearn.model_selection import TimeSeriesSplit
+from sklearn.metrics import silhouette_score
+from scipy.stats import norm
+import os
+import logging
+import warnings
+from datetime import datetime, timedelta
+from scipy.linalg import eigh
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import KFold
+from scipy.optimize import minimize
+import matplotlib.dates as mdates
+from sklearn.model_selection import cross_val_score
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error
+import pickle
+
+# Ignorar advertencias
+warnings.filterwarnings('ignore')
+
+# Crear directorios para resultados
+os.makedirs('./artifacts/results', exist_ok=True)
+os.makedirs('./artifacts/results/figures', exist_ok=True)
+os.makedirs('./artifacts/results/data', exist_ok=True)
+
+# Configurar logging
+logging.basicConfig(
+    filename='./artifacts/errors.txt',
+    level=logging.ERROR,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+class MultifactorialAdaptiveStrategy:
+    def __init__(self, 
+                 start_date='2010-01-01', 
+                 end_date=None,
+                 window_size=252,
+                 n_components_range=(3, 10),
+                 n_regimes_range=(2, 5),
+                 rebalance_freq='W-FRI',
+                 target_vol=0.10,
+                 max_leverage=1.5,
+                 transaction_cost=0.0005):
+        """
+        Inicializa la estrategia de descomposición multifactorial adaptativa
+        
+        Parámetros:
+        -----------
+        start_date : str
+            Fecha de inicio para los datos
+        end_date : str
+            Fecha de fin para los datos (None = hoy)
+        window_size : int
+            Tamaño de la ventana rodante en días
+        n_components_range : tuple
+            Rango de componentes principales a probar
+        n_regimes_range : tuple
+            Rango de regímenes a probar
+        rebalance_freq : str
+            Frecuencia de rebalanceo (formato pandas)
+        target_vol : float
+            Volatilidad objetivo anualizada
+        max_leverage : float
+            Apalancamiento máximo permitido
+        transaction_cost : float
+            Costo de transacción por operación (porcentaje)
+        """
+        self.start_date = start_date
+        self.end_date = end_date if end_date else datetime.now().strftime('%Y-%m-%d')
+        self.window_size = window_size
+        self.n_components_range = n_components_range
+        self.n_regimes_range = n_regimes_range
+        self.rebalance_freq = rebalance_freq
+        self.target_vol = target_vol
+        self.max_leverage = max_leverage
+        self.transaction_cost = transaction_cost
+        
+        # Atributos que se inicializarán más tarde
+        self.data = None
+        self.returns = None
+        self.optimal_n_components = None
+        self.optimal_n_regimes = None
+        self.regime_model = None
+        self.factor_loadings = {}
+        self.regime_probabilities = None
+        self.positions = None
+        self.portfolio_returns = None
+        self.metrics = {}
+        
+    def get_sp500_tickers(self, n_stocks=100):
+        """Obtiene los tickers del S&P 500 más líquidos"""
+        try:
+            # Obtener tickers del S&P 500 usando yfinance
+            sp500_url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+            tables = pd.read_html(sp500_url)
+            sp500_table = tables[0]
+            tickers = sp500_table['Symbol'].tolist()
+            
+            # Filtrar tickers problemáticos
+            tickers = [ticker.replace('.', '-') for ticker in tickers]
+            
+            # Limitar a n_stocks para reducir carga computacional
+            return tickers[:n_stocks]
+        except Exception as e:
+            logging.error(f"Error obteniendo tickers del S&P 500: {str(e)}")
+            # Fallback a una lista predefinida de tickers grandes del S&P 500
+            return ['AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'BRK-B', 'JPM', 'JNJ', 'V', 
+                    'PG', 'UNH', 'HD', 'BAC', 'MA', 'XOM', 'DIS', 'NVDA', 'PYPL', 'ADBE', 
+                    'CRM', 'CMCSA', 'NFLX', 'VZ', 'INTC', 'ABT', 'PFE', 'KO', 'PEP', 'T'][:n_stocks]
+    
+    def load_data(self):
+        """Carga los datos de precios y calcula retornos"""
+        try:
+            tickers = self.get_sp500_tickers(n_stocks=50)  # Limitamos a 50 para eficiencia
+            
+            # Añadir SPY como benchmark
+            tickers.append('SPY')
+            
+            # Descargar datos
+            data = yf.download(tickers, start=self.start_date, end=self.end_date)['Adj Close']
+            
+            # Eliminar columnas con más del 10% de valores faltantes
+            missing_pct = data.isnull().mean()
+            valid_cols = missing_pct[missing_pct < 0.1].index
+            data = data[valid_cols]
+            
+            # Imputar valores faltantes restantes con forward fill
+            data = data.fillna(method='ffill')
+            
+            # Calcular retornos diarios
+            returns = data.pct_change().dropna()
+            
+            self.data = data
+            self.returns = returns
+            
+            # Guardar información básica
+            with open('./artifacts/results/data/data_info.txt', 'w') as f:
+                f.write(f"Período: {self.start_date} a {self.end_date}\n")
+                f.write(f"Número de activos: {len(data.columns)}\n")
+                f.write(f"Número de días de trading: {len(data)}\n")
+                
+            return True
+        except Exception as e:
+            logging.error(f"Error cargando datos: {str(e)}", exc_info=True)
+            return False
+    
+    def ledoit_wolf_shrinkage(self, returns):
+        """
+        Implementa el estimador de covarianza Ledoit-Wolf para matrices de correlación
+        """
+        n, p = returns.shape
+        
+        # Matriz de covarianza de muestra
+        sample_cov = np.cov(returns, rowvar=False)
+        
+        # Estimador de identidad (target)
+        target = np.identity(p)
+        
+        # Calcular intensidad óptima de shrinkage
+        # Implementación simplificada del método de Ledoit-Wolf
+        mu = np.trace(sample_cov) / p
+        target *= mu
+        
+        # Calcular la distancia Frobenius al cuadrado
+        d2 = np.sum((sample_cov - target) ** 2)
+        
+        # Estimar la varianza de los elementos de la matriz de covarianza
+        var = 0
+        for i in range(n):
+            r = returns[i, :].reshape(-1, 1)
+            var += np.sum(((r @ r.T - sample_cov) ** 2))
+        var /= n ** 2
+        
+        # Calcular el parámetro de shrinkage
+        shrinkage = min(1, var / d2)
+        
+        # Aplicar shrinkage
+        shrunk_cov = shrinkage * target + (1 - shrinkage) * sample_cov
+        
+        # Convertir a matriz de correlación
+        std = np.sqrt(np.diag(shrunk_cov))
+        corr = shrunk_cov / np.outer(std, std)
+        
+        return corr
+    
+    def find_optimal_components(self, returns_window):
+        """
+        Encuentra el número óptimo de componentes principales usando validación cruzada
+        """
+        min_components, max_components = self.n_components_range
+        
+        # Estandarizar los retornos
+        scaler = StandardScaler()
+        returns_scaled = scaler.fit_transform(returns_window)
+        
+        # Validación cruzada para series temporales
+        tscv = TimeSeriesSplit(n_splits=5)
+        
+        best_score = float('inf')
+        best_n_components = min_components
+        
+        for n_components in range(min_components, max_components + 1):
+            cv_scores = []
+            
+            for train_idx, test_idx in tscv.split(returns_scaled):
+                X_train, X_test = returns_scaled[train_idx], returns_scaled[test_idx]
+                
+                # Ajustar PCA
+                pca = PCA(n_components=n_components)
+                pca.fit(X_train)
+                
+                # Transformar datos
+                X_train_pca = pca.transform(X_train)
+                X_test_pca = pca.transform(X_test)
+                
+                # Reconstruir datos
+                X_train_reconstructed = pca.inverse_transform(X_train_pca)
+                
+                # Calcular error de reconstrucción
+                reconstruction_error = np.mean((X_train - X_train_reconstructed) ** 2)
+                
+                # Ajustar modelo de regresión para predecir retornos futuros
+                model = LinearRegression()
+                model.fit(X_train_pca[:-1], X_train[1:])
+                
+                # Predecir y calcular error
+                y_pred = model.predict(X_test_pca[:-1])
+                prediction_error = mean_squared_error(X_test[1:], y_pred)
+                
+                # Combinar errores (ponderando más la capacidad predictiva)
+                combined_error = 0.3 * reconstruction_error + 0.7 * prediction_error
+                cv_scores.append(combined_error)
+            
+            mean_score = np.mean(cv_scores)
+            
+            if mean_score < best_score:
+                best_score = mean_score
+                best_n_components = n_components
+        
+        return best_n_components
+    
+    def find_optimal_regimes(self, factor_scores):
+        """
+        Encuentra el número óptimo de regímenes usando BIC y silhouette score
+        """
+        min_regimes, max_regimes = self.n_regimes_range
+        
+        bic_scores = []
+        silhouette_scores = []
+        
+        for n_regimes in range(min_regimes, max_regimes + 1):
+            # Ajustar GMM
+            gmm = GaussianMixture(
+                n_components=n_regimes,
+                covariance_type='full',
+                random_state=42,
+                n_init=10
+            )
+            
+            # Predecir regímenes
+            gmm.fit(factor_scores)
+            labels = gmm.predict(factor_scores)
+            
+            # Calcular BIC
+            bic = gmm.bic(factor_scores)
+            bic_scores.append(bic)
+            
+            # Calcular silhouette score si hay más de un régimen
+            if n_regimes > 1:
+                silhouette = silhouette_score(factor_scores, labels)
+                silhouette_scores.append(silhouette)
+            else:
+                silhouette_scores.append(-1)  # No aplicable para un solo régimen
+        
+        # Normalizar puntuaciones
+        bic_scores = np.array(bic_scores)
+        bic_scores = (bic_scores - np.min(bic_scores)) / (np.max(bic_scores) - np.min(bic_scores))
+        
+        silhouette_scores = np.array(silhouette_scores)
+        if len(np.unique(silhouette_scores)) > 1:  # Evitar división por cero
+            silhouette_scores = (silhouette_scores - np.min(silhouette_scores)) / (np.max(silhouette_scores) - np.min(silhouette_scores))
+        
+        # Combinar puntuaciones (menor BIC y mayor silhouette son mejores)
+        combined_scores = bic_scores - silhouette_scores
+        
+        # El mejor número de regímenes es el que minimiza la puntuación combinada
+        optimal_n_regimes = range(min_regimes, max_regimes + 1)[np.argmin(combined_scores)]
+        
+        return optimal_n_regimes
+    
+    def extract_factors(self, returns_window):
+        """
+        Extrae factores latentes usando PCA con número óptimo de componentes
+        """
+        # Calcular matriz de correlación usando Ledoit-Wolf
+        corr_matrix = self.ledoit_wolf_shrinkage(returns_window)
+        
+        # Encontrar número óptimo de componentes si no está definido
+        if self.optimal_n_components is None:
+            self.optimal_n_components = self.find_optimal_components(returns_window)
+        
+        # Realizar PCA
+        eigenvalues, eigenvectors = eigh(corr_matrix)
+        
+        # Ordenar de mayor a menor
+        idx = eigenvalues.argsort()[::-1]
+        eigenvalues = eigenvalues[idx]
+        eigenvectors = eigenvectors[:, idx]
+        
+        # Seleccionar los componentes principales
+        n_components = self.optimal_n_components
+        selected_eigenvalues = eigenvalues[:n_components]
+        selected_eigenvectors = eigenvectors[:, :n_components]
+        
+        # Calcular factor loadings
+        factor_loadings = selected_eigenvectors * np.sqrt(selected_eigenvalues)
+        
+        # Calcular factor scores
+        factor_scores = returns_window @ factor_loadings
+        
+        return factor_scores, factor_loadings
+    
+    def detect_regimes(self, factor_scores):
+        """
+        Detecta regímenes de mercado usando GMM
+        """
+        # Encontrar número óptimo de regímenes si no está definido
+        if self.optimal_n_regimes is None:
+            self.optimal_n_regimes = self.find_optimal_regimes(factor_scores)
+        
+        # Ajustar GMM
+        gmm = GaussianMixture(
+            n_components=self.optimal_n_regimes,
+            covariance_type='full',
+            random_state=42,
+            n_init=10
+        )
+        
+        gmm.fit(factor_scores)
+        
+        # Predecir regímenes y probabilidades
+        regimes = gmm.predict(factor_scores)
+        regime_probs = gmm.predict_proba(factor_scores)
+        
+        return regimes, regime_probs, gmm
+    
+    def kalman_filter_update(self, factor_scores, prev_state, prev_cov, process_noise=0.01, measurement_noise=0.1):
+        """
+        Implementa una versión simplificada del filtro de Kalman para rastrear factores latentes
+        """
+        # Predicción
+        predicted_state = prev_state
+        predicted_cov = prev_cov + process_noise
+        
+        # Actualización
+        kalman_gain = predicted_cov / (predicted_cov + measurement_noise)
+        updated_state = predicted_state + kalman_gain * (factor_scores[-1] - predicted_state)
+        updated_cov = (1 - kalman_gain) * predicted_cov
+        
+        return updated_state, updated_cov
+    
+    def predict_returns(self, factor_scores, factor_loadings, regimes, regime_probs, current_regime, returns_window):
+        """
+        Predice retornos futuros basados en factores latentes y regímenes
+        """
+        n_assets = returns_window.shape[1]
+        
+        # Obtener datos del régimen actual
+        regime_indices = np.where(regimes == current_regime)[0]
+        
+        if len(regime_indices) < 10:  # Si hay pocos datos para este régimen
+            # Usar todos los datos con ponderación por probabilidad de régimen
+            weights = regime_probs[:, current_regime]
+            weights = weights / np.sum(weights)
+            
+            # Calcular retornos esperados ponderados
+            expected_returns = np.zeros(n_assets)
+            for i, weight in enumerate(weights):
+                if i < len(returns_window) - 1:  # Evitar índice fuera de rango
+                    expected_returns += weight * returns_window[i+1]
+        else:
+            # Usar datos específicos del régimen
+            regime_factor_scores = factor_scores[regime_indices]
+            regime_returns = np.array([returns_window[i+1] for i in regime_indices if i < len(returns_window) - 1])
+            
+            if len(regime_returns) > 0:
+                # Ajustar modelo de regresión para cada activo
+                expected_returns = np.zeros(n_assets)
+                
+                for asset_idx in range(n_assets):
+                    asset_returns = regime_returns[:, asset_idx]
+                    
+                    # Evitar problemas con datos insuficientes
+                    if len(regime_factor_scores) > len(asset_returns):
+                        regime_factor_scores = regime_factor_scores[:len(asset_returns)]
+                    elif len(regime_factor_scores) < len(asset_returns):
+                        asset_returns = asset_returns[:len(regime_factor_scores)]
+                    
+                    if len(asset_returns) > 0:
+                        # Ajustar modelo de regresión
+                        model = LinearRegression()
+                        model.fit(regime_factor_scores, asset_returns)
+                        
+                        # Predecir retorno
+                        expected_returns[asset_idx] = model.predict([factor_scores[-1]])[0]
+                    else:
+                        # Fallback a la media histórica
+                        expected_returns[asset_idx] = np.mean(returns_window[:, asset_idx])
+            else:
+                # Fallback a la media histórica
+                expected_returns = np.mean(returns_window, axis=0)
+        
+        return expected_returns
+    
+    def optimize_portfolio(self, expected_returns, returns_window, factor_loadings, regime_transition_prob=None):
+        """
+        Optimiza el portafolio con restricciones de riesgo adaptativas
+        """
+        n_assets = len(expected_returns)
+        
+        # Calcular matriz de covarianza con shrinkage
+        cov_matrix = self.ledoit_wolf_shrinkage(returns_window)
+        
+        # Ajustar por probabilidad de transición de régimen si está disponible
+        risk_aversion = 1.0
+        if regime_transition_prob is not None and regime_transition_prob > 0.3:
+            # Aumentar aversión al riesgo si hay alta probabilidad de cambio de régimen
+            risk_aversion = 1.0 + 2.0 * (regime_transition_prob - 0.3)
+        
+        # Función objetivo: maximizar retorno ajustado por riesgo
+        def objective(weights):
+            portfolio_return = np.sum(weights * expected_returns)
+            portfolio_variance = np.dot(weights.T, np.dot(cov_matrix, weights))
+            # Penalizar por exposición excesiva a factores
+            factor_exposure = np.abs(np.dot(weights, factor_loadings))
+            factor_penalty = np.sum(factor_exposure)
+            
+            return -(portfolio_return - risk_aversion * portfolio_variance - 0.1 * factor_penalty)
+        
+        # Restricciones
+        constraints = [
+            {'type': 'eq', 'fun': lambda x: np.sum(x) - 1.0}  # Suma de pesos = 1
+        ]
+        
+        # Límites: permitir posiciones cortas limitadas
+        bounds = [(-0.2, 0.2) for _ in range(n_assets)]
+        
+        # Optimización
+        initial_weights = np.ones(n_assets) / n_assets
+        result = minimize(
+            objective, 
+            initial_weights, 
+            method='SLSQP', 
+            bounds=bounds, 
+            constraints=constraints
+        )
+        
+        if result.success:
+            weights = result.x
+            
+            # Aplicar límite de apalancamiento
+            leverage = np.sum(np.abs(weights))
+            if leverage > self.max_leverage:
+                weights = weights * (self.max_leverage / leverage)
+            
+            # Ajustar a volatilidad objetivo
+            portfolio_vol = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights))) * np.sqrt(252)
+            if portfolio_vol > 0:
+                vol_scalar = self.target_vol / portfolio_vol
+                weights = weights * min(vol_scalar, 2.0)  # Limitar el escalar
+            
+            return weights
+        else:
+            logging.warning(f"Optimización de portafolio falló: {result.message}")
+            # Fallback a pesos iguales
+            return np.ones(n_assets) / n_assets
+    
+    def backtest(self):
+        """
+        Ejecuta el backtesting de la estrategia
+        """
+        if self.returns is None:
+            if not self.load_data():
+                return False
+        
+        # Inicializar variables
+        n_assets = len(self.returns.columns)
+        dates = self.returns.index
+        n_days = len(dates)
+        
+        # Inicializar arrays para resultados
+        all_weights = pd.DataFrame(index=dates, columns=self.returns.columns)
+        all_weights.iloc[0] = 0  # Comenzar sin posiciones
+        
+        portfolio_returns = pd.Series(index=dates, data=0.0)
+        regime_history = pd.Series(index=dates, data=np.nan)
+        regime_probs_history = pd.DataFrame(index=dates)
+        
+        # Variables para el filtro de Kalman
+        kalman_states = {}
+        kalman_covs = {}
+        
+        # Inicializar factor loadings históricos
+        historical_factor_loadings = {}
+        
+        # Fechas de rebalanceo
+        rebalance_dates = pd.date_range(
+            start=dates[self.window_size], 
+            end=dates[-1], 
+            freq=self.rebalance_freq
+        )
+        rebalance_dates = rebalance_dates[rebalance_dates.isin(dates)]
+        
+        # Ejecutar backtesting
+        for i in range(self.window_size, n_days):
+            current_date = dates[i]
+            
+            # Obtener ventana de retornos
+            returns_window = self.returns.iloc[i-self.window_size:i].values
+            
+            # Extraer factores latentes
+            factor_scores, factor_loadings = self.extract_factors(returns_window)
+            
+            # Guardar factor loadings históricos
+            historical_factor_loadings[current_date] = factor_loadings
+            
+            # Detectar regímenes
+            regimes, regime_probs, gmm = self.detect_regimes(factor_scores)
+            current_regime = regimes[-1]
+            
+            # Guardar información de régimen
+            regime_history.loc[current_date] = current_regime
+            
+            # Inicializar regime_probs_history con columnas si es necesario
+            if len(regime_probs_history.columns) == 0:
+                for j in range(regime_probs.shape[1]):
+                    regime_probs_history[f'Regime_{j}'] = np.nan
+            
+            # Guardar probabilidades de régimen
+            for j in range(regime_probs.shape[1]):
+                regime_probs_history.loc[current_date, f'Regime_{j}'] = regime_probs[-1, j]
+            
+            # Actualizar filtro de Kalman para cada factor
+            for j in range(factor_scores.shape[1]):
+                if j not in kalman_states:
+                    # Inicializar
+                    kalman_states[j] = factor_scores[-1, j]
+                    kalman_covs[j] = 1.0
+                else:
+                    # Actualizar
+                    kalman_states[j], kalman_covs[j] = self.kalman_filter_update(
+                        factor_scores[:, j], 
+                        kalman_states[j], 
+                        kalman_covs[j]
+                    )
+            
+            # Calcular probabilidad de transición de régimen
+            if i > self.window_size:
+                prev_regime_probs = regime_probs_history.iloc[i-self.window_size-1].values
+                current_regime_probs = regime_probs[-1]
+                regime_transition_prob = 1.0 - np.sum(prev_regime_probs * current_regime_probs)
+            else:
+                regime_transition_prob = 0.0
+            
+            # Rebalancear portafolio en fechas de rebalanceo
+            if current_date in rebalance_dates:
+                # Predecir retornos
+                expected_returns = self.predict_returns(
+                    factor_scores, 
+                    factor_loadings, 
+                    regimes, 
+                    regime_probs, 
+                    current_regime, 
+                    returns_window
+                )
+                
+                # Optimizar portafolio
+                weights = self.optimize_portfolio(
+                    expected_returns, 
+                    returns_window, 
+                    factor_loadings, 
+                    regime_transition_prob
+                )
+                
+                # Guardar pesos
+                all_weights.loc[current_date] = weights
+            else:
+                # Mantener pesos anteriores
+                prev_weights = all_weights.iloc[i-1].values
+                all_weights.loc[current_date] = prev_weights
+            
+            # Calcular retorno del portafolio
+            if i < n_days - 1:
+                next_returns = self.returns.iloc[i+1].values
+                
+                # Aplicar costos de transacción en fechas de rebalanceo
+                if current_date in rebalance_dates and i > self.window_size:
+                    prev_weights = all_weights.iloc[i-1].values
+                    current_weights = all_weights.loc[current_date].values
+                    turnover = np.sum(np.abs(current_weights - prev_weights))
+                    transaction_costs = turnover * self.transaction_cost
+                else:
+                    transaction_costs = 0.0
+                
+                # Calcular retorno neto
+                portfolio_return = np.sum(all_weights.loc[current_date].values * next_returns) - transaction_costs
+                portfolio_returns.iloc[i+1] = portfolio_return
+        
+        # Guardar resultados
+        self.positions = all_weights
+        self.portfolio_returns = portfolio_returns.dropna()
+        self.regime_history = regime_history.dropna()
+        self.regime_probs_history = regime_probs_history.dropna()
+        
+        # Calcular métricas
+        self.calculate_metrics()
+        
+        return True
+    
+    def calculate_metrics(self):
+        """
+        Calcula métricas de rendimiento de la estrategia
+        """
+        if self.portfolio_returns is None:
+            return
+        
+        # Calcular retornos acumulados
+        cum_returns = (1 + self.portfolio_returns).cumprod()
+        
+        # Calcular benchmark (SPY)
+        benchmark_returns = self.returns['SPY'].loc[self.portfolio_returns.index]
+        benchmark_cum_returns = (1 + benchmark_returns).cumprod()
+        
+        # Calcular métricas
+        total_return = cum_returns.iloc[-1] - 1
+        annual_return = (1 + total_return) ** (252 / len(cum_returns)) - 1
+        annual_vol = self.portfolio_returns.std() * np.sqrt(252)
+        sharpe_ratio = annual_return / annual_vol if annual_vol > 0 else 0
+        
+        # Calcular drawdown
+        rolling_max = cum_returns.cummax()
+        drawdown = (cum_returns / rolling_max) - 1
+        max_drawdown = drawdown.min()
+        
+        # Calcular Calmar ratio
+        calmar_ratio = annual_return / abs(max_drawdown) if max_drawdown < 0 else float('inf')
+        
+        # Calcular beta al mercado
+        cov_matrix = np.cov(self.portfolio_returns, benchmark_returns)
+        beta = cov_matrix[0, 1] / cov_matrix[1, 1] if cov_matrix[1, 1] > 0 else 0
+        
+        # Calcular alpha
+        risk_free_rate = 0.02 / 252  # Tasa libre de riesgo diaria (2% anual)
+        expected_return = risk_free_rate + beta * (benchmark_returns.mean() - risk_free_rate)
+        alpha = self.portfolio_returns.mean() - expected_return
+        annualized_alpha = alpha * 252
+        
+        # Guardar métricas
+        self.metrics = {
+            'total_return': total_return,
+            'annual_return': annual_return,
+            'annual_vol': annual_vol,
+            'sharpe_ratio': sharpe_ratio,
+            'max_drawdown': max_drawdown,
+            'calmar_ratio': calmar_ratio,
+            'beta': beta,
+            'alpha': annualized_alpha
+        }
+        
+        # Guardar métricas en archivo
+        metrics_df = pd.DataFrame([self.metrics])
+        metrics_df.to_csv('./artifacts/results/data/performance_metrics.csv', index=False)
+        
+        # Guardar retornos
+        self.portfolio_returns.to_csv('./artifacts/results/data/portfolio_returns.csv')
+        
+        # Guardar pesos finales
+        self.positions.iloc[-1].to_csv('./artifacts/results/data/final_weights.csv')
+        
+        # Guardar historia de regímenes
+        self.regime_history.to_csv('./artifacts/results/data/regime_history.csv')
+        self.regime_probs_history.to_csv('./artifacts/results/data/regime_probs_history.csv')
+    
+    def plot_results(self):
+        """
+        Genera visualizaciones de los resultados
+        """
+        if self.portfolio_returns is None:
+            return
+        
+        # Configurar estilo de gráficos
+        plt.style.use('seaborn-v0_8-darkgrid')
+        
+        # 1. Gráfico de retornos acumulados
+        cum_returns = (1 + self.portfolio_returns).cumprod()
+        benchmark_returns = self.returns['SPY'].loc[self.portfolio_returns.index]
+        benchmark_cum_returns = (1 + benchmark_returns).cumprod()
+        
+        plt.figure(figsize=(12, 6))
+        plt.plot(cum_returns.index, cum_returns, label='Estrategia', linewidth=2)
+        plt.plot(benchmark_cum_returns.index, benchmark_cum_returns, label='S&P 500', linewidth=2, alpha=0.7)
+        plt.title('Retornos Acumulados', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Retorno Acumulado', fontsize=12)
+        plt.legend(fontsize=12)
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/cumulative_returns.png', dpi=300)
+        plt.close()
+        
+        # 2. Gráfico de drawdown
+        rolling_max = cum_returns.cummax()
+        drawdown = (cum_returns / rolling_max) - 1
+        
+        plt.figure(figsize=(12, 6))
+        plt.plot(drawdown.index, drawdown, color='red', linewidth=2)
+        plt.fill_between(drawdown.index, drawdown, 0, color='red', alpha=0.3)
+        plt.title('Drawdown', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Drawdown', fontsize=12)
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/drawdown.png', dpi=300)
+        plt.close()
+        
+        # 3. Gráfico de regímenes
+        if hasattr(self, 'regime_history'):
+            plt.figure(figsize=(12, 8))
+            
+            # Subplot 1: Retornos acumulados con regímenes
+            ax1 = plt.subplot(2, 1, 1)
+            ax1.plot(cum_returns.index, cum_returns, label='Estrategia', linewidth=2)
+            
+            # Colorear por régimen
+            unique_regimes = self.regime_history.unique()
+            colors = plt.cm.tab10(np.linspace(0, 1, len(unique_regimes)))
+            
+            for i, regime in enumerate(unique_regimes):
+                regime_periods = self.regime_history[self.regime_history == regime].index
+                if len(regime_periods) > 0:
+                    start_idx = cum_returns.index.get_indexer([regime_periods[0]])[0]
+                    ax1.axvspan(regime_periods[0], regime_periods[-1], alpha=0.2, color=colors[i], 
+                                label=f'Régimen {int(regime)}')
+            
+            ax1.set_title('Retornos Acumulados por Régimen', fontsize=14)
+            ax1.set_ylabel('Retorno Acumulado', fontsize=12)
+            ax1.legend(loc='upper left', fontsize=10)
+            ax1.grid(True)
+            
+            # Subplot 2: Probabilidades de régimen
+            ax2 = plt.subplot(2, 1, 2, sharex=ax1)
+            
+            for col in self.regime_probs_history.columns:
+                ax2.plot(self.regime_probs_history.index, self.regime_probs_history[col], 
+                         label=col, linewidth=2)
+            
+            ax2.set_title('Probabilidades de Régimen', fontsize=14)
+            ax2.set_xlabel('Fecha', fontsize=12)
+            ax2.set_ylabel('Probabilidad', fontsize=12)
+            ax2.legend(loc='upper right', fontsize=10)
+            ax2.grid(True)
+            
+            plt.tight_layout()
+            plt.savefig('./artifacts/results/figures/regime_analysis.png', dpi=300)
+            plt.close()
+        
+        # 4. Gráfico de pesos del portafolio
+        if hasattr(self, 'positions'):
+            # Seleccionar los 10 activos con mayor peso absoluto promedio
+            mean_abs_weights = self.positions.abs().mean().sort_values(ascending=False)
+            top_assets = mean_abs_weights.head(10).index
+            
+            plt.figure(figsize=(12, 8))
+            for asset in top_assets:
+                plt.plot(self.positions.index, self.positions[asset], label=asset, linewidth=2)
+            
+            plt.title('Evolución de Pesos del Portafolio (Top 10 Activos)', fontsize=14)
+            plt.xlabel('Fecha', fontsize=12)
+            plt.ylabel('Peso', fontsize=12)
+            plt.legend(fontsize=10, loc='upper right')
+            plt.grid(True)
+            plt.tight_layout()
+            plt.savefig('./artifacts/results/figures/portfolio_weights.png', dpi=300)
+            plt.close()
+        
+        # 5. Gráfico de métricas de rendimiento
+        if hasattr(self, 'metrics'):
+            metrics = self.metrics
+            
+            # Crear gráfico de barras para métricas clave
+            plt.figure(figsize=(12, 6))
+            metrics_to_plot = ['annual_return', 'annual_vol', 'sharpe_ratio', 'calmar_ratio', 'beta', 'alpha']
+            values = [metrics[m] for m in metrics_to_plot]
+            colors = ['green', 'red', 'blue', 'purple', 'orange', 'teal']
+            
+            bars = plt.bar(metrics_to_plot, values, color=colors)
+            
+            # Añadir etiquetas de valor
+            for bar in bars:
+                height = bar.get_height()
+                plt.text(bar.get_x() + bar.get_width()/2., height,
+                        f'{height:.4f}',
+                        ha='center', va='bottom', fontsize=10)
+            
+            plt.title('Métricas de Rendimiento', fontsize=14)
+            plt.ylabel('Valor', fontsize=12)
+            plt.grid(True, axis='y')
+            plt.tight_layout()
+            plt.savefig('./artifacts/results/figures/performance_metrics.png', dpi=300)
+            plt.close()
+    
+    def walk_forward_analysis(self, train_size=0.6, step_size=0.1):
+        """
+        Realiza análisis walk-forward para validar la robustez de la estrategia
+        """
+        if self.returns is None:
+            if not self.load_data():
+                return False
+        
+        # Obtener fechas
+        dates = self.returns.index
+        n_days = len(dates)
+        
+        # Calcular tamaños de ventana
+        train_days = int(n_days * train_size)
+        step_days = int(n_days * step_size)
+        
+        # Inicializar resultados
+        walk_forward_returns = []
+        walk_forward_metrics = []
+        
+        # Ejecutar análisis walk-forward
+        for start_idx in range(0, n_days - train_days - self.window_size, step_days):
+            end_train_idx = start_idx + train_days
+            end_test_idx = min(end_train_idx + step_days, n_days)
+            
+            # Fechas para esta iteración
+            train_start = dates[start_idx]
+            train_end = dates[end_train_idx]
+            test_start = dates[end_train_idx]
+            test_end = dates[end_test_idx - 1]
+            
+            print(f"Entrenando: {train_start} a {train_end}, Probando: {test_start} a {test_end}")
+            
+            # Crear instancia de estrategia para esta ventana
+            wf_strategy = MultifactorialAdaptiveStrategy(
+                start_date=train_start.strftime('%Y-%m-%d'),
+                end_date=test_end.strftime('%Y-%m-%d'),
+                window_size=self.window_size,
+                n_components_range=self.n_components_range,
+                n_regimes_range=self.n_regimes_range,
+                rebalance_freq=self.rebalance_freq,
+                target_vol=self.target_vol,
+                max_leverage=self.max_leverage,
+                transaction_cost=self.transaction_cost
+            )
+            
+            # Cargar datos
+            wf_strategy.data = self.data.loc[train_start:test_end]
+            wf_strategy.returns = self.returns.loc[train_start:test_end]
+            
+            # Ejecutar backtest
+            wf_strategy.backtest()
+            
+            # Extraer retornos del período de prueba
+            test_returns = wf_strategy.portfolio_returns.loc[test_start:test_end]
+            
+            if len(test_returns) > 0:
+                # Calcular métricas para el período de prueba
+                cum_returns = (1 + test_returns).cumprod()
+                total_return = cum_returns.iloc[-1] - 1
+                annual_return = (1 + total_return) ** (252 / len(test_returns)) - 1
+                annual_vol = test_returns.std() * np.sqrt(252)
+                sharpe_ratio = annual_return / annual_vol if annual_vol > 0 else 0
+                
+                # Calcular drawdown
+                rolling_max = cum_returns.cummax()
+                drawdown = (cum_returns / rolling_max) - 1
+                max_drawdown = drawdown.min()
+                
+                # Guardar resultados
+                walk_forward_returns.append(test_returns)
+                walk_forward_metrics.append({
+                    'train_start': train_start,
+                    'train_end': train_end,
+                    'test_start': test_start,
+                    'test_end': test_end,
+                    'total_return': total_return,
+                    'annual_return': annual_return,
+                    'annual_vol': annual_vol,
+                    'sharpe_ratio': sharpe_ratio,
+                    'max_drawdown': max_drawdown
+                })
+        
+        # Combinar resultados
+        all_wf_returns = pd.concat(walk_forward_returns)
+        wf_metrics_df = pd.DataFrame(walk_forward_metrics)
+        
+        # Guardar resultados
+        all_wf_returns.to_csv('./artifacts/results/data/walk_forward_returns.csv')
+        wf_metrics_df.to_csv('./artifacts/results/data/walk_forward_metrics.csv', index=False)
+        
+        # Visualizar resultados
+        plt.figure(figsize=(12, 6))
+        plt.bar(range(len(wf_metrics_df)), wf_metrics_df['sharpe_ratio'], color='blue', alpha=0.7)
+        plt.axhline(y=wf_metrics_df['sharpe_ratio'].mean(), color='red', linestyle='--', 
+                   label=f'Media: {wf_metrics_df["sharpe_ratio"].mean():.2f}')
+        plt.title('Sharpe Ratio en Análisis Walk-Forward', fontsize=14)
+        plt.xlabel('Ventana de Prueba', fontsize=12)
+        plt.ylabel('Sharpe Ratio', fontsize=12)
+        plt.legend()
+        plt.grid(True)
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/walk_forward_sharpe.png', dpi=300)
+        plt.close()
+        
+        # Calcular estadísticas agregadas
+        wf_stats = {
+            'mean_sharpe': wf_metrics_df['sharpe_ratio'].mean(),
+            'std_sharpe': wf_metrics_df['sharpe_ratio'].std(),
+            'mean_return': wf_metrics_df['annual_return'].mean(),
+            'std_return': wf_metrics_df['annual_return'].std(),
+            'mean_drawdown': wf_metrics_df['max_drawdown'].mean(),
+            'worst_drawdown': wf_metrics_df['max_drawdown'].min()
+        }
+        
+        # Guardar estadísticas
+        pd.DataFrame([wf_stats]).to_csv('./artifacts/results/data/walk_forward_stats.csv', index=False)
+        
+        return wf_stats
+
+def main():
+    try:
+        # Crear instancia de la estrategia
+        strategy = MultifactorialAdaptiveStrategy(
+            start_date='2015-01-01',
+            end_date=None,  # Hasta hoy
+            window_size=252,  # 1 año de trading
+            n_components_range=(3, 8),
+            n_regimes_range=(2, 5),
+            rebalance_freq='W-FRI',  # Rebalanceo semanal (viernes)
+            target_vol=0.10,  # 10% volatilidad anualizada
+            max_leverage=1.5,
+            transaction_cost=0.0005  # 5 bps por operación
+        )
+        
+        # Cargar datos
+        print("Cargando datos...")
+        if not strategy.load_data():
+            raise Exception("Error al cargar datos")
+        
+        # Ejecutar backtest
+        print("Ejecutando backtest...")
+        if not strategy.backtest():
+            raise Exception("Error en backtest")
+        
+        # Generar visualizaciones
+        print("Generando visualizaciones...")
+        strategy.plot_results()
+        
+        # Ejecutar análisis walk-forward
+        print("Ejecutando análisis walk-forward...")
+        wf_stats = strategy.walk_forward_analysis()
+        
+        print("Proceso completado con éxito")
+        print(f"Sharpe Ratio: {strategy.metrics['sharpe_ratio']:.4f}")
+        print(f"Retorno Anual: {strategy.metrics['annual_return']:.4f}")
+        print(f"Máximo Drawdown: {strategy.metrics['max_drawdown']:.4f}")
+        
+        # Guardar modelo
+        with open('./artifacts/results/data/strategy_model.pkl', 'wb') as f:
+            pickle.dump({
+                'optimal_n_components': strategy.optimal_n_components,
+                'optimal_n_regimes': strategy.optimal_n_regimes,
+                'metrics': strategy.metrics,
+                'walk_forward_stats': wf_stats
+            }, f)
+        
+    except Exception as e:
+        logging.error("Error en la ejecución principal", exc_info=True)
+        print(f"Error: {str(e)}")
+
+if __name__ == "__main__":
+    main()
+```
+
+==================================================
+REVISOR_CODIGO
+==================================================
+
+# Revisión de Código: Estrategia de Descomposición Multifactorial Adaptativa
+
+## 1. ¿El código implementa correctamente la idea? Parcialmente
+
+El código implementa muchos aspectos de la idea conceptual, pero presenta varios problemas técnicos y algunas desviaciones importantes del diseño original que podrían afectar su rendimiento y validez.
+
+## 2. Sugerencias específicas:
+
+1. **Problema de look-ahead bias en la detección de regímenes**: En la función `detect_regimes()`, se entrena el GMM con todos los datos de la ventana, incluyendo el punto actual. Esto introduce look-ahead bias porque usa información futura para determinar el régimen actual. Debería entrenar el modelo solo con datos hasta t-1 y luego predecir el régimen en t.
+
+2. **Alineación incorrecta en la predicción de retornos**: En `predict_returns()`, hay un problema de alineación temporal. La línea:
+   ```python
+   regime_returns = np.array([returns_window[i+1] for i in regime_indices if i < len(returns_window) - 1])
+   ```
+   Puede causar que se utilicen retornos futuros. Debería asegurarse que los índices estén correctamente alineados.
+
+3. **Manejo inadecuado de NaNs**: No hay un tratamiento explícito de NaNs en las matrices de correlación y en los factores extraídos, lo que puede causar problemas numéricos. Debería añadir verificaciones como:
+   ```python
+   if np.isnan(corr_matrix).any():
+       # Manejar NaNs en la matriz de correlación
+   ```
+
+4. **Implementación incompleta del estimador Ledoit-Wolf**: La implementación actual en `ledoit_wolf_shrinkage()` es una aproximación simplificada que no captura completamente la metodología. Debería usar `sklearn.covariance.ledoit_wolf()` que ya implementa este método correctamente.
+
+5. **Falta de validación en la optimización del portafolio**: En `optimize_portfolio()`, no hay verificación de que los pesos resultantes sean válidos. Si la optimización falla silenciosamente, podría generar pesos incorrectos.
+
+6. **Problema en el cálculo de costos de transacción**: En el método `backtest()`, los costos de transacción se calculan incorrectamente:
+   ```python
+   turnover = np.sum(np.abs(current_weights - prev_weights))
+   ```
+   Esto no tiene en cuenta que algunos cambios en los pesos pueden deberse al rendimiento de los activos, no a transacciones.
+
+7. **Falta de manejo de divisiones y dividendos**: Aunque se usa `Adj Close` de yfinance, no hay un manejo explícito de eventos corporativos que podrían afectar las correlaciones.
+
+8. **Problema en el filtro de Kalman**: La implementación actual en `kalman_filter_update()` es demasiado simplificada y unidimensional, mientras que la idea original requiere un filtro multivariante para capturar las interacciones entre factores.
+
+9. **Validación cruzada problemática**: En `find_optimal_components()`, la validación cruzada no implementa correctamente el "purging" y "embargo" mencionados en la idea original, lo que puede llevar a sobreajuste.
+
+10. **Falta de adaptación de hiperparámetros**: Los parámetros como `process_noise` y `measurement_noise` en el filtro de Kalman están hardcodeados en lugar de adaptarse a los datos como sugiere la idea original.
+
+11. **Problema en el análisis walk-forward**: En `walk_forward_analysis()`, hay un solapamiento entre los períodos de entrenamiento y prueba que puede invalidar los resultados:
+    ```python
+    test_start = dates[end_train_idx]
+    ```
+    Debería haber una separación clara entre ambos períodos.
+
+12. **Falta de implementación de priors bayesianos**: Aunque la idea menciona "PCA dinámico con priors bayesianos", el código usa PCA estándar sin componente bayesiano.
+
+13. **Problema en la detección de número óptimo de regímenes**: La función `find_optimal_regimes()` normaliza incorrectamente los puntajes BIC y silhouette, lo que puede llevar a selecciones subóptimas.
+
+14. **Falta de manejo de liquidez**: La idea original menciona un "overlay de liquidez basado en volumen", pero esto no está implementado en el código.
+
+15. **Problema en la gestión de riesgo adaptativa**: Aunque se menciona en la idea, la implementación de stop-loss dinámicos basados en la incertidumbre del modelo bayesiano está ausente en el código.
+
+Estas correcciones son fundamentales para que la implementación refleje fielmente la idea conceptual y evite problemas metodológicos que podrían invalidar los resultados del backtesting.
+
+==================================================
+DESARROLLADOR
+==================================================
+
+```python
+import numpy as np
+import pandas as pd
+import yfinance as yf
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.decomposition import PCA
+from sklearn.mixture import GaussianMixture
+from sklearn.metrics import silhouette_score
+from sklearn.covariance import ledoit_wolf
+from scipy.optimize import minimize
+from scipy.stats import norm
+import os
+import logging
+import warnings
+from datetime import datetime, timedelta
+from tqdm import tqdm
+
+# Crear directorios para resultados
+os.makedirs('./artifacts/results', exist_ok=True)
+os.makedirs('./artifacts/results/figures', exist_ok=True)
+os.makedirs('./artifacts/results/data', exist_ok=True)
+
+# Configurar logging
+logging.basicConfig(
+    filename='./artifacts/errors.txt',
+    level=logging.ERROR,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+# Ignorar advertencias
+warnings.filterwarnings('ignore')
+
+class MultifactorialAdaptiveStrategy:
+    def __init__(self, tickers=None, start_date='2010-01-01', end_date=None, 
+                 window_size=252, min_window_size=126, transaction_cost=0.001):
+        """
+        Inicializa la estrategia de descomposición multifactorial adaptativa.
+        
+        Args:
+            tickers: Lista de tickers o None para usar S&P 500
+            start_date: Fecha de inicio para los datos
+            end_date: Fecha de fin para los datos (None para usar fecha actual)
+            window_size: Tamaño de la ventana para análisis (días de trading)
+            min_window_size: Tamaño mínimo de ventana para comenzar el análisis
+            transaction_cost: Costo de transacción por operación (como fracción)
+        """
+        self.window_size = window_size
+        self.min_window_size = min_window_size
+        self.transaction_cost = transaction_cost
+        
+        if end_date is None:
+            end_date = datetime.now().strftime('%Y-%m-%d')
+        
+        self.start_date = start_date
+        self.end_date = end_date
+        
+        try:
+            if tickers is None:
+                # Usar S&P 500 como universo por defecto
+                sp500 = self._get_sp500_tickers()
+                self.tickers = sp500[:50]  # Usar los primeros 50 para eficiencia
+            else:
+                self.tickers = tickers
+                
+            # Cargar datos
+            self.load_data()
+            
+            # Inicializar parámetros adaptativos
+            self.n_regimes = 3  # Valor inicial, se adaptará
+            self.n_components = 5  # Valor inicial, se adaptará
+            
+        except Exception as e:
+            logging.error(f"Error en la inicialización: {str(e)}", exc_info=True)
+            raise
+    
+    def _get_sp500_tickers(self):
+        """Obtiene los tickers del S&P 500 usando yfinance."""
+        try:
+            sp500 = yf.Ticker('^GSPC')
+            return list(sp500.history(period='1d').index)
+        except:
+            # Fallback a una lista predefinida de tickers grandes del S&P 500
+            return ['AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'BRK-B', 'NVDA', 
+                    'JPM', 'JNJ', 'V', 'PG', 'UNH', 'HD', 'BAC', 'MA', 'DIS', 'ADBE', 
+                    'CRM', 'CMCSA', 'XOM', 'VZ', 'NFLX', 'INTC', 'T', 'PFE', 'ABT', 
+                    'KO', 'MRK', 'PEP', 'WMT', 'CSCO', 'TMO', 'CVX', 'ABBV', 'AVGO', 
+                    'ACN', 'COST', 'NKE', 'MCD', 'MDT', 'NEE', 'LLY', 'PYPL', 'PM', 
+                    'UNP', 'DHR', 'AMT', 'TXN', 'HON']
+    
+    def load_data(self):
+        """Carga los datos de precios para todos los tickers."""
+        try:
+            # Descargar datos
+            data = yf.download(self.tickers, start=self.start_date, end=self.end_date)
+            
+            # Usar precios de cierre ajustados
+            self.prices = data['Adj Close']
+            
+            # Calcular retornos diarios
+            self.returns = self.prices.pct_change().dropna()
+            
+            # Calcular volatilidad histórica
+            self.volatility = self.returns.rolling(window=21).std() * np.sqrt(252)
+            
+            # Guardar fechas como array para indexación rápida
+            self.dates = self.returns.index.tolist()
+            
+            # Guardar datos de volumen para análisis de liquidez
+            self.volume = data['Volume']
+            
+            # Calcular indicador de liquidez (volumen normalizado)
+            self.liquidity = self.volume.div(self.volume.rolling(window=21).mean())
+            
+            print(f"Datos cargados: {len(self.dates)} días de trading para {len(self.tickers)} activos")
+            
+        except Exception as e:
+            logging.error(f"Error al cargar datos: {str(e)}", exc_info=True)
+            raise
+    
+    def extract_factors(self, returns_window, n_components=None):
+        """
+        Extrae factores latentes de los retornos usando PCA.
+        
+        Args:
+            returns_window: DataFrame de retornos para la ventana de tiempo
+            n_components: Número de componentes a extraer (None para determinar automáticamente)
+            
+        Returns:
+            factors: Factores extraídos
+            explained_variance: Varianza explicada por cada factor
+            components: Componentes principales (loadings)
+        """
+        try:
+            # Manejar valores faltantes
+            returns_filled = returns_window.fillna(0)
+            
+            if n_components is None:
+                n_components = self.n_components
+            
+            # Aplicar PCA
+            pca = PCA(n_components=n_components)
+            factors = pca.fit_transform(returns_filled)
+            
+            return factors, pca.explained_variance_ratio_, pca.components_
+            
+        except Exception as e:
+            logging.error(f"Error en extract_factors: {str(e)}", exc_info=True)
+            # Retornar valores por defecto en caso de error
+            return np.zeros((returns_window.shape[0], min(5, returns_window.shape[1]))), \
+                   np.zeros(min(5, returns_window.shape[1])), \
+                   np.zeros((min(5, returns_window.shape[1]), returns_window.shape[1]))
+    
+    def find_optimal_components(self, returns_window, max_components=20):
+        """
+        Encuentra el número óptimo de componentes principales usando validación cruzada.
+        
+        Args:
+            returns_window: DataFrame de retornos para la ventana de tiempo
+            max_components: Número máximo de componentes a considerar
+            
+        Returns:
+            optimal_n: Número óptimo de componentes
+        """
+        try:
+            # Asegurar que max_components no exceda el número de columnas
+            max_possible = min(max_components, returns_window.shape[1], returns_window.shape[0])
+            
+            # Calcular la varianza explicada para diferentes números de componentes
+            explained_var = []
+            for n in range(1, max_possible + 1):
+                pca = PCA(n_components=n)
+                pca.fit(returns_window.fillna(0))
+                explained_var.append(sum(pca.explained_variance_ratio_))
+            
+            # Encontrar el punto de inflexión usando la segunda derivada
+            explained_var = np.array(explained_var)
+            if len(explained_var) > 2:
+                # Calcular diferencias de primer orden
+                d1 = np.diff(explained_var)
+                # Calcular diferencias de segundo orden
+                d2 = np.diff(d1)
+                # Encontrar el punto donde la segunda derivada es mínima
+                # (punto de inflexión en la curva de varianza explicada)
+                optimal_n = np.argmin(d2) + 1
+                
+                # Asegurar que al menos explica el 60% de la varianza
+                while optimal_n < len(explained_var) and explained_var[optimal_n-1] < 0.6:
+                    optimal_n += 1
+                
+                return min(optimal_n + 1, max_possible)  # +1 para ser conservador
+            else:
+                # Si no hay suficientes puntos, usar un valor predeterminado
+                return min(5, max_possible)
+                
+        except Exception as e:
+            logging.error(f"Error en find_optimal_components: {str(e)}", exc_info=True)
+            # Valor por defecto en caso de error
+            return min(5, returns_window.shape[1])
+    
+    def detect_regimes(self, factors, n_regimes=None):
+        """
+        Detecta regímenes de mercado usando clustering de mezcla gaussiana.
+        
+        Args:
+            factors: Factores extraídos de los retornos
+            n_regimes: Número de regímenes a detectar (None para determinar automáticamente)
+            
+        Returns:
+            regimes: Etiquetas de régimen para cada punto de tiempo
+            probs: Probabilidades de pertenencia a cada régimen
+        """
+        try:
+            if n_regimes is None:
+                n_regimes = self.n_regimes
+            
+            # Aplicar GMM para clustering
+            gmm = GaussianMixture(
+                n_components=n_regimes,
+                covariance_type='full',
+                random_state=42,
+                n_init=10
+            )
+            
+            # Usar solo los primeros 2 factores para la detección de regímenes
+            # para evitar la maldición de la dimensionalidad
+            regime_factors = factors[:, :min(2, factors.shape[1])]
+            
+            # Ajustar el modelo y predecir regímenes
+            gmm.fit(regime_factors)
+            regimes = gmm.predict(regime_factors)
+            probs = gmm.predict_proba(regime_factors)
+            
+            return regimes, probs
+            
+        except Exception as e:
+            logging.error(f"Error en detect_regimes: {str(e)}", exc_info=True)
+            # Retornar valores por defecto en caso de error
+            return np.zeros(factors.shape[0]), np.ones((factors.shape[0], max(3, n_regimes))) / max(3, n_regimes)
+    
+    def find_optimal_regimes(self, factors, max_regimes=5):
+        """
+        Encuentra el número óptimo de regímenes usando BIC y silhouette score.
+        
+        Args:
+            factors: Factores extraídos de los retornos
+            max_regimes: Número máximo de regímenes a considerar
+            
+        Returns:
+            optimal_n: Número óptimo de regímenes
+        """
+        try:
+            # Usar solo los primeros 2 factores para la detección de regímenes
+            regime_factors = factors[:, :min(2, factors.shape[1])]
+            
+            bic_scores = []
+            silhouette_scores = []
+            
+            # Probar diferentes números de regímenes
+            for n in range(2, max_regimes + 1):
+                # Ajustar GMM
+                gmm = GaussianMixture(
+                    n_components=n,
+                    covariance_type='full',
+                    random_state=42,
+                    n_init=10
+                )
+                gmm.fit(regime_factors)
+                bic_scores.append(gmm.bic(regime_factors))
+                
+                # Calcular silhouette score
+                labels = gmm.predict(regime_factors)
+                if len(np.unique(labels)) > 1:  # Necesitamos al menos 2 clusters para silhouette
+                    silhouette_scores.append(silhouette_score(regime_factors, labels))
+                else:
+                    silhouette_scores.append(-1)  # Penalizar soluciones con un solo cluster
+            
+            # Normalizar scores
+            if len(bic_scores) > 0:
+                bic_scores = np.array(bic_scores)
+                bic_scores = (bic_scores - np.min(bic_scores)) / (np.max(bic_scores) - np.min(bic_scores) + 1e-10)
+                
+                silhouette_scores = np.array(silhouette_scores)
+                # Para silhouette, mayor es mejor, así que invertimos
+                silhouette_scores = 1 - (silhouette_scores - np.min(silhouette_scores)) / (np.max(silhouette_scores) - np.min(silhouette_scores) + 1e-10)
+                
+                # Combinar scores (menor es mejor)
+                combined_scores = 0.7 * bic_scores + 0.3 * silhouette_scores
+                optimal_n = np.argmin(combined_scores) + 2  # +2 porque empezamos desde n=2
+                
+                return optimal_n
+            else:
+                return 3  # Valor por defecto
+                
+        except Exception as e:
+            logging.error(f"Error en find_optimal_regimes: {str(e)}", exc_info=True)
+            return 3  # Valor por defecto en caso de error
+    
+    def predict_returns(self, returns_window, regimes, horizon=1):
+        """
+        Predice retornos futuros basados en regímenes detectados.
+        
+        Args:
+            returns_window: DataFrame de retornos para la ventana de tiempo
+            regimes: Etiquetas de régimen para cada punto de tiempo
+            horizon: Horizonte de predicción en días
+            
+        Returns:
+            predicted_returns: Retornos predichos para cada activo
+            prediction_uncertainty: Incertidumbre de la predicción
+        """
+        try:
+            # Convertir a numpy para indexación más rápida
+            returns_np = returns_window.values
+            
+            # Inicializar arrays para retornos predichos y su incertidumbre
+            n_assets = returns_window.shape[1]
+            predicted_returns = np.zeros(n_assets)
+            prediction_uncertainty = np.zeros(n_assets)
+            
+            # Obtener el régimen actual (último punto)
+            current_regime = regimes[-1]
+            
+            # Encontrar índices históricos con el mismo régimen
+            # Excluimos el último punto para evitar look-ahead bias
+            regime_indices = np.where(regimes[:-1] == current_regime)[0]
+            
+            if len(regime_indices) > 0:
+                # Para cada activo, calcular la media y desviación estándar de los retornos
+                # en el régimen actual, considerando el horizonte de predicción
+                for i in range(n_assets):
+                    # Extraer retornos históricos para este activo en el régimen actual
+                    asset_returns = returns_np[regime_indices, i]
+                    
+                    # Calcular retornos futuros a horizon días para cada punto en el régimen
+                    future_returns = []
+                    for idx in regime_indices:
+                        if idx + horizon < len(returns_np):
+                            # Calcular retorno acumulado para el horizonte
+                            cum_return = np.prod(1 + returns_np[idx+1:idx+1+horizon, i]) - 1
+                            future_returns.append(cum_return)
+                    
+                    if future_returns:
+                        # Calcular media y desviación estándar de los retornos futuros
+                        predicted_returns[i] = np.nanmean(future_returns)
+                        prediction_uncertainty[i] = np.nanstd(future_returns)
+                    else:
+                        # Si no hay datos suficientes, usar los retornos medios generales
+                        predicted_returns[i] = np.nanmean(returns_np[:, i])
+                        prediction_uncertainty[i] = np.nanstd(returns_np[:, i])
+            else:
+                # Si no hay puntos históricos en este régimen, usar estadísticas generales
+                for i in range(n_assets):
+                    predicted_returns[i] = np.nanmean(returns_np[:, i])
+                    prediction_uncertainty[i] = np.nanstd(returns_np[:, i])
+            
+            return predicted_returns, prediction_uncertainty
+            
+        except Exception as e:
+            logging.error(f"Error en predict_returns: {str(e)}", exc_info=True)
+            # Retornar valores por defecto en caso de error
+            return np.zeros(returns_window.shape[1]), np.ones(returns_window.shape[1]) * 0.01
+    
+    def kalman_filter_update(self, state, covariance, measurement, process_noise=0.01, measurement_noise=0.1):
+        """
+        Actualiza las estimaciones usando un filtro de Kalman.
+        
+        Args:
+            state: Estado actual (retornos esperados)
+            covariance: Matriz de covarianza del estado
+            measurement: Medición actual (retornos observados)
+            process_noise: Ruido del proceso
+            measurement_noise: Ruido de la medición
+            
+        Returns:
+            new_state: Estado actualizado
+            new_covariance: Covarianza actualizada
+        """
+        try:
+            # Predicción
+            predicted_state = state
+            predicted_covariance = covariance + process_noise
+            
+            # Actualización
+            kalman_gain = predicted_covariance / (predicted_covariance + measurement_noise)
+            new_state = predicted_state + kalman_gain * (measurement - predicted_state)
+            new_covariance = (1 - kalman_gain) * predicted_covariance
+            
+            return new_state, new_covariance
+            
+        except Exception as e:
+            logging.error(f"Error en kalman_filter_update: {str(e)}", exc_info=True)
+            return state, covariance
+    
+    def ledoit_wolf_shrinkage(self, returns_window):
+        """
+        Aplica el estimador de covarianza Ledoit-Wolf para reducir el ruido.
+        
+        Args:
+            returns_window: DataFrame de retornos para la ventana de tiempo
+            
+        Returns:
+            shrunk_cov: Matriz de covarianza con shrinkage aplicado
+        """
+        try:
+            # Manejar valores faltantes
+            returns_filled = returns_window.fillna(0)
+            
+            # Aplicar el estimador Ledoit-Wolf
+            shrunk_cov, shrinkage = ledoit_wolf(returns_filled)
+            
+            return shrunk_cov
+            
+        except Exception as e:
+            logging.error(f"Error en ledoit_wolf_shrinkage: {str(e)}", exc_info=True)
+            # En caso de error, retornar la matriz de covarianza estándar
+            return returns_window.fillna(0).cov().values
+    
+    def optimize_portfolio(self, expected_returns, covariance, risk_aversion=1.0, max_weight=0.2):
+        """
+        Optimiza los pesos del portafolio usando optimización de media-varianza.
+        
+        Args:
+            expected_returns: Vector de retornos esperados
+            covariance: Matriz de covarianza
+            risk_aversion: Parámetro de aversión al riesgo
+            max_weight: Peso máximo permitido para un activo
+            
+        Returns:
+            weights: Pesos óptimos del portafolio
+        """
+        try:
+            n_assets = len(expected_returns)
+            
+            # Función objetivo: utilidad media-varianza negativa
+            def objective(weights):
+                portfolio_return = np.sum(weights * expected_returns)
+                portfolio_variance = np.dot(weights.T, np.dot(covariance, weights))
+                utility = portfolio_return - 0.5 * risk_aversion * portfolio_variance
+                return -utility
+            
+            # Restricciones: suma de pesos = 1
+            constraints = [{'type': 'eq', 'fun': lambda x: np.sum(x) - 1.0}]
+            
+            # Límites: entre 0 y max_weight para cada activo
+            bounds = tuple((0.0, max_weight) for _ in range(n_assets))
+            
+            # Pesos iniciales: equitativos
+            initial_weights = np.ones(n_assets) / n_assets
+            
+            # Optimizar
+            result = minimize(
+                objective,
+                initial_weights,
+                method='SLSQP',
+                bounds=bounds,
+                constraints=constraints,
+                options={'maxiter': 1000}
+            )
+            
+            if result.success:
+                # Asegurar que los pesos sumen 1
+                weights = result.x / np.sum(result.x)
+                return weights
+            else:
+                logging.warning(f"Optimización no convergió: {result.message}")
+                # Retornar pesos equitativos en caso de fallo
+                return initial_weights
+                
+        except Exception as e:
+            logging.error(f"Error en optimize_portfolio: {str(e)}", exc_info=True)
+            # Retornar pesos equitativos en caso de error
+            return np.ones(len(expected_returns)) / len(expected_returns)
+    
+    def calculate_portfolio_metrics(self, returns, weights=None):
+        """
+        Calcula métricas de rendimiento para un portafolio.
+        
+        Args:
+            returns: DataFrame de retornos
+            weights: Pesos del portafolio (None para pesos equitativos)
+            
+        Returns:
+            metrics: Diccionario con métricas de rendimiento
+        """
+        try:
+            if weights is None:
+                weights = np.ones(returns.shape[1]) / returns.shape[1]
+            
+            # Calcular retornos del portafolio
+            portfolio_returns = np.sum(returns.values * weights, axis=1)
+            
+            # Calcular métricas
+            annual_return = np.mean(portfolio_returns) * 252
+            annual_volatility = np.std(portfolio_returns) * np.sqrt(252)
+            sharpe_ratio = annual_return / annual_volatility if annual_volatility > 0 else 0
+            
+            # Calcular drawdown
+            cumulative_returns = np.cumprod(1 + portfolio_returns) - 1
+            peak = np.maximum.accumulate(cumulative_returns)
+            drawdown = (cumulative_returns - peak) / (1 + peak)
+            max_drawdown = np.min(drawdown)
+            
+            # Calcular otras métricas
+            win_rate = np.sum(portfolio_returns > 0) / len(portfolio_returns)
+            loss_rate = np.sum(portfolio_returns < 0) / len(portfolio_returns)
+            avg_win = np.mean(portfolio_returns[portfolio_returns > 0]) if np.any(portfolio_returns > 0) else 0
+            avg_loss = np.mean(portfolio_returns[portfolio_returns < 0]) if np.any(portfolio_returns < 0) else 0
+            profit_factor = -avg_win * win_rate / (avg_loss * loss_rate) if avg_loss * loss_rate != 0 else np.inf
+            
+            return {
+                'annual_return': annual_return,
+                'annual_volatility': annual_volatility,
+                'sharpe_ratio': sharpe_ratio,
+                'max_drawdown': max_drawdown,
+                'win_rate': win_rate,
+                'profit_factor': profit_factor
+            }
+            
+        except Exception as e:
+            logging.error(f"Error en calculate_portfolio_metrics: {str(e)}", exc_info=True)
+            return {
+                'annual_return': 0,
+                'annual_volatility': 0,
+                'sharpe_ratio': 0,
+                'max_drawdown': 0,
+                'win_rate': 0,
+                'profit_factor': 0
+            }
+    
+    def backtest(self):
+        """
+        Ejecuta un backtest de la estrategia.
+        
+        Returns:
+            results: DataFrame con resultados del backtest
+        """
+        try:
+            # Inicializar resultados
+            results = {
+                'date': [],
+                'portfolio_value': [],
+                'daily_return': [],
+                'n_components': [],
+                'n_regimes': [],
+                'regime': [],
+                'weights': []
+            }
+            
+            # Inicializar portafolio
+            portfolio_value = 1.0
+            prev_weights = None
+            
+            # Inicializar estados para el filtro de Kalman
+            kalman_states = np.zeros(len(self.tickers))
+            kalman_covariances = np.ones(len(self.tickers)) * 0.01
+            
+            # Iterar a través de los días de trading
+            for i in tqdm(range(self.min_window_size, len(self.dates))):
+                try:
+                    # Definir ventana de tiempo
+                    start_idx = max(0, i - self.window_size)
+                    end_idx = i
+                    
+                    window_dates = self.dates[start_idx:end_idx]
+                    returns_window = self.returns.loc[window_dates]
+                    
+                    # Adaptar el número de componentes
+                    self.n_components = self.find_optimal_components(returns_window)
+                    
+                    # Extraer factores
+                    factors, explained_variance, components = self.extract_factors(returns_window, self.n_components)
+                    
+                    # Adaptar el número de regímenes
+                    self.n_regimes = self.find_optimal_regimes(factors)
+                    
+                    # Detectar regímenes
+                    regimes, regime_probs = self.detect_regimes(factors, self.n_regimes)
+                    
+                    # Predecir retornos
+                    predicted_returns, prediction_uncertainty = self.predict_returns(returns_window, regimes)
+                    
+                    # Actualizar predicciones con el filtro de Kalman
+                    # Usamos los retornos observados del día anterior como medición
+                    if i > 0:
+                        last_returns = self.returns.iloc[i-1].values
+                        for j in range(len(self.tickers)):
+                            if not np.isnan(last_returns[j]):
+                                kalman_states[j], kalman_covariances[j] = self.kalman_filter_update(
+                                    kalman_states[j], 
+                                    kalman_covariances[j], 
+                                    last_returns[j]
+                                )
+                    
+                    # Combinar predicciones
+                    combined_returns = 0.7 * predicted_returns + 0.3 * kalman_states
+                    
+                    # Estimar matriz de covarianza
+                    cov_matrix = self.ledoit_wolf_shrinkage(returns_window)
+                    
+                    # Ajustar la aversión al riesgo basada en la incertidumbre del régimen
+                    current_regime = regimes[-1]
+                    regime_certainty = np.max(regime_probs[-1])
+                    risk_aversion = 1.0 + (1.0 - regime_certainty) * 2.0
+                    
+                    # Optimizar portafolio
+                    weights = self.optimize_portfolio(combined_returns, cov_matrix, risk_aversion)
+                    
+                    # Calcular retorno del día
+                    if i < len(self.returns):
+                        daily_return = np.sum(weights * self.returns.iloc[i].values)
+                        
+                        # Aplicar costos de transacción si no es el primer día
+                        if prev_weights is not None:
+                            # Calcular turnover
+                            turnover = np.sum(np.abs(weights - prev_weights))
+                            transaction_cost = turnover * self.transaction_cost
+                            daily_return -= transaction_cost
+                        
+                        # Actualizar valor del portafolio
+                        portfolio_value *= (1 + daily_return)
+                        
+                        # Guardar resultados
+                        results['date'].append(self.dates[i])
+                        results['portfolio_value'].append(portfolio_value)
+                        results['daily_return'].append(daily_return)
+                        results['n_components'].append(self.n_components)
+                        results['n_regimes'].append(self.n_regimes)
+                        results['regime'].append(int(current_regime))
+                        results['weights'].append(weights)
+                        
+                        # Actualizar pesos previos
+                        prev_weights = weights.copy()
+                
+                except Exception as e:
+                    logging.error(f"Error en día {self.dates[i]}: {str(e)}", exc_info=True)
+                    # Continuar con el siguiente día
+                    continue
+            
+            # Convertir resultados a DataFrame
+            results_df = pd.DataFrame({
+                'date': results['date'],
+                'portfolio_value': results['portfolio_value'],
+                'daily_return': results['daily_return'],
+                'n_components': results['n_components'],
+                'n_regimes': results['n_regimes'],
+                'regime': results['regime']
+            })
+            results_df.set_index('date', inplace=True)
+            
+            # Guardar pesos como columnas separadas
+            weights_df = pd.DataFrame(
+                results['weights'], 
+                index=results['date'],
+                columns=[f'weight_{ticker}' for ticker in self.tickers]
+            )
+            
+            # Combinar resultados y pesos
+            final_results = pd.concat([results_df, weights_df], axis=1)
+            
+            # Calcular y guardar métricas
+            metrics = self.calculate_portfolio_metrics(
+                pd.DataFrame({'return': results['daily_return']}, index=results['date'])
+            )
+            
+            metrics_df = pd.DataFrame([metrics])
+            metrics_df.to_csv('./artifacts/results/backtest_metrics.csv', index=False)
+            
+            # Guardar resultados
+            final_results.to_csv('./artifacts/results/backtest_results.csv')
+            
+            return final_results
+            
+        except Exception as e:
+            logging.error(f"Error en backtest: {str(e)}", exc_info=True)
+            raise
+    
+    def walk_forward_analysis(self, train_size=0.6, step_size=126):
+        """
+        Realiza un análisis walk-forward para evaluar la robustez de la estrategia.
+        
+        Args:
+            train_size: Proporción de datos para entrenamiento
+            step_size: Tamaño del paso para avanzar la ventana (días de trading)
+            
+        Returns:
+            results: DataFrame con resultados del análisis
+        """
+        try:
+            # Inicializar resultados
+            all_results = []
+            
+            # Definir fechas
+            dates = self.returns.index.tolist()
+            
+            # Iterar a través de ventanas
+            start_idx = self.min_window_size
+            while start_idx + step_size < len(dates):
+                # Definir índices de entrenamiento y prueba
+                train_end_idx = start_idx + int((len(dates) - start_idx) * train_size)
+                test_end_idx = min(train_end_idx + step_size, len(dates))
+                
+                train_dates = dates[start_idx:train_end_idx]
+                test_dates = dates[train_end_idx:test_end_idx]
+                
+                if len(train_dates) < self.min_window_size or len(test_dates) == 0:
+                    start_idx += step_size
+                    continue
+                
+                # Datos de entrenamiento
+                train_returns = self.returns.loc[train_dates]
+                
+                # Extraer factores
+                self.n_components = self.find_optimal_components(train_returns)
+                factors, _, _ = self.extract_factors(train_returns, self.n_components)
+                
+                # Detectar regímenes
+                self.n_regimes = self.find_optimal_regimes(factors)
+                regimes, _ = self.detect_regimes(factors, self.n_regimes)
+                
+                # Predecir retornos
+                predicted_returns, _ = self.predict_returns(train_returns, regimes)
+                
+                # Estimar matriz de covarianza
+                cov_matrix = self.ledoit_wolf_shrinkage(train_returns)
+                
+                # Optimizar portafolio
+                weights = self.optimize_portfolio(predicted_returns, cov_matrix)
+                
+                # Evaluar en datos de prueba
+                test_returns = self.returns.loc[test_dates]
+                portfolio_returns = np.sum(test_returns.values * weights, axis=1)
+                
+                # Calcular métricas
+                metrics = self.calculate_portfolio_metrics(
+                    pd.DataFrame({'return': portfolio_returns}, index=test_dates)
+                )
+                
+                # Guardar resultados
+                metrics['train_start'] = train_dates[0]
+                metrics['train_end'] = train_dates[-1]
+                metrics['test_start'] = test_dates[0]
+                metrics['test_end'] = test_dates[-1]
+                metrics['n_components'] = self.n_components
+                metrics['n_regimes'] = self.n_regimes
+                
+                all_results.append(metrics)
+                
+                # Avanzar ventana
+                start_idx += step_size
+            
+            # Convertir resultados a DataFrame
+            results_df = pd.DataFrame(all_results)
+            
+            # Guardar resultados
+            results_df.to_csv('./artifacts/results/walk_forward_results.csv', index=False)
+            
+            return results_df
+            
+        except Exception as e:
+            logging.error(f"Error en walk_forward_analysis: {str(e)}", exc_info=True)
+            raise
+    
+    def plot_results(self, results):
+        """
+        Genera visualizaciones de los resultados.
+        
+        Args:
+            results: DataFrame con resultados del backtest
+        """
+        try:
+            # Configurar estilo de gráficos
+            plt.style.use('seaborn-darkgrid')
+            
+            # 1. Gráfico de rendimiento del portafolio
+            plt.figure(figsize=(12, 6))
+            plt.plot(results.index, results['portfolio_value'])
+            plt.title('Valor del Portafolio')
+            plt.xlabel('Fecha')
+            plt.ylabel('Valor')
+            plt.grid(True)
+            plt.savefig('./artifacts/results/figures/portfolio_value.png')
+            plt.close()
+            
+            # 2. Gráfico de retornos diarios
+            plt.figure(figsize=(12, 6))
+            plt.plot(results.index, results['daily_return'])
+            plt.title('Retornos Diarios')
+            plt.xlabel('Fecha')
+            plt.ylabel('Retorno')
+            plt.grid(True)
+            plt.savefig('./artifacts/results/figures/daily_returns.png')
+            plt.close()
+            
+            # 3. Gráfico de regímenes detectados
+            plt.figure(figsize=(12, 6))
+            plt.scatter(results.index, results['portfolio_value'], c=results['regime'], cmap='viridis', alpha=0.7)
+            plt.colorbar(label='Régimen')
+            plt.title('Regímenes de Mercado Detectados')
+            plt.xlabel('Fecha')
+            plt.ylabel('Valor del Portafolio')
+            plt.grid(True)
+            plt.savefig('./artifacts/results/figures/market_regimes.png')
+            plt.close()
+            
+            # 4. Gráfico de componentes y regímenes
+            fig, ax1 = plt.subplots(figsize=(12, 6))
+            ax1.plot(results.index, results['n_components'], 'b-')
+            ax1.set_xlabel('Fecha')
+            ax1.set_ylabel('Número de Componentes', color='b')
+            ax1.tick_params(axis='y', labelcolor='b')
+            
+            ax2 = ax1.twinx()
+            ax2.plot(results.index, results['n_regimes'], 'r-')
+            ax2.set_ylabel('Número de Regímenes', color='r')
+            ax2.tick_params(axis='y', labelcolor='r')
+            
+            plt.title('Adaptación de Componentes y Regímenes')
+            plt.grid(True)
+            plt.savefig('./artifacts/results/figures/components_regimes.png')
+            plt.close()
+            
+            # 5. Gráfico de pesos del portafolio
+            weight_cols = [col for col in results.columns if col.startswith('weight_')]
+            if len(weight_cols) > 0:
+                plt.figure(figsize=(12, 8))
+                weights_data = results[weight_cols].iloc[::20]  # Muestrear para reducir densidad
+                
+                # Mostrar solo los 10 activos con mayor peso promedio
+                top_assets = results[weight_cols].mean().sort_values(ascending=False).head(10).index
+                weights_data = weights_data[top_assets]
+                
+                weights_data.plot(kind='area', stacked=True, colormap='viridis')
+                plt.title('Evolución de Pesos del Portafolio (Top 10 Activos)')
+                plt.xlabel('Fecha')
+                plt.ylabel('Peso')
+                plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+                plt.tight_layout()
+                plt.savefig('./artifacts/results/figures/portfolio_weights.png')
+                plt.close()
+            
+            # 6. Gráfico de drawdown
+            portfolio_returns = results['daily_return']
+            cumulative_returns = (1 + portfolio_returns).cumprod() - 1
+            peak = cumulative_returns.cummax()
+            drawdown = (cumulative_returns - peak) / (1 + peak)
+            
+            plt.figure(figsize=(12, 6))
+            plt.plot(drawdown.index, drawdown)
+            plt.fill_between(drawdown.index, drawdown, 0, color='red', alpha=0.3)
+            plt.title('Drawdown del Portafolio')
+            plt.xlabel('Fecha')
+            plt.ylabel('Drawdown')
+            plt.grid(True)
+            plt.savefig('./artifacts/results/figures/drawdown.png')
+            plt.close()
+            
+        except Exception as e:
+            logging.error(f"Error en plot_results: {str(e)}", exc_info=True)
+    
+    def run(self):
+        """
+        Ejecuta la estrategia completa.
+        """
+        try:
+            print("Ejecutando backtest...")
+            results = self.backtest()
+            
+            print("Generando visualizaciones...")
+            self.plot_results(results)
+            
+            print("Realizando análisis walk-forward...")
+            wf_results = self.walk_forward_analysis()
+            
+            print("Análisis completado. Resultados guardados en ./artifacts/results/")
+            
+            return results, wf_results
+            
+        except Exception as e:
+            logging.error(f"Error en run: {str(e)}", exc_info=True)
+            raise
+
+# Ejecutar la estrategia
+if __name__ == "__main__":
+    try:
+        # Definir tickers (o usar None para S&P 500)
+        tickers = ['AAPL', 'MSFT', 'AMZN', 'GOOGL', 'META', 'TSLA', 'BRK-B', 'NVDA', 
+                  'JPM', 'JNJ', 'V', 'PG', 'UNH', 'HD', 'BAC', 'MA', 'DIS', 'ADBE']
+        
+        # Inicializar y ejecutar la estrategia
+        strategy = MultifactorialAdaptiveStrategy(
+            tickers=tickers,
+            start_date='2018-01-01',
+            end_date='2023-01-01',
+            window_size=252,
+            transaction_cost=0.001
+        )
+        
+        results, wf_results = strategy.run()
+        
+        # Mostrar métricas finales
+        metrics = pd.read_csv('./artifacts/results/backtest_metrics.csv')
+        print("\nMétricas de rendimiento:")
+        print(metrics)
+        
+    except Exception as e:
+        logging.error(f"Error en la ejecución principal: {str(e)}", exc_info=True)
+        print(f"Error: {str(e)}")
+```
+
+==================================================
+REVISOR_CODIGO
+==================================================
+
+# Revisión de Código: Estrategia de Descomposición Multifactorial Adaptativa
+
+## 1. ¿El código implementa correctamente la idea? Parcialmente
+
+El código implementa varios aspectos clave de la idea conceptual, como la extracción de factores latentes mediante PCA, detección de regímenes con modelos de mezcla gaussiana, y optimización de portafolio. Sin embargo, hay varias áreas donde la implementación se desvía de la idea original o presenta problemas técnicos.
+
+## 2. Sugerencias específicas
+
+1. **Look-ahead bias en la predicción de retornos**: En `predict_returns()`, hay un problema crítico. La función usa datos de regímenes históricos para predecir retornos, pero no implementa correctamente el embargo temporal:
+   ```python
+   # Línea 456-463: Problema con look-ahead bias
+   for idx in regime_indices:
+       if idx + horizon < len(returns_np):
+           # Calcular retorno acumulado para el horizonte
+           cum_return = np.prod(1 + returns_np[idx+1:idx+1+horizon, i]) - 1
+           future_returns.append(cum_return)
+   ```
+   Esto causa look-ahead bias porque usa retornos futuros para entrenar el modelo. Deberías separar claramente los datos de entrenamiento y predicción.
+
+2. **Falta implementación bayesiana**: La idea original enfatiza el uso de métodos bayesianos, pero la implementación actual usa principalmente métodos frecuentistas:
+   - No hay priors bayesianos en el PCA como se menciona en la idea
+   - El filtro de Kalman implementado es muy simplificado y no incorpora la incertidumbre bayesiana
+   - Falta la regularización automática vía priors jerárquicos mencionada en la idea
+
+3. **Alineación temporal incorrecta en el backtest**: En la función `backtest()`, hay un problema con la alineación temporal:
+   ```python
+   # Línea 636-637: Problema de alineación temporal
+   if i < len(self.returns):
+       daily_return = np.sum(weights * self.returns.iloc[i].values)
+   ```
+   Estás usando los retornos del mismo día para calcular el rendimiento, lo que causa look-ahead bias. Deberías usar los retornos del día siguiente.
+
+4. **Manejo inadecuado de NaNs**: El código usa `fillna(0)` en varios lugares:
+   ```python
+   # Línea 290: Reemplazo de NaNs con ceros
+   returns_filled = returns_window.fillna(0)
+   ```
+   Esto puede distorsionar significativamente los resultados. Considera usar métodos más robustos como imputación por media móvil o eliminación de filas/columnas con demasiados NaNs.
+
+5. **Falta de validación cruzada adecuada**: La función `find_optimal_components()` no implementa una verdadera validación cruzada:
+   ```python
+   # Líneas 307-332: No es validación cruzada real
+   explained_var = []
+   for n in range(1, max_possible + 1):
+       pca = PCA(n_components=n)
+       pca.fit(returns_window.fillna(0))
+       explained_var.append(sum(pca.explained_variance_ratio_))
+   ```
+   Deberías implementar una validación cruzada con purging y embargo como se menciona en la idea original.
+
+6. **Gestión de riesgo incompleta**: La idea original menciona control de volatilidad objetivo, límites de exposición a factores, y stop-loss dinámicos, pero estos no están completamente implementados:
+   ```python
+   # Línea 626-628: Ajuste de riesgo muy simplificado
+   current_regime = regimes[-1]
+   regime_certainty = np.max(regime_probs[-1])
+   risk_aversion = 1.0 + (1.0 - regime_certainty) * 2.0
+   ```
+   Falta implementar el control de volatilidad objetivo (10% anualizado) y los stop-loss dinámicos.
+
+7. **Falta de análisis de significancia estadística**: La idea original menciona block bootstrap para evaluar significancia estadística, pero esto no está implementado.
+
+8. **Problemas en el análisis walk-forward**:
+   ```python
+   # Líneas 723-726: No hay separación clara entre entrenamiento y prueba
+   train_end_idx = start_idx + int((len(dates) - start_idx) * train_size)
+   test_end_idx = min(train_end_idx + step_size, len(dates))
+   ```
+   El análisis walk-forward debería tener una separación más clara entre datos de entrenamiento y prueba, con embargo adecuado para evitar data leakage.
+
+9. **Falta de manejo adecuado de splits/dividendos**: Aunque se usan precios ajustados, no hay un manejo explícito de eventos corporativos como se menciona en la idea.
+
+10. **Optimización de portafolio demasiado simple**: La función `optimize_portfolio()` implementa una optimización de media-varianza básica, pero falta la optimización robusta y los límites de exposición a factores mencionados en la idea.
+
+11. **Falta de implementación de señales específicas**: La idea original menciona señales específicas como "divergencia entre factores latentes actuales y su valor esperado" y "velocidad de cambio en la estructura de correlación", pero estas no están implementadas.
+
+12. **Falta de adaptación de ventanas según volatilidad**: La idea menciona ventanas adaptativas según volatilidad para calcular matrices de correlación, pero se usa una ventana fija.
+
+==================================================
+DESARROLLADOR
+==================================================
+
+```python
+import numpy as np
+import pandas as pd
+import yfinance as yf
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.decomposition import PCA
+from sklearn.mixture import GaussianMixture
+from sklearn.preprocessing import StandardScaler
+from scipy.optimize import minimize
+from scipy.stats import norm
+import os
+import logging
+import warnings
+from datetime import datetime, timedelta
+import pickle
+from tqdm import tqdm
+
+# Crear directorios para resultados
+os.makedirs('./artifacts/results', exist_ok=True)
+os.makedirs('./artifacts/results/figures', exist_ok=True)
+os.makedirs('./artifacts/results/data', exist_ok=True)
+
+# Configurar logging
+logging.basicConfig(
+    filename='./artifacts/errors.txt',
+    level=logging.ERROR,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+# Suprimir advertencias
+warnings.filterwarnings('ignore')
+
+class AdaptiveMultifactorStrategy:
+    def __init__(self, start_date='2010-01-01', end_date=None, symbols=None, 
+                 lookback_window=252, regime_window=126, n_regimes=3, 
+                 rebalance_freq=21, vol_target=0.10, max_leverage=1.5):
+        """
+        Inicializa la estrategia de descomposición multifactorial adaptativa.
+        
+        Parámetros:
+        -----------
+        start_date : str
+            Fecha de inicio para los datos históricos (formato 'YYYY-MM-DD')
+        end_date : str
+            Fecha de fin para los datos históricos (formato 'YYYY-MM-DD')
+        symbols : list
+            Lista de símbolos a incluir. Si es None, se usa el S&P 500
+        lookback_window : int
+            Ventana de observación para calcular factores latentes (días)
+        regime_window : int
+            Ventana para detectar regímenes de mercado (días)
+        n_regimes : int
+            Número de regímenes de mercado a detectar
+        rebalance_freq : int
+            Frecuencia de rebalanceo en días
+        vol_target : float
+            Volatilidad objetivo anualizada
+        max_leverage : float
+            Apalancamiento máximo permitido
+        """
+        self.start_date = start_date
+        self.end_date = end_date if end_date else datetime.now().strftime('%Y-%m-%d')
+        self.symbols = symbols
+        self.lookback_window = lookback_window
+        self.regime_window = regime_window
+        self.n_regimes = n_regimes
+        self.rebalance_freq = rebalance_freq
+        self.vol_target = vol_target
+        self.max_leverage = max_leverage
+        
+        # Atributos que se inicializarán más tarde
+        self.prices = None
+        self.returns = None
+        self.factor_loadings = None
+        self.factor_returns = None
+        self.regimes = None
+        self.regime_probs = None
+        self.optimal_weights = None
+        self.performance = None
+        
+        # Cargar datos
+        self._load_data()
+        
+    def _load_data(self):
+        """Carga los datos históricos de precios y calcula retornos."""
+        try:
+            if self.symbols is None:
+                # Usar S&P 500 como universo por defecto
+                sp500 = pd.read_html('https://en.wikipedia.org/wiki/List_of_S%26P_500_companies')[0]
+                self.symbols = sp500['Symbol'].tolist()[:50]  # Usar los primeros 50 para eficiencia
+            
+            # Descargar datos
+            self.prices = yf.download(self.symbols, start=self.start_date, end=self.end_date)['Close']
+            
+            # Limpiar y preparar datos
+            self.prices = self.prices.dropna(axis=1, thresh=int(len(self.prices) * 0.9))  # Eliminar acciones con muchos NaN
+            self.symbols = list(self.prices.columns)
+            
+            # Calcular retornos diarios
+            self.returns = self.prices.pct_change().dropna()
+            
+            print(f"Datos cargados exitosamente. {len(self.symbols)} símbolos, {len(self.returns)} días de trading.")
+            
+        except Exception as e:
+            logging.error(f"Error al cargar datos: {str(e)}", exc_info=True)
+            raise
+    
+    def extract_latent_factors(self, returns_window, n_components=None):
+        """
+        Extrae factores latentes de los retornos usando PCA.
+        
+        Parámetros:
+        -----------
+        returns_window : DataFrame
+            Ventana de retornos para extraer factores
+        n_components : int, opcional
+            Número de componentes a extraer. Si es None, se determina automáticamente.
+            
+        Retorna:
+        --------
+        factor_loadings : ndarray
+            Cargas de los factores latentes
+        factor_returns : DataFrame
+            Retornos de los factores latentes
+        n_components : int
+            Número de componentes utilizados
+        """
+        try:
+            # Manejar valores faltantes
+            returns_filled = returns_window.copy()
+            
+            # Usar imputación por media móvil para NaNs
+            for col in returns_filled.columns:
+                mask = returns_filled[col].isna()
+                if mask.any():
+                    returns_filled.loc[mask, col] = returns_filled[col].rolling(5, min_periods=1).mean()[mask]
+            
+            # Si aún hay NaNs, rellenar con ceros (menos agresivo que simplemente usar fillna(0))
+            returns_filled = returns_filled.fillna(0)
+            
+            # Determinar número óptimo de componentes si no se especifica
+            if n_components is None:
+                n_components = self.find_optimal_components(returns_filled)
+            
+            # Aplicar PCA
+            pca = PCA(n_components=n_components)
+            factor_returns_np = pca.fit_transform(returns_filled)
+            
+            # Convertir a DataFrame
+            factor_returns = pd.DataFrame(
+                factor_returns_np, 
+                index=returns_window.index,
+                columns=[f'Factor_{i+1}' for i in range(n_components)]
+            )
+            
+            return pca.components_, factor_returns, n_components
+            
+        except Exception as e:
+            logging.error(f"Error en extract_latent_factors: {str(e)}", exc_info=True)
+            raise
+    
+    def find_optimal_components(self, returns_window, threshold=0.80, max_components=15):
+        """
+        Determina el número óptimo de componentes principales.
+        
+        Parámetros:
+        -----------
+        returns_window : DataFrame
+            Ventana de retornos para analizar
+        threshold : float
+            Umbral de varianza explicada acumulada
+        max_components : int
+            Número máximo de componentes a considerar
+            
+        Retorna:
+        --------
+        n_components : int
+            Número óptimo de componentes
+        """
+        try:
+            # Limitar el máximo posible de componentes
+            max_possible = min(returns_window.shape[1], returns_window.shape[0], max_components)
+            
+            # Calcular varianza explicada para diferentes números de componentes
+            pca = PCA(n_components=max_possible)
+            pca.fit(returns_window)
+            
+            # Encontrar el número de componentes que explican al menos threshold de la varianza
+            explained_variance_ratio_cumsum = np.cumsum(pca.explained_variance_ratio_)
+            n_components = np.argmax(explained_variance_ratio_cumsum >= threshold) + 1
+            
+            # Asegurar un mínimo de componentes
+            n_components = max(n_components, 3)
+            
+            return n_components
+            
+        except Exception as e:
+            logging.error(f"Error en find_optimal_components: {str(e)}", exc_info=True)
+            # Valor por defecto en caso de error
+            return 5
+    
+    def detect_regimes(self, factor_returns, n_regimes=None):
+        """
+        Detecta regímenes de mercado usando modelos de mezcla gaussiana.
+        
+        Parámetros:
+        -----------
+        factor_returns : DataFrame
+            Retornos de los factores latentes
+        n_regimes : int, opcional
+            Número de regímenes a detectar. Si es None, se usa self.n_regimes.
+            
+        Retorna:
+        --------
+        regimes : ndarray
+            Etiquetas de régimen para cada punto temporal
+        regime_probs : ndarray
+            Probabilidades de pertenencia a cada régimen
+        """
+        try:
+            if n_regimes is None:
+                n_regimes = self.n_regimes
+            
+            # Calcular volatilidad y correlación
+            vol = factor_returns.rolling(21).std().dropna()
+            
+            # Crear características para el modelo de regímenes
+            features = vol.copy()
+            
+            # Estandarizar características
+            scaler = StandardScaler()
+            features_scaled = scaler.fit_transform(features)
+            
+            # Ajustar modelo de mezcla gaussiana
+            gmm = GaussianMixture(
+                n_components=n_regimes,
+                covariance_type='full',
+                random_state=42,
+                n_init=10
+            )
+            
+            # Manejar NaNs
+            features_scaled_clean = np.nan_to_num(features_scaled)
+            
+            # Ajustar modelo
+            gmm.fit(features_scaled_clean)
+            
+            # Predecir regímenes y probabilidades
+            regimes = gmm.predict(features_scaled_clean)
+            regime_probs = gmm.predict_proba(features_scaled_clean)
+            
+            return regimes, regime_probs
+            
+        except Exception as e:
+            logging.error(f"Error en detect_regimes: {str(e)}", exc_info=True)
+            # Valores por defecto en caso de error
+            dummy_regimes = np.zeros(len(factor_returns) - 20)
+            dummy_probs = np.ones((len(factor_returns) - 20, self.n_regimes)) / self.n_regimes
+            return dummy_regimes, dummy_probs
+    
+    def predict_returns(self, factor_loadings, factor_returns, regimes, regime_probs, horizon=5):
+        """
+        Predice retornos futuros basados en factores latentes y regímenes.
+        
+        Parámetros:
+        -----------
+        factor_loadings : ndarray
+            Cargas de los factores latentes
+        factor_returns : DataFrame
+            Retornos de los factores latentes
+        regimes : ndarray
+            Etiquetas de régimen para cada punto temporal
+        regime_probs : ndarray
+            Probabilidades de pertenencia a cada régimen
+        horizon : int
+            Horizonte de predicción en días
+            
+        Retorna:
+        --------
+        expected_returns : Series
+            Retornos esperados para cada activo
+        prediction_confidence : Series
+            Confianza en las predicciones
+        """
+        try:
+            # Convertir a numpy para operaciones más eficientes
+            returns_np = self.returns.iloc[-len(regimes):].values
+            n_assets = returns_np.shape[1]
+            
+            # Inicializar arrays para almacenar retornos esperados por régimen
+            regime_expected_returns = np.zeros((self.n_regimes, n_assets))
+            regime_counts = np.zeros(self.n_regimes)
+            
+            # Para cada régimen, calcular retornos esperados basados en datos históricos
+            for r in range(self.n_regimes):
+                # Encontrar índices donde el régimen es r
+                regime_indices = np.where(regimes == r)[0]
+                regime_counts[r] = len(regime_indices)
+                
+                if len(regime_indices) > 0:
+                    # Para cada activo, calcular retorno esperado en este régimen
+                    for i in range(n_assets):
+                        # Recolectar retornos futuros después de cada ocurrencia del régimen
+                        future_returns = []
+                        
+                        # Importante: solo usar datos históricos, no futuros
+                        # Esto evita look-ahead bias
+                        for idx in regime_indices:
+                            # Solo considerar puntos donde tenemos suficientes datos futuros
+                            # y que no sean los últimos puntos (para evitar look-ahead)
+                            if idx + horizon < len(returns_np) - horizon:
+                                # Calcular retorno acumulado para el horizonte
+                                cum_return = np.prod(1 + returns_np[idx+1:idx+1+horizon, i]) - 1
+                                future_returns.append(cum_return)
+                        
+                        if future_returns:
+                            # Calcular retorno esperado para este activo en este régimen
+                            regime_expected_returns[r, i] = np.mean(future_returns)
+            
+            # Calcular retorno esperado ponderado por probabilidad de régimen actual
+            current_regime_probs = regime_probs[-1]
+            expected_returns = np.zeros(n_assets)
+            
+            for r in range(self.n_regimes):
+                # Ponderar por probabilidad del régimen y por confianza basada en cantidad de datos
+                confidence_weight = min(1.0, regime_counts[r] / 30)  # Saturar en 1.0
+                expected_returns += current_regime_probs[r] * regime_expected_returns[r, :] * confidence_weight
+            
+            # Calcular confianza en la predicción
+            # Mayor confianza si el régimen actual es claro y tenemos muchos datos históricos
+            regime_certainty = np.max(current_regime_probs)
+            data_sufficiency = np.min(regime_counts) / 30  # Normalizado a 1.0
+            prediction_confidence = regime_certainty * data_sufficiency
+            
+            # Convertir a Series
+            expected_returns_series = pd.Series(expected_returns, index=self.returns.columns)
+            prediction_confidence_series = pd.Series(prediction_confidence, index=self.returns.columns)
+            
+            return expected_returns_series, prediction_confidence_series
+            
+        except Exception as e:
+            logging.error(f"Error en predict_returns: {str(e)}", exc_info=True)
+            # Valores por defecto en caso de error
+            dummy_returns = pd.Series(0.0001, index=self.returns.columns)
+            dummy_confidence = pd.Series(0.1, index=self.returns.columns)
+            return dummy_returns, dummy_confidence
+    
+    def optimize_portfolio(self, expected_returns, factor_loadings, prediction_confidence, 
+                          current_regime, regime_certainty, risk_aversion=1.0):
+        """
+        Optimiza el portafolio basado en retornos esperados y factores latentes.
+        
+        Parámetros:
+        -----------
+        expected_returns : Series
+            Retornos esperados para cada activo
+        factor_loadings : ndarray
+            Cargas de los factores latentes
+        prediction_confidence : Series
+            Confianza en las predicciones
+        current_regime : int
+            Régimen de mercado actual
+        regime_certainty : float
+            Certeza sobre el régimen actual
+        risk_aversion : float
+            Parámetro de aversión al riesgo
+            
+        Retorna:
+        --------
+        weights : Series
+            Pesos óptimos para cada activo
+        """
+        try:
+            n_assets = len(expected_returns)
+            
+            # Ajustar aversión al riesgo según certeza del régimen
+            # Más incertidumbre -> más aversión al riesgo
+            adjusted_risk_aversion = risk_aversion * (1.0 + (1.0 - regime_certainty) * 2.0)
+            
+            # Calcular matriz de covarianza basada en factores latentes
+            # Esto es más robusto que usar la covarianza empírica directamente
+            factor_cov = np.cov(factor_loadings)
+            asset_cov = factor_loadings.T @ factor_cov @ factor_loadings
+            
+            # Asegurar que la matriz es definida positiva
+            asset_cov = (asset_cov + asset_cov.T) / 2  # Hacer simétrica
+            min_eig = np.min(np.linalg.eigvals(asset_cov))
+            if min_eig < 1e-6:
+                asset_cov += np.eye(n_assets) * (1e-6 - min_eig)
+            
+            # Ajustar retornos esperados por confianza en la predicción
+            adjusted_returns = expected_returns * prediction_confidence
+            
+            # Función objetivo: maximizar utilidad (retorno - riesgo)
+            def objective(weights):
+                portfolio_return = np.sum(weights * adjusted_returns)
+                portfolio_risk = np.sqrt(weights.T @ asset_cov @ weights)
+                utility = portfolio_return - adjusted_risk_aversion * portfolio_risk
+                return -utility  # Negativo porque minimizamos
+            
+            # Restricciones
+            constraints = [
+                {'type': 'eq', 'fun': lambda x: np.sum(x) - 1.0}  # Suma de pesos = 1
+            ]
+            
+            # Límites: permitir posiciones cortas limitadas según el régimen
+            # En regímenes de alta volatilidad, limitar posiciones cortas
+            short_limit = -0.2 if current_regime == 0 else -0.1 if current_regime == 1 else 0.0
+            bounds = [(short_limit, 1.0) for _ in range(n_assets)]
+            
+            # Solución inicial: pesos iguales
+            initial_weights = np.ones(n_assets) / n_assets
+            
+            # Optimizar
+            result = minimize(
+                objective,
+                initial_weights,
+                method='SLSQP',
+                bounds=bounds,
+                constraints=constraints,
+                options={'maxiter': 1000, 'ftol': 1e-8}
+            )
+            
+            if not result.success:
+                logging.warning(f"Optimización no convergió: {result.message}")
+                # Usar pesos iguales como fallback
+                optimal_weights = pd.Series(initial_weights, index=expected_returns.index)
+            else:
+                optimal_weights = pd.Series(result.x, index=expected_returns.index)
+            
+            # Aplicar control de volatilidad objetivo
+            portfolio_vol = np.sqrt(optimal_weights.T @ asset_cov @ optimal_weights) * np.sqrt(252)
+            vol_scalar = self.vol_target / portfolio_vol
+            
+            # Limitar apalancamiento
+            leverage = min(vol_scalar, self.max_leverage)
+            
+            # Ajustar pesos finales
+            final_weights = optimal_weights * leverage
+            
+            return final_weights
+            
+        except Exception as e:
+            logging.error(f"Error en optimize_portfolio: {str(e)}", exc_info=True)
+            # Valor por defecto en caso de error: pesos iguales
+            return pd.Series(1.0/len(expected_returns), index=expected_returns.index)
+    
+    def backtest(self, start_date=None, end_date=None):
+        """
+        Ejecuta un backtest de la estrategia.
+        
+        Parámetros:
+        -----------
+        start_date : str, opcional
+            Fecha de inicio del backtest (formato 'YYYY-MM-DD')
+        end_date : str, opcional
+            Fecha de fin del backtest (formato 'YYYY-MM-DD')
+            
+        Retorna:
+        --------
+        performance : DataFrame
+            Resultados del backtest incluyendo retornos, drawdowns, etc.
+        """
+        try:
+            # Configurar fechas
+            if start_date is None:
+                start_date = self.returns.index[self.lookback_window]
+            else:
+                start_date = pd.to_datetime(start_date)
+            
+            if end_date is None:
+                end_date = self.returns.index[-1]
+            else:
+                end_date = pd.to_datetime(end_date)
+            
+            # Filtrar datos por fechas
+            mask = (self.returns.index >= start_date) & (self.returns.index <= end_date)
+            backtest_dates = self.returns.index[mask]
+            
+            # Inicializar resultados
+            portfolio_values = [1.0]
+            portfolio_returns = []
+            weights_history = []
+            regime_history = []
+            
+            # Inicializar pesos (comenzar con efectivo)
+            current_weights = pd.Series(0, index=self.returns.columns)
+            
+            # Ejecutar backtest
+            for i, date in enumerate(tqdm(backtest_dates)):
+                # Rebalancear en la primera fecha y luego según frecuencia
+                if i == 0 or i % self.rebalance_freq == 0:
+                    # Obtener datos hasta la fecha actual (sin look-ahead bias)
+                    current_idx = self.returns.index.get_loc(date)
+                    history_end_idx = current_idx
+                    history_start_idx = max(0, history_end_idx - self.lookback_window)
+                    
+                    returns_window = self.returns.iloc[history_start_idx:history_end_idx]
+                    
+                    # Extraer factores latentes
+                    factor_loadings, factor_returns, n_components = self.extract_latent_factors(returns_window)
+                    
+                    # Detectar regímenes
+                    regimes, regime_probs = self.detect_regimes(factor_returns)
+                    
+                    # Predecir retornos
+                    expected_returns, prediction_confidence = self.predict_returns(
+                        factor_loadings, factor_returns, regimes, regime_probs
+                    )
+                    
+                    # Optimizar portafolio
+                    current_regime = regimes[-1]
+                    regime_certainty = np.max(regime_probs[-1])
+                    
+                    # Ajustar aversión al riesgo según régimen y certeza
+                    risk_aversion = 1.0 + current_regime * 0.5  # Más aversión en regímenes de alta volatilidad
+                    
+                    current_weights = self.optimize_portfolio(
+                        expected_returns,
+                        factor_loadings,
+                        prediction_confidence,
+                        current_regime,
+                        regime_certainty,
+                        risk_aversion
+                    )
+                    
+                    # Guardar régimen actual
+                    regime_history.append(current_regime)
+                
+                # Calcular retorno del portafolio para el día siguiente (evitar look-ahead bias)
+                if i + 1 < len(backtest_dates):
+                    next_date = backtest_dates[i + 1]
+                    next_returns = self.returns.loc[next_date]
+                    
+                    # Calcular retorno del portafolio
+                    portfolio_return = (current_weights * next_returns).sum()
+                    portfolio_returns.append(portfolio_return)
+                    
+                    # Actualizar valor del portafolio
+                    portfolio_values.append(portfolio_values[-1] * (1 + portfolio_return))
+                
+                # Guardar pesos
+                weights_history.append(current_weights.copy())
+            
+            # Crear DataFrame de resultados
+            performance = pd.DataFrame({
+                'Portfolio_Value': portfolio_values[:-1],  # Ajustar longitud
+                'Returns': portfolio_returns
+            }, index=backtest_dates[:-1])  # Ajustar fechas
+            
+            # Calcular métricas
+            performance['Cumulative_Returns'] = (1 + performance['Returns']).cumprod()
+            performance['Drawdown'] = 1 - performance['Cumulative_Returns'] / performance['Cumulative_Returns'].cummax()
+            
+            # Guardar resultados adicionales
+            self.weights_history = pd.DataFrame(weights_history, index=backtest_dates)
+            self.regime_history = pd.Series(regime_history, index=backtest_dates[:len(regime_history)])
+            self.performance = performance
+            
+            return performance
+            
+        except Exception as e:
+            logging.error(f"Error en backtest: {str(e)}", exc_info=True)
+            raise
+    
+    def calculate_metrics(self, performance=None):
+        """
+        Calcula métricas de rendimiento de la estrategia.
+        
+        Parámetros:
+        -----------
+        performance : DataFrame, opcional
+            Resultados del backtest. Si es None, se usa self.performance.
+            
+        Retorna:
+        --------
+        metrics : dict
+            Diccionario con métricas de rendimiento
+        """
+        try:
+            if performance is None:
+                performance = self.performance
+            
+            if performance is None or len(performance) == 0:
+                raise ValueError("No hay datos de rendimiento disponibles")
+            
+            # Calcular métricas anualizadas
+            returns = performance['Returns']
+            ann_factor = 252  # Factor de anualización para datos diarios
+            
+            total_return = performance['Cumulative_Returns'].iloc[-1] - 1
+            ann_return = (1 + total_return) ** (ann_factor / len(returns)) - 1
+            ann_volatility = returns.std() * np.sqrt(ann_factor)
+            sharpe_ratio = ann_return / ann_volatility if ann_volatility > 0 else 0
+            max_drawdown = performance['Drawdown'].max()
+            
+            # Calcular ratio de Sortino (solo considera volatilidad negativa)
+            negative_returns = returns[returns < 0]
+            downside_deviation = negative_returns.std() * np.sqrt(ann_factor)
+            sortino_ratio = ann_return / downside_deviation if downside_deviation > 0 else 0
+            
+            # Calcular ratio de Calmar (retorno anualizado / máximo drawdown)
+            calmar_ratio = ann_return / max_drawdown if max_drawdown > 0 else 0
+            
+            # Calcular ratio de información (asumiendo benchmark = 0)
+            information_ratio = ann_return / ann_volatility if ann_volatility > 0 else 0
+            
+            # Calcular % de meses positivos
+            monthly_returns = returns.resample('M').apply(lambda x: (1 + x).prod() - 1)
+            pct_positive_months = (monthly_returns > 0).mean()
+            
+            # Recopilar métricas
+            metrics = {
+                'Total Return': total_return,
+                'Annualized Return': ann_return,
+                'Annualized Volatility': ann_volatility,
+                'Sharpe Ratio': sharpe_ratio,
+                'Sortino Ratio': sortino_ratio,
+                'Calmar Ratio': calmar_ratio,
+                'Information Ratio': information_ratio,
+                'Maximum Drawdown': max_drawdown,
+                'Positive Months (%)': pct_positive_months,
+                'Number of Trades': len(self.weights_history) // self.rebalance_freq
+            }
+            
+            return metrics
+            
+        except Exception as e:
+            logging.error(f"Error en calculate_metrics: {str(e)}", exc_info=True)
+            return {}
+    
+    def plot_results(self, save_path='./artifacts/results/figures/'):
+        """
+        Genera y guarda visualizaciones de los resultados.
+        
+        Parámetros:
+        -----------
+        save_path : str
+            Ruta donde guardar las figuras
+        """
+        try:
+            if self.performance is None or len(self.performance) == 0:
+                raise ValueError("No hay datos de rendimiento disponibles")
+            
+            # Crear directorio si no existe
+            os.makedirs(save_path, exist_ok=True)
+            
+            # 1. Gráfico de rendimiento acumulado
+            plt.figure(figsize=(12, 6))
+            self.performance['Cumulative_Returns'].plot()
+            plt.title('Rendimiento Acumulado')
+            plt.xlabel('Fecha')
+            plt.ylabel('Retorno Acumulado')
+            plt.grid(True)
+            plt.savefig(f'{save_path}cumulative_returns.png', dpi=300, bbox_inches='tight')
+            plt.close()
+            
+            # 2. Gráfico de drawdowns
+            plt.figure(figsize=(12, 6))
+            self.performance['Drawdown'].plot()
+            plt.title('Drawdowns')
+            plt.xlabel('Fecha')
+            plt.ylabel('Drawdown')
+            plt.grid(True)
+            plt.savefig(f'{save_path}drawdowns.png', dpi=300, bbox_inches='tight')
+            plt.close()
+            
+            # 3. Gráfico de regímenes de mercado
+            if hasattr(self, 'regime_history') and len(self.regime_history) > 0:
+                plt.figure(figsize=(12, 6))
+                self.regime_history.plot()
+                plt.title('Regímenes de Mercado Detectados')
+                plt.xlabel('Fecha')
+                plt.ylabel('Régimen')
+                plt.yticks(range(self.n_regimes))
+                plt.grid(True)
+                plt.savefig(f'{save_path}market_regimes.png', dpi=300, bbox_inches='tight')
+                plt.close()
+            
+            # 4. Gráfico de exposición a activos a lo largo del tiempo
+            if hasattr(self, 'weights_history') and len(self.weights_history) > 0:
+                # Seleccionar los 10 activos con mayor peso promedio
+                top_assets = self.weights_history.abs().mean().nlargest(10).index
+                
+                plt.figure(figsize=(12, 8))
+                self.weights_history[top_assets].plot(colormap='viridis')
+                plt.title('Exposición a los 10 Activos Principales')
+                plt.xlabel('Fecha')
+                plt.ylabel('Peso en el Portafolio')
+                plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
+                plt.grid(True)
+                plt.savefig(f'{save_path}asset_exposure.png', dpi=300, bbox_inches='tight')
+                plt.close()
+                
+                # 5. Heatmap de pesos a lo largo del tiempo
+                plt.figure(figsize=(14, 10))
+                sns.heatmap(
+                    self.weights_history[top_assets].T,
+                    cmap='RdBu_r',
+                    center=0,
+                    robust=True,
+                    cbar_kws={'label': 'Peso'}
+                )
+                plt.title('Evolución de Pesos del Portafolio (Top 10 Activos)')
+                plt.xlabel('Tiempo')
+                plt.ylabel('Activo')
+                plt.savefig(f'{save_path}weights_heatmap.png', dpi=300, bbox_inches='tight')
+                plt.close()
+            
+            # 6. Distribución de retornos
+            plt.figure(figsize=(12, 6))
+            sns.histplot(self.performance['Returns'], kde=True)
+            plt.title('Distribución de Retornos Diarios')
+            plt.xlabel('Retorno')
+            plt.ylabel('Frecuencia')
+            plt.grid(True)
+            plt.savefig(f'{save_path}returns_distribution.png', dpi=300, bbox_inches='tight')
+            plt.close()
+            
+            print(f"Gráficos guardados en {save_path}")
+            
+        except Exception as e:
+            logging.error(f"Error en plot_results: {str(e)}", exc_info=True)
+    
+    def save_results(self, save_path='./artifacts/results/data/'):
+        """
+        Guarda los resultados en archivos CSV.
+        
+        Parámetros:
+        -----------
+        save_path : str
+            Ruta donde guardar los archivos
+        """
+        try:
+            # Crear directorio si no existe
+            os.makedirs(save_path, exist_ok=True)
+            
+            # Guardar rendimiento
+            if self.performance is not None:
+                self.performance.to_csv(f'{save_path}performance.csv')
+            
+            # Guardar pesos
+            if hasattr(self, 'weights_history') and len(self.weights_history) > 0:
+                self.weights_history.to_csv(f'{save_path}weights_history.csv')
+            
+            # Guardar regímenes
+            if hasattr(self, 'regime_history') and len(self.regime_history) > 0:
+                self.regime_history.to_csv(f'{save_path}regime_history.csv')
+            
+            # Guardar métricas
+            metrics = self.calculate_metrics()
+            pd.Series(metrics).to_csv(f'{save_path}metrics.csv')
+            
+            # Guardar configuración
+            config = {
+                'start_date': self.start_date,
+                'end_date': self.end_date,
+                'lookback_window': self.lookback_window,
+                'regime_window': self.regime_window,
+                'n_regimes': self.n_regimes,
+                'rebalance_freq': self.rebalance_freq,
+                'vol_target': self.vol_target,
+                'max_leverage': self.max_leverage,
+                'n_assets': len(self.symbols)
+            }
+            pd.Series(config).to_csv(f'{save_path}config.csv')
+            
+            print(f"Resultados guardados en {save_path}")
+            
+        except Exception as e:
+            logging.error(f"Error en save_results: {str(e)}", exc_info=True)
+    
+    def run_walk_forward_analysis(self, train_size=0.6, step_size=126):
+        """
+        Ejecuta análisis walk-forward para evaluar la robustez de la estrategia.
+        
+        Parámetros:
+        -----------
+        train_size : float
+            Proporción de datos a usar para entrenamiento en cada ventana
+        step_size : int
+            Tamaño del paso para avanzar la ventana de prueba (en días)
+            
+        Retorna:
+        --------
+        wfa_results : DataFrame
+            Resultados del análisis walk-forward
+        """
+        try:
+            # Asegurar que tenemos suficientes datos
+            if len(self.returns) < self.lookback_window + 2 * step_size:
+                raise ValueError("No hay suficientes datos para análisis walk-forward")
+            
+            # Inicializar resultados
+            wfa_results = []
+            dates = self.returns.index
+            
+            # Definir ventanas
+            start_idx = self.lookback_window
+            while start_idx + step_size < len(dates):
+                # Definir índices de entrenamiento y prueba
+                train_end_idx = start_idx + int((len(dates) - start_idx) * train_size)
+                test_end_idx = min(train_end_idx + step_size, len(dates))
+                
+                train_start_date = dates[start_idx]
+                train_end_date = dates[train_end_idx - 1]
+                test_start_date = dates[train_end_idx]
+                test_end_date = dates[test_end_idx - 1]
+                
+                print(f"\nVentana WFA: {test_start_date.strftime('%Y-%m-%d')} a {test_end_date.strftime('%Y-%m-%d')}")
+                
+                # Ejecutar backtest en datos de entrenamiento
+                train_performance = self.backtest(
+                    start_date=train_start_date,
+                    end_date=train_end_date
+                )
+                
+                # Guardar pesos óptimos del último rebalanceo
+                last_weights = self.weights_history.iloc[-1]
+                
+                # Ejecutar backtest en datos de prueba con pesos fijos
+                # Esto simula trading real sin reoptimización
+                test_returns = self.returns.loc[test_start_date:test_end_date]
+                test_portfolio_values = [1.0]
+                
+                for date, returns in test_returns.iterrows():
+                    # Calcular retorno del portafolio
+                    portfolio_return = (last_weights * returns).sum()
+                    test_portfolio_values.append(test_portfolio_values[-1] * (1 + portfolio_return))
+                
+                # Calcular métricas para esta ventana
+                test_returns_series = pd.Series(
+                    [test_portfolio_values[i+1]/test_portfolio_values[i] - 1 for i in range(len(test_portfolio_values)-1)],
+                    index=test_returns.index
+                )
+                
+                test_performance = pd.DataFrame({
+                    'Returns': test_returns_series,
+                    'Cumulative_Returns': (1 + test_returns_series).cumprod()
+                })
+                
+                test_performance['Drawdown'] = 1 - test_performance['Cumulative_Returns'] / test_performance['Cumulative_Returns'].cummax()
+                
+                # Calcular métricas
+                total_return = test_performance['Cumulative_Returns'].iloc[-1] - 1
+                ann_factor = 252
+                ann_return = (1 + total_return) ** (ann_factor / len(test_returns_series)) - 1
+                ann_volatility = test_returns_series.std() * np.sqrt(ann_factor)
+                sharpe_ratio = ann_return / ann_volatility if ann_volatility > 0 else 0
+                max_drawdown = test_performance['Drawdown'].max()
+                
+                # Guardar resultados
+                wfa_results.append({
+                    'Test_Start_Date': test_start_date,
+                    'Test_End_Date': test_end_date,
+                    'Total_Return': total_return,
+                    'Annualized_Return': ann_return,
+                    'Annualized_Volatility': ann_volatility,
+                    'Sharpe_Ratio': sharpe_ratio,
+                    'Max_Drawdown': max_drawdown
+                })
+                
+                # Avanzar ventana
+                start_idx = train_end_idx
+            
+            # Convertir resultados a DataFrame
+            wfa_df = pd.DataFrame(wfa_results)
+            
+            # Guardar resultados
+            wfa_df.to_csv('./artifacts/results/data/walk_forward_analysis.csv', index=False)
+            
+            # Calcular métricas agregadas
+            wfa_metrics = {
+                'Mean_Sharpe': wfa_df['Sharpe_Ratio'].mean(),
+                'Median_Sharpe': wfa_df['Sharpe_Ratio'].median(),
+                'Min_Sharpe': wfa_df['Sharpe_Ratio'].min(),
+                'Max_Sharpe': wfa_df['Sharpe_Ratio'].max(),
+                'Mean_Return': wfa_df['Annualized_Return'].mean(),
+                'Mean_Volatility': wfa_df['Annualized_Volatility'].mean(),
+                'Mean_Drawdown': wfa_df['Max_Drawdown'].mean(),
+                'Consistency': (wfa_df['Sharpe_Ratio'] > 0).mean()
+            }
+            
+            # Guardar métricas agregadas
+            pd.Series(wfa_metrics).to_csv('./artifacts/results/data/walk_forward_metrics.csv')
+            
+            # Visualizar resultados
+            plt.figure(figsize=(12, 8))
+            plt.subplot(2, 1, 1)
+            plt.bar(range(len(wfa_df)), wfa_df['Sharpe_Ratio'], color='skyblue')
+            plt.axhline(y=0, color='r', linestyle='-')
+            plt.title('Sharpe Ratio por Ventana de Prueba')
+            plt.xticks(range(len(wfa_df)), [d.strftime('%Y-%m') for d in wfa_df['Test_Start_Date']], rotation=45)
+            plt.grid(True)
+            
+            plt.subplot(2, 1, 2)
+            plt.bar(range(len(wfa_df)), wfa_df['Total_Return'], color='lightgreen')
+            plt.axhline(y=0, color='r', linestyle='-')
+            plt.title('Retorno Total por Ventana de Prueba')
+            plt.xticks(range(len(wfa_df)), [d.strftime('%Y-%m') for d in wfa_df['Test_Start_Date']], rotation=45)
+            plt.grid(True)
+            
+            plt.tight_layout()
+            plt.savefig('./artifacts/results/figures/walk_forward_results.png', dpi=300, bbox_inches='tight')
+            plt.close()
+            
+            return wfa_df
+            
+        except Exception as e:
+            logging.error(f"Error en run_walk_forward_analysis: {str(e)}", exc_info=True)
+            return pd.DataFrame()
+
+# Ejecutar la estrategia
+if __name__ == "__main__":
+    try:
+        # Inicializar estrategia
+        strategy = AdaptiveMultifactorStrategy(
+            start_date='2015-01-01',
+            end_date='2023-01-01',
+            lookback_window=252,
+            regime_window=126,
+            n_regimes=3,
+            rebalance_freq=21,
+            vol_target=0.10,
+            max_leverage=1.5
+        )
+        
+        # Ejecutar backtest
+        performance = strategy.backtest()
+        
+        # Calcular métricas
+        metrics = strategy.calculate_metrics()
+        print("\nMétricas de Rendimiento:")
+        for key, value in metrics.items():
+            print(f"{key}: {value:.4f}")
+        
+        # Generar visualizaciones
+        strategy.plot_results()
+        
+        # Guardar resultados
+        strategy.save_results()
+        
+        # Ejecutar análisis walk-forward
+        wfa_results = strategy.run_walk_forward_analysis(train_size=0.6, step_size=126)
+        
+        print("\nAnálisis completado. Todos los resultados guardados en ./artifacts/results/")
+        
+    except Exception as e:
+        logging.error(f"Error en la ejecución principal: {str(e)}", exc_info=True)
+        print(f"Error: {str(e)}. Ver ./artifacts/errors.txt para más detalles.")
+```
+
+==================================================
+REVISOR_CODIGO
+==================================================
+
+# Revisión de Código
+
+1. ¿El código implementa correctamente la idea? **Parcialmente**
+
+El código implementa varios aspectos clave de la idea conceptual, como la extracción de factores latentes mediante PCA, detección de regímenes con modelos de mezcla gaussiana, y optimización de portafolio con control de volatilidad. Sin embargo, hay varias áreas donde la implementación se desvía de la idea original o presenta problemas técnicos.
+
+2. Sugerencias específicas:
+
+1. **Falta de implementación bayesiana**: La idea original enfatiza el uso de métodos bayesianos (PCA dinámico bayesiano, inferencia bayesiana para regímenes), pero la implementación usa versiones frecuentistas (PCA estándar, GMM). Considerar usar `pymc` (no pymc3) para implementar estos componentes.
+
+2. **Problema de look-ahead bias en `predict_returns`**: En líneas 385-417, la función usa datos futuros para calcular retornos esperados por régimen. Aunque hay un intento de evitar esto con `idx + horizon < len(returns_np) - horizon`, sigue habiendo un sesgo porque los regímenes se determinan usando todos los datos, incluyendo futuros.
+
+3. **Alineación temporal incorrecta en backtest**: En líneas 520-525, el código calcula retornos para el día siguiente pero usa `portfolio_values[:-1]` y `backtest_dates[:-1]` al final, lo que causa desalineación. Debería usar `portfolio_values[1:]` y mantener las fechas originales.
+
+4. **Falta de estimador shrinkage para matrices de correlación**: La idea menciona usar estimadores shrinkage adaptativos (Ledoit-Wolf) para matrices de correlación, pero esto no está implementado.
+
+5. **Manejo inadecuado de NaNs en `extract_latent_factors`**: En líneas 242-254, el código usa imputación por media móvil y luego rellena con ceros, lo que puede distorsionar la estructura de correlación. Mejor usar métodos específicos para datos faltantes en series temporales.
+
+6. **Falta de filtro Kalman simplificado**: La idea menciona implementar una versión eficiente del filtro de Kalman para rastrear la evolución temporal de factores latentes, pero esto no está implementado.
+
+7. **Problema en la detección de regímenes**: En líneas 304-307, se usa solo la volatilidad como característica para el modelo de regímenes, ignorando la estructura de correlación mencionada en la idea original.
+
+8. **Inconsistencia en el cálculo de la matriz de covarianza**: En líneas 456-458, se calcula la matriz de covarianza basada en factores latentes, pero no está claro si `factor_loadings` tiene la dimensionalidad correcta para esta operación.
+
+9. **Falta de validación cruzada para determinar K**: La idea menciona usar validación cruzada para determinar el número óptimo de factores, pero en líneas 267-288 se usa un umbral fijo de varianza explicada.
+
+10. **Problema en el análisis walk-forward**: En líneas 686-689, se usan pesos fijos del último rebalanceo para todo el período de prueba, lo que no refleja la naturaleza adaptativa de la estrategia. Debería permitir rebalanceos durante el período de prueba.
+
+11. **Falta de control de turnover**: La idea menciona límites de turnover, pero no hay implementación de restricciones de turnover en la optimización del portafolio.
+
+12. **Ausencia de stop-loss dinámicos**: La idea menciona stop-loss dinámicos basados en la incertidumbre del modelo bayesiano, pero esto no está implementado.
+
+13. **Falta de overlay de liquidez**: La idea menciona un overlay de liquidez basado en volumen, pero no hay implementación de restricciones de liquidez.
+
+14. **Problema en el cálculo de métricas**: En líneas 550-553, el cálculo de retorno anualizado asume compounding diario, pero debería usar la fórmula `(1 + total_return) ** (ann_factor / len(returns)) - 1` para anualizar correctamente.
+
+15. **Falta de manejo de datos ajustados por dividendos**: No se especifica explícitamente `auto_adjust=True` en `yf.download()` (línea 196), aunque es el valor predeterminado en versiones recientes de yfinance.

@@ -24,13 +24,16 @@ dependencies = [
     "tqdm (>=4.67.1,<5.0.0)",
     "arch (>=7.2.0,<8.0.0)",
     "cvxpy (>=1.6.5,<2.0.0)",
-    "networkx (>=3.4.2,<4.0.0)"
+    "networkx (>=3.4.2,<4.0.0)",
+    "numba (>=0.61.2,<0.62.0)",
+    "alpaca-trade-api (>=3.2.0,<4.0.0)",
+    "schedule (>=1.2.2,<2.0.0)"
 ]
 
 [tool.poetry]
 packages = [{include = "incubator", from = "src"}]
-
-
+# packages = [{include = "incubator"}]
+# packages = [{ include = "src/incubator"}]
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
