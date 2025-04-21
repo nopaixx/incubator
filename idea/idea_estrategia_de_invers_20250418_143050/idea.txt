@@ -1,0 +1,164 @@
+# IDEA FINAL: ESTRATEGIA DE MEAN REVERSION ADAPTATIVA CON DETECCIÓN MULTI-RÉGIMEN
+
+## Descripción
+
+Esta estrategia aprovecha los principios de reversión a la media en los mercados financieros, pero con un enfoque adaptativo que reconoce diferentes regímenes de mercado. Utiliza un sistema ensemble para detectar regímenes, modelado avanzado de volatilidad, y un sistema de puntuación ponderada para generar señales de trading. La estrategia está diseñada para ajustarse dinámicamente a las condiciones cambiantes del mercado, reduciendo drawdowns y mejorando la consistencia de los retornos.
+
+## Características principales
+
+- **Detección de regímenes adaptativa**: Combina múltiples indicadores para clasificar el entorno de mercado actual
+- **Modelado de volatilidad asimétrico**: Captura la naturaleza asimétrica de la volatilidad en mercados financieros
+- **Sistema de puntuación para señales**: Enfoque probabilístico en lugar de filtros binarios
+- **Gestión de riesgo dinámica**: Ajuste automático según el régimen y las condiciones de mercado
+- **Protección contra eventos extremos**: Circuit breakers y mecanismos de protección contra movimientos inesperados
+
+## Detalles de la Implementación
+
+### 1. Detección de Regímenes de Mercado
+
+Implementar un sistema de clasificación de regímenes simplificado pero robusto:
+
+- **Modelo de Cambio de Régimen de Markov (MRSM)**:
+  - Utilizar 2 estados (alta/baja volatilidad) para evitar sobreajuste
+  - Entrenar con retornos normalizados y rangos diarios (high-low)
+  - Implementar una ventana de entrenamiento adaptativa: 120 días en baja volatilidad, 60 días en alta volatilidad
+
+- **Indicadores complementarios**:
+  - Momentum multi-timeframe: ROC de 5, 21 y 50 días
+  - Aproximación de term structure de volatilidad: ratio entre VIX y volatilidad histórica de 10 días
+  - Correlación cruzada entre sectores principales del S&P 500
+
+- **Sistema de votación ponderada**:
+  - MRSM: 50% del peso
+  - Indicadores de momentum: 30% del peso
+  - Indicadores de volatilidad: 20% del peso
+  - Implementar una función de transición suave entre regímenes
+
+### 2. Modelado de Volatilidad
+
+Crear un ensemble de estimadores de volatilidad:
+
+- **EGARCH(1,1)**:
+  - Captura la asimetría en la respuesta de volatilidad
+  - Reestimar parámetros cada 20 días de trading
+  - Peso: 40% en el ensemble final
+
+- **Volatilidad Implícita**:
+  - Utilizar VIX como proxy de expectativas de mercado
+  - Normalizar respecto a su media móvil de 20 días
+  - Peso: 40% en el ensemble final
+
+- **Volatilidad Realizada Adaptativa**:
+  - Calcular con una ventana que se ajusta según la estabilidad del régimen
+  - Ventana base: 10 días, ajustada entre 5-20 días según volatilidad
+  - Peso: 20% en el ensemble final
+
+- **Calibración de bandas**:
+  - Implementar bandas asimétricas: más estrechas para señales alcistas (0.8× factor), más amplias para bajistas (1.2× factor)
+  - Ajustar dinámicamente basándose en la autocorrelación de retornos recientes
+
+### 3. Sistema de Puntuación para Señales
+
+Implementar un sistema de puntuación (0-100) con los siguientes componentes:
+
+- **Indicador de Sobreextensión** (0-30 puntos):
+  - Calcular Z-score de precios respecto a media móvil adaptativa
+  - Período de la media: 10 días en alta volatilidad, 20 días en baja volatilidad
+  - Mayor puntuación en valores extremos (>2 o <-2 desviaciones)
+
+- **Divergencia Precio-Momentum** (0-25 puntos):
+  - Calcular correlación entre precio y ROC(5) en ventanas de 10 días
+  - Divergencia = correlación actual - media móvil de correlación(20)
+  - Mayor puntuación cuando la divergencia es significativa
+
+- **Reversión Estadística** (0-25 puntos):
+  - Z-score adaptativo basado en la distribución específica del régimen actual
+  - Calibrar umbrales según percentiles históricos específicos del régimen
+
+- **Filtro de Volumen Relativo** (0-20 puntos):
+  - Ratio del volumen actual vs. media móvil de 20 días
+  - Mayor puntuación con volumen elevado en dirección de la señal
+
+- **Generación de señales**:
+  - Señal de entrada cuando la puntuación total supera 70
+  - Entradas escalonadas: 50% de posición con puntuación 70-85, 100% con puntuación >85
+
+### 4. Gestión de Riesgo
+
+Implementar un sistema de gestión de riesgo multinivel:
+
+- **Sizing de posición adaptativo**:
+  - Tamaño base: 1% del capital por señal
+  - Factor de ajuste según régimen: 0.5-1.5× dependiendo de la volatilidad
+  - Ajuste adicional según la puntuación de la señal (0.8-1.2×)
+
+- **Circuit Breakers**:
+  - Suspensión de nuevas entradas cuando VIX > percentil 85 de su distribución de 3 meses
+  - Reducción de exposición cuando correlaciones entre sectores > percentil 90
+  - Filtro de eventos macroeconómicos: reducción de exposición en días de anuncios importantes
+
+- **Stop-Loss Dinámico**:
+  - Base: max(1.5 × ATR, 0.5 × VIX actual)
+  - Factor de ajuste según régimen: 1.2× en baja volatilidad, 0.8× en alta volatilidad
+  - Componente de aceleración: ajuste adicional si la velocidad de caída supera el percentil 95 histórico
+
+### 5. Gestión de Salidas
+
+Implementar un sistema de salidas escalonadas:
+
+- **Toma de Beneficios Adaptativa**:
+  - Primer objetivo: 0.5 × volatilidad_ensemble (30% de la posición)
+  - Segundo objetivo: 1.0 × volatilidad_ensemble (40% de la posición)
+  - Objetivo final: 1.5 × volatilidad_ensemble (30% restante)
+
+- **Trailing Stop Dinámico**:
+  - Inicialmente establecido en 2.0 × ATR desde el punto de entrada
+  - Se ajusta progresivamente más cerca a medida que se alcanzan los objetivos de beneficio
+  - Incorpora la volatilidad implícita como factor de ajuste
+
+- **Time-Based Exit**:
+  - Salida parcial (25%) si no se alcanza el primer objetivo en un período adaptativo
+  - Período base: 5 días, ajustado según régimen (3-7 días)
+
+### 6. Implementación Técnica
+
+- **Datos requeridos de yfinance**:
+  - Precios OHLCV diarios para los activos objetivo
+  - Índice VIX (^VIX)
+  - Datos sectoriales del S&P 500 (XLF, XLK, XLE, etc.)
+
+- **Procesamiento de datos**:
+  - Manejar datos faltantes mediante interpolación lineal
+  - Normalizar todos los indicadores utilizando z-scores o percentiles
+  - Implementar un sistema de caché para cálculos intensivos (EGARCH, MRSM)
+
+- **Backtesting y validación**:
+  - Implementar backtesting con walk-forward analysis (ventanas de 2 años)
+  - Evitar look-ahead bias asegurando que todos los cálculos usen solo datos disponibles en el momento de la decisión
+  - Validar la robustez mediante bootstrapping y simulaciones de Monte Carlo
+
+### 7. Métricas y Expectativas de Desempeño
+
+- **Métricas clave**:
+  - Ratio de Sharpe objetivo: 1.2-1.5
+  - Drawdown máximo esperado: 12-15%
+  - Ratio de aciertos: 58-63%
+  - Ratio beneficio/riesgo: 1.2-1.5
+
+- **Análisis de atribución**:
+  - Descomponer retornos por régimen de mercado
+  - Analizar contribución de cada componente del sistema de puntuación
+  - Evaluar exposición a factores conocidos (volatilidad, value, momentum)
+
+- **Monitoreo de desempeño**:
+  - Implementar un sistema de alertas para detectar desviaciones del comportamiento esperado
+  - Recalibrar parámetros trimestralmente basándose en datos recientes
+  - Mantener un registro de decisiones y señales para análisis post-mortem
+
+## Consideraciones Finales
+
+Esta estrategia está diseñada para capturar oportunidades de reversión a la media mientras se adapta a diferentes entornos de mercado. Su enfoque en la adaptabilidad, la gestión de riesgo dinámica y la protección contra eventos extremos la hace potencialmente más robusta que estrategias tradicionales de reversión a la media.
+
+La implementación requiere atención cuidadosa a la calibración de parámetros y validación para evitar el sobreajuste. El sistema de puntuación ponderada y la transición suave entre regímenes ayudan a mitigar falsos positivos y a mantener la robustez en entornos cambiantes.
+
+La estrategia es adecuada para traders cuantitativos con experiencia en implementación de sistemas adaptativos y acceso a datos diarios de mercado a través de yfinance.

@@ -1,0 +1,850 @@
+[2025-04-20 10:53:49] INFO: Obtenidos 503 símbolos del S&P 500
+[2025-04-20 10:53:49] INFO: Seleccionados 10 símbolos para el universo
+[2025-04-20 10:53:50] INFO: Descargados datos para 10 símbolos
+[2025-04-20 10:53:50] INFO: Después de filtrado: 10 símbolos (eliminados 0)
+[2025-04-20 10:53:50] INFO: Iniciando backtest con 153 días de trading
+[2025-04-20 10:53:50] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-10 00:00:00
+[2025-04-20 10:53:50] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-11 00:00:00
+[2025-04-20 10:53:50] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-12 00:00:00
+[2025-04-20 10:53:50] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-13 00:00:00
+[2025-04-20 10:53:50] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-16 00:00:00
+[2025-04-20 10:53:50] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-17 00:00:00
+[2025-04-20 10:53:50] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-18 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-19 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-20 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-23 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-24 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-25 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-26 00:00:00
+[2025-04-20 10:53:51] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-27 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-30 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-01 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-02 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-03 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-04 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-07 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-08 00:00:00
+[2025-04-20 10:53:52] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52] INFO: Buscando pares cointegrados para 2024-10-08 00:00:00
+[2025-04-20 10:53:52] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:53:53] INFO: Probados 45 pares, encontrados 1 cointegrados, 0 válidos
+[2025-04-20 10:53:53] INFO: Encontrados 0 pares para fecha 2024-10-08 00:00:00
+[2025-04-20 10:53:53] INFO: Gestionando cartera para 2024-10-08 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:53:53] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:53:53] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-09 00:00:00
+[2025-04-20 10:53:53] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:53] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-10 00:00:00
+[2025-04-20 10:53:53] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:53] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-11 00:00:00
+[2025-04-20 10:53:53] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:53] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-14 00:00:00
+[2025-04-20 10:53:53] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-15 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-16 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-17 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-18 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-21 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-22 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-23 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-24 00:00:00
+[2025-04-20 10:53:54] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-25 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-28 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-29 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-30 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-31 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-01 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-04 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-05 00:00:00
+[2025-04-20 10:53:55] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-06 00:00:00
+[2025-04-20 10:53:56] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56] INFO: Buscando pares cointegrados para 2024-11-06 00:00:00
+[2025-04-20 10:53:56] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:53:56] INFO: Probados 45 pares, encontrados 1 cointegrados, 0 válidos
+[2025-04-20 10:53:56] INFO: Encontrados 0 pares para fecha 2024-11-06 00:00:00
+[2025-04-20 10:53:56] INFO: Gestionando cartera para 2024-11-06 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:53:56] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:53:56] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-07 00:00:00
+[2025-04-20 10:53:56] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-08 00:00:00
+[2025-04-20 10:53:56] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-11 00:00:00
+[2025-04-20 10:53:56] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-12 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-13 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-14 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-15 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-18 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-19 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-20 00:00:00
+[2025-04-20 10:53:57] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-21 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-22 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-25 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-26 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-27 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-29 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-02 00:00:00
+[2025-04-20 10:53:58] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-03 00:00:00
+[2025-04-20 10:53:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-04 00:00:00
+[2025-04-20 10:53:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-05 00:00:00
+[2025-04-20 10:53:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-06 00:00:00
+[2025-04-20 10:53:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59] INFO: Buscando pares cointegrados para 2024-12-06 00:00:00
+[2025-04-20 10:53:59] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:00] INFO: Probados 45 pares, encontrados 3 cointegrados, 0 válidos
+[2025-04-20 10:54:00] INFO: Encontrados 0 pares para fecha 2024-12-06 00:00:00
+[2025-04-20 10:54:00] INFO: Gestionando cartera para 2024-12-06 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:54:00] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-09 00:00:00
+[2025-04-20 10:54:00] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-10 00:00:00
+[2025-04-20 10:54:00] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-11 00:00:00
+[2025-04-20 10:54:00] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-12 00:00:00
+[2025-04-20 10:54:00] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-13 00:00:00
+[2025-04-20 10:54:00] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-16 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-17 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-18 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-19 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-20 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-23 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-24 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-26 00:00:00
+[2025-04-20 10:54:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-27 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-30 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-31 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-02 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-03 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-06 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-07 00:00:00
+[2025-04-20 10:54:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-08 00:00:00
+[2025-04-20 10:54:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03] INFO: Buscando pares cointegrados para 2025-01-08 00:00:00
+[2025-04-20 10:54:03] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:03] INFO: Probados 45 pares, encontrados 1 cointegrados, 0 válidos
+[2025-04-20 10:54:03] INFO: Encontrados 0 pares para fecha 2025-01-08 00:00:00
+[2025-04-20 10:54:03] INFO: Gestionando cartera para 2025-01-08 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:54:03] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-10 00:00:00
+[2025-04-20 10:54:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-13 00:00:00
+[2025-04-20 10:54:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-14 00:00:00
+[2025-04-20 10:54:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-15 00:00:00
+[2025-04-20 10:54:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-16 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-17 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-21 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-22 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-23 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-24 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-27 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-28 00:00:00
+[2025-04-20 10:54:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-29 00:00:00
+[2025-04-20 10:54:05] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-30 00:00:00
+[2025-04-20 10:54:05] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-31 00:00:00
+[2025-04-20 10:54:05] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-03 00:00:00
+[2025-04-20 10:54:05] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-04 00:00:00
+[2025-04-20 10:54:05] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-05 00:00:00
+[2025-04-20 10:54:06] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-06 00:00:00
+[2025-04-20 10:54:06] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-07 00:00:00
+[2025-04-20 10:54:06] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-10 00:00:00
+[2025-04-20 10:54:06] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06] INFO: Buscando pares cointegrados para 2025-02-10 00:00:00
+[2025-04-20 10:54:06] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:06] INFO: Probados 45 pares, encontrados 2 cointegrados, 1 válidos
+[2025-04-20 10:54:06] INFO: Encontrados 1 pares para fecha 2025-02-10 00:00:00
+[2025-04-20 10:54:06] INFO: Gestionando cartera para 2025-02-10 00:00:00. Pares activos: 0, Pares disponibles: 1
+[2025-04-20 10:54:06] INFO: Evaluando 1 nuevos pares para 5 slots disponibles
+[2025-04-20 10:54:07] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:54:07] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-11 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-12 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-13 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-14 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-18 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-19 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-20 00:00:00
+[2025-04-20 10:54:07] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-21 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-24 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-25 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-26 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-27 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-28 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-03 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-04 00:00:00
+[2025-04-20 10:54:08] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-05 00:00:00
+[2025-04-20 10:54:09] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-06 00:00:00
+[2025-04-20 10:54:09] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-07 00:00:00
+[2025-04-20 10:54:09] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-10 00:00:00
+[2025-04-20 10:54:09] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-11 00:00:00
+[2025-04-20 10:54:09] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-12 00:00:00
+[2025-04-20 10:54:09] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09] INFO: Buscando pares cointegrados para 2025-03-12 00:00:00
+[2025-04-20 10:54:09] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:10] INFO: Probados 45 pares, encontrados 3 cointegrados, 0 válidos
+[2025-04-20 10:54:10] INFO: Encontrados 0 pares para fecha 2025-03-12 00:00:00
+[2025-04-20 10:54:10] INFO: Gestionando cartera para 2025-03-12 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:54:10] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:10] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-13 00:00:00
+[2025-04-20 10:54:10] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-14 00:00:00
+[2025-04-20 10:54:10] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-17 00:00:00
+[2025-04-20 10:54:10] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-18 00:00:00
+[2025-04-20 10:54:10] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-19 00:00:00
+[2025-04-20 10:54:10] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-20 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-21 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-24 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-25 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-26 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-27 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-28 00:00:00
+[2025-04-20 10:54:11] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-31 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-01 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-02 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-03 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-04 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-07 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-08 00:00:00
+[2025-04-20 10:54:12] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:13] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-09 00:00:00
+[2025-04-20 10:54:13] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:13] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-10 00:00:00
+[2025-04-20 10:54:13] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:13] INFO: Buscando pares cointegrados para 2025-04-10 00:00:00
+[2025-04-20 10:54:13] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:13] INFO: Probados 45 pares, encontrados 2 cointegrados, 1 válidos
+[2025-04-20 10:54:13] INFO: Encontrados 1 pares para fecha 2025-04-10 00:00:00
+[2025-04-20 10:54:13] INFO: Gestionando cartera para 2025-04-10 00:00:00. Pares activos: 0, Pares disponibles: 1
+[2025-04-20 10:54:13] INFO: Evaluando 1 nuevos pares para 5 slots disponibles
+[2025-04-20 10:54:13] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:54:13] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:13] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-11 00:00:00
+[2025-04-20 10:54:13] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-14 00:00:00
+[2025-04-20 10:54:14] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-15 00:00:00
+[2025-04-20 10:54:14] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-16 00:00:00
+[2025-04-20 10:54:14] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-17 00:00:00
+[2025-04-20 10:54:14] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:15] INFO: Procesando ventana 1/2: 2024-01-02 00:00:00 - 2025-01-02 00:00:00
+[2025-04-20 10:54:15] INFO: Buscando pares cointegrados para 2024-10-01 00:00:00
+[2025-04-20 10:54:15] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:16] INFO: Probados 45 pares, encontrados 5 cointegrados, 0 válidos
+[2025-04-20 10:54:16] INFO: Encontrados 0 pares cointegrados para ventana 1
+[2025-04-20 10:54:16] INFO: Sin retornos para ventana 1
+[2025-04-20 10:54:16] INFO: Procesando ventana 2/2: 2024-04-03 00:00:00 - 2025-04-04 00:00:00
+[2025-04-20 10:54:16] INFO: Buscando pares cointegrados para 2025-01-01 00:00:00
+[2025-04-20 10:54:16] INFO: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:16] INFO: Probados 45 pares, encontrados 6 cointegrados, 6 válidos
+[2025-04-20 10:54:16] INFO: Encontrados 6 pares cointegrados para ventana 2
+[2025-04-20 10:54:16] INFO: Evaluando par 1: DTE-K (beta=0.4411)
+[2025-04-20 10:54:16] INFO: Par DTE-K añadido con 1 señales
+[2025-04-20 10:54:16] INFO: Evaluando par 2: IDXX-RTX (beta=-0.1616)
+[2025-04-20 10:54:16] INFO: Par IDXX-RTX añadido con 1 señales
+[2025-04-20 10:54:16] INFO: Evaluando par 3: IDXX-K (beta=-0.1289)
+[2025-04-20 10:54:16] INFO: Par IDXX-K añadido con 1 señales
+[2025-04-20 10:54:16] INFO: Evaluando par 4: IDXX-LIN (beta=-0.0852)
+[2025-04-20 10:54:16] INFO: Par IDXX-LIN añadido con 1 señales
+[2025-04-20 10:54:16] INFO: Evaluando par 5: IDXX-LHX (beta=-0.0812)
+[2025-04-20 10:54:16] INFO: Par IDXX-LHX añadido con 1 señales
+[2025-04-20 10:56:26] INFO: Obtenidos 503 símbolos del S&P 500
+[2025-04-20 10:56:26] INFO: Seleccionados 100 símbolos para el universo
+[2025-04-20 10:56:28] INFO: Descargados datos para 100 símbolos
+[2025-04-20 10:56:28] INFO: Después de filtrado: 99 símbolos (eliminados 1)
+[2025-04-20 10:56:28] INFO: Iniciando backtest con 153 días de trading
+[2025-04-20 10:56:28] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-10 00:00:00
+[2025-04-20 10:56:28] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-11 00:00:00
+[2025-04-20 10:56:28] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-12 00:00:00
+[2025-04-20 10:56:28] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-13 00:00:00
+[2025-04-20 10:56:28] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-16 00:00:00
+[2025-04-20 10:56:28] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-17 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-18 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-19 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-20 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-23 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-24 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-25 00:00:00
+[2025-04-20 10:56:29] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-26 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-27 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-09-30 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-01 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-02 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-03 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-04 00:00:00
+[2025-04-20 10:56:30] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-07 00:00:00
+[2025-04-20 10:56:31] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-08 00:00:00
+[2025-04-20 10:56:31] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31] INFO: Buscando pares cointegrados para 2024-10-08 00:00:00
+[2025-04-20 10:56:31] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:56:31] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:56:41] INFO: Probados 1225 pares, encontrados 42 cointegrados, 8 válidos
+[2025-04-20 10:56:41] INFO: Encontrados 8 pares para fecha 2024-10-08 00:00:00
+[2025-04-20 10:56:41] INFO: Gestionando cartera para 2024-10-08 00:00:00. Pares activos: 0, Pares disponibles: 8
+[2025-04-20 10:56:41] INFO: Evaluando 8 nuevos pares para 15 slots disponibles
+[2025-04-20 10:56:41] INFO: Añadiendo nuevo par GEHC-MA con posición 1.0
+[2025-04-20 10:56:42] INFO: Añadiendo nuevo par GEHC-TPR con posición 1.0
+[2025-04-20 10:56:43] INFO: Añadidos 2 nuevos pares a la cartera
+[2025-04-20 10:56:43] INFO: Cartera actualizada: 2 pares activos
+[2025-04-20 10:56:43] INFO: Retorno diario: -0.0188% (bruto: 0.0312%, costos: 0.0500%)
+[2025-04-20 10:56:43] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-09 00:00:00
+[2025-04-20 10:56:43] INFO: Parámetros actualizados para régimen 1: z_entry=2.20, z_exit=0.00
+[2025-04-20 10:56:43] INFO: Retorno diario: -0.2711% (bruto: -0.2211%, costos: 0.0500%)
+[2025-04-20 10:56:43] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-10 00:00:00
+[2025-04-20 10:56:43] INFO: Parámetros actualizados para régimen 1: z_entry=2.42, z_exit=0.00
+[2025-04-20 10:56:43] INFO: Retorno diario: -0.1315% (bruto: -0.0815%, costos: 0.0500%)
+[2025-04-20 10:56:43] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-11 00:00:00
+[2025-04-20 10:56:43] INFO: Parámetros actualizados para régimen 1: z_entry=2.66, z_exit=0.00
+[2025-04-20 10:56:43] INFO: Retorno diario: -0.2621% (bruto: -0.2121%, costos: 0.0500%)
+[2025-04-20 10:56:43] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-14 00:00:00
+[2025-04-20 10:56:43] INFO: Parámetros actualizados para régimen 1: z_entry=2.93, z_exit=0.00
+[2025-04-20 10:56:43] INFO: Retorno diario: -0.2176% (bruto: -0.1676%, costos: 0.0500%)
+[2025-04-20 10:56:43] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-15 00:00:00
+[2025-04-20 10:56:43] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:43] INFO: Retorno diario: -0.9332% (bruto: -0.8832%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-16 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: -1.7295% (bruto: -1.6795%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-17 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: 0.7999% (bruto: 0.8499%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-18 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: 0.1952% (bruto: 0.2452%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-21 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: -1.2216% (bruto: -1.1716%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-22 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: -0.0109% (bruto: 0.0391%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-23 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: 0.0256% (bruto: 0.0756%, costos: 0.0500%)
+[2025-04-20 10:56:44] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-24 00:00:00
+[2025-04-20 10:56:44] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44] INFO: Retorno diario: -0.5187% (bruto: -0.4687%, costos: 0.0500%)
+[2025-04-20 10:56:45] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-25 00:00:00
+[2025-04-20 10:56:45] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45] INFO: Retorno diario: -3.1847% (bruto: -3.1347%, costos: 0.0500%)
+[2025-04-20 10:56:45] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-28 00:00:00
+[2025-04-20 10:56:45] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45] INFO: Retorno diario: -2.9824% (bruto: -2.9324%, costos: 0.0500%)
+[2025-04-20 10:56:45] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-29 00:00:00
+[2025-04-20 10:56:45] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45] INFO: Retorno diario: 0.1136% (bruto: 0.1636%, costos: 0.0500%)
+[2025-04-20 10:56:45] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-30 00:00:00
+[2025-04-20 10:56:45] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45] INFO: Retorno diario: 1.4101% (bruto: 1.4601%, costos: 0.0500%)
+[2025-04-20 10:56:45] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-10-31 00:00:00
+[2025-04-20 10:56:45] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45] INFO: Retorno diario: 2.6208% (bruto: 2.6708%, costos: 0.0500%)
+[2025-04-20 10:56:45] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-01 00:00:00
+[2025-04-20 10:56:45] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45] INFO: Retorno diario: -1.5496% (bruto: -1.4996%, costos: 0.0500%)
+[2025-04-20 10:56:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-04 00:00:00
+[2025-04-20 10:56:46] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46] INFO: Retorno diario: -0.4042% (bruto: -0.3542%, costos: 0.0500%)
+[2025-04-20 10:56:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-05 00:00:00
+[2025-04-20 10:56:46] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46] INFO: Retorno diario: 0.9075% (bruto: 0.9575%, costos: 0.0500%)
+[2025-04-20 10:56:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-06 00:00:00
+[2025-04-20 10:56:46] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46] INFO: Buscando pares cointegrados para 2024-11-06 00:00:00
+[2025-04-20 10:56:46] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:56:46] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:56:57] INFO: Probados 1225 pares, encontrados 78 cointegrados, 6 válidos
+[2025-04-20 10:56:57] INFO: Encontrados 6 pares para fecha 2024-11-06 00:00:00
+[2025-04-20 10:56:57] INFO: Gestionando cartera para 2024-11-06 00:00:00. Pares activos: 2, Pares disponibles: 6
+[2025-04-20 10:56:57] INFO: Cerrando posición para par GEHC-MA
+[2025-04-20 10:56:57] INFO: Cerrando posición para par GEHC-TPR
+[2025-04-20 10:56:57] INFO: Evaluando 6 nuevos pares para 15 slots disponibles
+[2025-04-20 10:56:58] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:56:58] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-07 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-08 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-11 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-12 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.70, z_exit=0.00
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-13 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.43, z_exit=0.00
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-14 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.19, z_exit=0.00
+[2025-04-20 10:56:59] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-15 00:00:00
+[2025-04-20 10:56:59] INFO: Parámetros actualizados para régimen 1: z_entry=2.41, z_exit=0.00
+[2025-04-20 10:57:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-18 00:00:00
+[2025-04-20 10:57:00] INFO: Parámetros actualizados para régimen 1: z_entry=2.17, z_exit=0.00
+[2025-04-20 10:57:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-19 00:00:00
+[2025-04-20 10:57:00] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-20 00:00:00
+[2025-04-20 10:57:00] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-21 00:00:00
+[2025-04-20 10:57:00] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-22 00:00:00
+[2025-04-20 10:57:00] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-25 00:00:00
+[2025-04-20 10:57:01] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-26 00:00:00
+[2025-04-20 10:57:01] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-27 00:00:00
+[2025-04-20 10:57:01] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-11-29 00:00:00
+[2025-04-20 10:57:01] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-02 00:00:00
+[2025-04-20 10:57:01] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-03 00:00:00
+[2025-04-20 10:57:01] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-04 00:00:00
+[2025-04-20 10:57:02] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-05 00:00:00
+[2025-04-20 10:57:02] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-06 00:00:00
+[2025-04-20 10:57:02] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02] INFO: Buscando pares cointegrados para 2024-12-06 00:00:00
+[2025-04-20 10:57:02] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:02] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:12] INFO: Probados 1225 pares, encontrados 63 cointegrados, 5 válidos
+[2025-04-20 10:57:12] INFO: Encontrados 5 pares para fecha 2024-12-06 00:00:00
+[2025-04-20 10:57:12] INFO: Gestionando cartera para 2024-12-06 00:00:00. Pares activos: 0, Pares disponibles: 5
+[2025-04-20 10:57:12] INFO: Evaluando 5 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:13] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:57:13] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:57:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-09 00:00:00
+[2025-04-20 10:57:14] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-10 00:00:00
+[2025-04-20 10:57:14] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-11 00:00:00
+[2025-04-20 10:57:14] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-12 00:00:00
+[2025-04-20 10:57:14] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-13 00:00:00
+[2025-04-20 10:57:14] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-16 00:00:00
+[2025-04-20 10:57:14] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-17 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-18 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-19 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-20 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-23 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-24 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-26 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-27 00:00:00
+[2025-04-20 10:57:15] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-30 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2024-12-31 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-02 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-03 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-06 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-07 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-08 00:00:00
+[2025-04-20 10:57:16] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16] INFO: Buscando pares cointegrados para 2025-01-08 00:00:00
+[2025-04-20 10:57:16] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:16] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:27] INFO: Probados 1225 pares, encontrados 76 cointegrados, 10 válidos
+[2025-04-20 10:57:27] INFO: Encontrados 10 pares para fecha 2025-01-08 00:00:00
+[2025-04-20 10:57:27] INFO: Gestionando cartera para 2025-01-08 00:00:00. Pares activos: 0, Pares disponibles: 10
+[2025-04-20 10:57:27] INFO: Evaluando 10 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:29] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:57:29] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:57:29] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-10 00:00:00
+[2025-04-20 10:57:29] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-13 00:00:00
+[2025-04-20 10:57:30] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-14 00:00:00
+[2025-04-20 10:57:30] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-15 00:00:00
+[2025-04-20 10:57:30] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-16 00:00:00
+[2025-04-20 10:57:30] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-17 00:00:00
+[2025-04-20 10:57:30] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-21 00:00:00
+[2025-04-20 10:57:30] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-22 00:00:00
+[2025-04-20 10:57:31] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-23 00:00:00
+[2025-04-20 10:57:31] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-24 00:00:00
+[2025-04-20 10:57:31] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-27 00:00:00
+[2025-04-20 10:57:31] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-28 00:00:00
+[2025-04-20 10:57:31] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-29 00:00:00
+[2025-04-20 10:57:31] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-30 00:00:00
+[2025-04-20 10:57:32] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-01-31 00:00:00
+[2025-04-20 10:57:32] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-03 00:00:00
+[2025-04-20 10:57:32] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-04 00:00:00
+[2025-04-20 10:57:32] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-05 00:00:00
+[2025-04-20 10:57:32] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-06 00:00:00
+[2025-04-20 10:57:32] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-07 00:00:00
+[2025-04-20 10:57:33] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-10 00:00:00
+[2025-04-20 10:57:33] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33] INFO: Buscando pares cointegrados para 2025-02-10 00:00:00
+[2025-04-20 10:57:33] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:33] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:43] INFO: Probados 1225 pares, encontrados 70 cointegrados, 12 válidos
+[2025-04-20 10:57:43] INFO: Encontrados 12 pares para fecha 2025-02-10 00:00:00
+[2025-04-20 10:57:43] INFO: Gestionando cartera para 2025-02-10 00:00:00. Pares activos: 0, Pares disponibles: 12
+[2025-04-20 10:57:43] INFO: Evaluando 12 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:45] INFO: Añadiendo nuevo par PHM-K con posición 1.0
+[2025-04-20 10:57:46] INFO: Añadidos 1 nuevos pares a la cartera
+[2025-04-20 10:57:46] INFO: Cartera actualizada: 1 pares activos
+[2025-04-20 10:57:46] INFO: Retorno diario: 0.6245% (bruto: 0.6745%, costos: 0.0500%)
+[2025-04-20 10:57:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-11 00:00:00
+[2025-04-20 10:57:46] INFO: Parámetros actualizados para régimen 1: z_entry=1.75, z_exit=0.00
+[2025-04-20 10:57:46] INFO: Retorno diario: 0.7164% (bruto: 0.7664%, costos: 0.0500%)
+[2025-04-20 10:57:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-12 00:00:00
+[2025-04-20 10:57:46] INFO: Parámetros actualizados para régimen 1: z_entry=1.58, z_exit=0.00
+[2025-04-20 10:57:46] INFO: Retorno diario: -1.2759% (bruto: -1.2259%, costos: 0.0500%)
+[2025-04-20 10:57:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-13 00:00:00
+[2025-04-20 10:57:46] INFO: Parámetros actualizados para régimen 1: z_entry=1.74, z_exit=0.00
+[2025-04-20 10:57:46] INFO: Retorno diario: 0.5904% (bruto: 0.6404%, costos: 0.0500%)
+[2025-04-20 10:57:46] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-14 00:00:00
+[2025-04-20 10:57:46] INFO: Parámetros actualizados para régimen 1: z_entry=1.56, z_exit=0.00
+[2025-04-20 10:57:46] INFO: Retorno diario: 0.6009% (bruto: 0.6509%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-18 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=1.50, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: -1.7934% (bruto: -1.7434%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-19 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=1.65, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: -0.8106% (bruto: -0.7606%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-20 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=1.82, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: 0.8580% (bruto: 0.9080%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-21 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: -2.7688% (bruto: -2.7188%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-24 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=2.20, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: -1.4572% (bruto: -1.4072%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-25 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=2.42, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: 4.4241% (bruto: 4.4741%, costos: 0.0500%)
+[2025-04-20 10:57:47] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-26 00:00:00
+[2025-04-20 10:57:47] INFO: Parámetros actualizados para régimen 1: z_entry=2.66, z_exit=0.00
+[2025-04-20 10:57:47] INFO: Retorno diario: -1.6793% (bruto: -1.6293%, costos: 0.0500%)
+[2025-04-20 10:57:48] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-27 00:00:00
+[2025-04-20 10:57:48] INFO: Parámetros actualizados para régimen 1: z_entry=2.92, z_exit=0.00
+[2025-04-20 10:57:48] INFO: Retorno diario: -1.4353% (bruto: -1.3853%, costos: 0.0500%)
+[2025-04-20 10:57:48] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-02-28 00:00:00
+[2025-04-20 10:57:48] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48] INFO: Retorno diario: 0.0343% (bruto: 0.0843%, costos: 0.0500%)
+[2025-04-20 10:57:48] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-03 00:00:00
+[2025-04-20 10:57:48] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48] INFO: Retorno diario: -1.4465% (bruto: -1.3965%, costos: 0.0500%)
+[2025-04-20 10:57:48] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-04 00:00:00
+[2025-04-20 10:57:48] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48] INFO: Retorno diario: 0.9684% (bruto: 1.0184%, costos: 0.0500%)
+[2025-04-20 10:57:48] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-05 00:00:00
+[2025-04-20 10:57:48] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48] INFO: Retorno diario: 2.9268% (bruto: 2.9768%, costos: 0.0500%)
+[2025-04-20 10:57:48] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-06 00:00:00
+[2025-04-20 10:57:48] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48] INFO: Retorno diario: 2.0805% (bruto: 2.1305%, costos: 0.0500%)
+[2025-04-20 10:57:49] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-07 00:00:00
+[2025-04-20 10:57:49] INFO: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:49] INFO: Retorno diario: -0.3958% (bruto: -0.3458%, costos: 0.0500%)
+[2025-04-20 10:57:49] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-10 00:00:00
+[2025-04-20 10:57:49] INFO: Parámetros actualizados para régimen 1: z_entry=2.70, z_exit=0.00
+[2025-04-20 10:57:49] INFO: Retorno diario: -0.5226% (bruto: -0.4726%, costos: 0.0500%)
+[2025-04-20 10:57:49] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-11 00:00:00
+[2025-04-20 10:57:49] INFO: Parámetros actualizados para régimen 1: z_entry=2.43, z_exit=0.00
+[2025-04-20 10:57:49] INFO: Retorno diario: -1.3564% (bruto: -1.3064%, costos: 0.0500%)
+[2025-04-20 10:57:49] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-12 00:00:00
+[2025-04-20 10:57:49] INFO: Parámetros actualizados para régimen 1: z_entry=2.67, z_exit=0.00
+[2025-04-20 10:57:49] INFO: Buscando pares cointegrados para 2025-03-12 00:00:00
+[2025-04-20 10:57:49] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:49] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:59] INFO: Probados 1225 pares, encontrados 98 cointegrados, 5 válidos
+[2025-04-20 10:57:59] INFO: Encontrados 5 pares para fecha 2025-03-12 00:00:00
+[2025-04-20 10:57:59] INFO: Gestionando cartera para 2025-03-12 00:00:00. Pares activos: 1, Pares disponibles: 5
+[2025-04-20 10:57:59] INFO: Cerrando posición para par PHM-K
+[2025-04-20 10:57:59] INFO: Evaluando 5 nuevos pares para 15 slots disponibles
+[2025-04-20 10:58:01] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:58:01] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:58:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-13 00:00:00
+[2025-04-20 10:58:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.67, z_exit=0.00
+[2025-04-20 10:58:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-14 00:00:00
+[2025-04-20 10:58:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.41, z_exit=0.00
+[2025-04-20 10:58:01] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-17 00:00:00
+[2025-04-20 10:58:01] INFO: Parámetros actualizados para régimen 1: z_entry=2.17, z_exit=0.00
+[2025-04-20 10:58:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-18 00:00:00
+[2025-04-20 10:58:02] INFO: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:58:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-19 00:00:00
+[2025-04-20 10:58:02] INFO: Parámetros actualizados para régimen 1: z_entry=1.75, z_exit=0.00
+[2025-04-20 10:58:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-20 00:00:00
+[2025-04-20 10:58:02] INFO: Parámetros actualizados para régimen 1: z_entry=1.93, z_exit=0.00
+[2025-04-20 10:58:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-21 00:00:00
+[2025-04-20 10:58:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.12, z_exit=0.00
+[2025-04-20 10:58:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-24 00:00:00
+[2025-04-20 10:58:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.33, z_exit=0.00
+[2025-04-20 10:58:02] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-25 00:00:00
+[2025-04-20 10:58:02] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-26 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-27 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-28 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-03-31 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-01 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-02 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-03 00:00:00
+[2025-04-20 10:58:03] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-04 00:00:00
+[2025-04-20 10:58:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-07 00:00:00
+[2025-04-20 10:58:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-08 00:00:00
+[2025-04-20 10:58:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-09 00:00:00
+[2025-04-20 10:58:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-10 00:00:00
+[2025-04-20 10:58:04] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04] INFO: Buscando pares cointegrados para 2025-04-10 00:00:00
+[2025-04-20 10:58:04] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:04] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:16] INFO: Probados 1225 pares, encontrados 74 cointegrados, 9 válidos
+[2025-04-20 10:58:16] INFO: Encontrados 9 pares para fecha 2025-04-10 00:00:00
+[2025-04-20 10:58:16] INFO: Gestionando cartera para 2025-04-10 00:00:00. Pares activos: 0, Pares disponibles: 9
+[2025-04-20 10:58:16] INFO: Evaluando 9 nuevos pares para 15 slots disponibles
+[2025-04-20 10:58:18] INFO: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:58:18] INFO: Cartera actualizada: 0 pares activos
+[2025-04-20 10:58:18] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-11 00:00:00
+[2025-04-20 10:58:18] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-14 00:00:00
+[2025-04-20 10:58:19] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-15 00:00:00
+[2025-04-20 10:58:19] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-16 00:00:00
+[2025-04-20 10:58:19] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19] INFO: Datos insuficientes para entrenar modelo de clustering en 2025-04-17 00:00:00
+[2025-04-20 10:58:19] INFO: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:21] INFO: Procesando ventana 1/2: 2024-01-02 00:00:00 - 2025-01-02 00:00:00
+[2025-04-20 10:58:21] INFO: Buscando pares cointegrados para 2024-10-01 00:00:00
+[2025-04-20 10:58:21] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:21] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:32] INFO: Probados 1225 pares, encontrados 26 cointegrados, 6 válidos
+[2025-04-20 10:58:32] INFO: Encontrados 6 pares cointegrados para ventana 1
+[2025-04-20 10:58:32] INFO: Evaluando par 1: LYB-BIIB (beta=-0.3034)
+[2025-04-20 10:58:32] INFO: Par LYB-BIIB añadido con 1 señales
+[2025-04-20 10:58:32] INFO: Evaluando par 2: UHS-JPM (beta=1.0474)
+[2025-04-20 10:58:32] INFO: Par UHS-JPM añadido con 1 señales
+[2025-04-20 10:58:32] INFO: Evaluando par 3: EXR-GEN (beta=0.8975)
+[2025-04-20 10:58:32] INFO: Par EXR-GEN añadido con 1 señales
+[2025-04-20 10:58:32] INFO: Evaluando par 4: AIZ-LHX (beta=0.7313)
+[2025-04-20 10:58:32] INFO: Par AIZ-LHX añadido con 1 señales
+[2025-04-20 10:58:32] INFO: Evaluando par 5: MLM-LYB (beta=2.6959)
+[2025-04-20 10:58:32] INFO: Par MLM-LYB añadido con 1 señales
+[2025-04-20 10:58:32] INFO: Evaluando par 6: MSFT-LHX (beta=1.0529)
+[2025-04-20 10:58:33] INFO: Par MSFT-LHX añadido con 1 señales
+[2025-04-20 10:58:33] INFO: Procesando ventana 2/2: 2024-04-03 00:00:00 - 2025-04-04 00:00:00
+[2025-04-20 10:58:33] INFO: Buscando pares cointegrados para 2025-01-01 00:00:00
+[2025-04-20 10:58:33] INFO: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:33] INFO: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:45] INFO: Probados 1225 pares, encontrados 69 cointegrados, 20 válidos
+[2025-04-20 10:58:45] INFO: Encontrados 20 pares cointegrados para ventana 2
+[2025-04-20 10:58:45] INFO: Evaluando par 1: BKNG-WMB (beta=0.5593)
+[2025-04-20 10:58:45] INFO: Par BKNG-WMB añadido con 1 señales
+[2025-04-20 10:58:45] INFO: Evaluando par 2: CAH-BMY (beta=0.4928)
+[2025-04-20 10:58:45] INFO: Par CAH-BMY añadido con 1 señales
+[2025-04-20 10:58:45] INFO: Evaluando par 3: ES-PNW (beta=0.6876)
+[2025-04-20 10:58:45] INFO: Par ES-PNW añadido con 1 señales
+[2025-04-20 10:58:45] INFO: Evaluando par 4: ABNB-CDNS (beta=1.1000)
+[2025-04-20 10:58:45] INFO: Par ABNB-CDNS añadido con 1 señales
+[2025-04-20 10:58:45] INFO: Evaluando par 5: WST-PNW (beta=-0.7925)
+[2025-04-20 10:58:45] INFO: Par WST-PNW añadido con 1 señales
+[2025-04-20 10:58:45] INFO: Evaluando par 6: HSY-ALL (beta=0.1267)
+[2025-04-20 10:58:45] INFO: Par HSY-ALL añadido con 1 señales
+[2025-04-20 10:58:45] INFO: Evaluando par 7: CDNS-DHI (beta=-0.1091)
+[2025-04-20 10:58:46] INFO: Par CDNS-DHI añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 8: IDXX-ALL (beta=-0.0699)
+[2025-04-20 10:58:46] INFO: Par IDXX-ALL añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 9: IDXX-TXN (beta=-0.1252)
+[2025-04-20 10:58:46] INFO: Par IDXX-TXN añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 10: IDXX-MPWR (beta=-0.0283)
+[2025-04-20 10:58:46] INFO: Par IDXX-MPWR añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 11: BKNG-CNC (beta=-0.5704)
+[2025-04-20 10:58:46] INFO: Par BKNG-CNC añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 12: IDXX-DOC (beta=-0.1431)
+[2025-04-20 10:58:46] INFO: Par IDXX-DOC añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 13: IDXX-WELL (beta=-0.1856)
+[2025-04-20 10:58:46] INFO: Par IDXX-WELL añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 14: IDXX-BSX (beta=-0.0953)
+[2025-04-20 10:58:46] INFO: Par IDXX-BSX añadido con 1 señales
+[2025-04-20 10:58:46] INFO: Evaluando par 15: WST-WELL (beta=-0.5317)
+[2025-04-20 10:58:46] INFO: Par WST-WELL añadido con 1 señales

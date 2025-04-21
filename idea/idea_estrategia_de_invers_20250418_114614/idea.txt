@@ -1,0 +1,158 @@
+# IDEA FINAL: ESTRATEGIA ADAPTATIVA MULTIFACTORIAL CON APRENDIZAJE POR REFUERZO (AMAR)
+
+## Descripción
+
+La estrategia AMAR (Adaptive Multi-factor Allocation with Reinforcement learning) implementa un enfoque de asignación dinámica multifactorial que adapta su exposición a diferentes factores de inversión según el régimen de mercado identificado. Combina la identificación de regímenes de mercado con técnicas de aprendizaje por refuerzo para optimizar la selección de factores y la construcción de portafolios, manteniendo un equilibrio entre robustez estadística e implementabilidad práctica.
+
+## Fundamentos Teóricos
+
+1. **Modelo de Regímenes Simplificado**: Utilizamos un enfoque híbrido que combina:
+   - Clustering no supervisado (GMM) sobre variables macroeconómicas y de mercado
+   - Identificación de 3 estados principales: baja volatilidad/alcista, alta volatilidad/bajista, y transición
+   - Variables observables clave:
+     * Pendiente de la curva de rendimientos (10Y-3M)
+     * Cambio en volatilidad realizada (21 días)
+     * Cambio en amplitud de mercado (% de acciones sobre/bajo MM50)
+     * Índice de liquidez compuesto (basado en spreads y volumen)
+
+2. **Marco de Aprendizaje por Refuerzo**: Implementamos un algoritmo Contextual Multi-Armed Bandit (CMAB) simplificado que:
+   - Aprende la efectividad de cada factor condicionada al régimen de mercado
+   - Equilibra exploración vs explotación mediante Thompson Sampling
+   - Utiliza una función de recompensa basada en Sharpe ratio ajustado por turnover
+
+3. **Estructura Jerárquica de Factores**: Organizamos los factores en dos niveles:
+   - **Nivel 1** (Categorías): Valor, Momentum, Calidad, Volatilidad, Liquidez
+   - **Nivel 2** (Factores Específicos): 2-3 implementaciones por categoría, priorizando aquellas construibles con datos de precios y volúmenes disponibles en yfinance
+
+## Metodología Detallada
+
+### 1. Identificación de Regímenes
+- Entrenamiento con ventanas móviles de 3 años con actualización mensual
+- Implementación de un esquema de votación entre múltiples métodos para mayor robustez
+- Ventana de entrenamiento adaptativa que se expande en períodos estables y se contrae en períodos volátiles
+- Límite máximo de 15 parámetros para esta fase
+
+### 2. Selección Adaptativa de Factores
+- Para cada categoría, mantenemos distribuciones de creencia sobre su rendimiento en cada régimen
+- Actualizamos estas distribuciones usando un esquema bayesiano con prior informativo
+- Implementamos decay exponencial para dar mayor peso a observaciones recientes
+- Utilizamos Ensemble Selection con bootstrapping para aumentar la robustez
+
+### 3. Construcción de Portafolio
+- **Nivel Macro**: Asignamos pesos a categorías de factores según su desempeño esperado en el régimen actual
+- **Nivel Micro**: Seleccionamos factores específicos dentro de cada categoría mediante Elastic Net
+- **Restricciones**:
+  - Neutralidad beta al mercado (±0.1)
+  - Exposición controlada a sectores (±5% vs índice)
+  - Límites de concentración por acción (máx 2%)
+  - Turnover máximo por rebalanceo (25%)
+
+### 4. Ejecución y Rebalanceo
+- Rebalanceo principal semanal con ajustes tácticos según señales
+- Implementación de "no-trade zone" basada en la significancia de las señales
+- Algoritmo de trading basado en VWAP adaptativo
+- Penalización por turnover directamente en la función objetivo
+
+## Implementación Técnica
+
+### Factores Implementables con yfinance
+1. **Valor**:
+   - Price-to-Book (calculado con datos trimestrales)
+   - Enterprise Value/EBITDA
+   - Free Cash Flow Yield
+
+2. **Momentum**:
+   - Retorno relativo 12 meses (excluyendo último mes)
+   - Momentum de 6 meses ajustado por volatilidad
+   - Momentum de industria
+
+3. **Calidad**:
+   - Estabilidad de ganancias (desviación estándar de ROE)
+   - Margen operativo
+   - Crecimiento de ventas vs. crecimiento de inventario
+
+4. **Volatilidad**:
+   - Volatilidad realizada 30 días
+   - Beta a 1 año
+   - Downside deviation
+
+5. **Liquidez**:
+   - Volumen promedio diario relativo
+   - Amihud illiquidity ratio
+   - Spread relativo estimado
+
+### Manejo de Datos
+- Implementación de detección y tratamiento de outliers mediante winsorización adaptativa
+- Manejo de datos faltantes mediante imputación basada en industria y tamaño
+- Normalización de factores usando z-scores con ajuste por industria
+- Actualización diaria de datos mediante yfinance con verificación de integridad
+
+### Validación y Backtesting
+- Implementación de walk-forward testing con ventanas anidadas (1, 2, 3 años)
+- Corrección por multiple testing mediante White's Reality Check
+- Análisis de sensibilidad a parámetros clave
+- Evaluación específica en períodos de crisis (2000-2003, 2008-2009, 2020)
+- Benchmark contra versión "naive" (asignación equiponderada a factores)
+
+## Gestión de Riesgo
+
+1. **Control de Exposición**:
+   - Overlay de volatilidad target que ajusta la exposición global
+   - Neutralidad a factores Fama-French básicos
+   - Restricciones de drawdown condicional (Conditional Value at Risk)
+
+2. **Stops Adaptativos**:
+   - Basados en volatilidad realizada y régimen de mercado
+   - Implementación de trailing stops para proteger ganancias
+
+3. **Gestión de Liquidez**:
+   - Modelo de "stress liquidity" para estimar impactos en escenarios extremos
+   - Límites de participación en volumen diario (máx 10% ADV)
+   - Ajuste de posiciones según liquidez disponible
+
+## Métricas Esperadas
+
+- **Sharpe ratio**: 1.2-1.5 (estimación conservadora)
+- **Alpha anualizado**: 3-5% después de costos
+- **Alpha decay**: 10-15% anual
+- **Capacidad**: $300M-500M (basado en restricciones de liquidez)
+- **Drawdown máximo esperado**: 15-18%
+- **Beta al mercado**: 0 ± 0.1
+- **Turnover mensual**: 40-60%
+
+## Consideraciones Prácticas
+
+1. **Datos Requeridos**:
+   - Precios y volúmenes diarios (yfinance)
+   - Datos fundamentales trimestrales básicos (yfinance)
+   - Índices de referencia para benchmarking (yfinance)
+
+2. **Infraestructura**:
+   - Implementable en Python estándar con bibliotecas open-source
+   - Requisitos de almacenamiento: ~5GB para datos históricos
+   - Tiempo de computación: <30 minutos para actualización completa del modelo
+
+3. **Monitoreo y Mantenimiento**:
+   - Revisión mensual de parámetros del modelo
+   - Recalibración trimestral de identificación de regímenes
+   - Monitoreo diario de señales de riesgo y exposición
+
+## Limitaciones y Consideraciones
+
+1. **Riesgos Conocidos**:
+   - Sensibilidad a cambios estructurales de mercado
+   - Dependencia de la calidad de datos de yfinance
+   - Potencial crowding en factores populares
+
+2. **Mitigación**:
+   - Diversificación entre múltiples categorías de factores
+   - Implementación de controles de robustez estadística
+   - Monitoreo continuo de correlaciones entre factores
+   - Actualización adaptativa de parámetros
+
+3. **Mejoras Futuras**:
+   - Incorporación de análisis de sentimiento y datos alternativos
+   - Extensión a mercados internacionales
+   - Implementación de técnicas de deep reinforcement learning
+
+Esta estrategia AMAR representa un equilibrio entre sofisticación conceptual y viabilidad práctica, con énfasis en robustez estadística, adaptabilidad a diferentes regímenes de mercado, y gestión prudente del riesgo y los costos de transacción.

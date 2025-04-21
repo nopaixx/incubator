@@ -1,0 +1,2794 @@
+
+
+--- ideador (STEP 1.1) ---
+INPUT 1 (user):
+estrategia de inversion autonoma para batir el sp500 con beta cercano a 0 y el mejor alpha, maximizando beneficio y reduciendo riesgo
+
+RESPONSE:
+# Estrategia de Inversión: Adaptive Cross-Sectional Momentum con Neutralización Dinámica de Beta
+
+## Concepto Fundamental
+
+Esta estrategia implementa un sistema de momentum cross-sectional adaptativo con neutralización dinámica de beta, diseñado específicamente para generar alpha puro con exposición beta cercana a cero frente al S&P 500.
+
+## Fundamentos Matemáticos/Estadísticos
+
+La estrategia se basa en tres pilares fundamentales:
+
+1. **Momentum Cross-Sectional Adaptativo**: Utiliza un enfoque de ranking relativo entre los componentes del S&P 500, pero con ventanas temporales optimizadas mediante un proceso de estimación de máxima verosimilitud (MLE) que identifica los períodos óptimos de formación del momentum para cada sector.
+
+2. **Neutralización Dinámica de Beta**: Implementa un modelo de regresión rolling con ventanas adaptativas para estimar continuamente los betas de cada posición y del portafolio, ajustando las exposiciones para mantener un beta portafolio próximo a cero.
+
+3. **Optimización Multifactorial con Restricciones**: Utiliza una función objetivo que maximiza el alpha esperado mientras minimiza la varianza idiosincrática, sujeta a restricciones de beta neutral.
+
+## Funcionamiento Detallado
+
+### 1. Selección de Activos y Señales
+
+- **Universo de Inversión**: Componentes del S&P 500 con liquidez suficiente (volumen promedio diario > percentil 30 del índice).
+
+- **Señal de Momentum Adaptativo**:
+  - Para cada acción, calculamos el momentum en múltiples horizontes (5, 10, 21, 63, 126, 252 días).
+  - Utilizamos un modelo bayesiano que pondera estos horizontes según su capacidad predictiva reciente, actualizando los pesos diariamente.
+  - El modelo incluye un factor de decaimiento exponencial que da mayor importancia a la evidencia reciente.
+
+- **Factores Secundarios**:
+  - Volatilidad implícita normalizada (z-score sectorial)
+  - Reversión a la media de corto plazo (2-5 días)
+  - Flujo de volumen anormal (desviación del patrón estacional)
+  - Sorpresas en earnings relativizadas al sector
+
+### 2. Construcción del Portafolio
+
+- **Ranking Multifactorial**: Combinamos las señales en un score compuesto utilizando pesos determinados por un algoritmo de optimización que maximiza el Information Ratio out-of-sample.
+
+- **Neutralización Sectorial**: Aseguramos que cada sector tenga posiciones long y short proporcionales a su peso en el índice, manteniendo neutralidad sectorial.
+
+- **Asignación de Capital**: 
+  - Long: Top 15-25% de acciones con mejor ranking (porcentaje adaptativo)
+  - Short: Bottom 15-25% de acciones con peor ranking
+  - La cantidad exacta de acciones se determina mediante un proceso de optimización que considera la diversificación y la liquidez.
+
+### 3. Gestión Dinámica de Beta
+
+- **Estimación Continua**: Calculamos diariamente los betas de cada posición utilizando regresiones rolling con ventanas adaptativas (60-252 días) basadas en la estabilidad del régimen de mercado.
+
+- **Ajuste de Exposiciones**: 
+  - Si el beta portafolio se desvía del objetivo (±0.05), rebalanceamos las ponderaciones.
+  - Utilizamos un modelo de optimización cuadrática que minimiza el tracking error respecto a las posiciones deseadas por la señal, sujeto a la restricción de beta neutro.
+
+### 4. Gestión de Riesgo Adaptativa
+
+- **Control de Exposición a Factores**: Monitorizamos y limitamos la exposición a factores de riesgo como valor, tamaño, calidad y momentum de mercado.
+
+- **Estimación de Regímenes de Volatilidad**: Implementamos un modelo GARCH multivariante para identificar regímenes de volatilidad y correlación, ajustando la exposición total según el entorno.
+
+- **Stop Loss Dinámico**: Establecemos niveles de stop loss basados en la volatilidad realizada y el drawdown máximo esperado, utilizando simulaciones de Monte Carlo.
+
+## Ventajas Potenciales
+
+- **Alpha Puro**: Al neutralizar el beta, la estrategia genera rendimientos desacoplados del mercado, estimando un alpha anualizado de 5-8%.
+
+- **Ratio de Sharpe Mejorado**: Proyección de Sharpe ratio entre 1.2-1.8, significativamente superior al índice.
+
+- **Drawdown Controlado**: Drawdown máximo esperado del 8-12%, frente al 20-30% típico del mercado en correcciones.
+
+- **Baja Correlación**: Correlación esperada con S&P 500 inferior a 0.2, proporcionando excelente diversificación.
+
+- **Adaptabilidad**: La naturaleza auto-adaptativa de los modelos permite ajustarse a diferentes regímenes de mercado sin intervención manual.
+
+## Consideraciones de Implementación
+
+- **Rebalanceo**: Óptimo semanal con ajustes diarios cuando el beta se desvía significativamente.
+
+- **Costos de Transacción**: Incluye un modelo de impacto de mercado que limita el tamaño de las operaciones en función de la liquidez.
+
+- **Capacidad**: Estimada en $500M-$1B antes de sufrir degradación significativa de rendimiento.
+
+
+--- curador (STEP 2.1) ---
+INPUT 1 (user):
+# Estrategia de Inversión: Adaptive Cross-Sectional Momentum con Neutralización Dinámica de Beta
+
+## Concepto Fundamental
+
+Esta estrategia implementa un sistema de momentum cross-sectional adaptativo con neutralización dinámica de beta, diseñado específicamente para generar alpha puro con exposición beta cercana a cero frente al S&P 500.
+
+## Fundamentos Matemáticos/Estadísticos
+
+La estrategia se basa en tres pilares fundamentales:
+
+1. **Momentum Cross-Sectional Adaptativo**: Utiliza un enfoque de ranking relativo entre los componentes del S&P 500, pero con ventanas temporales optimizadas mediante un proceso de estimación de máxima verosimilitud (MLE) que identifica los períodos óptimos de formación del momentum para cada sector.
+
+2. **Neutralización Dinámica de Beta**: Implementa un modelo de regresión rolling con ventanas adaptativas para estimar continuamente los betas de cada posición y del portafolio, ajustando las exposiciones para mantener un beta portafolio próximo a cero.
+
+3. **Optimización Multifactorial con Restricciones**: Utiliza una función objetivo que maximiza el alpha esperado mientras minimiza la varianza idiosincrática, sujeta a restricciones de beta neutral.
+
+## Funcionamiento Detallado
+
+### 1. Selección de Activos y Señales
+
+- **Universo de Inversión**: Componentes del S&P 500 con liquidez suficiente (volumen promedio diario > percentil 30 del índice).
+
+- **Señal de Momentum Adaptativo**:
+  - Para cada acción, calculamos el momentum en múltiples horizontes (5, 10, 21, 63, 126, 252 días).
+  - Utilizamos un modelo bayesiano que pondera estos horizontes según su capacidad predictiva reciente, actualizando los pesos diariamente.
+  - El modelo incluye un factor de decaimiento exponencial que da mayor importancia a la evidencia reciente.
+
+- **Factores Secundarios**:
+  - Volatilidad implícita normalizada (z-score sectorial)
+  - Reversión a la media de corto plazo (2-5 días)
+  - Flujo de volumen anormal (desviación del patrón estacional)
+  - Sorpresas en earnings relativizadas al sector
+
+### 2. Construcción del Portafolio
+
+- **Ranking Multifactorial**: Combinamos las señales en un score compuesto utilizando pesos determinados por un algoritmo de optimización que maximiza el Information Ratio out-of-sample.
+
+- **Neutralización Sectorial**: Aseguramos que cada sector tenga posiciones long y short proporcionales a su peso en el índice, manteniendo neutralidad sectorial.
+
+- **Asignación de Capital**: 
+  - Long: Top 15-25% de acciones con mejor ranking (porcentaje adaptativo)
+  - Short: Bottom 15-25% de acciones con peor ranking
+  - La cantidad exacta de acciones se determina mediante un proceso de optimización que considera la diversificación y la liquidez.
+
+### 3. Gestión Dinámica de Beta
+
+- **Estimación Continua**: Calculamos diariamente los betas de cada posición utilizando regresiones rolling con ventanas adaptativas (60-252 días) basadas en la estabilidad del régimen de mercado.
+
+- **Ajuste de Exposiciones**: 
+  - Si el beta portafolio se desvía del objetivo (±0.05), rebalanceamos las ponderaciones.
+  - Utilizamos un modelo de optimización cuadrática que minimiza el tracking error respecto a las posiciones deseadas por la señal, sujeto a la restricción de beta neutro.
+
+### 4. Gestión de Riesgo Adaptativa
+
+- **Control de Exposición a Factores**: Monitorizamos y limitamos la exposición a factores de riesgo como valor, tamaño, calidad y momentum de mercado.
+
+- **Estimación de Regímenes de Volatilidad**: Implementamos un modelo GARCH multivariante para identificar regímenes de volatilidad y correlación, ajustando la exposición total según el entorno.
+
+- **Stop Loss Dinámico**: Establecemos niveles de stop loss basados en la volatilidad realizada y el drawdown máximo esperado, utilizando simulaciones de Monte Carlo.
+
+## Ventajas Potenciales
+
+- **Alpha Puro**: Al neutralizar el beta, la estrategia genera rendimientos desacoplados del mercado, estimando un alpha anualizado de 5-8%.
+
+- **Ratio de Sharpe Mejorado**: Proyección de Sharpe ratio entre 1.2-1.8, significativamente superior al índice.
+
+- **Drawdown Controlado**: Drawdown máximo esperado del 8-12%, frente al 20-30% típico del mercado en correcciones.
+
+- **Baja Correlación**: Correlación esperada con S&P 500 inferior a 0.2, proporcionando excelente diversificación.
+
+- **Adaptabilidad**: La naturaleza auto-adaptativa de los modelos permite ajustarse a diferentes regímenes de mercado sin intervención manual.
+
+## Consideraciones de Implementación
+
+- **Rebalanceo**: Óptimo semanal con ajustes diarios cuando el beta se desvía significativamente.
+
+- **Costos de Transacción**: Incluye un modelo de impacto de mercado que limita el tamaño de las operaciones en función de la liquidez.
+
+- **Capacidad**: Estimada en $500M-$1B antes de sufrir degradación significativa de rendimiento.
+
+RESPONSE:
+# Análisis y Mejoras para la Estrategia Adaptive Cross-Sectional Momentum con Neutralización Dinámica de Beta
+
+## Análisis Crítico
+
+La estrategia propuesta presenta un enfoque sofisticado con varios elementos prometedores, pero también áreas que requieren refinamiento:
+
+### Fortalezas
+- El enfoque de beta neutro es valioso para generar alpha puro
+- La adaptabilidad de las ventanas temporales puede capturar regímenes cambiantes
+- La neutralización sectorial reduce riesgos específicos de industria
+- El marco multifactorial proporciona diversificación de señales
+
+### Debilidades y Riesgos
+1. **Complejidad excesiva**: La estrategia combina múltiples técnicas sofisticadas que pueden generar inestabilidad y dificultar la atribución de rendimiento.
+
+2. **Riesgo de sobreoptimización**: El uso de múltiples horizontes de momentum, factores secundarios y optimización de pesos crea numerosos grados de libertad.
+
+3. **Desafíos de implementación con yfinance**:
+   - La obtención de volatilidad implícita requiere datos de opciones no disponibles en yfinance
+   - Las sorpresas de earnings necesitan fuentes adicionales
+
+4. **Costos de transacción subestimados**: El rebalanceo frecuente con neutralización beta puede generar rotación excesiva.
+
+5. **Riesgo de exposición a factores no controlados**: Aunque se neutraliza beta, pueden persistir exposiciones a otros factores sistemáticos.
+
+6. **Capacidad limitada**: La estimación de $500M-$1B parece optimista para una estrategia con rebalanceo frecuente en componentes del S&P 500.
+
+## Propuestas de Mejora
+
+### 1. Simplificación y Robustez
+
+- **Reducción de parámetros**: En lugar de 6 horizontes de momentum, considerar 3 (corto: 21d, medio: 63d, largo: 252d) para reducir el riesgo de sobreajuste.
+
+- **Enfoque ensemble**: En vez de optimizar pesos de factores, implementar un sistema de votación o ranking promedio entre señales, más robusto a cambios de régimen.
+
+- **Validación cruzada temporal**: Implementar un esquema de walk-forward con bloques de 6 meses para validación, evitando optimizar hiperparámetros en toda la muestra.
+
+### 2. Adaptación a Restricciones Técnicas (yfinance)
+
+- **Sustitución de factores**: Reemplazar volatilidad implícita por volatilidad realizada (calculable con datos de precios) y sorpresas de earnings por momentum de volumen o volatilidad relativa.
+
+- **Simplificación de la neutralización beta**: Utilizar ETFs sectoriales (XLK, XLF, etc.) para la exposición sectorial en lugar de neutralización acción por acción, reduciendo complejidad computacional.
+
+### 3. Gestión de Riesgo Mejorada
+
+- **Incorporación de drawdown condicional**: Añadir Expected Shortfall (CVaR) como restricción en la optimización del portafolio.
+
+- **Detección de cambios de régimen**: Implementar un modelo de Markov Switching para identificar entornos de alta/baja volatilidad y ajustar la exposición total.
+
+- **Límites de concentración adaptativos**: Variar los límites de concentración por posición según la correlación cruzada del mercado.
+
+### 4. Eficiencia en Implementación
+
+- **Reducción de frecuencia de rebalanceo**: Pasar a rebalanceo quincenal con monitoreo semanal de desviaciones de beta, reduciendo costos de transacción.
+
+- **Optimización por lotes**: Agrupar acciones con características similares para reducir la dimensionalidad del problema de optimización.
+
+- **Incorporación de costos en la optimización**: Incluir una penalización por rotación de portafolio en la función objetivo.
+
+### 5. Mejoras Específicas en Señales
+
+- **Momentum contextual**: Ajustar la señal de momentum según el régimen de volatilidad (dar más peso al momentum de corto plazo en entornos de baja volatilidad).
+
+- **Indicadores de flujo de órdenes**: Incorporar señales basadas en desequilibrios de volumen (volumen en días alcistas vs. bajistas) como proxy de presión compradora/vendedora.
+
+- **Factores de calidad calculables**: Incluir métricas como estabilidad de rendimientos o autocorrelación negativa como factores de calidad computables con datos de precios.
+
+## Preguntas Técnicas para Refinamiento
+
+1. ¿Cuál es el horizonte temporal mínimo para el backtest que consideraría representativo, considerando diferentes ciclos de mercado?
+
+2. ¿Qué método específico utilizaría para la estimación adaptativa de beta? ¿EWMA, Kalman Filter, o regresiones con ventanas variables?
+
+3. ¿Cómo determinaría cuantitativamente el número óptimo de acciones en cada lado (long/short) para balancear diversificación y concentración en señales fuertes?
+
+4. ¿Ha considerado el impacto de eventos corporativos (splits, dividendos, fusiones) en la señal de momentum y cómo planea ajustarlos?
+
+5. ¿Qué métricas específicas utilizaría para evaluar el overfitting durante el proceso de desarrollo?
+
+6. ¿Cómo planea manejar los valores extremos (outliers) en las señales de momentum, especialmente después de movimientos bruscos del mercado?
+
+7. ¿Ha considerado la asimetría en las distribuciones de retornos y cómo esto podría afectar la efectividad de la neutralización beta?
+
+
+--- sintetizador (STEP 3.1) ---
+INPUT 1 (user):
+=== SÍNTESIS DE IDEA ===
+
+PROPUESTA FINAL DEL IDEADOR:
+# Estrategia de Inversión: Adaptive Cross-Sectional Momentum con Neutralización Dinámica de Beta
+
+## Concepto Fundamental
+
+Esta estrategia implementa un sistema de momentum cross-sectional adaptativo con neutralización dinámica de beta, diseñado específicamente para generar alpha puro con exposición beta cercana a cero frente al S&P 500.
+
+## Fundamentos Matemáticos/Estadísticos
+
+La estrategia se basa en tres pilares fundamentales:
+
+1. **Momentum Cross-Sectional Adaptativo**: Utiliza un enfoque de ranking relativo entre los componentes del S&P 500, pero con ventanas temporales optimizadas mediante un proceso de estimación de máxima verosimilitud (MLE) que identifica los períodos óptimos de formación del momentum para cada sector.
+
+2. **Neutralización Dinámica de Beta**: Implementa un modelo de regresión rolling con ventanas adaptativas para estimar continuamente los betas de cada posición y del portafolio, ajustando las exposiciones para mantener un beta portafolio próximo a cero.
+
+3. **Optimización Multifactorial con Restricciones**: Utiliza una función objetivo que maximiza el alpha esperado mientras minimiza la varianza idiosincrática, sujeta a restricciones de beta neutral.
+
+## Funcionamiento Detallado
+
+### 1. Selección de Activos y Señales
+
+- **Universo de Inversión**: Componentes del S&P 500 con liquidez suficiente (volumen promedio diario > percentil 30 del índice).
+
+- **Señal de Momentum Adaptativo**:
+  - Para cada acción, calculamos el momentum en múltiples horizontes (5, 10, 21, 63, 126, 252 días).
+  - Utilizamos un modelo bayesiano que pondera estos horizontes según su capacidad predictiva reciente, actualizando los pesos diariamente.
+  - El modelo incluye un factor de decaimiento exponencial que da mayor importancia a la evidencia reciente.
+
+- **Factores Secundarios**:
+  - Volatilidad implícita normalizada (z-score sectorial)
+  - Reversión a la media de corto plazo (2-5 días)
+  - Flujo de volumen anormal (desviación del patrón estacional)
+  - Sorpresas en earnings relativizadas al sector
+
+### 2. Construcción del Portafolio
+
+- **Ranking Multifactorial**: Combinamos las señales en un score compuesto utilizando pesos determinados por un algoritmo de optimización que maximiza el Information Ratio out-of-sample.
+
+- **Neutralización Sectorial**: Aseguramos que cada sector tenga posiciones long y short proporcionales a su peso en el índice, manteniendo neutralidad sectorial.
+
+- **Asignación de Capital**: 
+  - Long: Top 15-25% de acciones con mejor ranking (porcentaje adaptativo)
+  - Short: Bottom 15-25% de acciones con peor ranking
+  - La cantidad exacta de acciones se determina mediante un proceso de optimización que considera la diversificación y la liquidez.
+
+### 3. Gestión Dinámica de Beta
+
+- **Estimación Continua**: Calculamos diariamente los betas de cada posición utilizando regresiones rolling con ventanas adaptativas (60-252 días) basadas en la estabilidad del régimen de mercado.
+
+- **Ajuste de Exposiciones**: 
+  - Si el beta portafolio se desvía del objetivo (±0.05), rebalanceamos las ponderaciones.
+  - Utilizamos un modelo de optimización cuadrática que minimiza el tracking error respecto a las posiciones deseadas por la señal, sujeto a la restricción de beta neutro.
+
+### 4. Gestión de Riesgo Adaptativa
+
+- **Control de Exposición a Factores**: Monitorizamos y limitamos la exposición a factores de riesgo como valor, tamaño, calidad y momentum de mercado.
+
+- **Estimación de Regímenes de Volatilidad**: Implementamos un modelo GARCH multivariante para identificar regímenes de volatilidad y correlación, ajustando la exposición total según el entorno.
+
+- **Stop Loss Dinámico**: Establecemos niveles de stop loss basados en la volatilidad realizada y el drawdown máximo esperado, utilizando simulaciones de Monte Carlo.
+
+## Ventajas Potenciales
+
+- **Alpha Puro**: Al neutralizar el beta, la estrategia genera rendimientos desacoplados del mercado, estimando un alpha anualizado de 5-8%.
+
+- **Ratio de Sharpe Mejorado**: Proyección de Sharpe ratio entre 1.2-1.8, significativamente superior al índice.
+
+- **Drawdown Controlado**: Drawdown máximo esperado del 8-12%, frente al 20-30% típico del mercado en correcciones.
+
+- **Baja Correlación**: Correlación esperada con S&P 500 inferior a 0.2, proporcionando excelente diversificación.
+
+- **Adaptabilidad**: La naturaleza auto-adaptativa de los modelos permite ajustarse a diferentes regímenes de mercado sin intervención manual.
+
+## Consideraciones de Implementación
+
+- **Rebalanceo**: Óptimo semanal con ajustes diarios cuando el beta se desvía significativamente.
+
+- **Costos de Transacción**: Incluye un modelo de impacto de mercado que limita el tamaño de las operaciones en función de la liquidez.
+
+- **Capacidad**: Estimada en $500M-$1B antes de sufrir degradación significativa de rendimiento.
+
+FEEDBACK FINAL DEL CURADOR:
+# Análisis y Mejoras para la Estrategia Adaptive Cross-Sectional Momentum con Neutralización Dinámica de Beta
+
+## Análisis Crítico
+
+La estrategia propuesta presenta un enfoque sofisticado con varios elementos prometedores, pero también áreas que requieren refinamiento:
+
+### Fortalezas
+- El enfoque de beta neutro es valioso para generar alpha puro
+- La adaptabilidad de las ventanas temporales puede capturar regímenes cambiantes
+- La neutralización sectorial reduce riesgos específicos de industria
+- El marco multifactorial proporciona diversificación de señales
+
+### Debilidades y Riesgos
+1. **Complejidad excesiva**: La estrategia combina múltiples técnicas sofisticadas que pueden generar inestabilidad y dificultar la atribución de rendimiento.
+
+2. **Riesgo de sobreoptimización**: El uso de múltiples horizontes de momentum, factores secundarios y optimización de pesos crea numerosos grados de libertad.
+
+3. **Desafíos de implementación con yfinance**:
+   - La obtención de volatilidad implícita requiere datos de opciones no disponibles en yfinance
+   - Las sorpresas de earnings necesitan fuentes adicionales
+
+4. **Costos de transacción subestimados**: El rebalanceo frecuente con neutralización beta puede generar rotación excesiva.
+
+5. **Riesgo de exposición a factores no controlados**: Aunque se neutraliza beta, pueden persistir exposiciones a otros factores sistemáticos.
+
+6. **Capacidad limitada**: La estimación de $500M-$1B parece optimista para una estrategia con rebalanceo frecuente en componentes del S&P 500.
+
+## Propuestas de Mejora
+
+### 1. Simplificación y Robustez
+
+- **Reducción de parámetros**: En lugar de 6 horizontes de momentum, considerar 3 (corto: 21d, medio: 63d, largo: 252d) para reducir el riesgo de sobreajuste.
+
+- **Enfoque ensemble**: En vez de optimizar pesos de factores, implementar un sistema de votación o ranking promedio entre señales, más robusto a cambios de régimen.
+
+- **Validación cruzada temporal**: Implementar un esquema de walk-forward con bloques de 6 meses para validación, evitando optimizar hiperparámetros en toda la muestra.
+
+### 2. Adaptación a Restricciones Técnicas (yfinance)
+
+- **Sustitución de factores**: Reemplazar volatilidad implícita por volatilidad realizada (calculable con datos de precios) y sorpresas de earnings por momentum de volumen o volatilidad relativa.
+
+- **Simplificación de la neutralización beta**: Utilizar ETFs sectoriales (XLK, XLF, etc.) para la exposición sectorial en lugar de neutralización acción por acción, reduciendo complejidad computacional.
+
+### 3. Gestión de Riesgo Mejorada
+
+- **Incorporación de drawdown condicional**: Añadir Expected Shortfall (CVaR) como restricción en la optimización del portafolio.
+
+- **Detección de cambios de régimen**: Implementar un modelo de Markov Switching para identificar entornos de alta/baja volatilidad y ajustar la exposición total.
+
+- **Límites de concentración adaptativos**: Variar los límites de concentración por posición según la correlación cruzada del mercado.
+
+### 4. Eficiencia en Implementación
+
+- **Reducción de frecuencia de rebalanceo**: Pasar a rebalanceo quincenal con monitoreo semanal de desviaciones de beta, reduciendo costos de transacción.
+
+- **Optimización por lotes**: Agrupar acciones con características similares para reducir la dimensionalidad del problema de optimización.
+
+- **Incorporación de costos en la optimización**: Incluir una penalización por rotación de portafolio en la función objetivo.
+
+### 5. Mejoras Específicas en Señales
+
+- **Momentum contextual**: Ajustar la señal de momentum según el régimen de volatilidad (dar más peso al momentum de corto plazo en entornos de baja volatilidad).
+
+- **Indicadores de flujo de órdenes**: Incorporar señales basadas en desequilibrios de volumen (volumen en días alcistas vs. bajistas) como proxy de presión compradora/vendedora.
+
+- **Factores de calidad calculables**: Incluir métricas como estabilidad de rendimientos o autocorrelación negativa como factores de calidad computables con datos de precios.
+
+## Preguntas Técnicas para Refinamiento
+
+1. ¿Cuál es el horizonte temporal mínimo para el backtest que consideraría representativo, considerando diferentes ciclos de mercado?
+
+2. ¿Qué método específico utilizaría para la estimación adaptativa de beta? ¿EWMA, Kalman Filter, o regresiones con ventanas variables?
+
+3. ¿Cómo determinaría cuantitativamente el número óptimo de acciones en cada lado (long/short) para balancear diversificación y concentración en señales fuertes?
+
+4. ¿Ha considerado el impacto de eventos corporativos (splits, dividendos, fusiones) en la señal de momentum y cómo planea ajustarlos?
+
+5. ¿Qué métricas específicas utilizaría para evaluar el overfitting durante el proceso de desarrollo?
+
+6. ¿Cómo planea manejar los valores extremos (outliers) en las señales de momentum, especialmente después de movimientos bruscos del mercado?
+
+7. ¿Ha considerado la asimetría en las distribuciones de retornos y cómo esto podría afectar la efectividad de la neutralización beta?
+
+Tu tarea es sintetizar ambas contribuciones en una IDEA FINAL coherente y completa.
+
+
+RESPONSE:
+# IDEA FINAL: ESTRATEGIA DE INVERSIÓN ADAPTIVE CROSS-SECTIONAL MOMENTUM CON NEUTRALIZACIÓN DINÁMICA DE BETA
+
+## Descripción
+
+Esta estrategia implementa un sistema de momentum cross-sectional adaptativo con neutralización dinámica de beta, diseñado específicamente para generar alpha puro con exposición beta cercana a cero frente al S&P 500. Combina técnicas avanzadas de selección de activos, construcción de portafolio y gestión de riesgo para crear una estrategia robusta que pueda funcionar en diversos regímenes de mercado.
+
+## Fundamentos Teóricos
+
+La estrategia se basa en tres pilares fundamentales:
+
+1. **Momentum Cross-Sectional Adaptativo**: Utiliza un enfoque de ranking relativo entre los componentes del S&P 500, con ventanas temporales optimizadas que identifican los períodos más efectivos para la formación del momentum.
+
+2. **Neutralización Dinámica de Beta**: Implementa un modelo de estimación continua de beta para ajustar las exposiciones y mantener un beta portafolio próximo a cero.
+
+3. **Optimización Multifactorial con Restricciones**: Maximiza el alpha esperado mientras minimiza la varianza idiosincrática, sujeta a restricciones de beta neutral y exposición sectorial equilibrada.
+
+## Componentes Principales
+
+### 1. Selección de Activos y Señales
+
+- **Universo de Inversión**: Componentes del S&P 500 con liquidez suficiente (volumen promedio diario > percentil 30 del índice).
+
+- **Señal de Momentum Principal**:
+  - Implementación simplificada con tres horizontes clave: corto (21 días), medio (63 días) y largo (252 días)
+  - Sistema de ponderación ensemble que promedia los rankings de cada horizonte, evitando la sobreoptimización
+  - Normalización sectorial para comparar activos dentro de sus industrias respectivas
+
+- **Factores Secundarios** (compatibles con yfinance):
+  - Volatilidad realizada (21 días) normalizada por sector
+  - Reversión a la media de corto plazo (2-5 días)
+  - Momentum de volumen y anomalías en patrones de trading
+  - Estabilidad de rendimientos (autocorrelación negativa)
+
+### 2. Construcción del Portafolio
+
+- **Ranking Multifactorial**: Combinación de señales mediante un sistema de votación o ranking promedio, más robusto que la optimización de pesos.
+
+- **Neutralización Sectorial**: Posiciones long y short proporcionales al peso sectorial en el índice, manteniendo neutralidad por industria.
+
+- **Asignación de Capital**: 
+  - Long: Top 15-20% de acciones con mejor ranking
+  - Short: Bottom 15-20% de acciones con peor ranking
+  - Número óptimo determinado mediante validación cruzada temporal con bloques de 6 meses
+
+### 3. Gestión Dinámica de Beta
+
+- **Estimación de Beta**: Cálculo mediante regresiones rolling con ventanas adaptativas (60-252 días) basadas en la estabilidad del mercado.
+
+- **Ajuste de Exposiciones**: 
+  - Rebalanceo cuando el beta portafolio se desvía más de ±0.05 del objetivo
+  - Optimización que minimiza cambios respecto a las posiciones ideales mientras mantiene beta neutro
+  - Uso opcional de ETFs sectoriales para ajustes de exposición más eficientes
+
+### 4. Gestión de Riesgo
+
+- **Control de Exposición a Factores**: Monitoreo y limitación de exposición a factores de riesgo sistemáticos.
+
+- **Detección de Regímenes**: Implementación de un modelo simple de Markov Switching para identificar entornos de alta/baja volatilidad.
+
+- **Límites de Concentración Adaptativos**: Ajuste de la exposición máxima por posición según la correlación cruzada del mercado.
+
+- **Incorporación de Expected Shortfall (CVaR)**: Restricción adicional en la optimización para controlar el riesgo de cola.
+
+## Implementación Práctica
+
+### Rebalanceo y Ejecución
+
+- **Frecuencia Base**: Rebalanceo quincenal para reducir costos de transacción
+- **Monitoreo**: Revisión semanal de desviaciones de beta con ajustes si supera umbrales predefinidos
+- **Costos de Transacción**: Incorporación de penalización por rotación en la función objetivo
+- **Gestión de Eventos Corporativos**: Ajustes específicos para splits, dividendos y fusiones en el cálculo de momentum
+
+### Requisitos Técnicos
+
+- **Datos**: Precios diarios, volúmenes y datos fundamentales básicos disponibles en yfinance
+- **Infraestructura**: Procesamiento diario de señales con almacenamiento de cálculos intermedios
+- **Validación**: Esquema walk-forward con ventanas de entrenamiento/validación para evitar sobreajuste
+
+### Gestión de Outliers y Casos Especiales
+
+- **Tratamiento de Valores Extremos**: Winsorización al 1% y 99% para señales de momentum
+- **Eventos de Mercado**: Ajuste de ponderaciones durante períodos de alta volatilidad
+- **Asimetría de Retornos**: Incorporación de momentos de orden superior en la estimación de riesgo
+
+## Ventajas y Consideraciones
+
+### Ventajas Potenciales
+
+- **Alpha Puro**: Rendimientos desacoplados del mercado, con alpha anualizado estimado de 5-7%
+- **Ratio de Sharpe Mejorado**: Proyección de Sharpe ratio entre 1.2-1.5
+- **Drawdown Controlado**: Drawdown máximo esperado del 10-15%
+- **Baja Correlación**: Correlación esperada con S&P 500 inferior a 0.2
+- **Adaptabilidad**: Capacidad de ajuste a diferentes regímenes de mercado
+
+### Limitaciones y Riesgos
+
+- **Capacidad**: Estimada realísticamente en $200M-$500M antes de sufrir degradación significativa
+- **Entornos Desafiantes**: Potencial underperformance en mercados con momentum negativo extremo
+- **Costos de Implementación**: Necesidad de monitoreo y ajustes regulares
+- **Riesgo de Factores No Controlados**: Posibles exposiciones residuales a factores sistemáticos
+
+## Métricas de Evaluación
+
+- **Performance**: Ratio de Sharpe, alpha, beta, tracking error vs. S&P 500
+- **Riesgo**: Drawdown máximo, Expected Shortfall, volatilidad realizada
+- **Exposición**: Beta dinámico, exposiciones factoriales, concentración sectorial
+- **Implementación**: Rotación de portafolio, costos de transacción, market impact
+
+Esta estrategia representa un enfoque equilibrado entre sofisticación y robustez, diseñada para ser implementable con herramientas y datos accesibles mientras mantiene su potencial de generación de alpha en diversos entornos de mercado.
+
+
+--- desarrollador (STEP 4.1) ---
+INPUT 1 (user):
+# IDEA FINAL: ESTRATEGIA DE INVERSIÓN ADAPTIVE CROSS-SECTIONAL MOMENTUM CON NEUTRALIZACIÓN DINÁMICA DE BETA
+
+## Descripción
+
+Esta estrategia implementa un sistema de momentum cross-sectional adaptativo con neutralización dinámica de beta, diseñado específicamente para generar alpha puro con exposición beta cercana a cero frente al S&P 500. Combina técnicas avanzadas de selección de activos, construcción de portafolio y gestión de riesgo para crear una estrategia robusta que pueda funcionar en diversos regímenes de mercado.
+
+## Fundamentos Teóricos
+
+La estrategia se basa en tres pilares fundamentales:
+
+1. **Momentum Cross-Sectional Adaptativo**: Utiliza un enfoque de ranking relativo entre los componentes del S&P 500, con ventanas temporales optimizadas que identifican los períodos más efectivos para la formación del momentum.
+
+2. **Neutralización Dinámica de Beta**: Implementa un modelo de estimación continua de beta para ajustar las exposiciones y mantener un beta portafolio próximo a cero.
+
+3. **Optimización Multifactorial con Restricciones**: Maximiza el alpha esperado mientras minimiza la varianza idiosincrática, sujeta a restricciones de beta neutral y exposición sectorial equilibrada.
+
+## Componentes Principales
+
+### 1. Selección de Activos y Señales
+
+- **Universo de Inversión**: Componentes del S&P 500 con liquidez suficiente (volumen promedio diario > percentil 30 del índice).
+
+- **Señal de Momentum Principal**:
+  - Implementación simplificada con tres horizontes clave: corto (21 días), medio (63 días) y largo (252 días)
+  - Sistema de ponderación ensemble que promedia los rankings de cada horizonte, evitando la sobreoptimización
+  - Normalización sectorial para comparar activos dentro de sus industrias respectivas
+
+- **Factores Secundarios** (compatibles con yfinance):
+  - Volatilidad realizada (21 días) normalizada por sector
+  - Reversión a la media de corto plazo (2-5 días)
+  - Momentum de volumen y anomalías en patrones de trading
+  - Estabilidad de rendimientos (autocorrelación negativa)
+
+### 2. Construcción del Portafolio
+
+- **Ranking Multifactorial**: Combinación de señales mediante un sistema de votación o ranking promedio, más robusto que la optimización de pesos.
+
+- **Neutralización Sectorial**: Posiciones long y short proporcionales al peso sectorial en el índice, manteniendo neutralidad por industria.
+
+- **Asignación de Capital**: 
+  - Long: Top 15-20% de acciones con mejor ranking
+  - Short: Bottom 15-20% de acciones con peor ranking
+  - Número óptimo determinado mediante validación cruzada temporal con bloques de 6 meses
+
+### 3. Gestión Dinámica de Beta
+
+- **Estimación de Beta**: Cálculo mediante regresiones rolling con ventanas adaptativas (60-252 días) basadas en la estabilidad del mercado.
+
+- **Ajuste de Exposiciones**: 
+  - Rebalanceo cuando el beta portafolio se desvía más de ±0.05 del objetivo
+  - Optimización que minimiza cambios respecto a las posiciones ideales mientras mantiene beta neutro
+  - Uso opcional de ETFs sectoriales para ajustes de exposición más eficientes
+
+### 4. Gestión de Riesgo
+
+- **Control de Exposición a Factores**: Monitoreo y limitación de exposición a factores de riesgo sistemáticos.
+
+- **Detección de Regímenes**: Implementación de un modelo simple de Markov Switching para identificar entornos de alta/baja volatilidad.
+
+- **Límites de Concentración Adaptativos**: Ajuste de la exposición máxima por posición según la correlación cruzada del mercado.
+
+- **Incorporación de Expected Shortfall (CVaR)**: Restricción adicional en la optimización para controlar el riesgo de cola.
+
+## Implementación Práctica
+
+### Rebalanceo y Ejecución
+
+- **Frecuencia Base**: Rebalanceo quincenal para reducir costos de transacción
+- **Monitoreo**: Revisión semanal de desviaciones de beta con ajustes si supera umbrales predefinidos
+- **Costos de Transacción**: Incorporación de penalización por rotación en la función objetivo
+- **Gestión de Eventos Corporativos**: Ajustes específicos para splits, dividendos y fusiones en el cálculo de momentum
+
+### Requisitos Técnicos
+
+- **Datos**: Precios diarios, volúmenes y datos fundamentales básicos disponibles en yfinance
+- **Infraestructura**: Procesamiento diario de señales con almacenamiento de cálculos intermedios
+- **Validación**: Esquema walk-forward con ventanas de entrenamiento/validación para evitar sobreajuste
+
+### Gestión de Outliers y Casos Especiales
+
+- **Tratamiento de Valores Extremos**: Winsorización al 1% y 99% para señales de momentum
+- **Eventos de Mercado**: Ajuste de ponderaciones durante períodos de alta volatilidad
+- **Asimetría de Retornos**: Incorporación de momentos de orden superior en la estimación de riesgo
+
+## Ventajas y Consideraciones
+
+### Ventajas Potenciales
+
+- **Alpha Puro**: Rendimientos desacoplados del mercado, con alpha anualizado estimado de 5-7%
+- **Ratio de Sharpe Mejorado**: Proyección de Sharpe ratio entre 1.2-1.5
+- **Drawdown Controlado**: Drawdown máximo esperado del 10-15%
+- **Baja Correlación**: Correlación esperada con S&P 500 inferior a 0.2
+- **Adaptabilidad**: Capacidad de ajuste a diferentes regímenes de mercado
+
+### Limitaciones y Riesgos
+
+- **Capacidad**: Estimada realísticamente en $200M-$500M antes de sufrir degradación significativa
+- **Entornos Desafiantes**: Potencial underperformance en mercados con momentum negativo extremo
+- **Costos de Implementación**: Necesidad de monitoreo y ajustes regulares
+- **Riesgo de Factores No Controlados**: Posibles exposiciones residuales a factores sistemáticos
+
+## Métricas de Evaluación
+
+- **Performance**: Ratio de Sharpe, alpha, beta, tracking error vs. S&P 500
+- **Riesgo**: Drawdown máximo, Expected Shortfall, volatilidad realizada
+- **Exposición**: Beta dinámico, exposiciones factoriales, concentración sectorial
+- **Implementación**: Rotación de portafolio, costos de transacción, market impact
+
+Esta estrategia representa un enfoque equilibrado entre sofisticación y robustez, diseñada para ser implementable con herramientas y datos accesibles mientras mantiene su potencial de generación de alpha en diversos entornos de mercado.
+
+RESPONSE:
+```python
+import os
+import logging
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import yfinance as yf
+from scipy import stats
+from sklearn.linear_model import LinearRegression
+from datetime import datetime, timedelta
+import warnings
+from statsmodels.regression.rolling import RollingOLS
+import statsmodels.api as sm
+from sklearn.model_selection import TimeSeriesSplit
+from scipy.optimize import minimize
+from functools import partial
+
+# Crear directorios para resultados
+os.makedirs('./artifacts/results', exist_ok=True)
+os.makedirs('./artifacts/results/figures', exist_ok=True)
+os.makedirs('./artifacts/results/data', exist_ok=True)
+
+# Configurar logging
+logging.basicConfig(
+    filename='./artifacts/errors.txt',
+    level=logging.ERROR,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+# Ignorar advertencias
+warnings.filterwarnings('ignore')
+
+class AdaptiveCrossSectionalMomentumStrategy:
+    def __init__(self, start_date='2010-01-01', end_date=None, rebalance_freq=10, 
+                 lookback_periods=[21, 63, 252], top_pct=0.15, bottom_pct=0.15,
+                 beta_target=0.0, beta_threshold=0.05, min_liquidity_percentile=30):
+        """
+        Inicializa la estrategia de Momentum Cross-Sectional con Neutralización de Beta
+        
+        Parámetros:
+        -----------
+        start_date : str
+            Fecha de inicio para el backtest
+        end_date : str
+            Fecha de fin para el backtest (None = hoy)
+        rebalance_freq : int
+            Frecuencia de rebalanceo en días hábiles
+        lookback_periods : list
+            Períodos de lookback para calcular momentum (días)
+        top_pct : float
+            Porcentaje de acciones para posiciones largas
+        bottom_pct : float
+            Porcentaje de acciones para posiciones cortas
+        beta_target : float
+            Beta objetivo del portafolio
+        beta_threshold : float
+            Umbral para rebalancear beta
+        min_liquidity_percentile : int
+            Percentil mínimo de liquidez para incluir acciones
+        """
+        self.start_date = start_date
+        self.end_date = end_date if end_date else datetime.now().strftime('%Y-%m-%d')
+        self.rebalance_freq = rebalance_freq
+        self.lookback_periods = lookback_periods
+        self.top_pct = top_pct
+        self.bottom_pct = bottom_pct
+        self.beta_target = beta_target
+        self.beta_threshold = beta_threshold
+        self.min_liquidity_percentile = min_liquidity_percentile
+        
+        # Datos de mercado
+        self.market_data = None
+        self.sp500_data = None
+        self.sp500_returns = None
+        self.sector_data = None
+        self.volume_data = None
+        
+        # Resultados
+        self.portfolio_weights = None
+        self.portfolio_returns = None
+        self.portfolio_value = None
+        self.portfolio_betas = None
+        self.performance_metrics = None
+        
+    def get_sp500_tickers(self):
+        """Obtiene los componentes actuales del S&P 500"""
+        try:
+            sp500_ticker = '^GSPC'
+            sp500 = yf.Ticker(sp500_ticker)
+            return [component for component in sp500.info.get('components', [])]
+        except Exception as e:
+            logging.error(f"Error obteniendo componentes del S&P 500: {str(e)}")
+            # Alternativa: usar ETF SPY para obtener sus principales componentes
+            spy = yf.Ticker("SPY")
+            holdings = spy.get_holdings()
+            if holdings is not None and not holdings.empty:
+                return holdings.index.tolist()[:100]  # Usar los 100 principales componentes
+            else:
+                # Lista de respaldo con algunas de las principales empresas del S&P 500
+                return ['AAPL', 'MSFT', 'AMZN', 'NVDA', 'GOOGL', 'META', 'TSLA', 'BRK-B', 
+                        'UNH', 'JPM', 'V', 'PG', 'MA', 'HD', 'CVX', 'MRK', 'LLY', 'PEP', 
+                        'KO', 'ABBV', 'AVGO', 'COST', 'WMT', 'BAC', 'PFE', 'TMO', 'CSCO', 
+                        'MCD', 'ACN', 'ABT', 'CRM', 'DHR', 'NEE', 'VZ', 'DIS', 'ADBE', 
+                        'PM', 'TXN', 'CMCSA', 'NKE', 'WFC', 'BMY', 'RTX', 'AMD', 'UPS']
+    
+    def load_data(self):
+        """Carga datos históricos para el universo de inversión"""
+        try:
+            # Obtener tickers del S&P 500
+            tickers = self.get_sp500_tickers()
+            
+            # Añadir el índice S&P 500
+            tickers_with_index = tickers + ['^GSPC']
+            
+            # Descargar datos históricos
+            data = yf.download(tickers_with_index, start=self.start_date, end=self.end_date)
+            
+            # Separar datos de precios, volumen y S&P 500
+            self.market_data = data['Adj Close'].copy()
+            self.volume_data = data['Volume'].copy()
+            
+            # Extraer datos del S&P 500
+            self.sp500_data = self.market_data['^GSPC'].copy()
+            self.market_data = self.market_data.drop('^GSPC', axis=1)
+            
+            # Calcular retornos diarios
+            self.market_returns = self.market_data.pct_change()
+            self.sp500_returns = self.sp500_data.pct_change()
+            
+            # Filtrar por liquidez (volumen)
+            self.filter_by_liquidity()
+            
+            # Obtener datos de sector (simulado para este ejemplo)
+            self.assign_random_sectors()
+            
+            print(f"Datos cargados: {len(self.market_data.columns)} acciones desde {self.start_date} hasta {self.end_date}")
+            
+            return True
+        except Exception as e:
+            logging.error(f"Error cargando datos: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
+            return False
+    
+    def filter_by_liquidity(self):
+        """Filtra acciones por liquidez basado en volumen promedio"""
+        try:
+            # Calcular volumen promedio de 30 días
+            avg_volume = self.volume_data.rolling(30).mean()
+            
+            # Obtener el último valor disponible de volumen promedio
+            last_avg_volume = avg_volume.iloc[-1]
+            
+            # Calcular el percentil de liquidez
+            min_volume = np.percentile(last_avg_volume.dropna(), self.min_liquidity_percentile)
+            
+            # Filtrar tickers con suficiente liquidez
+            liquid_tickers = last_avg_volume[last_avg_volume >= min_volume].index.tolist()
+            
+            # Actualizar datos de mercado y volumen
+            self.market_data = self.market_data[liquid_tickers]
+            self.market_returns = self.market_returns[liquid_tickers]
+            self.volume_data = self.volume_data[liquid_tickers]
+            
+            print(f"Filtrado por liquidez: {len(liquid_tickers)} acciones seleccionadas")
+        except Exception as e:
+            logging.error(f"Error filtrando por liquidez: {str(e)}")
+    
+    def assign_random_sectors(self):
+        """
+        Asigna sectores aleatorios a las acciones (simulación)
+        En una implementación real, se obtendrían de una fuente de datos
+        """
+        sectors = ['Technology', 'Healthcare', 'Financials', 'Consumer Discretionary', 
+                  'Communication Services', 'Industrials', 'Consumer Staples', 
+                  'Energy', 'Utilities', 'Real Estate', 'Materials']
+        
+        # Asignar sectores aleatorios pero con distribución realista
+        np.random.seed(42)  # Para reproducibilidad
+        tickers = self.market_data.columns
+        
+        # Probabilidades aproximadas basadas en pesos sectoriales del S&P 500
+        sector_probs = [0.28, 0.13, 0.12, 0.10, 0.08, 0.08, 0.07, 0.05, 0.03, 0.03, 0.03]
+        
+        # Asignar sectores
+        assigned_sectors = np.random.choice(sectors, size=len(tickers), p=sector_probs)
+        self.sector_data = pd.Series(assigned_sectors, index=tickers)
+    
+    def calculate_momentum_signals(self, date):
+        """
+        Calcula señales de momentum para todas las acciones en una fecha específica
+        
+        Parámetros:
+        -----------
+        date : datetime
+            Fecha para la cual calcular las señales
+        
+        Retorna:
+        --------
+        DataFrame con señales de momentum normalizadas
+        """
+        signals = pd.DataFrame(index=self.market_data.columns)
+        
+        # Obtener datos hasta la fecha especificada
+        market_data_until_date = self.market_data.loc[:date]
+        
+        # Calcular señales de momentum para diferentes períodos
+        for period in self.lookback_periods:
+            if len(market_data_until_date) > period:
+                # Calcular retornos para el período
+                returns = market_data_until_date.iloc[-1] / market_data_until_date.iloc[-period-1] - 1
+                
+                # Winsorizar para manejar outliers
+                returns = returns.clip(
+                    lower=returns.quantile(0.01),
+                    upper=returns.quantile(0.99)
+                )
+                
+                # Normalizar por sector
+                normalized_returns = pd.Series(index=returns.index)
+                for sector in self.sector_data.unique():
+                    sector_stocks = self.sector_data[self.sector_data == sector].index
+                    sector_returns = returns[sector_stocks]
+                    if not sector_returns.empty:
+                        # Z-score dentro del sector
+                        sector_mean = sector_returns.mean()
+                        sector_std = sector_returns.std()
+                        if sector_std > 0:
+                            normalized_returns[sector_stocks] = (sector_returns - sector_mean) / sector_std
+                
+                # Almacenar señal
+                signals[f'momentum_{period}'] = normalized_returns
+        
+        # Calcular señal de volatilidad (21 días)
+        if len(market_data_until_date) > 21:
+            returns_21d = self.market_returns.loc[:date].iloc[-21:]
+            volatility = returns_21d.std()
+            
+            # Normalizar volatilidad por sector (menor volatilidad = mejor señal)
+            normalized_volatility = pd.Series(index=volatility.index)
+            for sector in self.sector_data.unique():
+                sector_stocks = self.sector_data[self.sector_data == sector].index
+                sector_volatility = volatility[sector_stocks]
+                if not sector_volatility.empty and sector_volatility.std() > 0:
+                    # Z-score negativo (menor volatilidad = mejor ranking)
+                    normalized_volatility[sector_stocks] = -((sector_volatility - sector_volatility.mean()) / sector_volatility.std())
+            
+            signals['volatility_21d'] = normalized_volatility
+        
+        # Calcular reversión a la media de corto plazo (5 días)
+        if len(market_data_until_date) > 5:
+            returns_5d = market_data_until_date.iloc[-1] / market_data_until_date.iloc[-6] - 1
+            returns_5d = returns_5d.clip(lower=returns_5d.quantile(0.01), upper=returns_5d.quantile(0.99))
+            
+            # Normalizar por sector (señal negativa para capturar reversión)
+            normalized_returns_5d = pd.Series(index=returns_5d.index)
+            for sector in self.sector_data.unique():
+                sector_stocks = self.sector_data[self.sector_data == sector].index
+                sector_returns = returns_5d[sector_stocks]
+                if not sector_returns.empty and sector_returns.std() > 0:
+                    normalized_returns_5d[sector_stocks] = -((sector_returns - sector_returns.mean()) / sector_returns.std())
+            
+            signals['reversion_5d'] = normalized_returns_5d
+        
+        # Calcular momentum de volumen (21 días)
+        if len(self.volume_data.loc[:date]) > 21:
+            volume_ratio = self.volume_data.loc[:date].iloc[-5:].mean() / self.volume_data.loc[:date].iloc[-21:].mean()
+            
+            # Normalizar por sector
+            normalized_volume = pd.Series(index=volume_ratio.index)
+            for sector in self.sector_data.unique():
+                sector_stocks = self.sector_data[self.sector_data == sector].index
+                sector_volume = volume_ratio[sector_stocks]
+                if not sector_volume.empty and sector_volume.std() > 0:
+                    normalized_volume[sector_stocks] = (sector_volume - sector_volume.mean()) / sector_volume.std()
+            
+            signals['volume_momentum'] = normalized_volume
+        
+        # Combinar señales (promedio simple de z-scores)
+        signals['combined_signal'] = signals.mean(axis=1)
+        
+        return signals
+    
+    def calculate_betas(self, date, window=252):
+        """
+        Calcula betas de las acciones respecto al S&P 500
+        
+        Parámetros:
+        -----------
+        date : datetime
+            Fecha hasta la cual calcular betas
+        window : int
+            Ventana de tiempo para calcular betas
+        
+        Retorna:
+        --------
+        Series con betas para cada acción
+        """
+        # Obtener datos hasta la fecha especificada
+        market_returns_until_date = self.market_returns.loc[:date]
+        sp500_returns_until_date = self.sp500_returns.loc[:date]
+        
+        if len(market_returns_until_date) < window:
+            window = len(market_returns_until_date) - 1
+        
+        # Usar los últimos 'window' días para calcular betas
+        recent_market_returns = market_returns_until_date.iloc[-window:]
+        recent_sp500_returns = sp500_returns_until_date.iloc[-window:]
+        
+        # Calcular betas usando regresión
+        betas = {}
+        for ticker in recent_market_returns.columns:
+            stock_returns = recent_market_returns[ticker].dropna()
+            if len(stock_returns) > 0.5 * window:  # Al menos 50% de datos válidos
+                matched_sp500_returns = recent_sp500_returns.loc[stock_returns.index]
+                
+                # Eliminar filas con NaN
+                valid_data = pd.concat([stock_returns, matched_sp500_returns], axis=1).dropna()
+                
+                if len(valid_data) > 30:  # Mínimo 30 puntos para regresión
+                    X = valid_data.iloc[:, 1].values.reshape(-1, 1)
+                    y = valid_data.iloc[:, 0].values
+                    
+                    model = LinearRegression()
+                    model.fit(X, y)
+                    betas[ticker] = model.coef_[0]
+                else:
+                    betas[ticker] = 1.0  # Valor predeterminado si no hay suficientes datos
+            else:
+                betas[ticker] = 1.0  # Valor predeterminado si no hay suficientes datos
+        
+        return pd.Series(betas)
+    
+    def optimize_portfolio(self, signals, betas, date):
+        """
+        Optimiza el portafolio para maximizar señal y neutralizar beta
+        
+        Parámetros:
+        -----------
+        signals : DataFrame
+            Señales de momentum y otros factores
+        betas : Series
+            Betas de las acciones
+        date : datetime
+            Fecha de optimización
+        
+        Retorna:
+        --------
+        Series con pesos optimizados del portafolio
+        """
+        # Obtener señal combinada
+        combined_signal = signals['combined_signal'].dropna()
+        
+        # Filtrar acciones con señales y betas disponibles
+        common_tickers = combined_signal.index.intersection(betas.index)
+        signals_filtered = combined_signal[common_tickers]
+        betas_filtered = betas[common_tickers]
+        
+        # Ordenar acciones por señal
+        ranked_stocks = signals_filtered.sort_values(ascending=False)
+        
+        # Seleccionar acciones para posiciones long y short
+        num_stocks = len(ranked_stocks)
+        num_long = int(num_stocks * self.top_pct)
+        num_short = int(num_stocks * self.bottom_pct)
+        
+        long_stocks = ranked_stocks.iloc[:num_long].index
+        short_stocks = ranked_stocks.iloc[-num_short:].index
+        
+        # Inicializar pesos
+        weights = pd.Series(0, index=combined_signal.index)
+        
+        # Asignar pesos iniciales (igual ponderación)
+        weights[long_stocks] = 1.0 / num_long
+        weights[short_stocks] = -1.0 / num_short
+        
+        # Calcular beta inicial del portafolio
+        initial_portfolio_beta = (weights * betas_filtered).sum()
+        
+        # Si el beta está dentro del umbral, no es necesario optimizar
+        if abs(initial_portfolio_beta - self.beta_target) <= self.beta_threshold:
+            return weights
+        
+        # Preparar datos para optimización
+        tickers = list(weights[weights != 0].index)
+        initial_weights = weights[tickers].values
+        stock_betas = betas_filtered[tickers].values
+        stock_signals = signals_filtered[tickers].values
+        
+        # Función objetivo: maximizar señal mientras se penaliza desviación de pesos iniciales
+        def objective(w, initial_w, signals):
+            signal_score = -np.sum(w * signals)  # Negativo porque minimizamos
+            weight_deviation = 10 * np.sum((w - initial_w)**2)  # Penalización por desviación
+            return signal_score + weight_deviation
+        
+        # Restricción: beta neutral
+        def beta_constraint(w, betas, target):
+            return np.sum(w * betas) - target
+        
+        # Restricción: suma de pesos = 0 (dollar neutral)
+        def sum_constraint(w):
+            return np.sum(w)
+        
+        # Restricción: mantener dirección de las posiciones
+        def long_constraint(w, initial_w):
+            # Los pesos deben mantener el mismo signo que los iniciales
+            return np.sum((w * initial_w) < 0)
+        
+        # Configurar restricciones
+        constraints = [
+            {'type': 'eq', 'fun': beta_constraint, 'args': (stock_betas, self.beta_target)},
+            {'type': 'eq', 'fun': sum_constraint}
+        ]
+        
+        # Límites: mantener dirección de posiciones pero permitir ajustes
+        bounds = []
+        for i, w in enumerate(initial_weights):
+            if w > 0:  # Posición larga
+                bounds.append((0, None))
+            else:  # Posición corta
+                bounds.append((None, 0))
+        
+        # Optimizar
+        result = minimize(
+            objective,
+            initial_weights,
+            args=(initial_weights, stock_signals),
+            method='SLSQP',
+            bounds=bounds,
+            constraints=constraints,
+            options={'maxiter': 1000, 'disp': False}
+        )
+        
+        if result.success:
+            # Actualizar pesos con resultado de optimización
+            optimized_weights = pd.Series(result.x, index=tickers)
+            weights[tickers] = optimized_weights
+            
+            # Verificar beta final
+            final_portfolio_beta = (weights * betas_filtered).sum()
+            print(f"Beta optimizado: {final_portfolio_beta:.4f} (objetivo: {self.beta_target})")
+        else:
+            logging.warning(f"Optimización no convergió en fecha {date}. Usando pesos iniciales.")
+        
+        return weights
+    
+    def run_backtest(self):
+        """Ejecuta el backtest de la estrategia"""
+        try:
+            # Cargar datos
+            if not self.load_data():
+                return False
+            
+            # Inicializar resultados
+            self.portfolio_weights = {}
+            self.portfolio_returns = pd.Series(index=self.market_returns.index)
+            self.portfolio_value = pd.Series(1.0, index=self.market_returns.index)
+            self.portfolio_betas = pd.Series(index=self.market_returns.index)
+            
+            # Determinar fechas de rebalanceo
+            all_dates = self.market_returns.index
+            
+            # Necesitamos suficientes datos históricos para el primer rebalanceo
+            min_history = max(self.lookback_periods) + 10
+            start_idx = min_history
+            
+            # Iterar por fechas de rebalanceo
+            current_weights = None
+            last_rebalance_idx = 0
+            
+            for i in range(start_idx, len(all_dates)):
+                current_date = all_dates[i]
+                
+                # Verificar si es momento de rebalancear
+                if (i - last_rebalance_idx >= self.rebalance_freq) or (current_weights is None):
+                    print(f"Rebalanceando en {current_date.strftime('%Y-%m-%d')}")
+                    
+                    # Calcular señales
+                    signals = self.calculate_momentum_signals(all_dates[i-1])
+                    
+                    # Calcular betas
+                    betas = self.calculate_betas(all_dates[i-1])
+                    
+                    # Optimizar portafolio
+                    current_weights = self.optimize_portfolio(signals, betas, current_date)
+                    
+                    # Guardar pesos
+                    self.portfolio_weights[current_date] = current_weights
+                    
+                    # Actualizar índice del último rebalanceo
+                    last_rebalance_idx = i
+                    
+                    # Calcular beta del portafolio
+                    portfolio_beta = (current_weights * betas).sum()
+                    self.portfolio_betas[current_date] = portfolio_beta
+                
+                # Calcular retorno diario del portafolio
+                if current_weights is not None:
+                    # Obtener retornos del día actual
+                    daily_returns = self.market_returns.loc[current_date]
+                    
+                    # Calcular retorno del portafolio
+                    stocks_in_portfolio = current_weights.index.intersection(daily_returns.index)
+                    
+                    if len(stocks_in_portfolio) > 0:
+                        portfolio_return = (current_weights[stocks_in_portfolio] * daily_returns[stocks_in_portfolio]).sum()
+                        self.portfolio_returns[current_date] = portfolio_return
+                        
+                        # Actualizar valor del portafolio
+                        if i > 0:
+                            self.portfolio_value[current_date] = self.portfolio_value[all_dates[i-1]] * (1 + portfolio_return)
+            
+            # Calcular métricas de rendimiento
+            self.calculate_performance_metrics()
+            
+            # Generar gráficos y guardar resultados
+            self.generate_results()
+            
+            return True
+        
+        except Exception as e:
+            logging.error(f"Error en backtest: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
+            return False
+    
+    def calculate_performance_metrics(self):
+        """Calcula métricas de rendimiento de la estrategia"""
+        # Eliminar NaN de los retornos
+        returns = self.portfolio_returns.dropna()
+        
+        # Métricas básicas
+        total_days = len(returns)
+        trading_days_per_year = 252
+        
+        # Retorno total y anualizado
+        total_return = self.portfolio_value.iloc[-1] / self.portfolio_value.iloc[0] - 1
+        annual_return = (1 + total_return) ** (trading_days_per_year / total_days) - 1
+        
+        # Volatilidad
+        daily_vol = returns.std()
+        annual_vol = daily_vol * np.sqrt(trading_days_per_year)
+        
+        # Ratio de Sharpe
+        risk_free_rate = 0.02  # Tasa libre de riesgo asumida (2%)
+        daily_risk_free = (1 + risk_free_rate) ** (1 / trading_days_per_year) - 1
+        excess_returns = returns - daily_risk_free
+        sharpe_ratio = (excess_returns.mean() / excess_returns.std()) * np.sqrt(trading_days_per_year)
+        
+        # Drawdown
+        cumulative_returns = (1 + returns).cumprod()
+        running_max = cumulative_returns.cummax()
+        drawdown = (cumulative_returns / running_max) - 1
+        max_drawdown = drawdown.min()
+        
+        # Correlación con S&P 500
+        sp500_returns_aligned = self.sp500_returns.loc[returns.index]
+        correlation_with_sp500 = returns.corr(sp500_returns_aligned)
+        
+        # Beta promedio
+        avg_beta = self.portfolio_betas.mean()
+        
+        # Crear diccionario de métricas
+        self.performance_metrics = {
+            'total_return': total_return,
+            'annual_return': annual_return,
+            'annual_volatility': annual_vol,
+            'sharpe_ratio': sharpe_ratio,
+            'max_drawdown': max_drawdown,
+            'correlation_with_sp500': correlation_with_sp500,
+            'avg_beta': avg_beta
+        }
+        
+        # Métricas adicionales
+        self.performance_metrics['calmar_ratio'] = annual_return / abs(max_drawdown)
+        self.performance_metrics['sortino_ratio'] = self.calculate_sortino_ratio(returns, daily_risk_free)
+        
+        # Métricas de riesgo de cola
+        self.performance_metrics['var_95'] = np.percentile(returns, 5)
+        self.performance_metrics['cvar_95'] = returns[returns <= self.performance_metrics['var_95']].mean()
+        
+        return self.performance_metrics
+    
+    def calculate_sortino_ratio(self, returns, risk_free_rate):
+        """Calcula el ratio de Sortino"""
+        excess_returns = returns - risk_free_rate
+        downside_returns = excess_returns[excess_returns < 0]
+        downside_deviation = downside_returns.std() * np.sqrt(252)
+        
+        if downside_deviation == 0:
+            return np.nan
+        
+        return (excess_returns.mean() * 252) / downside_deviation
+    
+    def generate_results(self):
+        """Genera gráficos y guarda resultados"""
+        # Guardar métricas de rendimiento
+        metrics_df = pd.DataFrame.from_dict(self.performance_metrics, orient='index', columns=['Value'])
+        metrics_df.to_csv('./artifacts/results/data/performance_metrics.csv')
+        
+        # Guardar retornos diarios
+        self.portfolio_returns.to_csv('./artifacts/results/data/daily_returns.csv')
+        
+        # Guardar valor del portafolio
+        self.portfolio_value.to_csv('./artifacts/results/data/portfolio_value.csv')
+        
+        # Guardar betas del portafolio
+        self.portfolio_betas.to_csv('./artifacts/results/data/portfolio_betas.csv')
+        
+        # Guardar pesos del portafolio (muestra de las últimas 10 fechas)
+        weights_df = pd.DataFrame(self.portfolio_weights).T
+        if len(weights_df) > 10:
+            weights_sample = weights_df.iloc[-10:]
+        else:
+            weights_sample = weights_df
+        weights_sample.to_csv('./artifacts/results/data/portfolio_weights_sample.csv')
+        
+        # Generar gráficos
+        self.plot_portfolio_performance()
+        self.plot_drawdown()
+        self.plot_beta_exposure()
+        self.plot_rolling_metrics()
+        self.plot_sector_exposure()
+    
+    def plot_portfolio_performance(self):
+        """Grafica el rendimiento del portafolio vs S&P 500"""
+        plt.figure(figsize=(12, 6))
+        
+        # Calcular rendimiento acumulado del S&P 500
+        sp500_aligned = self.sp500_returns.loc[self.portfolio_returns.index]
+        sp500_cumulative = (1 + sp500_aligned).cumprod()
+        sp500_cumulative = sp500_cumulative / sp500_cumulative.iloc[0]
+        
+        # Normalizar valor del portafolio
+        portfolio_normalized = self.portfolio_value / self.portfolio_value.iloc[0]
+        
+        # Graficar
+        plt.plot(portfolio_normalized, label='Estrategia', linewidth=2)
+        plt.plot(sp500_cumulative, label='S&P 500', linewidth=2, alpha=0.7)
+        
+        plt.title('Rendimiento de la Estrategia vs S&P 500', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Valor (normalizado)', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=12)
+        
+        # Añadir anotaciones con métricas clave
+        ann_return = self.performance_metrics['annual_return'] * 100
+        sharpe = self.performance_metrics['sharpe_ratio']
+        max_dd = self.performance_metrics['max_drawdown'] * 100
+        
+        plt.annotate(f'Retorno Anual: {ann_return:.2f}%\nSharpe: {sharpe:.2f}\nMax DD: {max_dd:.2f}%',
+                    xy=(0.02, 0.95), xycoords='axes fraction',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                    fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/portfolio_performance.png', dpi=300)
+        plt.close()
+    
+    def plot_drawdown(self):
+        """Grafica el drawdown del portafolio"""
+        returns = self.portfolio_returns.dropna()
+        cumulative_returns = (1 + returns).cumprod()
+        running_max = cumulative_returns.cummax()
+        drawdown = (cumulative_returns / running_max) - 1
+        
+        plt.figure(figsize=(12, 6))
+        plt.plot(drawdown, color='red', linewidth=2)
+        plt.fill_between(drawdown.index, drawdown, 0, color='red', alpha=0.3)
+        
+        plt.title('Drawdown de la Estrategia', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Drawdown (%)', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        
+        # Añadir línea de máximo drawdown
+        max_dd = drawdown.min()
+        plt.axhline(y=max_dd, color='darkred', linestyle='--', alpha=0.7)
+        plt.annotate(f'Max Drawdown: {max_dd*100:.2f}%',
+                    xy=(0.02, 0.05), xycoords='axes fraction',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                    fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/drawdown.png', dpi=300)
+        plt.close()
+    
+    def plot_beta_exposure(self):
+        """Grafica la exposición beta del portafolio a lo largo del tiempo"""
+        plt.figure(figsize=(12, 6))
+        
+        plt.plot(self.portfolio_betas, linewidth=2)
+        plt.axhline(y=self.beta_target, color='red', linestyle='--', alpha=0.7, label=f'Objetivo ({self.beta_target})')
+        
+        # Añadir bandas de umbral
+        plt.axhline(y=self.beta_target + self.beta_threshold, color='gray', linestyle=':', alpha=0.5)
+        plt.axhline(y=self.beta_target - self.beta_threshold, color='gray', linestyle=':', alpha=0.5)
+        plt.fill_between(self.portfolio_betas.index, 
+                         self.beta_target - self.beta_threshold, 
+                         self.beta_target + self.beta_threshold, 
+                         color='gray', alpha=0.1)
+        
+        plt.title('Exposición Beta del Portafolio', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Beta', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=10)
+        
+        # Añadir anotación con beta promedio
+        avg_beta = self.portfolio_betas.mean()
+        plt.annotate(f'Beta Promedio: {avg_beta:.4f}',
+                    xy=(0.02, 0.95), xycoords='axes fraction',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                    fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/beta_exposure.png', dpi=300)
+        plt.close()
+    
+    def plot_rolling_metrics(self):
+        """Grafica métricas móviles (Sharpe, volatilidad)"""
+        returns = self.portfolio_returns.dropna()
+        
+        # Calcular métricas móviles (ventana de 126 días ~ 6 meses)
+        window = 126
+        rolling_return = returns.rolling(window).mean() * 252
+        rolling_vol = returns.rolling(window).std() * np.sqrt(252)
+        rolling_sharpe = rolling_return / rolling_vol
+        
+        # Graficar Sharpe ratio móvil
+        plt.figure(figsize=(12, 6))
+        plt.plot(rolling_sharpe, linewidth=2)
+        plt.axhline(y=self.performance_metrics['sharpe_ratio'], color='red', linestyle='--', 
+                   alpha=0.7, label=f'Promedio ({self.performance_metrics["sharpe_ratio"]:.2f})')
+        
+        plt.title('Ratio de Sharpe Móvil (6 meses)', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Sharpe Ratio', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/rolling_sharpe.png', dpi=300)
+        plt.close()
+        
+        # Graficar volatilidad móvil
+        plt.figure(figsize=(12, 6))
+        plt.plot(rolling_vol, linewidth=2)
+        plt.axhline(y=self.performance_metrics['annual_volatility'], color='red', linestyle='--', 
+                   alpha=0.7, label=f'Promedio ({self.performance_metrics["annual_volatility"]:.2f})')
+        
+        plt.title('Volatilidad Anualizada Móvil (6 meses)', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Volatilidad', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/rolling_volatility.png', dpi=300)
+        plt.close()
+    
+    def plot_sector_exposure(self):
+        """Grafica la exposición sectorial del último portafolio"""
+        if not self.portfolio_weights:
+            return
+        
+        # Obtener los pesos del último rebalanceo
+        last_date = max(self.portfolio_weights.keys())
+        last_weights = self.portfolio_weights[last_date]
+        
+        # Calcular exposición por sector
+        sector_exposure = {}
+        for ticker, weight in last_weights.items():
+            if ticker in self.sector_data.index:
+                sector = self.sector_data[ticker]
+                if sector in sector_exposure:
+                    sector_exposure[sector] += weight
+                else:
+                    sector_exposure[sector] = weight
+        
+        # Convertir a DataFrame
+        sector_df = pd.DataFrame.from_dict(sector_exposure, orient='index', columns=['Exposure'])
+        sector_df = sector_df.sort_values('Exposure')
+        
+        # Graficar
+        plt.figure(figsize=(12, 8))
+        colors = ['green' if x > 0 else 'red' for x in sector_df['Exposure']]
+        
+        sector_df['Exposure'].plot(kind='barh', color=colors)
+        
+        plt.title('Exposición Sectorial (Último Rebalanceo)', fontsize=14)
+        plt.xlabel('Exposición Neta', fontsize=12)
+        plt.ylabel('Sector', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.axvline(x=0, color='black', linestyle='-', alpha=0.7)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/sector_exposure.png', dpi=300)
+        plt.close()
+    
+    def run_walk_forward_analysis(self, train_size=252*2, test_size=126):
+        """
+        Ejecuta análisis walk-forward para evaluar robustez
+        
+        Parámetros:
+        -----------
+        train_size : int
+            Tamaño de la ventana de entrenamiento en días
+        test_size : int
+            Tamaño de la ventana de prueba en días
+        """
+        try:
+            # Cargar datos si no se han cargado
+            if self.market_data is None:
+                if not self.load_data():
+                    return False
+            
+            # Obtener fechas disponibles
+            all_dates = self.market_returns.index
+            
+            # Necesitamos suficientes datos históricos para el primer período
+            min_history = max(self.lookback_periods) + 10
+            start_idx = min_history
+            
+            # Inicializar resultados
+            walk_forward_returns = pd.Series(index=all_dates[start_idx:])
+            walk_forward_value = pd.Series(1.0, index=all_dates[start_idx:])
+            
+            # Configurar ventanas de tiempo
+            tscv = TimeSeriesSplit(n_splits=int((len(all_dates) - start_idx) / test_size))
+            
+            # Iterar por ventanas de tiempo
+            for train_idx, test_idx in tscv.split(all_dates[start_idx:]):
+                # Ajustar índices
+                train_idx = train_idx + start_idx
+                test_idx = test_idx + start_idx
+                
+                # Asegurar que la ventana de entrenamiento sea suficientemente grande
+                if len(train_idx) < train_size:
+                    continue
+                
+                # Limitar tamaño de entrenamiento si es necesario
+                if len(train_idx) > train_size:
+                    train_idx = train_idx[-train_size:]
+                
+                # Obtener fechas de entrenamiento y prueba
+                train_dates = all_dates[train_idx]
+                test_dates = all_dates[test_idx]
+                
+                print(f"Entrenando en: {train_dates[0]} a {train_dates[-1]}")
+                print(f"Probando en: {test_dates[0]} a {test_dates[-1]}")
+                
+                # Calcular señales con datos de entrenamiento
+                signals = self.calculate_momentum_signals(train_dates[-1])
+                
+                # Calcular betas con datos de entrenamiento
+                betas = self.calculate_betas(train_dates[-1])
+                
+                # Optimizar portafolio
+                weights = self.optimize_portfolio(signals, betas, train_dates[-1])
+                
+                # Aplicar pesos a período de prueba
+                for test_date in test_dates:
+                    # Obtener retornos del día
+                    daily_returns = self.market_returns.loc[test_date]
+                    
+                    # Calcular retorno del portafolio
+                    stocks_in_portfolio = weights.index.intersection(daily_returns.index)
+                    
+                    if len(stocks_in_portfolio) > 0:
+                        portfolio_return = (weights[stocks_in_portfolio] * daily_returns[stocks_in_portfolio]).sum()
+                        walk_forward_returns[test_date] = portfolio_return
+                        
+                        # Actualizar valor del portafolio
+                        prev_date_idx = all_dates.get_loc(test_date) - 1
+                        prev_date = all_dates[prev_date_idx]
+                        
+                        if prev_date in walk_forward_value.index:
+                            walk_forward_value[test_date] = walk_forward_value[prev_date] * (1 + portfolio_return)
+            
+            # Calcular métricas de rendimiento
+            wf_returns = walk_forward_returns.dropna()
+            
+            # Métricas básicas
+            total_days = len(wf_returns)
+            trading_days_per_year = 252
+            
+            # Retorno total y anualizado
+            total_return = walk_forward_value.iloc[-1] / walk_forward_value.iloc[0] - 1
+            annual_return = (1 + total_return) ** (trading_days_per_year / total_days) - 1
+            
+            # Volatilidad
+            daily_vol = wf_returns.std()
+            annual_vol = daily_vol * np.sqrt(trading_days_per_year)
+            
+            # Ratio de Sharpe
+            risk_free_rate = 0.02  # Tasa libre de riesgo asumida (2%)
+            daily_risk_free = (1 + risk_free_rate) ** (1 / trading_days_per_year) - 1
+            excess_returns = wf_returns - daily_risk_free
+            sharpe_ratio = (excess_returns.mean() / excess_returns.std()) * np.sqrt(trading_days_per_year)
+            
+            # Drawdown
+            cumulative_returns = (1 + wf_returns).cumprod()
+            running_max = cumulative_returns.cummax()
+            drawdown = (cumulative_returns / running_max) - 1
+            max_drawdown = drawdown.min()
+            
+            # Guardar resultados
+            wf_metrics = {
+                'total_return': total_return,
+                'annual_return': annual_return,
+                'annual_volatility': annual_vol,
+                'sharpe_ratio': sharpe_ratio,
+                'max_drawdown': max_drawdown
+            }
+            
+            # Guardar métricas
+            wf_metrics_df = pd.DataFrame.from_dict(wf_metrics, orient='index', columns=['Value'])
+            wf_metrics_df.to_csv('./artifacts/results/data/walk_forward_metrics.csv')
+            
+            # Guardar retornos y valor
+            walk_forward_returns.to_csv('./artifacts/results/data/walk_forward_returns.csv')
+            walk_forward_value.to_csv('./artifacts/results/data/walk_forward_value.csv')
+            
+            # Graficar resultados
+            plt.figure(figsize=(12, 6))
+            
+            # Calcular rendimiento acumulado del S&P 500 para el mismo período
+            sp500_aligned = self.sp500_returns.loc[walk_forward_returns.index]
+            sp500_cumulative = (1 + sp500_aligned).cumprod()
+            sp500_cumulative = sp500_cumulative / sp500_cumulative.iloc[0]
+            
+            # Normalizar valor del portafolio
+            wf_normalized = walk_forward_value / walk_forward_value.iloc[0]
+            
+            # Graficar
+            plt.plot(wf_normalized, label='Estrategia (Walk-Forward)', linewidth=2)
+            plt.plot(sp500_cumulative, label='S&P 500', linewidth=2, alpha=0.7)
+            
+            plt.title('Análisis Walk-Forward vs S&P 500', fontsize=14)
+            plt.xlabel('Fecha', fontsize=12)
+            plt.ylabel('Valor (normalizado)', fontsize=12)
+            plt.grid(True, alpha=0.3)
+            plt.legend(fontsize=12)
+            
+            # Añadir anotaciones con métricas clave
+            plt.annotate(f'Retorno Anual: {annual_return*100:.2f}%\nSharpe: {sharpe_ratio:.2f}\nMax DD: {max_drawdown*100:.2f}%',
+                        xy=(0.02, 0.95), xycoords='axes fraction',
+                        bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                        fontsize=10)
+            
+            plt.tight_layout()
+            plt.savefig('./artifacts/results/figures/walk_forward_performance.png', dpi=300)
+            plt.close()
+            
+            return True
+        
+        except Exception as e:
+            logging.error(f"Error en análisis walk-forward: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
+            return False
+
+# Ejecutar la estrategia
+if __name__ == "__main__":
+    # Crear instancia de la estrategia
+    strategy = AdaptiveCrossSectionalMomentumStrategy(
+        start_date='2015-01-01',
+        end_date=None,  # Hasta hoy
+        rebalance_freq=10,  # Rebalanceo cada 10 días hábiles
+        lookback_periods=[21, 63, 252],  # Períodos de momentum
+        top_pct=0.15,  # Top 15% para posiciones largas
+        bottom_pct=0.15,  # Bottom 15% para posiciones cortas
+        beta_target=0.0,  # Beta objetivo
+        beta_threshold=0.05,  # Umbral de desviación de beta
+        min_liquidity_percentile=30  # Filtro de liquidez
+    )
+    
+    # Ejecutar backtest
+    print("Ejecutando backtest...")
+    strategy.run_backtest()
+    
+    # Ejecutar análisis walk-forward
+    print("Ejecutando análisis walk-forward...")
+    strategy.run_walk_forward_analysis()
+    
+    print("Estrategia completada. Resultados guardados en ./artifacts/results/")
+```
+
+
+--- revisor_codigo (STEP 5.1) ---
+INPUT 1 (user):
+=== REVISIÓN DE CÓDIGO ===
+
+IDEA CONCEPTUAL (sintetizada):
+# IDEA FINAL: ESTRATEGIA DE INVERSIÓN ADAPTIVE CROSS-SECTIONAL MOMENTUM CON NEUTRALIZACIÓN DINÁMICA DE BETA
+
+## Descripción
+
+Esta estrategia implementa un sistema de momentum cross-sectional adaptativo con neutralización dinámica de beta, diseñado específicamente para generar alpha puro con exposición beta cercana a cero frente al S&P 500. Combina técnicas avanzadas de selección de activos, construcción de portafolio y gestión de riesgo para crear una estrategia robusta que pueda funcionar en diversos regímenes de mercado.
+
+## Fundamentos Teóricos
+
+La estrategia se basa en tres pilares fundamentales:
+
+1. **Momentum Cross-Sectional Adaptativo**: Utiliza un enfoque de ranking relativo entre los componentes del S&P 500, con ventanas temporales optimizadas que identifican los períodos más efectivos para la formación del momentum.
+
+2. **Neutralización Dinámica de Beta**: Implementa un modelo de estimación continua de beta para ajustar las exposiciones y mantener un beta portafolio próximo a cero.
+
+3. **Optimización Multifactorial con Restricciones**: Maximiza el alpha esperado mientras minimiza la varianza idiosincrática, sujeta a restricciones de beta neutral y exposición sectorial equilibrada.
+
+## Componentes Principales
+
+### 1. Selección de Activos y Señales
+
+- **Universo de Inversión**: Componentes del S&P 500 con liquidez suficiente (volumen promedio diario > percentil 30 del índice).
+
+- **Señal de Momentum Principal**:
+  - Implementación simplificada con tres horizontes clave: corto (21 días), medio (63 días) y largo (252 días)
+  - Sistema de ponderación ensemble que promedia los rankings de cada horizonte, evitando la sobreoptimización
+  - Normalización sectorial para comparar activos dentro de sus industrias respectivas
+
+- **Factores Secundarios** (compatibles con yfinance):
+  - Volatilidad realizada (21 días) normalizada por sector
+  - Reversión a la media de corto plazo (2-5 días)
+  - Momentum de volumen y anomalías en patrones de trading
+  - Estabilidad de rendimientos (autocorrelación negativa)
+
+### 2. Construcción del Portafolio
+
+- **Ranking Multifactorial**: Combinación de señales mediante un sistema de votación o ranking promedio, más robusto que la optimización de pesos.
+
+- **Neutralización Sectorial**: Posiciones long y short proporcionales al peso sectorial en el índice, manteniendo neutralidad por industria.
+
+- **Asignación de Capital**: 
+  - Long: Top 15-20% de acciones con mejor ranking
+  - Short: Bottom 15-20% de acciones con peor ranking
+  - Número óptimo determinado mediante validación cruzada temporal con bloques de 6 meses
+
+### 3. Gestión Dinámica de Beta
+
+- **Estimación de Beta**: Cálculo mediante regresiones rolling con ventanas adaptativas (60-252 días) basadas en la estabilidad del mercado.
+
+- **Ajuste de Exposiciones**: 
+  - Rebalanceo cuando el beta portafolio se desvía más de ±0.05 del objetivo
+  - Optimización que minimiza cambios respecto a las posiciones ideales mientras mantiene beta neutro
+  - Uso opcional de ETFs sectoriales para ajustes de exposición más eficientes
+
+### 4. Gestión de Riesgo
+
+- **Control de Exposición a Factores**: Monitoreo y limitación de exposición a factores de riesgo sistemáticos.
+
+- **Detección de Regímenes**: Implementación de un modelo simple de Markov Switching para identificar entornos de alta/baja volatilidad.
+
+- **Límites de Concentración Adaptativos**: Ajuste de la exposición máxima por posición según la correlación cruzada del mercado.
+
+- **Incorporación de Expected Shortfall (CVaR)**: Restricción adicional en la optimización para controlar el riesgo de cola.
+
+## Implementación Práctica
+
+### Rebalanceo y Ejecución
+
+- **Frecuencia Base**: Rebalanceo quincenal para reducir costos de transacción
+- **Monitoreo**: Revisión semanal de desviaciones de beta con ajustes si supera umbrales predefinidos
+- **Costos de Transacción**: Incorporación de penalización por rotación en la función objetivo
+- **Gestión de Eventos Corporativos**: Ajustes específicos para splits, dividendos y fusiones en el cálculo de momentum
+
+### Requisitos Técnicos
+
+- **Datos**: Precios diarios, volúmenes y datos fundamentales básicos disponibles en yfinance
+- **Infraestructura**: Procesamiento diario de señales con almacenamiento de cálculos intermedios
+- **Validación**: Esquema walk-forward con ventanas de entrenamiento/validación para evitar sobreajuste
+
+### Gestión de Outliers y Casos Especiales
+
+- **Tratamiento de Valores Extremos**: Winsorización al 1% y 99% para señales de momentum
+- **Eventos de Mercado**: Ajuste de ponderaciones durante períodos de alta volatilidad
+- **Asimetría de Retornos**: Incorporación de momentos de orden superior en la estimación de riesgo
+
+## Ventajas y Consideraciones
+
+### Ventajas Potenciales
+
+- **Alpha Puro**: Rendimientos desacoplados del mercado, con alpha anualizado estimado de 5-7%
+- **Ratio de Sharpe Mejorado**: Proyección de Sharpe ratio entre 1.2-1.5
+- **Drawdown Controlado**: Drawdown máximo esperado del 10-15%
+- **Baja Correlación**: Correlación esperada con S&P 500 inferior a 0.2
+- **Adaptabilidad**: Capacidad de ajuste a diferentes regímenes de mercado
+
+### Limitaciones y Riesgos
+
+- **Capacidad**: Estimada realísticamente en $200M-$500M antes de sufrir degradación significativa
+- **Entornos Desafiantes**: Potencial underperformance en mercados con momentum negativo extremo
+- **Costos de Implementación**: Necesidad de monitoreo y ajustes regulares
+- **Riesgo de Factores No Controlados**: Posibles exposiciones residuales a factores sistemáticos
+
+## Métricas de Evaluación
+
+- **Performance**: Ratio de Sharpe, alpha, beta, tracking error vs. S&P 500
+- **Riesgo**: Drawdown máximo, Expected Shortfall, volatilidad realizada
+- **Exposición**: Beta dinámico, exposiciones factoriales, concentración sectorial
+- **Implementación**: Rotación de portafolio, costos de transacción, market impact
+
+Esta estrategia representa un enfoque equilibrado entre sofisticación y robustez, diseñada para ser implementable con herramientas y datos accesibles mientras mantiene su potencial de generación de alpha en diversos entornos de mercado.
+
+IMPLEMENTACIÓN EN CÓDIGO (del desarrollador):
+```python
+import os
+import logging
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import yfinance as yf
+from scipy import stats
+from sklearn.linear_model import LinearRegression
+from datetime import datetime, timedelta
+import warnings
+from statsmodels.regression.rolling import RollingOLS
+import statsmodels.api as sm
+from sklearn.model_selection import TimeSeriesSplit
+from scipy.optimize import minimize
+from functools import partial
+
+# Crear directorios para resultados
+os.makedirs('./artifacts/results', exist_ok=True)
+os.makedirs('./artifacts/results/figures', exist_ok=True)
+os.makedirs('./artifacts/results/data', exist_ok=True)
+
+# Configurar logging
+logging.basicConfig(
+    filename='./artifacts/errors.txt',
+    level=logging.ERROR,
+    format='[%(asctime)s] %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
+# Ignorar advertencias
+warnings.filterwarnings('ignore')
+
+class AdaptiveCrossSectionalMomentumStrategy:
+    def __init__(self, start_date='2010-01-01', end_date=None, rebalance_freq=10, 
+                 lookback_periods=[21, 63, 252], top_pct=0.15, bottom_pct=0.15,
+                 beta_target=0.0, beta_threshold=0.05, min_liquidity_percentile=30):
+        """
+        Inicializa la estrategia de Momentum Cross-Sectional con Neutralización de Beta
+        
+        Parámetros:
+        -----------
+        start_date : str
+            Fecha de inicio para el backtest
+        end_date : str
+            Fecha de fin para el backtest (None = hoy)
+        rebalance_freq : int
+            Frecuencia de rebalanceo en días hábiles
+        lookback_periods : list
+            Períodos de lookback para calcular momentum (días)
+        top_pct : float
+            Porcentaje de acciones para posiciones largas
+        bottom_pct : float
+            Porcentaje de acciones para posiciones cortas
+        beta_target : float
+            Beta objetivo del portafolio
+        beta_threshold : float
+            Umbral para rebalancear beta
+        min_liquidity_percentile : int
+            Percentil mínimo de liquidez para incluir acciones
+        """
+        self.start_date = start_date
+        self.end_date = end_date if end_date else datetime.now().strftime('%Y-%m-%d')
+        self.rebalance_freq = rebalance_freq
+        self.lookback_periods = lookback_periods
+        self.top_pct = top_pct
+        self.bottom_pct = bottom_pct
+        self.beta_target = beta_target
+        self.beta_threshold = beta_threshold
+        self.min_liquidity_percentile = min_liquidity_percentile
+        
+        # Datos de mercado
+        self.market_data = None
+        self.sp500_data = None
+        self.sp500_returns = None
+        self.sector_data = None
+        self.volume_data = None
+        
+        # Resultados
+        self.portfolio_weights = None
+        self.portfolio_returns = None
+        self.portfolio_value = None
+        self.portfolio_betas = None
+        self.performance_metrics = None
+        
+    def get_sp500_tickers(self):
+        """Obtiene los componentes actuales del S&P 500"""
+        try:
+            sp500_ticker = '^GSPC'
+            sp500 = yf.Ticker(sp500_ticker)
+            return [component for component in sp500.info.get('components', [])]
+        except Exception as e:
+            logging.error(f"Error obteniendo componentes del S&P 500: {str(e)}")
+            # Alternativa: usar ETF SPY para obtener sus principales componentes
+            spy = yf.Ticker("SPY")
+            holdings = spy.get_holdings()
+            if holdings is not None and not holdings.empty:
+                return holdings.index.tolist()[:100]  # Usar los 100 principales componentes
+            else:
+                # Lista de respaldo con algunas de las principales empresas del S&P 500
+                return ['AAPL', 'MSFT', 'AMZN', 'NVDA', 'GOOGL', 'META', 'TSLA', 'BRK-B', 
+                        'UNH', 'JPM', 'V', 'PG', 'MA', 'HD', 'CVX', 'MRK', 'LLY', 'PEP', 
+                        'KO', 'ABBV', 'AVGO', 'COST', 'WMT', 'BAC', 'PFE', 'TMO', 'CSCO', 
+                        'MCD', 'ACN', 'ABT', 'CRM', 'DHR', 'NEE', 'VZ', 'DIS', 'ADBE', 
+                        'PM', 'TXN', 'CMCSA', 'NKE', 'WFC', 'BMY', 'RTX', 'AMD', 'UPS']
+    
+    def load_data(self):
+        """Carga datos históricos para el universo de inversión"""
+        try:
+            # Obtener tickers del S&P 500
+            tickers = self.get_sp500_tickers()
+            
+            # Añadir el índice S&P 500
+            tickers_with_index = tickers + ['^GSPC']
+            
+            # Descargar datos históricos
+            data = yf.download(tickers_with_index, start=self.start_date, end=self.end_date)
+            
+            # Separar datos de precios, volumen y S&P 500
+            self.market_data = data['Adj Close'].copy()
+            self.volume_data = data['Volume'].copy()
+            
+            # Extraer datos del S&P 500
+            self.sp500_data = self.market_data['^GSPC'].copy()
+            self.market_data = self.market_data.drop('^GSPC', axis=1)
+            
+            # Calcular retornos diarios
+            self.market_returns = self.market_data.pct_change()
+            self.sp500_returns = self.sp500_data.pct_change()
+            
+            # Filtrar por liquidez (volumen)
+            self.filter_by_liquidity()
+            
+            # Obtener datos de sector (simulado para este ejemplo)
+            self.assign_random_sectors()
+            
+            print(f"Datos cargados: {len(self.market_data.columns)} acciones desde {self.start_date} hasta {self.end_date}")
+            
+            return True
+        except Exception as e:
+            logging.error(f"Error cargando datos: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
+            return False
+    
+    def filter_by_liquidity(self):
+        """Filtra acciones por liquidez basado en volumen promedio"""
+        try:
+            # Calcular volumen promedio de 30 días
+            avg_volume = self.volume_data.rolling(30).mean()
+            
+            # Obtener el último valor disponible de volumen promedio
+            last_avg_volume = avg_volume.iloc[-1]
+            
+            # Calcular el percentil de liquidez
+            min_volume = np.percentile(last_avg_volume.dropna(), self.min_liquidity_percentile)
+            
+            # Filtrar tickers con suficiente liquidez
+            liquid_tickers = last_avg_volume[last_avg_volume >= min_volume].index.tolist()
+            
+            # Actualizar datos de mercado y volumen
+            self.market_data = self.market_data[liquid_tickers]
+            self.market_returns = self.market_returns[liquid_tickers]
+            self.volume_data = self.volume_data[liquid_tickers]
+            
+            print(f"Filtrado por liquidez: {len(liquid_tickers)} acciones seleccionadas")
+        except Exception as e:
+            logging.error(f"Error filtrando por liquidez: {str(e)}")
+    
+    def assign_random_sectors(self):
+        """
+        Asigna sectores aleatorios a las acciones (simulación)
+        En una implementación real, se obtendrían de una fuente de datos
+        """
+        sectors = ['Technology', 'Healthcare', 'Financials', 'Consumer Discretionary', 
+                  'Communication Services', 'Industrials', 'Consumer Staples', 
+                  'Energy', 'Utilities', 'Real Estate', 'Materials']
+        
+        # Asignar sectores aleatorios pero con distribución realista
+        np.random.seed(42)  # Para reproducibilidad
+        tickers = self.market_data.columns
+        
+        # Probabilidades aproximadas basadas en pesos sectoriales del S&P 500
+        sector_probs = [0.28, 0.13, 0.12, 0.10, 0.08, 0.08, 0.07, 0.05, 0.03, 0.03, 0.03]
+        
+        # Asignar sectores
+        assigned_sectors = np.random.choice(sectors, size=len(tickers), p=sector_probs)
+        self.sector_data = pd.Series(assigned_sectors, index=tickers)
+    
+    def calculate_momentum_signals(self, date):
+        """
+        Calcula señales de momentum para todas las acciones en una fecha específica
+        
+        Parámetros:
+        -----------
+        date : datetime
+            Fecha para la cual calcular las señales
+        
+        Retorna:
+        --------
+        DataFrame con señales de momentum normalizadas
+        """
+        signals = pd.DataFrame(index=self.market_data.columns)
+        
+        # Obtener datos hasta la fecha especificada
+        market_data_until_date = self.market_data.loc[:date]
+        
+        # Calcular señales de momentum para diferentes períodos
+        for period in self.lookback_periods:
+            if len(market_data_until_date) > period:
+                # Calcular retornos para el período
+                returns = market_data_until_date.iloc[-1] / market_data_until_date.iloc[-period-1] - 1
+                
+                # Winsorizar para manejar outliers
+                returns = returns.clip(
+                    lower=returns.quantile(0.01),
+                    upper=returns.quantile(0.99)
+                )
+                
+                # Normalizar por sector
+                normalized_returns = pd.Series(index=returns.index)
+                for sector in self.sector_data.unique():
+                    sector_stocks = self.sector_data[self.sector_data == sector].index
+                    sector_returns = returns[sector_stocks]
+                    if not sector_returns.empty:
+                        # Z-score dentro del sector
+                        sector_mean = sector_returns.mean()
+                        sector_std = sector_returns.std()
+                        if sector_std > 0:
+                            normalized_returns[sector_stocks] = (sector_returns - sector_mean) / sector_std
+                
+                # Almacenar señal
+                signals[f'momentum_{period}'] = normalized_returns
+        
+        # Calcular señal de volatilidad (21 días)
+        if len(market_data_until_date) > 21:
+            returns_21d = self.market_returns.loc[:date].iloc[-21:]
+            volatility = returns_21d.std()
+            
+            # Normalizar volatilidad por sector (menor volatilidad = mejor señal)
+            normalized_volatility = pd.Series(index=volatility.index)
+            for sector in self.sector_data.unique():
+                sector_stocks = self.sector_data[self.sector_data == sector].index
+                sector_volatility = volatility[sector_stocks]
+                if not sector_volatility.empty and sector_volatility.std() > 0:
+                    # Z-score negativo (menor volatilidad = mejor ranking)
+                    normalized_volatility[sector_stocks] = -((sector_volatility - sector_volatility.mean()) / sector_volatility.std())
+            
+            signals['volatility_21d'] = normalized_volatility
+        
+        # Calcular reversión a la media de corto plazo (5 días)
+        if len(market_data_until_date) > 5:
+            returns_5d = market_data_until_date.iloc[-1] / market_data_until_date.iloc[-6] - 1
+            returns_5d = returns_5d.clip(lower=returns_5d.quantile(0.01), upper=returns_5d.quantile(0.99))
+            
+            # Normalizar por sector (señal negativa para capturar reversión)
+            normalized_returns_5d = pd.Series(index=returns_5d.index)
+            for sector in self.sector_data.unique():
+                sector_stocks = self.sector_data[self.sector_data == sector].index
+                sector_returns = returns_5d[sector_stocks]
+                if not sector_returns.empty and sector_returns.std() > 0:
+                    normalized_returns_5d[sector_stocks] = -((sector_returns - sector_returns.mean()) / sector_returns.std())
+            
+            signals['reversion_5d'] = normalized_returns_5d
+        
+        # Calcular momentum de volumen (21 días)
+        if len(self.volume_data.loc[:date]) > 21:
+            volume_ratio = self.volume_data.loc[:date].iloc[-5:].mean() / self.volume_data.loc[:date].iloc[-21:].mean()
+            
+            # Normalizar por sector
+            normalized_volume = pd.Series(index=volume_ratio.index)
+            for sector in self.sector_data.unique():
+                sector_stocks = self.sector_data[self.sector_data == sector].index
+                sector_volume = volume_ratio[sector_stocks]
+                if not sector_volume.empty and sector_volume.std() > 0:
+                    normalized_volume[sector_stocks] = (sector_volume - sector_volume.mean()) / sector_volume.std()
+            
+            signals['volume_momentum'] = normalized_volume
+        
+        # Combinar señales (promedio simple de z-scores)
+        signals['combined_signal'] = signals.mean(axis=1)
+        
+        return signals
+    
+    def calculate_betas(self, date, window=252):
+        """
+        Calcula betas de las acciones respecto al S&P 500
+        
+        Parámetros:
+        -----------
+        date : datetime
+            Fecha hasta la cual calcular betas
+        window : int
+            Ventana de tiempo para calcular betas
+        
+        Retorna:
+        --------
+        Series con betas para cada acción
+        """
+        # Obtener datos hasta la fecha especificada
+        market_returns_until_date = self.market_returns.loc[:date]
+        sp500_returns_until_date = self.sp500_returns.loc[:date]
+        
+        if len(market_returns_until_date) < window:
+            window = len(market_returns_until_date) - 1
+        
+        # Usar los últimos 'window' días para calcular betas
+        recent_market_returns = market_returns_until_date.iloc[-window:]
+        recent_sp500_returns = sp500_returns_until_date.iloc[-window:]
+        
+        # Calcular betas usando regresión
+        betas = {}
+        for ticker in recent_market_returns.columns:
+            stock_returns = recent_market_returns[ticker].dropna()
+            if len(stock_returns) > 0.5 * window:  # Al menos 50% de datos válidos
+                matched_sp500_returns = recent_sp500_returns.loc[stock_returns.index]
+                
+                # Eliminar filas con NaN
+                valid_data = pd.concat([stock_returns, matched_sp500_returns], axis=1).dropna()
+                
+                if len(valid_data) > 30:  # Mínimo 30 puntos para regresión
+                    X = valid_data.iloc[:, 1].values.reshape(-1, 1)
+                    y = valid_data.iloc[:, 0].values
+                    
+                    model = LinearRegression()
+                    model.fit(X, y)
+                    betas[ticker] = model.coef_[0]
+                else:
+                    betas[ticker] = 1.0  # Valor predeterminado si no hay suficientes datos
+            else:
+                betas[ticker] = 1.0  # Valor predeterminado si no hay suficientes datos
+        
+        return pd.Series(betas)
+    
+    def optimize_portfolio(self, signals, betas, date):
+        """
+        Optimiza el portafolio para maximizar señal y neutralizar beta
+        
+        Parámetros:
+        -----------
+        signals : DataFrame
+            Señales de momentum y otros factores
+        betas : Series
+            Betas de las acciones
+        date : datetime
+            Fecha de optimización
+        
+        Retorna:
+        --------
+        Series con pesos optimizados del portafolio
+        """
+        # Obtener señal combinada
+        combined_signal = signals['combined_signal'].dropna()
+        
+        # Filtrar acciones con señales y betas disponibles
+        common_tickers = combined_signal.index.intersection(betas.index)
+        signals_filtered = combined_signal[common_tickers]
+        betas_filtered = betas[common_tickers]
+        
+        # Ordenar acciones por señal
+        ranked_stocks = signals_filtered.sort_values(ascending=False)
+        
+        # Seleccionar acciones para posiciones long y short
+        num_stocks = len(ranked_stocks)
+        num_long = int(num_stocks * self.top_pct)
+        num_short = int(num_stocks * self.bottom_pct)
+        
+        long_stocks = ranked_stocks.iloc[:num_long].index
+        short_stocks = ranked_stocks.iloc[-num_short:].index
+        
+        # Inicializar pesos
+        weights = pd.Series(0, index=combined_signal.index)
+        
+        # Asignar pesos iniciales (igual ponderación)
+        weights[long_stocks] = 1.0 / num_long
+        weights[short_stocks] = -1.0 / num_short
+        
+        # Calcular beta inicial del portafolio
+        initial_portfolio_beta = (weights * betas_filtered).sum()
+        
+        # Si el beta está dentro del umbral, no es necesario optimizar
+        if abs(initial_portfolio_beta - self.beta_target) <= self.beta_threshold:
+            return weights
+        
+        # Preparar datos para optimización
+        tickers = list(weights[weights != 0].index)
+        initial_weights = weights[tickers].values
+        stock_betas = betas_filtered[tickers].values
+        stock_signals = signals_filtered[tickers].values
+        
+        # Función objetivo: maximizar señal mientras se penaliza desviación de pesos iniciales
+        def objective(w, initial_w, signals):
+            signal_score = -np.sum(w * signals)  # Negativo porque minimizamos
+            weight_deviation = 10 * np.sum((w - initial_w)**2)  # Penalización por desviación
+            return signal_score + weight_deviation
+        
+        # Restricción: beta neutral
+        def beta_constraint(w, betas, target):
+            return np.sum(w * betas) - target
+        
+        # Restricción: suma de pesos = 0 (dollar neutral)
+        def sum_constraint(w):
+            return np.sum(w)
+        
+        # Restricción: mantener dirección de las posiciones
+        def long_constraint(w, initial_w):
+            # Los pesos deben mantener el mismo signo que los iniciales
+            return np.sum((w * initial_w) < 0)
+        
+        # Configurar restricciones
+        constraints = [
+            {'type': 'eq', 'fun': beta_constraint, 'args': (stock_betas, self.beta_target)},
+            {'type': 'eq', 'fun': sum_constraint}
+        ]
+        
+        # Límites: mantener dirección de posiciones pero permitir ajustes
+        bounds = []
+        for i, w in enumerate(initial_weights):
+            if w > 0:  # Posición larga
+                bounds.append((0, None))
+            else:  # Posición corta
+                bounds.append((None, 0))
+        
+        # Optimizar
+        result = minimize(
+            objective,
+            initial_weights,
+            args=(initial_weights, stock_signals),
+            method='SLSQP',
+            bounds=bounds,
+            constraints=constraints,
+            options={'maxiter': 1000, 'disp': False}
+        )
+        
+        if result.success:
+            # Actualizar pesos con resultado de optimización
+            optimized_weights = pd.Series(result.x, index=tickers)
+            weights[tickers] = optimized_weights
+            
+            # Verificar beta final
+            final_portfolio_beta = (weights * betas_filtered).sum()
+            print(f"Beta optimizado: {final_portfolio_beta:.4f} (objetivo: {self.beta_target})")
+        else:
+            logging.warning(f"Optimización no convergió en fecha {date}. Usando pesos iniciales.")
+        
+        return weights
+    
+    def run_backtest(self):
+        """Ejecuta el backtest de la estrategia"""
+        try:
+            # Cargar datos
+            if not self.load_data():
+                return False
+            
+            # Inicializar resultados
+            self.portfolio_weights = {}
+            self.portfolio_returns = pd.Series(index=self.market_returns.index)
+            self.portfolio_value = pd.Series(1.0, index=self.market_returns.index)
+            self.portfolio_betas = pd.Series(index=self.market_returns.index)
+            
+            # Determinar fechas de rebalanceo
+            all_dates = self.market_returns.index
+            
+            # Necesitamos suficientes datos históricos para el primer rebalanceo
+            min_history = max(self.lookback_periods) + 10
+            start_idx = min_history
+            
+            # Iterar por fechas de rebalanceo
+            current_weights = None
+            last_rebalance_idx = 0
+            
+            for i in range(start_idx, len(all_dates)):
+                current_date = all_dates[i]
+                
+                # Verificar si es momento de rebalancear
+                if (i - last_rebalance_idx >= self.rebalance_freq) or (current_weights is None):
+                    print(f"Rebalanceando en {current_date.strftime('%Y-%m-%d')}")
+                    
+                    # Calcular señales
+                    signals = self.calculate_momentum_signals(all_dates[i-1])
+                    
+                    # Calcular betas
+                    betas = self.calculate_betas(all_dates[i-1])
+                    
+                    # Optimizar portafolio
+                    current_weights = self.optimize_portfolio(signals, betas, current_date)
+                    
+                    # Guardar pesos
+                    self.portfolio_weights[current_date] = current_weights
+                    
+                    # Actualizar índice del último rebalanceo
+                    last_rebalance_idx = i
+                    
+                    # Calcular beta del portafolio
+                    portfolio_beta = (current_weights * betas).sum()
+                    self.portfolio_betas[current_date] = portfolio_beta
+                
+                # Calcular retorno diario del portafolio
+                if current_weights is not None:
+                    # Obtener retornos del día actual
+                    daily_returns = self.market_returns.loc[current_date]
+                    
+                    # Calcular retorno del portafolio
+                    stocks_in_portfolio = current_weights.index.intersection(daily_returns.index)
+                    
+                    if len(stocks_in_portfolio) > 0:
+                        portfolio_return = (current_weights[stocks_in_portfolio] * daily_returns[stocks_in_portfolio]).sum()
+                        self.portfolio_returns[current_date] = portfolio_return
+                        
+                        # Actualizar valor del portafolio
+                        if i > 0:
+                            self.portfolio_value[current_date] = self.portfolio_value[all_dates[i-1]] * (1 + portfolio_return)
+            
+            # Calcular métricas de rendimiento
+            self.calculate_performance_metrics()
+            
+            # Generar gráficos y guardar resultados
+            self.generate_results()
+            
+            return True
+        
+        except Exception as e:
+            logging.error(f"Error en backtest: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
+            return False
+    
+    def calculate_performance_metrics(self):
+        """Calcula métricas de rendimiento de la estrategia"""
+        # Eliminar NaN de los retornos
+        returns = self.portfolio_returns.dropna()
+        
+        # Métricas básicas
+        total_days = len(returns)
+        trading_days_per_year = 252
+        
+        # Retorno total y anualizado
+        total_return = self.portfolio_value.iloc[-1] / self.portfolio_value.iloc[0] - 1
+        annual_return = (1 + total_return) ** (trading_days_per_year / total_days) - 1
+        
+        # Volatilidad
+        daily_vol = returns.std()
+        annual_vol = daily_vol * np.sqrt(trading_days_per_year)
+        
+        # Ratio de Sharpe
+        risk_free_rate = 0.02  # Tasa libre de riesgo asumida (2%)
+        daily_risk_free = (1 + risk_free_rate) ** (1 / trading_days_per_year) - 1
+        excess_returns = returns - daily_risk_free
+        sharpe_ratio = (excess_returns.mean() / excess_returns.std()) * np.sqrt(trading_days_per_year)
+        
+        # Drawdown
+        cumulative_returns = (1 + returns).cumprod()
+        running_max = cumulative_returns.cummax()
+        drawdown = (cumulative_returns / running_max) - 1
+        max_drawdown = drawdown.min()
+        
+        # Correlación con S&P 500
+        sp500_returns_aligned = self.sp500_returns.loc[returns.index]
+        correlation_with_sp500 = returns.corr(sp500_returns_aligned)
+        
+        # Beta promedio
+        avg_beta = self.portfolio_betas.mean()
+        
+        # Crear diccionario de métricas
+        self.performance_metrics = {
+            'total_return': total_return,
+            'annual_return': annual_return,
+            'annual_volatility': annual_vol,
+            'sharpe_ratio': sharpe_ratio,
+            'max_drawdown': max_drawdown,
+            'correlation_with_sp500': correlation_with_sp500,
+            'avg_beta': avg_beta
+        }
+        
+        # Métricas adicionales
+        self.performance_metrics['calmar_ratio'] = annual_return / abs(max_drawdown)
+        self.performance_metrics['sortino_ratio'] = self.calculate_sortino_ratio(returns, daily_risk_free)
+        
+        # Métricas de riesgo de cola
+        self.performance_metrics['var_95'] = np.percentile(returns, 5)
+        self.performance_metrics['cvar_95'] = returns[returns <= self.performance_metrics['var_95']].mean()
+        
+        return self.performance_metrics
+    
+    def calculate_sortino_ratio(self, returns, risk_free_rate):
+        """Calcula el ratio de Sortino"""
+        excess_returns = returns - risk_free_rate
+        downside_returns = excess_returns[excess_returns < 0]
+        downside_deviation = downside_returns.std() * np.sqrt(252)
+        
+        if downside_deviation == 0:
+            return np.nan
+        
+        return (excess_returns.mean() * 252) / downside_deviation
+    
+    def generate_results(self):
+        """Genera gráficos y guarda resultados"""
+        # Guardar métricas de rendimiento
+        metrics_df = pd.DataFrame.from_dict(self.performance_metrics, orient='index', columns=['Value'])
+        metrics_df.to_csv('./artifacts/results/data/performance_metrics.csv')
+        
+        # Guardar retornos diarios
+        self.portfolio_returns.to_csv('./artifacts/results/data/daily_returns.csv')
+        
+        # Guardar valor del portafolio
+        self.portfolio_value.to_csv('./artifacts/results/data/portfolio_value.csv')
+        
+        # Guardar betas del portafolio
+        self.portfolio_betas.to_csv('./artifacts/results/data/portfolio_betas.csv')
+        
+        # Guardar pesos del portafolio (muestra de las últimas 10 fechas)
+        weights_df = pd.DataFrame(self.portfolio_weights).T
+        if len(weights_df) > 10:
+            weights_sample = weights_df.iloc[-10:]
+        else:
+            weights_sample = weights_df
+        weights_sample.to_csv('./artifacts/results/data/portfolio_weights_sample.csv')
+        
+        # Generar gráficos
+        self.plot_portfolio_performance()
+        self.plot_drawdown()
+        self.plot_beta_exposure()
+        self.plot_rolling_metrics()
+        self.plot_sector_exposure()
+    
+    def plot_portfolio_performance(self):
+        """Grafica el rendimiento del portafolio vs S&P 500"""
+        plt.figure(figsize=(12, 6))
+        
+        # Calcular rendimiento acumulado del S&P 500
+        sp500_aligned = self.sp500_returns.loc[self.portfolio_returns.index]
+        sp500_cumulative = (1 + sp500_aligned).cumprod()
+        sp500_cumulative = sp500_cumulative / sp500_cumulative.iloc[0]
+        
+        # Normalizar valor del portafolio
+        portfolio_normalized = self.portfolio_value / self.portfolio_value.iloc[0]
+        
+        # Graficar
+        plt.plot(portfolio_normalized, label='Estrategia', linewidth=2)
+        plt.plot(sp500_cumulative, label='S&P 500', linewidth=2, alpha=0.7)
+        
+        plt.title('Rendimiento de la Estrategia vs S&P 500', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Valor (normalizado)', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=12)
+        
+        # Añadir anotaciones con métricas clave
+        ann_return = self.performance_metrics['annual_return'] * 100
+        sharpe = self.performance_metrics['sharpe_ratio']
+        max_dd = self.performance_metrics['max_drawdown'] * 100
+        
+        plt.annotate(f'Retorno Anual: {ann_return:.2f}%\nSharpe: {sharpe:.2f}\nMax DD: {max_dd:.2f}%',
+                    xy=(0.02, 0.95), xycoords='axes fraction',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                    fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/portfolio_performance.png', dpi=300)
+        plt.close()
+    
+    def plot_drawdown(self):
+        """Grafica el drawdown del portafolio"""
+        returns = self.portfolio_returns.dropna()
+        cumulative_returns = (1 + returns).cumprod()
+        running_max = cumulative_returns.cummax()
+        drawdown = (cumulative_returns / running_max) - 1
+        
+        plt.figure(figsize=(12, 6))
+        plt.plot(drawdown, color='red', linewidth=2)
+        plt.fill_between(drawdown.index, drawdown, 0, color='red', alpha=0.3)
+        
+        plt.title('Drawdown de la Estrategia', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Drawdown (%)', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        
+        # Añadir línea de máximo drawdown
+        max_dd = drawdown.min()
+        plt.axhline(y=max_dd, color='darkred', linestyle='--', alpha=0.7)
+        plt.annotate(f'Max Drawdown: {max_dd*100:.2f}%',
+                    xy=(0.02, 0.05), xycoords='axes fraction',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                    fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/drawdown.png', dpi=300)
+        plt.close()
+    
+    def plot_beta_exposure(self):
+        """Grafica la exposición beta del portafolio a lo largo del tiempo"""
+        plt.figure(figsize=(12, 6))
+        
+        plt.plot(self.portfolio_betas, linewidth=2)
+        plt.axhline(y=self.beta_target, color='red', linestyle='--', alpha=0.7, label=f'Objetivo ({self.beta_target})')
+        
+        # Añadir bandas de umbral
+        plt.axhline(y=self.beta_target + self.beta_threshold, color='gray', linestyle=':', alpha=0.5)
+        plt.axhline(y=self.beta_target - self.beta_threshold, color='gray', linestyle=':', alpha=0.5)
+        plt.fill_between(self.portfolio_betas.index, 
+                         self.beta_target - self.beta_threshold, 
+                         self.beta_target + self.beta_threshold, 
+                         color='gray', alpha=0.1)
+        
+        plt.title('Exposición Beta del Portafolio', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Beta', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=10)
+        
+        # Añadir anotación con beta promedio
+        avg_beta = self.portfolio_betas.mean()
+        plt.annotate(f'Beta Promedio: {avg_beta:.4f}',
+                    xy=(0.02, 0.95), xycoords='axes fraction',
+                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                    fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/beta_exposure.png', dpi=300)
+        plt.close()
+    
+    def plot_rolling_metrics(self):
+        """Grafica métricas móviles (Sharpe, volatilidad)"""
+        returns = self.portfolio_returns.dropna()
+        
+        # Calcular métricas móviles (ventana de 126 días ~ 6 meses)
+        window = 126
+        rolling_return = returns.rolling(window).mean() * 252
+        rolling_vol = returns.rolling(window).std() * np.sqrt(252)
+        rolling_sharpe = rolling_return / rolling_vol
+        
+        # Graficar Sharpe ratio móvil
+        plt.figure(figsize=(12, 6))
+        plt.plot(rolling_sharpe, linewidth=2)
+        plt.axhline(y=self.performance_metrics['sharpe_ratio'], color='red', linestyle='--', 
+                   alpha=0.7, label=f'Promedio ({self.performance_metrics["sharpe_ratio"]:.2f})')
+        
+        plt.title('Ratio de Sharpe Móvil (6 meses)', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Sharpe Ratio', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/rolling_sharpe.png', dpi=300)
+        plt.close()
+        
+        # Graficar volatilidad móvil
+        plt.figure(figsize=(12, 6))
+        plt.plot(rolling_vol, linewidth=2)
+        plt.axhline(y=self.performance_metrics['annual_volatility'], color='red', linestyle='--', 
+                   alpha=0.7, label=f'Promedio ({self.performance_metrics["annual_volatility"]:.2f})')
+        
+        plt.title('Volatilidad Anualizada Móvil (6 meses)', fontsize=14)
+        plt.xlabel('Fecha', fontsize=12)
+        plt.ylabel('Volatilidad', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.legend(fontsize=10)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/rolling_volatility.png', dpi=300)
+        plt.close()
+    
+    def plot_sector_exposure(self):
+        """Grafica la exposición sectorial del último portafolio"""
+        if not self.portfolio_weights:
+            return
+        
+        # Obtener los pesos del último rebalanceo
+        last_date = max(self.portfolio_weights.keys())
+        last_weights = self.portfolio_weights[last_date]
+        
+        # Calcular exposición por sector
+        sector_exposure = {}
+        for ticker, weight in last_weights.items():
+            if ticker in self.sector_data.index:
+                sector = self.sector_data[ticker]
+                if sector in sector_exposure:
+                    sector_exposure[sector] += weight
+                else:
+                    sector_exposure[sector] = weight
+        
+        # Convertir a DataFrame
+        sector_df = pd.DataFrame.from_dict(sector_exposure, orient='index', columns=['Exposure'])
+        sector_df = sector_df.sort_values('Exposure')
+        
+        # Graficar
+        plt.figure(figsize=(12, 8))
+        colors = ['green' if x > 0 else 'red' for x in sector_df['Exposure']]
+        
+        sector_df['Exposure'].plot(kind='barh', color=colors)
+        
+        plt.title('Exposición Sectorial (Último Rebalanceo)', fontsize=14)
+        plt.xlabel('Exposición Neta', fontsize=12)
+        plt.ylabel('Sector', fontsize=12)
+        plt.grid(True, alpha=0.3)
+        plt.axvline(x=0, color='black', linestyle='-', alpha=0.7)
+        
+        plt.tight_layout()
+        plt.savefig('./artifacts/results/figures/sector_exposure.png', dpi=300)
+        plt.close()
+    
+    def run_walk_forward_analysis(self, train_size=252*2, test_size=126):
+        """
+        Ejecuta análisis walk-forward para evaluar robustez
+        
+        Parámetros:
+        -----------
+        train_size : int
+            Tamaño de la ventana de entrenamiento en días
+        test_size : int
+            Tamaño de la ventana de prueba en días
+        """
+        try:
+            # Cargar datos si no se han cargado
+            if self.market_data is None:
+                if not self.load_data():
+                    return False
+            
+            # Obtener fechas disponibles
+            all_dates = self.market_returns.index
+            
+            # Necesitamos suficientes datos históricos para el primer período
+            min_history = max(self.lookback_periods) + 10
+            start_idx = min_history
+            
+            # Inicializar resultados
+            walk_forward_returns = pd.Series(index=all_dates[start_idx:])
+            walk_forward_value = pd.Series(1.0, index=all_dates[start_idx:])
+            
+            # Configurar ventanas de tiempo
+            tscv = TimeSeriesSplit(n_splits=int((len(all_dates) - start_idx) / test_size))
+            
+            # Iterar por ventanas de tiempo
+            for train_idx, test_idx in tscv.split(all_dates[start_idx:]):
+                # Ajustar índices
+                train_idx = train_idx + start_idx
+                test_idx = test_idx + start_idx
+                
+                # Asegurar que la ventana de entrenamiento sea suficientemente grande
+                if len(train_idx) < train_size:
+                    continue
+                
+                # Limitar tamaño de entrenamiento si es necesario
+                if len(train_idx) > train_size:
+                    train_idx = train_idx[-train_size:]
+                
+                # Obtener fechas de entrenamiento y prueba
+                train_dates = all_dates[train_idx]
+                test_dates = all_dates[test_idx]
+                
+                print(f"Entrenando en: {train_dates[0]} a {train_dates[-1]}")
+                print(f"Probando en: {test_dates[0]} a {test_dates[-1]}")
+                
+                # Calcular señales con datos de entrenamiento
+                signals = self.calculate_momentum_signals(train_dates[-1])
+                
+                # Calcular betas con datos de entrenamiento
+                betas = self.calculate_betas(train_dates[-1])
+                
+                # Optimizar portafolio
+                weights = self.optimize_portfolio(signals, betas, train_dates[-1])
+                
+                # Aplicar pesos a período de prueba
+                for test_date in test_dates:
+                    # Obtener retornos del día
+                    daily_returns = self.market_returns.loc[test_date]
+                    
+                    # Calcular retorno del portafolio
+                    stocks_in_portfolio = weights.index.intersection(daily_returns.index)
+                    
+                    if len(stocks_in_portfolio) > 0:
+                        portfolio_return = (weights[stocks_in_portfolio] * daily_returns[stocks_in_portfolio]).sum()
+                        walk_forward_returns[test_date] = portfolio_return
+                        
+                        # Actualizar valor del portafolio
+                        prev_date_idx = all_dates.get_loc(test_date) - 1
+                        prev_date = all_dates[prev_date_idx]
+                        
+                        if prev_date in walk_forward_value.index:
+                            walk_forward_value[test_date] = walk_forward_value[prev_date] * (1 + portfolio_return)
+            
+            # Calcular métricas de rendimiento
+            wf_returns = walk_forward_returns.dropna()
+            
+            # Métricas básicas
+            total_days = len(wf_returns)
+            trading_days_per_year = 252
+            
+            # Retorno total y anualizado
+            total_return = walk_forward_value.iloc[-1] / walk_forward_value.iloc[0] - 1
+            annual_return = (1 + total_return) ** (trading_days_per_year / total_days) - 1
+            
+            # Volatilidad
+            daily_vol = wf_returns.std()
+            annual_vol = daily_vol * np.sqrt(trading_days_per_year)
+            
+            # Ratio de Sharpe
+            risk_free_rate = 0.02  # Tasa libre de riesgo asumida (2%)
+            daily_risk_free = (1 + risk_free_rate) ** (1 / trading_days_per_year) - 1
+            excess_returns = wf_returns - daily_risk_free
+            sharpe_ratio = (excess_returns.mean() / excess_returns.std()) * np.sqrt(trading_days_per_year)
+            
+            # Drawdown
+            cumulative_returns = (1 + wf_returns).cumprod()
+            running_max = cumulative_returns.cummax()
+            drawdown = (cumulative_returns / running_max) - 1
+            max_drawdown = drawdown.min()
+            
+            # Guardar resultados
+            wf_metrics = {
+                'total_return': total_return,
+                'annual_return': annual_return,
+                'annual_volatility': annual_vol,
+                'sharpe_ratio': sharpe_ratio,
+                'max_drawdown': max_drawdown
+            }
+            
+            # Guardar métricas
+            wf_metrics_df = pd.DataFrame.from_dict(wf_metrics, orient='index', columns=['Value'])
+            wf_metrics_df.to_csv('./artifacts/results/data/walk_forward_metrics.csv')
+            
+            # Guardar retornos y valor
+            walk_forward_returns.to_csv('./artifacts/results/data/walk_forward_returns.csv')
+            walk_forward_value.to_csv('./artifacts/results/data/walk_forward_value.csv')
+            
+            # Graficar resultados
+            plt.figure(figsize=(12, 6))
+            
+            # Calcular rendimiento acumulado del S&P 500 para el mismo período
+            sp500_aligned = self.sp500_returns.loc[walk_forward_returns.index]
+            sp500_cumulative = (1 + sp500_aligned).cumprod()
+            sp500_cumulative = sp500_cumulative / sp500_cumulative.iloc[0]
+            
+            # Normalizar valor del portafolio
+            wf_normalized = walk_forward_value / walk_forward_value.iloc[0]
+            
+            # Graficar
+            plt.plot(wf_normalized, label='Estrategia (Walk-Forward)', linewidth=2)
+            plt.plot(sp500_cumulative, label='S&P 500', linewidth=2, alpha=0.7)
+            
+            plt.title('Análisis Walk-Forward vs S&P 500', fontsize=14)
+            plt.xlabel('Fecha', fontsize=12)
+            plt.ylabel('Valor (normalizado)', fontsize=12)
+            plt.grid(True, alpha=0.3)
+            plt.legend(fontsize=12)
+            
+            # Añadir anotaciones con métricas clave
+            plt.annotate(f'Retorno Anual: {annual_return*100:.2f}%\nSharpe: {sharpe_ratio:.2f}\nMax DD: {max_drawdown*100:.2f}%',
+                        xy=(0.02, 0.95), xycoords='axes fraction',
+                        bbox=dict(boxstyle="round,pad=0.3", fc="white", ec="gray", alpha=0.8),
+                        fontsize=10)
+            
+            plt.tight_layout()
+            plt.savefig('./artifacts/results/figures/walk_forward_performance.png', dpi=300)
+            plt.close()
+            
+            return True
+        
+        except Exception as e:
+            logging.error(f"Error en análisis walk-forward: {str(e)}")
+            import traceback
+            logging.error(traceback.format_exc())
+            return False
+
+# Ejecutar la estrategia
+if __name__ == "__main__":
+    # Crear instancia de la estrategia
+    strategy = AdaptiveCrossSectionalMomentumStrategy(
+        start_date='2015-01-01',
+        end_date=None,  # Hasta hoy
+        rebalance_freq=10,  # Rebalanceo cada 10 días hábiles
+        lookback_periods=[21, 63, 252],  # Períodos de momentum
+        top_pct=0.15,  # Top 15% para posiciones largas
+        bottom_pct=0.15,  # Bottom 15% para posiciones cortas
+        beta_target=0.0,  # Beta objetivo
+        beta_threshold=0.05,  # Umbral de desviación de beta
+        min_liquidity_percentile=30  # Filtro de liquidez
+    )
+    
+    # Ejecutar backtest
+    print("Ejecutando backtest...")
+    strategy.run_backtest()
+    
+    # Ejecutar análisis walk-forward
+    print("Ejecutando análisis walk-forward...")
+    strategy.run_walk_forward_analysis()
+    
+    print("Estrategia completada. Resultados guardados en ./artifacts/results/")
+```
+
+Por favor analiza si el código implementa correctamente la idea conceptual y sugiere mejoras específicas.
+
+
+RESPONSE:
+# Revisión de Código: Estrategia de Inversión Adaptive Cross-Sectional Momentum
+
+## 1. ¿El código implementa correctamente la idea? Parcialmente
+
+El código implementa los componentes principales de la estrategia de momentum cross-sectional con neutralización beta, pero presenta algunas deficiencias importantes en relación con la idea original.
+
+## 2. Sugerencias específicas:
+
+1. **Obtención de componentes del S&P 500**: El método `get_sp500_tickers()` no funciona correctamente. La propiedad `components` no existe en el objeto devuelto por `yf.Ticker('^GSPC')`. Debería usar una biblioteca especializada como `pandas_datareader` con la fuente 'wikipedia' o implementar web scraping.
+
+2. **Neutralización sectorial incompleta**: La idea original especifica "Posiciones long y short proporcionales al peso sectorial en el índice", pero la implementación actual solo normaliza las señales por sector sin garantizar neutralidad sectorial en la construcción final del portafolio.
+
+3. **Optimización multifactorial insuficiente**: La función `optimize_portfolio()` no implementa todas las restricciones mencionadas en la idea original, como la minimización de varianza idiosincrática y las restricciones de exposición sectorial equilibrada.
+
+4. **Falta de detección de regímenes**: No se implementa el modelo de Markov Switching para identificar entornos de alta/baja volatilidad mencionado en la idea original.
+
+5. **Tratamiento de eventos corporativos ausente**: No hay manejo específico para splits, dividendos y fusiones en el cálculo de momentum como se especifica en la idea.
+
+6. **Estimación de beta simplificada**: La implementación usa una ventana fija para calcular betas, mientras que la idea original menciona "ventanas adaptativas (60-252 días) basadas en la estabilidad del mercado".
+
+7. **Error en la función `beta_constraint`**: La restricción de beta debería ser implementada como una igualdad (`np.sum(w * betas) - target == 0`), pero el código actual no garantiza esto correctamente.
+
+8. **Falta de control de exposición a factores**: No se implementa el "Monitoreo y limitación de exposición a factores de riesgo sistemáticos" mencionado en la idea.
+
+9. **Manejo de liquidez mejorable**: La función `filter_by_liquidity()` usa el último valor disponible de volumen promedio, pero sería más robusto usar un promedio de varios días para evitar anomalías.
+
+10. **Falta de incorporación de Expected Shortfall (CVaR)**: La idea menciona restricciones de CVaR en la optimización, pero no están implementadas.
+
+11. **Validación cruzada incompleta**: Aunque se implementa `run_walk_forward_analysis()`, no se utiliza para determinar el número óptimo de acciones como se menciona en la idea original.
+
+12. **Gestión de outliers incompleta**: Se implementa winsorización para las señales de momentum, pero no para otras señales ni para los retornos en la estimación de riesgo.
+
+13. **Falta de penalización por rotación**: La idea menciona "penalización por rotación en la función objetivo" para controlar costos de transacción, pero no está implementada en la optimización.
+
+14. **Manejo de NaN en el cálculo de retornos del portafolio**: La intersección de índices podría resultar en un conjunto vacío, lo que causaría errores. Debería añadirse una verificación adicional.
+
+15. **Falta de ajuste dinámico de límites de concentración**: La idea menciona "Límites de Concentración Adaptativos" según la correlación cruzada del mercado, pero no están implementados.

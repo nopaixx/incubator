@@ -1,0 +1,289 @@
+# IDEA FINAL: ESTRATEGIA DE ARBITRAJE ESTADÍSTICO MULTI-RÉGIMEN CON APRENDIZAJE ADAPTATIVO
+
+## Descripción
+
+Esta estrategia implementa un sistema avanzado de arbitraje estadístico que se adapta dinámicamente a diferentes regímenes de mercado. Combina detección de regímenes mediante modelos probabilísticos, selección de pares adaptativa, señales multi-horizonte y gestión de riesgo granular. El sistema incorpora mecanismos de aprendizaje online para evolucionar continuamente sin necesidad de recalibración manual frecuente.
+
+## Características principales
+
+### 1. Detección de Regímenes Robusta
+
+- **Modelo base**: Hidden Markov Model (HMM) con indicadores adelantados
+  - Pendiente de la curva de rendimiento (2y-10y)
+  - Índice de sorpresas económicas
+  - Métricas de liquidez de mercado
+  - Diferencial entre volatilidad implícita y realizada (VIX-RV)
+
+- **Mejoras de estabilidad**:
+  ```python
+  # Régimen suavizado para evitar cambios espurios
+  P(régimen_t) = α × P_HMM(régimen_t) + (1-α) × P(régimen_t-1)
+  # donde α = 0.2 (parámetro de suavizado)
+  ```
+
+- **Indicadores de alta frecuencia**:
+  ```python
+  # Dispersión sectorial
+  Índice_dispersión = std(retornos_sectoriales_5d) / media(|retornos_sectoriales_5d|)
+  
+  # Anomalía de volumen
+  Ratio_volumen = volumen_total_t / media_móvil_volumen_63d
+  ```
+
+- **Validación temporal**:
+  - Entrenamiento en ventanas móviles (t-24 meses hasta t-1)
+  - Predicción de régimen en t
+  - Evaluación de precisión predictiva
+
+### 2. Selección de Pares Adaptativa
+
+- **Enfoque de cointegración adaptativa**:
+  ```python
+  Para cada par (X,Y):
+    # Estimar β usando ventanas de diferentes tamaños
+    β_21d = estimar_beta(X, Y, ventana=21)
+    β_63d = estimar_beta(X, Y, ventana=63)
+    β_126d = estimar_beta(X, Y, ventana=126)
+    
+    # Calcular residuos
+    residuos_21d = Y - β_21d * X
+    residuos_63d = Y - β_63d * X
+    
+    # Evaluar estabilidad
+    score_estabilidad = corr(residuos_21d, residuos_63d)
+    
+    # Filtrar pares inestables
+    if score_estabilidad < umbral_adaptativo[régimen_actual]:
+        descartar_par()
+  ```
+
+- **Métricas de selección**:
+  - P-valores de pruebas de cointegración (Engle-Granger, Johansen)
+  - Distancia de cointegración: `Distancia = √(1-R²) × Half-life`
+  - Prueba de cambio estructural (CUSUM)
+
+- **Filtrado condicional al régimen**:
+  - Régimen de baja volatilidad: Permite pares inter-sector con mayor distancia
+  - Régimen de volatilidad media: Equilibrio entre pares intra e inter-sector
+  - Régimen de alta volatilidad: Restricción a pares intra-sector con alta estabilidad
+
+- **Validación temporal estricta**:
+  ```python
+  # Seleccionar pares usando datos históricos
+  pares_candidatos = seleccionar_pares(datos[t-252:t-63])
+  
+  # Validar estabilidad en período reciente
+  pares_validados = validar_estabilidad(pares_candidatos, datos[t-63:t-1])
+  
+  # Operar solo pares que mantienen propiedades
+  pares_operables = pares_validados
+  ```
+
+### 3. Construcción de Señales Multi-horizonte
+
+- **Señales con diferentes horizontes temporales**:
+  ```python
+  # Cálculo de z-scores en diferentes horizontes
+  Z_corto = (Y - β_corto*X - μ_corto)/σ_corto  # EWMA con half-life = 5 días
+  Z_medio = (Y - β_medio*X - μ_medio)/σ_medio  # EWMA con half-life = 21 días
+  Z_largo = (Y - β_largo*X - μ_largo)/σ_largo  # EWMA con half-life = 63 días
+  
+  # Combinación ponderada base
+  Señal_base = w₁*Z_corto + w₂*Z_medio + w₃*Z_largo
+  ```
+
+- **Señal condicional no lineal**:
+  ```python
+  # Ajuste condicional basado en concordancia de señales
+  if abs(Z_corto) > 2 and sign(Z_corto) == sign(Z_medio):
+      intensidad_señal = 1.5 * Señal_base
+  elif sign(Z_corto) != sign(Z_medio):
+      intensidad_señal = 0.5 * Señal_base
+  else:
+      intensidad_señal = Señal_base
+  ```
+
+- **Modulación asimétrica por volumen**:
+  ```python
+  # Cálculo de anomalía de volumen
+  Anomalía_volumen = log(vol_actual/vol_promedio_21d)
+  
+  # Modulación asimétrica
+  if Señal_base > 0 and Anomalía_volumen > 1:  # Compra con volumen alto
+      factor_ajuste = 0.8  # Reducir exposición (posible liquidación)
+  elif Señal_base < 0 and Anomalía_volumen > 1:  # Venta con volumen alto
+      factor_ajuste = 1.2  # Aumentar exposición (posible momentum)
+  else:
+      factor_ajuste = 1.0
+  
+  # Ajuste por liquidez
+  Factor_liquidez = min(1, volumen_actual/volumen_umbral)
+  
+  # Señal final
+  Señal_final = intensidad_señal * factor_ajuste * Factor_liquidez
+  ```
+
+- **Filtro de calidad de señal**:
+  - Cálculo de ratio señal-ruido (SNR) para cada par
+  - Descarte de señales con SNR bajo umbral específico al régimen
+  - Ponderación de señales por SNR normalizado
+
+### 4. Calibración y Aprendizaje Adaptativo
+
+- **Enfoque híbrido de optimización**:
+  ```python
+  # Optimización bayesiana completa mensual
+  if día_del_mes == 1:
+      θ_óptimo = optimización_bayesiana_completa(datos_históricos)
+  
+  # Actualizaciones incrementales diarias
+  else:
+      η = calcular_tasa_aprendizaje(performance_reciente)
+      θ_t = θ_t-1 + η * gradiente_pérdida(θ_t-1)
+  ```
+
+- **Regularización jerárquica**:
+  ```python
+  # Estructura jerárquica para evitar sobreajuste
+  θ_par_específico ~ N(θ_sector, σ²_sector)
+  θ_sector ~ N(θ_mercado, σ²_mercado)
+  ```
+
+- **Actualización online de parámetros**:
+  - Factor de aprendizaje adaptativo según régimen y estabilidad
+  - Penalización por cambios bruscos en parámetros
+
+### 5. Gestión de Riesgo Granular
+
+- **Descomposición de riesgo**:
+  ```python
+  Riesgo_total = Riesgo_específico + Riesgo_común + Riesgo_régimen
+  ```
+  
+  - Riesgo_específico: Volatilidad idiosincrática del par
+  - Riesgo_común: Exposición a factores sistemáticos
+  - Riesgo_régimen: Riesgo adicional durante transiciones
+
+- **Desenrollamiento escalonado**:
+  ```python
+  # Probabilidad de cambio de régimen en próximos 5 días
+  P_cambio = Modelo_transición.predict_proba(cambio_régimen_5d)
+  
+  # Niveles de desenrollamiento
+  if P_cambio > 0.7:
+      reducir_posiciones(0.5, criterio='todas')
+  elif P_cambio > 0.5:
+      reducir_posiciones(0.3, criterio='menos_rentables')
+  elif P_cambio > 0.3:
+      reducir_posiciones(0.15, criterio='más_antiguas')
+  ```
+
+- **Control de correlación entre pares**:
+  ```python
+  # Para cada nuevo par candidato
+  corr_nueva = calcular_correlación_residuos(par_nuevo, pares_existentes)
+  
+  # Verificar presupuesto de correlación
+  if corr_nueva > umbral_correlación[régimen_actual]:
+      rechazar_par()
+  ```
+
+- **Monitoreo de model drift**:
+  - Cálculo de divergencia KL entre distribución reciente y histórica
+  - Alerta cuando la divergencia supera umbral específico
+  - Recalibración automática cuando sea necesario
+
+## Implementación
+
+### 1. Preparación de Datos y Backtesting
+
+- **Manejo de datos con yfinance**:
+  - Caching inteligente con TTL variable según liquidez del activo
+  - Estricta separación temporal para evitar look-ahead bias:
+    ```python
+    # Datos hasta t-1 para selección y calibración
+    datos_selección = obtener_datos(fecha_inicio, t-1)
+    
+    # Datos en t solo para ejecución
+    datos_ejecución = obtener_datos(t, t)
+    ```
+
+- **Manejo de cambios en S&P 500**:
+  - Actualización mensual del universo de activos
+  - Tratamiento especial para eventos corporativos (splits, fusiones)
+  - Cierre controlado de posiciones para activos que salen del índice
+
+- **Manejo robusto de datos faltantes**:
+  ```python
+  # Si faltan datos para activo i en tiempo t
+  if datos_faltantes(activo_i, tiempo_t):
+      # Estimación mediante modelo factorial
+      X̂ᵢₜ = βᵢₒ + Σⱼ βᵢⱼFⱼₜ + ε
+      
+      # Ajuste de volatilidad estimada
+      σ²_ajustada = σ²_estimada * 1.25  # Factor de penalización
+  ```
+
+### 2. Ejecución y Costos
+
+- **Modelo de costos realista**:
+  ```python
+  # Costo total por operación
+  costo_total = spread_medio + impacto_estimado + comisión
+  
+  # Donde impacto estimado depende del tamaño relativo
+  impacto_estimado = k * (tamaño_orden/volumen_diario_medio)^0.5
+  ```
+
+- **Tamaño óptimo de posición**:
+  ```python
+  # Tamaño base proporcional a la señal
+  tamaño_base = capital_total * max_exposición * (Señal_final/umbral_máximo)
+  
+  # Ajuste por incertidumbre
+  certeza = 1 - (error_estimación/media_error_histórico)
+  
+  # Tamaño final
+  tamaño_final = tamaño_base * certeza * liquidez_relativa
+  ```
+
+- **Horarios de ejecución**:
+  - Señales generadas al cierre del día t-1
+  - Ejecución principal en apertura del día t
+  - Ejecuciones secundarias mediante TWAP si el tamaño > 5% del volumen diario
+
+### 3. Monitoreo y Validación
+
+- **Dashboard de monitoreo en tiempo real**:
+  - Probabilidades de régimen actual
+  - Estabilidad de los pares seleccionados
+  - Divergencia entre señales de diferentes horizontes
+  - Indicadores de alerta temprana para cambios estructurales
+
+- **Validación rigurosa**:
+  - Walk-forward analysis con ventanas de 2 años para entrenamiento y 6 meses para validación
+  - Análisis de atribución de performance por régimen
+  - Pruebas de robustez con variaciones de parámetros (±20%)
+
+## Métricas y Expectativas
+
+- **Métricas de rendimiento objetivo**:
+  - Sharpe ratio: 1.5-2.0 (después de costos)
+  - Drawdown máximo esperado: 8-12%
+  - Turnover: 15-25% mensual (optimizado por régimen)
+  - Correlación con S&P 500: 0.1-0.3 (variable según régimen)
+
+- **Capacidad estimada**:
+  - Estrategia escalable dentro del universo S&P 500
+  - Implementación inicial con 10-20% del capital objetivo durante 3-6 meses
+  - Escalamiento gradual basado en métricas de impacto de mercado
+
+- **Ventajas competitivas**:
+  - Adaptabilidad a múltiples regímenes de mercado
+  - Capacidad de aprendizaje continuo sin reentrenamiento completo
+  - Gestión anticipativa del riesgo durante transiciones de régimen
+  - Baja correlación con estrategias tradicionales de factores
+
+## Consideraciones Finales
+
+Esta estrategia representa un enfoque sofisticado para el arbitraje estadístico que combina técnicas clásicas con métodos modernos de aprendizaje adaptativo. Su diseño multi-régimen permite mantener performance en diferentes entornos de mercado, mientras que los mecanismos de gestión de riesgo granular protegen contra drawdowns significativos durante períodos de transición. La implementación requiere atención meticulosa a los detalles técnicos, especialmente en la prevención de look-ahead bias y el manejo realista de costos de transacción.

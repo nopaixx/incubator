@@ -1,0 +1,27 @@
+[2025-04-20 11:03:48] ERROR: 
+2 Failed downloads:
+[2025-04-20 11:03:48] ERROR: ['EXE', 'CEG']: YFPricesMissingError('possibly delisted; no price data found  (1d 2020-01-01 -> 2021-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1577854800, endDate = 1609477200")')
+[2025-04-20 11:03:52] ERROR: 
+3 Failed downloads:
+[2025-04-20 11:03:52] ERROR: ['GEV', 'KVUE', 'GEHC']: YFPricesMissingError('possibly delisted; no price data found  (1d 2020-01-01 -> 2021-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1577854800, endDate = 1609477200")')
+[2025-04-20 11:03:58] ERROR: 
+3 Failed downloads:
+[2025-04-20 11:03:58] ERROR: ['VLTO', 'SOLV', 'SW']: YFPricesMissingError('possibly delisted; no price data found  (1d 2020-01-01 -> 2021-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1577854800, endDate = 1609477200")')
+[2025-04-20 11:04:48] ERROR: 
+1 Failed download:
+[2025-04-20 11:04:48] ERROR: ['GEV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2024-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1704085200")')
+[2025-04-20 11:04:54] ERROR: 
+2 Failed downloads:
+[2025-04-20 11:04:54] ERROR: ['SW', 'SOLV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2024-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1704085200")')
+[2025-04-20 11:06:12] ERROR: 
+1 Failed download:
+[2025-04-20 11:06:12] ERROR: ['GEV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2024-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1704085200")')
+[2025-04-20 11:06:19] ERROR: 
+2 Failed downloads:
+[2025-04-20 11:06:19] ERROR: ['SW', 'SOLV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2024-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1704085200")')
+[2025-04-20 11:08:19] ERROR: 
+1 Failed download:
+[2025-04-20 11:08:19] ERROR: ['GEV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2024-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1704085200")')
+[2025-04-20 11:08:27] ERROR: 
+2 Failed downloads:
+[2025-04-20 11:08:27] ERROR: ['SW', 'SOLV']: YFPricesMissingError('possibly delisted; no price data found  (1d 2021-01-01 -> 2024-01-01) (Yahoo error = "Data doesn\'t exist for startDate = 1609477200, endDate = 1704085200")')

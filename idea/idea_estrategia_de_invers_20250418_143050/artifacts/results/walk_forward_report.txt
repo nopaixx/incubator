@@ -1,0 +1,24 @@
+=== INFORME DE ANÁLISIS WALK-FORWARD ===
+
+Ticker: DGX
+Período total: 2015-10-19 a 2023-12-29
+Tamaño de ventana: 252 días
+Paso de ventana: 63 días
+Proporción de entrenamiento: 70%
+
+--- MÉTRICAS PROMEDIO ---
+Sharpe Ratio: -0.45 (±1.44)
+Retorno: -0.33% (±2.84%)
+Drawdown máximo: -0.84%
+Tasa de acierto: 6.90%
+Operaciones promedio: 1.0
+
+Ventanas con retorno positivo: 6.9%
+
+--- CONCLUSIONES ---
+La estrategia muestra una robustez baja a través de diferentes períodos de mercado.
+No se puede calcular la consistencia debido a un Sharpe Ratio promedio negativo o cero.
+
+Recomendaciones:
+- Revisar la estrategia para mejorar el rendimiento ajustado por riesgo.
+- Mejorar la adaptabilidad a diferentes condiciones de mercado.

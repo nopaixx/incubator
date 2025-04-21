@@ -1,0 +1,1770 @@
+
+
+--- ideador (STEP 1.1) ---
+INPUT 1 (user):
+inversion sp500
+
+RESPONSE:
+{'default': '## [Microinversión adaptativa con IA predictiva]\nUn sistema de inversión para el S&P 500 que utiliza inteligencia artificial para identificar "microventanas" de oportunidad específicas. A diferencia de las estrategias tradicionales, esta plataforma analiza correlaciones no convencionales entre el rendimiento del índice y factores alternativos (tendencias en redes sociales, eventos culturales, patrones meteorológicos) que los algoritmos convencionales ignoran.\n\nEl valor diferencial radica en que permite a inversores minoristas aprovechar ventanas de tiempo y sectores específicos dentro del S&P 500 con mayor probabilidad de rendimiento, en lugar de la exposición generalizada. La IA adapta continuamente sus parámetros basándose en resultados, creando un sistema que mejora constantemente y democratiza análisis sofisticados para inversores con presupuestos limitados.\n\n## [Fondo indexado S&P 500 con compensación de impacto]\nUna innovadora variante del ETF tradicional del S&P 500 que integra automáticamente compensaciones de impacto ambiental y social. Por cada inversión realizada, el sistema calcula la huella de carbono y el impacto social negativo de las empresas dentro del índice, e invierte simultáneamente un pequeño porcentaje en proyectos verificados de compensación y desarrollo comunitario.\n\nEl valor se encuentra en que permite a los inversores mantener la exposición al rendimiento del mercado general mientras mitigan activamente los impactos negativos asociados. La plataforma proporcionaría informes detallados de impacto y podría ofrecer incentivos fiscales en jurisdicciones que reconocen estas compensaciones. Este enfoque responde a la creciente demanda de inversiones que equilibran rentabilidad con responsabilidad, sin sacrificar la diversificación que ofrece el S&P 500.', 'idea1': '', 'idea2': ''}
+
+
+--- curador (STEP 2.1) ---
+INPUT 1 (user):
+{'default': '## [Microinversión adaptativa con IA predictiva]\nUn sistema de inversión para el S&P 500 que utiliza inteligencia artificial para identificar "microventanas" de oportunidad específicas. A diferencia de las estrategias tradicionales, esta plataforma analiza correlaciones no convencionales entre el rendimiento del índice y factores alternativos (tendencias en redes sociales, eventos culturales, patrones meteorológicos) que los algoritmos convencionales ignoran.\n\nEl valor diferencial radica en que permite a inversores minoristas aprovechar ventanas de tiempo y sectores específicos dentro del S&P 500 con mayor probabilidad de rendimiento, en lugar de la exposición generalizada. La IA adapta continuamente sus parámetros basándose en resultados, creando un sistema que mejora constantemente y democratiza análisis sofisticados para inversores con presupuestos limitados.\n\n## [Fondo indexado S&P 500 con compensación de impacto]\nUna innovadora variante del ETF tradicional del S&P 500 que integra automáticamente compensaciones de impacto ambiental y social. Por cada inversión realizada, el sistema calcula la huella de carbono y el impacto social negativo de las empresas dentro del índice, e invierte simultáneamente un pequeño porcentaje en proyectos verificados de compensación y desarrollo comunitario.\n\nEl valor se encuentra en que permite a los inversores mantener la exposición al rendimiento del mercado general mientras mitigan activamente los impactos negativos asociados. La plataforma proporcionaría informes detallados de impacto y podría ofrecer incentivos fiscales en jurisdicciones que reconocen estas compensaciones. Este enfoque responde a la creciente demanda de inversiones que equilibran rentabilidad con responsabilidad, sin sacrificar la diversificación que ofrece el S&P 500.', 'idea1': '', 'idea2': ''}
+
+RESPONSE:
+# Sistema de Microinversión Adaptativa con IA Predictiva
+
+## Concepto Fundamental
+Un sistema avanzado de inversión selectiva para el S&P 500 que utiliza inteligencia artificial para identificar "microventanas" temporales y sectoriales de oportunidad con alta probabilidad de rendimiento superior. La plataforma descubre y actúa sobre correlaciones no convencionales que los algoritmos tradicionales de inversión habitualmente ignoran.
+
+## Funcionamiento Técnico
+El sistema opera en tres niveles de análisis simultáneos:
+
+1. **Análisis de datos alternativos**: La plataforma procesa continuamente:
+   - Sentimiento en redes sociales y foros especializados mediante análisis lingüístico avanzado
+   - Eventos culturales y tendencias de consumo por demografía y región
+   - Patrones meteorológicos y su impacto en cadenas de suministro y consumo
+   - Actividad de patentes y desarrollos tecnológicos emergentes
+   - Cambios en políticas regulatorias sectoriales
+
+2. **Correlación temporal multivariable**: El sistema detecta relaciones estadísticamente significativas entre estos factores alternativos y movimientos específicos en sectores o empresas individuales del S&P 500, estableciendo patrones predictivos basados en precedentes históricos.
+
+3. **Optimización adaptativa**: Mediante aprendizaje por refuerzo, el algoritmo refina continuamente sus parámetros predictivos, descartando correlaciones que pierden efectividad y potenciando aquellas que demuestran consistencia.
+
+## Implementación Práctica
+- Interface simplificada con tres niveles de participación:
+  - **Modo automático**: El sistema ejecuta inversiones basadas en señales de alta confianza
+  - **Modo asistido**: Sugiere oportunidades específicas con sus fundamentos para decisión del usuario
+  - **Modo personalizado**: Permite al usuario definir parámetros de riesgo, sectores preferentes y horizontes temporales
+
+- Microsuscripciones escalonadas desde $10 mensuales, democratizando el acceso a análisis sofisticados para inversores con presupuestos limitados
+
+## Gestión de Riesgos
+- Algoritmos de contención con límites dinámicos de exposición por sector
+- Diversificación automática para evitar concentración excesiva
+- Transparencia completa sobre la base estadística de cada recomendación, incluyendo intervalo de confianza y precedentes históricos
+
+## Ventaja Competitiva
+A diferencia de las estrategias de inversión tradicionales que ofrecen exposición generalizada al índice o selección de valores basada en análisis fundamental convencional, esta plataforma permite:
+
+1. Aprovechamiento de ineficiencias de mercado específicas y temporales
+2. Exposición optimizada a sectores o valores concretos durante ventanas de oportunidad identificadas algorítmicamente
+3. Acceso a capacidades analíticas normalmente reservadas a fondos institucionales
+
+## Ejemplo de Aplicación
+El sistema podría detectar que cuando ciertos patrones meteorológicos coinciden con tendencias específicas en redes sociales y eventos culturales regionales, las empresas de consumo discrecional en el S&P 500 experimentan un aumento promedio del 2.3% durante las siguientes 72 horas, permitiendo posicionamiento proactivo.
+
+---
+
+# Fondo Indexado S&P 500 con Compensación Integral de Impacto (S&P 500 Impact+)
+
+## Concepto Fundamental
+Una evolución del ETF tradicional del S&P 500 que mantiene plena exposición al índice mientras implementa automáticamente mecanismos de compensación para neutralizar la huella ambiental y social negativa de la inversión, creando una posición neta positiva sin sacrificar el rendimiento financiero.
+
+## Arquitectura del Producto
+El fondo se estructura en dos componentes integrados:
+
+1. **Núcleo de inversión indexada (95-97%)**: Réplica convencional del S&P 500, asegurando exposición completa al mercado y rendimientos correlacionados con el índice.
+
+2. **Cartera de compensación dinámica (3-5%)**: Inversión calculada algorítmicamente en:
+   - Proyectos verificados de captura de carbono y energías renovables
+   - Iniciativas de desarrollo comunitario en áreas impactadas por operaciones corporativas
+   - Fondos de transición económica para sectores en transformación
+
+## Sistema de Cuantificación de Impacto
+Tecnología propietaria que:
+
+1. Calcula con precisión la huella ambiental y social negativa de cada dólar invertido en el S&P 500, utilizando:
+   - Datos certificados de emisiones directas e indirectas (Alcances 1, 2 y 3)
+   - Métricas de impacto social (desplazamientos comunitarios, condiciones laborales, equidad)
+   - Evaluación de prácticas de gobierno corporativo
+
+2. Determina dinámicamente la asignación óptima de recursos compensatorios para maximizar el efecto neutralizador por dólar invertido
+
+3. Verifica y documenta el impacto efectivo mediante auditorías independientes y tecnología blockchain
+
+## Ventajas Diferenciales
+- **Transparencia radical**: Informes trimestrales detallados con verificación externa del impacto neto
+- **Personalización de compensación**: Opción para que los inversores prioricen áreas específicas de impacto (climático, social, biodiversidad)
+- **Beneficios fiscales potenciales**: Estructura que permite acceder a deducciones fiscales en jurisdicciones que incentivan inversiones responsables
+- **Precio competitivo**: Comisión total estimada de 0.15-0.25%, comparable a ETFs convencionales del S&P 500
+
+## Diferenciación de Fondos ESG Tradicionales
+A diferencia de los fondos ESG que excluyen sectores enteros o seleccionan "mejores de su clase":
+
+1. Mantiene exposición completa al mercado asegurando rendimientos no penalizados
+2. Adopta un enfoque proactivo de compensación en lugar de simplemente evitar impactos negativos
+3. Proporciona métricas cuantificables de impacto positivo generado, no solo reducción de exposición negativa
+
+## Consideraciones Regulatorias y de Implementación
+- Cumplimiento con marcos emergentes como EU Sustainable Finance Disclosure Regulation (SFDR)
+- Certificación de terceros para los proyectos de compensación (Gold Standard, Verra, Social Value International)
+- Estructura de fondo semi-abierto con mecanismos de creación/redención optimizados para eficiencia fiscal
+
+Este producto responde directamente a la creciente demanda de inversiones que integran rendimiento financiero con impacto positivo medible, sin sacrificar la diversificación y exposición que caracteriza al S&P 500.
+
+
+--- ideador (STEP 3.1) ---
+INPUT 1 (user):
+# Sistema de Microinversión Adaptativa con IA Predictiva
+
+## Concepto Fundamental
+Un sistema avanzado de inversión selectiva para el S&P 500 que utiliza inteligencia artificial para identificar "microventanas" temporales y sectoriales de oportunidad con alta probabilidad de rendimiento superior. La plataforma descubre y actúa sobre correlaciones no convencionales que los algoritmos tradicionales de inversión habitualmente ignoran.
+
+## Funcionamiento Técnico
+El sistema opera en tres niveles de análisis simultáneos:
+
+1. **Análisis de datos alternativos**: La plataforma procesa continuamente:
+   - Sentimiento en redes sociales y foros especializados mediante análisis lingüístico avanzado
+   - Eventos culturales y tendencias de consumo por demografía y región
+   - Patrones meteorológicos y su impacto en cadenas de suministro y consumo
+   - Actividad de patentes y desarrollos tecnológicos emergentes
+   - Cambios en políticas regulatorias sectoriales
+
+2. **Correlación temporal multivariable**: El sistema detecta relaciones estadísticamente significativas entre estos factores alternativos y movimientos específicos en sectores o empresas individuales del S&P 500, estableciendo patrones predictivos basados en precedentes históricos.
+
+3. **Optimización adaptativa**: Mediante aprendizaje por refuerzo, el algoritmo refina continuamente sus parámetros predictivos, descartando correlaciones que pierden efectividad y potenciando aquellas que demuestran consistencia.
+
+## Implementación Práctica
+- Interface simplificada con tres niveles de participación:
+  - **Modo automático**: El sistema ejecuta inversiones basadas en señales de alta confianza
+  - **Modo asistido**: Sugiere oportunidades específicas con sus fundamentos para decisión del usuario
+  - **Modo personalizado**: Permite al usuario definir parámetros de riesgo, sectores preferentes y horizontes temporales
+
+- Microsuscripciones escalonadas desde $10 mensuales, democratizando el acceso a análisis sofisticados para inversores con presupuestos limitados
+
+## Gestión de Riesgos
+- Algoritmos de contención con límites dinámicos de exposición por sector
+- Diversificación automática para evitar concentración excesiva
+- Transparencia completa sobre la base estadística de cada recomendación, incluyendo intervalo de confianza y precedentes históricos
+
+## Ventaja Competitiva
+A diferencia de las estrategias de inversión tradicionales que ofrecen exposición generalizada al índice o selección de valores basada en análisis fundamental convencional, esta plataforma permite:
+
+1. Aprovechamiento de ineficiencias de mercado específicas y temporales
+2. Exposición optimizada a sectores o valores concretos durante ventanas de oportunidad identificadas algorítmicamente
+3. Acceso a capacidades analíticas normalmente reservadas a fondos institucionales
+
+## Ejemplo de Aplicación
+El sistema podría detectar que cuando ciertos patrones meteorológicos coinciden con tendencias específicas en redes sociales y eventos culturales regionales, las empresas de consumo discrecional en el S&P 500 experimentan un aumento promedio del 2.3% durante las siguientes 72 horas, permitiendo posicionamiento proactivo.
+
+---
+
+# Fondo Indexado S&P 500 con Compensación Integral de Impacto (S&P 500 Impact+)
+
+## Concepto Fundamental
+Una evolución del ETF tradicional del S&P 500 que mantiene plena exposición al índice mientras implementa automáticamente mecanismos de compensación para neutralizar la huella ambiental y social negativa de la inversión, creando una posición neta positiva sin sacrificar el rendimiento financiero.
+
+## Arquitectura del Producto
+El fondo se estructura en dos componentes integrados:
+
+1. **Núcleo de inversión indexada (95-97%)**: Réplica convencional del S&P 500, asegurando exposición completa al mercado y rendimientos correlacionados con el índice.
+
+2. **Cartera de compensación dinámica (3-5%)**: Inversión calculada algorítmicamente en:
+   - Proyectos verificados de captura de carbono y energías renovables
+   - Iniciativas de desarrollo comunitario en áreas impactadas por operaciones corporativas
+   - Fondos de transición económica para sectores en transformación
+
+## Sistema de Cuantificación de Impacto
+Tecnología propietaria que:
+
+1. Calcula con precisión la huella ambiental y social negativa de cada dólar invertido en el S&P 500, utilizando:
+   - Datos certificados de emisiones directas e indirectas (Alcances 1, 2 y 3)
+   - Métricas de impacto social (desplazamientos comunitarios, condiciones laborales, equidad)
+   - Evaluación de prácticas de gobierno corporativo
+
+2. Determina dinámicamente la asignación óptima de recursos compensatorios para maximizar el efecto neutralizador por dólar invertido
+
+3. Verifica y documenta el impacto efectivo mediante auditorías independientes y tecnología blockchain
+
+## Ventajas Diferenciales
+- **Transparencia radical**: Informes trimestrales detallados con verificación externa del impacto neto
+- **Personalización de compensación**: Opción para que los inversores prioricen áreas específicas de impacto (climático, social, biodiversidad)
+- **Beneficios fiscales potenciales**: Estructura que permite acceder a deducciones fiscales en jurisdicciones que incentivan inversiones responsables
+- **Precio competitivo**: Comisión total estimada de 0.15-0.25%, comparable a ETFs convencionales del S&P 500
+
+## Diferenciación de Fondos ESG Tradicionales
+A diferencia de los fondos ESG que excluyen sectores enteros o seleccionan "mejores de su clase":
+
+1. Mantiene exposición completa al mercado asegurando rendimientos no penalizados
+2. Adopta un enfoque proactivo de compensación en lugar de simplemente evitar impactos negativos
+3. Proporciona métricas cuantificables de impacto positivo generado, no solo reducción de exposición negativa
+
+## Consideraciones Regulatorias y de Implementación
+- Cumplimiento con marcos emergentes como EU Sustainable Finance Disclosure Regulation (SFDR)
+- Certificación de terceros para los proyectos de compensación (Gold Standard, Verra, Social Value International)
+- Estructura de fondo semi-abierto con mecanismos de creación/redención optimizados para eficiencia fiscal
+
+Este producto responde directamente a la creciente demanda de inversiones que integran rendimiento financiero con impacto positivo medible, sin sacrificar la diversificación y exposición que caracteriza al S&P 500.
+
+RESPONSE:
+{'default': '## [Plataforma de Inversión Distribuida con Inteligencia Colectiva Especializada]\n\nUna plataforma de inversión descentralizada que conecta inversores con "microexpertos" sectoriales verificados, creando un ecosistema de inteligencia colectiva para la toma de decisiones sobre el S&P 500.\n\nEl sistema funciona mediante:\n\n1. **Identificación y verificación de expertos**: Profesionales sectoriales específicos (ingenieros, científicos, médicos, etc.) demuestran su experiencia mediante credenciales verificadas y son evaluados continuamente por la precisión de sus análisis.\n\n2. **Microanálisis contextualizado**: Estos expertos proporcionan interpretaciones especializadas sobre desarrollos dentro de sus campos (ej. un oncólogo evalúa ensayos clínicos de farmacéuticas, un ingeniero automotriz analiza innovaciones en Tesla).\n\n3. **Agregación ponderada de conocimiento**: Un algoritmo combina estos microanálisis, asignando peso según el historial de aciertos del experto y la relevancia contextual.\n\n4. **Ejecución transparente**: Los inversores pueden seguir decisiones automáticas basadas en la inteligencia colectiva o recibir alertas específicas fundamentadas en análisis experto.\n\nEl valor reside en acceder a conocimiento especializado que ni los algoritmos de IA ni los analistas tradicionales de Wall Street pueden proporcionar: la experiencia práctica de quienes están en primera línea de cada industria, democratizando el acceso a conocimiento especializado y superando los sesgos institucionales del mercado.\n\n## [Hiperpersonalización Ética del S&P 500 mediante Filtros Dinámicos]\n\nUn sistema revolucionario que permite a los inversores crear su versión personalizada del S&P 500 adaptada a sus valores personales precisos, sin sacrificar el rendimiento financiero.\n\nLa plataforma opera mediante:\n\n1. **Evaluación axiológica multidimensional**: Un proceso inicial que mapea los valores del inversor en múltiples dimensiones éticas (más allá de ESG tradicional), incluyendo posturas sobre innovación tecnológica, privacidad de datos, prácticas laborales específicas y controversias sociales.\n\n2. **Filtración dinámica con compensación algorítmica**: A diferencia de la simple exclusión, el sistema crea un "gemelo estadístico" de cada valor excluido, sustituyéndolo por combinaciones ponderadas de otros activos que mantienen características financieras similares (beta, volatilidad, correlaciones sectoriales) pero cumplen con los criterios éticos.\n\n3. **Ajuste continuo y transparencia de desviación**: El algoritmo monitoriza y reporta la desviación del rendimiento respecto al índice base, permitiendo ajustes en tiempo real del equilibrio entre adherencia ética y desempeño financiero.\n\n4. **Analítica de compromiso moral**: Dashboard que cuantifica el impacto de las decisiones éticas del inversor, mostrando cómo su cartera personalizada difiere del índice en métricas concretas (ej. reducción de huella de carbono, exposición a controversias específicas).\n\nEl valor distintivo es permitir a cada inversor expresar su individualidad moral de forma granular y cuantificable en sus inversiones, sin las limitaciones binarias de los fondos temáticos tradicionales ni la complejidad de gestionar carteras completamente personalizadas.', 'idea1': '', 'idea2': ''}
+
+
+--- curador (STEP 4.1) ---
+INPUT 1 (user):
+{'default': '## [Plataforma de Inversión Distribuida con Inteligencia Colectiva Especializada]\n\nUna plataforma de inversión descentralizada que conecta inversores con "microexpertos" sectoriales verificados, creando un ecosistema de inteligencia colectiva para la toma de decisiones sobre el S&P 500.\n\nEl sistema funciona mediante:\n\n1. **Identificación y verificación de expertos**: Profesionales sectoriales específicos (ingenieros, científicos, médicos, etc.) demuestran su experiencia mediante credenciales verificadas y son evaluados continuamente por la precisión de sus análisis.\n\n2. **Microanálisis contextualizado**: Estos expertos proporcionan interpretaciones especializadas sobre desarrollos dentro de sus campos (ej. un oncólogo evalúa ensayos clínicos de farmacéuticas, un ingeniero automotriz analiza innovaciones en Tesla).\n\n3. **Agregación ponderada de conocimiento**: Un algoritmo combina estos microanálisis, asignando peso según el historial de aciertos del experto y la relevancia contextual.\n\n4. **Ejecución transparente**: Los inversores pueden seguir decisiones automáticas basadas en la inteligencia colectiva o recibir alertas específicas fundamentadas en análisis experto.\n\nEl valor reside en acceder a conocimiento especializado que ni los algoritmos de IA ni los analistas tradicionales de Wall Street pueden proporcionar: la experiencia práctica de quienes están en primera línea de cada industria, democratizando el acceso a conocimiento especializado y superando los sesgos institucionales del mercado.\n\n## [Hiperpersonalización Ética del S&P 500 mediante Filtros Dinámicos]\n\nUn sistema revolucionario que permite a los inversores crear su versión personalizada del S&P 500 adaptada a sus valores personales precisos, sin sacrificar el rendimiento financiero.\n\nLa plataforma opera mediante:\n\n1. **Evaluación axiológica multidimensional**: Un proceso inicial que mapea los valores del inversor en múltiples dimensiones éticas (más allá de ESG tradicional), incluyendo posturas sobre innovación tecnológica, privacidad de datos, prácticas laborales específicas y controversias sociales.\n\n2. **Filtración dinámica con compensación algorítmica**: A diferencia de la simple exclusión, el sistema crea un "gemelo estadístico" de cada valor excluido, sustituyéndolo por combinaciones ponderadas de otros activos que mantienen características financieras similares (beta, volatilidad, correlaciones sectoriales) pero cumplen con los criterios éticos.\n\n3. **Ajuste continuo y transparencia de desviación**: El algoritmo monitoriza y reporta la desviación del rendimiento respecto al índice base, permitiendo ajustes en tiempo real del equilibrio entre adherencia ética y desempeño financiero.\n\n4. **Analítica de compromiso moral**: Dashboard que cuantifica el impacto de las decisiones éticas del inversor, mostrando cómo su cartera personalizada difiere del índice en métricas concretas (ej. reducción de huella de carbono, exposición a controversias específicas).\n\nEl valor distintivo es permitir a cada inversor expresar su individualidad moral de forma granular y cuantificable en sus inversiones, sin las limitaciones binarias de los fondos temáticos tradicionales ni la complejidad de gestionar carteras completamente personalizadas.', 'idea1': '', 'idea2': ''}
+
+RESPONSE:
+# COLECTA: Plataforma de Inversión con Inteligencia Colectiva Especializada
+
+## Concepto Refinado
+
+COLECTA es una plataforma de inversión descentralizada que revoluciona las decisiones financieras integrando análisis cualificados de "microexpertos" sectoriales. A diferencia de los sistemas tradicionales basados en analistas generalistas o algoritmos, COLECTA aprovecha el conocimiento contextualizado de profesionales que trabajan directamente en las industrias donde operan las empresas del S&P 500.
+
+## Arquitectura del Sistema
+
+### 1. **Ecosistema de Microexpertos Verificados**
+   - **Verificación multicapa**: Combinación de credenciales profesionales (títulos, certificaciones), validación por pares y análisis de contribuciones históricas.
+   - **Especialización microfocalizada**: No solo por sectores amplios, sino por subdominios específicos (ej. oncólogos especialistas en inmunoterapia para biotecnológicas, ingenieros de baterías para empresas de vehículos eléctricos).
+   - **Sistema reputacional dinámico**: Puntuaciones de precisión ajustadas por la dificultad predictiva y horizonte temporal de cada análisis, evitando sesgos hacia predicciones obvias.
+
+### 2. **Captura Estructurada de Conocimiento Especializado**
+   - **Protocolos de análisis estandarizados**: Formularios específicos por sector que capturan insights precisos sobre indicadores clave de desempeño futuro.
+   - **Ejemplo concreto**: Un neurocirujano evalúa el potencial clínico real de un nuevo dispositivo médico de Medtronic usando criterios como adopción esperada, curva de aprendizaje, ventajas sobre alternativas existentes y feedback de primeros usuarios.
+   - **Detección de señales débiles**: Sistema que prioriza observaciones de campo que aún no se reflejan en los datos financieros convencionales.
+
+### 3. **Motor de Agregación Inteligente**
+   - **Ponderación multifactorial**: Algoritmo que integra análisis considerando historial predictivo del experto, correlación con otros expertos confiables, y temporalidad de los insights.
+   - **Calibración bayesiana**: El sistema ajusta automáticamente el peso de cada contribución basándose en confirmaciones posteriores, mejorando continuamente.
+   - **Mecanismos anti-manipulación**: Análisis de patrones atípicos y verificaciones cruzadas para detectar intentos de influencia indebida.
+
+### 4. **Interfaz de Decisión para Inversores**
+   - **Dashboard personalizable**: Visualización de señales de inversión con diferentes niveles de granularidad, desde tendencias sectoriales hasta análisis específicos por empresa.
+   - **Automatización configurable**: Posibilidad de ejecutar estrategias desde totalmente automáticas hasta alertas específicas que requieren aprobación manual.
+   - **Trazabilidad completa**: Acceso a la cadena completa de razonamiento detrás de cada recomendación, permitiendo evaluar la solidez del análisis subyacente.
+
+## Modelo de Incentivos y Sostenibilidad
+
+- **Alineación económica**: Los expertos reciben compensación base por análisis más bonificaciones vinculadas al rendimiento predictivo a largo plazo.
+- **Comunidad de práctica**: Los microexpertos obtienen reconocimiento profesional y acceso a una red cualificada de pares de diversos sectores.
+- **Modelo de suscripción escalonada**: Diferentes niveles de acceso para inversores, desde información agregada hasta análisis detallados y personalización completa.
+
+## Ventaja Competitiva Distintiva
+
+COLECTA democratiza el acceso al tipo de inteligencia interna que tradicionalmente solo estaba disponible para grandes inversores institucionales con conexiones privilegiadas, pero lo hace de forma sistemática, escalable y ética. La plataforma supera tanto a los algoritmos de IA (que carecen de comprensión contextual profunda) como a los analistas tradicionales (limitados por su distancia de la operación real de las empresas).
+
+---
+
+# PRISMA: Sistema de Hiperpersonalización Ética para Inversión Indexada
+
+## Concepto Refinado
+
+PRISMA transforma la inversión pasiva en índices permitiendo a los inversores crear versiones personalizadas del S&P 500 que reflejen fielmente sus valores individuales sin sacrificar rendimiento financiero. Este sistema supera las limitaciones de los fondos ESG tradicionales, ofreciendo una granularidad ética sin precedentes mientras mantiene las características estructurales del índice original.
+
+## Arquitectura del Sistema
+
+### 1. **Cartografía Axiológica Personalizada**
+   - **Evaluación multidimensional de 32 vectores éticos**: Más allá de las categorías ESG estándar, captura posicionamientos específicos sobre privacidad de datos, pruebas con animales, política de compensación ejecutiva, diversidad en consejos directivos, etc.
+   - **Calibración adaptativa**: Cuestionarios dinámicos que identifican las prioridades relativas y límites de tolerancia específicos del inversor.
+   - **Actualización de valores**: Sistema que permite ajustar preferencias éticas en respuesta a nueva información o evolución personal, con simulaciones de impacto antes de implementar cambios.
+
+### 2. **Reconstrucción Indexada con Gemelos Estadísticos**
+   - **Análisis factorial avanzado**: Para cada valor excluido, el sistema identifica los factores de riesgo-rendimiento que contribuyen a su perfil financiero.
+   - **Ejemplo práctico**: Si un inversor excluye a ExxonMobil por motivos ambientales, PRISMA crea un "gemelo compuesto" combinando posiciones ponderadas en otras empresas que juntas replican el comportamiento estadístico de ExxonMobil sin sus características objetables.
+   - **Optimización multiobjetivo**: El algoritmo balancea la fidelidad estadística, minimización de costos de transacción y adherencia a preferencias éticas.
+
+### 3. **Sistema de Monitorización y Equilibrio**
+   - **Métricas de desviación en tiempo real**: Panel que muestra el tracking error respecto al S&P 500, desagregado por fuentes (exclusiones éticas vs. imperfecciones en la replicación).
+   - **Alertas de materialidad ética**: Notificaciones sobre controversias emergentes o cambios en prácticas empresariales que afectan la alineación con los valores declarados.
+   - **Recalibración adaptativa trimestral**: Ajustes periódicos para mantener tanto la fidelidad al índice como la alineación ética ante cambios en el mercado.
+
+### 4. **Dashboard de Impacto y Congruencia**
+   - **Métricas cuantificables de diferenciación ética**: Visualización comparativa que muestra, por ejemplo, "Tu cartera tiene un 87% menos de exposición a controversias de derechos humanos y un 64% menor huella de carbono que el S&P 500 estándar".
+   - **Análisis de compensaciones**: Gráficos que ilustran cómo cada decisión ética afecta potencialmente al rendimiento, volatilidad y diversificación.
+   - **Historial de congruencia**: Registro temporal que demuestra la consistencia entre los valores declarados y la composición real de la cartera.
+
+## Implementación Tecnológica
+
+- **Infraestructura de datos éticos**: Integración de múltiples proveedores especializados de datos (Sustainalytics, MSCI, RepRisk) complementados con análisis propietario.
+- **Arquitectura API abierta**: Capacidad de integración con plataformas de brokerage existentes para implementación directa.
+- **Automatización fiscal**: Optimización de costos fiscales derivados de la personalización mediante estrategias de cosecha de pérdidas.
+
+## Propuesta de Valor Diferencial
+
+PRISMA supera la dicotomía tradicional entre inversión indexada estandarizada e inversión de impacto personalizada pero ineficiente. Permite a cada inversor expresar su individualidad moral con precisión quirúrgica sin renunciar a las ventajas de costos, diversificación y eficiencia de la indexación. El sistema transforma la inversión pasiva de un compromiso impersonal a una expresión sofisticada de valores individuales, manteniendo el rigor financiero que exigen los inversores contemporáneos.
+
+
+--- desarrollador (STEP 5.1) ---
+INPUT 1 (user):
+# COLECTA: Plataforma de Inversión con Inteligencia Colectiva Especializada
+
+## Concepto Refinado
+
+COLECTA es una plataforma de inversión descentralizada que revoluciona las decisiones financieras integrando análisis cualificados de "microexpertos" sectoriales. A diferencia de los sistemas tradicionales basados en analistas generalistas o algoritmos, COLECTA aprovecha el conocimiento contextualizado de profesionales que trabajan directamente en las industrias donde operan las empresas del S&P 500.
+
+## Arquitectura del Sistema
+
+### 1. **Ecosistema de Microexpertos Verificados**
+   - **Verificación multicapa**: Combinación de credenciales profesionales (títulos, certificaciones), validación por pares y análisis de contribuciones históricas.
+   - **Especialización microfocalizada**: No solo por sectores amplios, sino por subdominios específicos (ej. oncólogos especialistas en inmunoterapia para biotecnológicas, ingenieros de baterías para empresas de vehículos eléctricos).
+   - **Sistema reputacional dinámico**: Puntuaciones de precisión ajustadas por la dificultad predictiva y horizonte temporal de cada análisis, evitando sesgos hacia predicciones obvias.
+
+### 2. **Captura Estructurada de Conocimiento Especializado**
+   - **Protocolos de análisis estandarizados**: Formularios específicos por sector que capturan insights precisos sobre indicadores clave de desempeño futuro.
+   - **Ejemplo concreto**: Un neurocirujano evalúa el potencial clínico real de un nuevo dispositivo médico de Medtronic usando criterios como adopción esperada, curva de aprendizaje, ventajas sobre alternativas existentes y feedback de primeros usuarios.
+   - **Detección de señales débiles**: Sistema que prioriza observaciones de campo que aún no se reflejan en los datos financieros convencionales.
+
+### 3. **Motor de Agregación Inteligente**
+   - **Ponderación multifactorial**: Algoritmo que integra análisis considerando historial predictivo del experto, correlación con otros expertos confiables, y temporalidad de los insights.
+   - **Calibración bayesiana**: El sistema ajusta automáticamente el peso de cada contribución basándose en confirmaciones posteriores, mejorando continuamente.
+   - **Mecanismos anti-manipulación**: Análisis de patrones atípicos y verificaciones cruzadas para detectar intentos de influencia indebida.
+
+### 4. **Interfaz de Decisión para Inversores**
+   - **Dashboard personalizable**: Visualización de señales de inversión con diferentes niveles de granularidad, desde tendencias sectoriales hasta análisis específicos por empresa.
+   - **Automatización configurable**: Posibilidad de ejecutar estrategias desde totalmente automáticas hasta alertas específicas que requieren aprobación manual.
+   - **Trazabilidad completa**: Acceso a la cadena completa de razonamiento detrás de cada recomendación, permitiendo evaluar la solidez del análisis subyacente.
+
+## Modelo de Incentivos y Sostenibilidad
+
+- **Alineación económica**: Los expertos reciben compensación base por análisis más bonificaciones vinculadas al rendimiento predictivo a largo plazo.
+- **Comunidad de práctica**: Los microexpertos obtienen reconocimiento profesional y acceso a una red cualificada de pares de diversos sectores.
+- **Modelo de suscripción escalonada**: Diferentes niveles de acceso para inversores, desde información agregada hasta análisis detallados y personalización completa.
+
+## Ventaja Competitiva Distintiva
+
+COLECTA democratiza el acceso al tipo de inteligencia interna que tradicionalmente solo estaba disponible para grandes inversores institucionales con conexiones privilegiadas, pero lo hace de forma sistemática, escalable y ética. La plataforma supera tanto a los algoritmos de IA (que carecen de comprensión contextual profunda) como a los analistas tradicionales (limitados por su distancia de la operación real de las empresas).
+
+---
+
+# PRISMA: Sistema de Hiperpersonalización Ética para Inversión Indexada
+
+## Concepto Refinado
+
+PRISMA transforma la inversión pasiva en índices permitiendo a los inversores crear versiones personalizadas del S&P 500 que reflejen fielmente sus valores individuales sin sacrificar rendimiento financiero. Este sistema supera las limitaciones de los fondos ESG tradicionales, ofreciendo una granularidad ética sin precedentes mientras mantiene las características estructurales del índice original.
+
+## Arquitectura del Sistema
+
+### 1. **Cartografía Axiológica Personalizada**
+   - **Evaluación multidimensional de 32 vectores éticos**: Más allá de las categorías ESG estándar, captura posicionamientos específicos sobre privacidad de datos, pruebas con animales, política de compensación ejecutiva, diversidad en consejos directivos, etc.
+   - **Calibración adaptativa**: Cuestionarios dinámicos que identifican las prioridades relativas y límites de tolerancia específicos del inversor.
+   - **Actualización de valores**: Sistema que permite ajustar preferencias éticas en respuesta a nueva información o evolución personal, con simulaciones de impacto antes de implementar cambios.
+
+### 2. **Reconstrucción Indexada con Gemelos Estadísticos**
+   - **Análisis factorial avanzado**: Para cada valor excluido, el sistema identifica los factores de riesgo-rendimiento que contribuyen a su perfil financiero.
+   - **Ejemplo práctico**: Si un inversor excluye a ExxonMobil por motivos ambientales, PRISMA crea un "gemelo compuesto" combinando posiciones ponderadas en otras empresas que juntas replican el comportamiento estadístico de ExxonMobil sin sus características objetables.
+   - **Optimización multiobjetivo**: El algoritmo balancea la fidelidad estadística, minimización de costos de transacción y adherencia a preferencias éticas.
+
+### 3. **Sistema de Monitorización y Equilibrio**
+   - **Métricas de desviación en tiempo real**: Panel que muestra el tracking error respecto al S&P 500, desagregado por fuentes (exclusiones éticas vs. imperfecciones en la replicación).
+   - **Alertas de materialidad ética**: Notificaciones sobre controversias emergentes o cambios en prácticas empresariales que afectan la alineación con los valores declarados.
+   - **Recalibración adaptativa trimestral**: Ajustes periódicos para mantener tanto la fidelidad al índice como la alineación ética ante cambios en el mercado.
+
+### 4. **Dashboard de Impacto y Congruencia**
+   - **Métricas cuantificables de diferenciación ética**: Visualización comparativa que muestra, por ejemplo, "Tu cartera tiene un 87% menos de exposición a controversias de derechos humanos y un 64% menor huella de carbono que el S&P 500 estándar".
+   - **Análisis de compensaciones**: Gráficos que ilustran cómo cada decisión ética afecta potencialmente al rendimiento, volatilidad y diversificación.
+   - **Historial de congruencia**: Registro temporal que demuestra la consistencia entre los valores declarados y la composición real de la cartera.
+
+## Implementación Tecnológica
+
+- **Infraestructura de datos éticos**: Integración de múltiples proveedores especializados de datos (Sustainalytics, MSCI, RepRisk) complementados con análisis propietario.
+- **Arquitectura API abierta**: Capacidad de integración con plataformas de brokerage existentes para implementación directa.
+- **Automatización fiscal**: Optimización de costos fiscales derivados de la personalización mediante estrategias de cosecha de pérdidas.
+
+## Propuesta de Valor Diferencial
+
+PRISMA supera la dicotomía tradicional entre inversión indexada estandarizada e inversión de impacto personalizada pero ineficiente. Permite a cada inversor expresar su individualidad moral con precisión quirúrgica sin renunciar a las ventajas de costos, diversificación y eficiencia de la indexación. El sistema transforma la inversión pasiva de un compromiso impersonal a una expresión sofisticada de valores individuales, manteniendo el rigor financiero que exigen los inversores contemporáneos.
+
+RESPONSE:
+# Implementación de COLECTA: Plataforma de Inversión con Inteligencia Colectiva Especializada
+
+Voy a implementar un prototipo funcional de la plataforma COLECTA que permita gestionar microexpertos, capturar sus análisis, agregar sus conocimientos y presentar recomendaciones a los inversores. Utilizaré un enfoque modular orientado a objetos con patrones de diseño apropiados para facilitar la escalabilidad y mantenimiento.
+
+```python
+import datetime
+import uuid
+import numpy as np
+import pandas as pd
+from typing import List, Dict, Optional, Tuple, Any, Union
+from enum import Enum
+from dataclasses import dataclass
+import json
+import hashlib
+from sklearn.metrics import mean_squared_error
+import matplotlib.pyplot as plt
+import logging
+
+# Configuración de logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler("colecta.log"),
+        logging.StreamHandler()
+    ]
+)
+logger = logging.getLogger("COLECTA")
+
+# Definición de enumeraciones y constantes
+class ExpertiseLevel(Enum):
+    NOVICE = 1
+    INTERMEDIATE = 2
+    ADVANCED = 3
+    EXPERT = 4
+    AUTHORITY = 5
+
+class Sector(Enum):
+    TECHNOLOGY = "Technology"
+    HEALTHCARE = "Healthcare"
+    FINANCE = "Finance"
+    ENERGY = "Energy"
+    CONSUMER = "Consumer"
+    INDUSTRIAL = "Industrial"
+    MATERIALS = "Materials"
+    UTILITIES = "Utilities"
+    REAL_ESTATE = "Real Estate"
+    COMMUNICATION = "Communication"
+
+class AnalysisTimeframe(Enum):
+    SHORT_TERM = "Short Term (1-3 months)"
+    MEDIUM_TERM = "Medium Term (3-12 months)"
+    LONG_TERM = "Long Term (1-3 years)"
+    VERY_LONG_TERM = "Very Long Term (3+ years)"
+
+class AnalysisType(Enum):
+    FUNDAMENTAL = "Fundamental"
+    TECHNICAL = "Technical"
+    SENTIMENT = "Sentiment"
+    REGULATORY = "Regulatory"
+    INNOVATION = "Innovation"
+    COMPETITIVE = "Competitive"
+
+class ConfidenceLevel(Enum):
+    LOW = 1
+    MEDIUM_LOW = 2
+    MEDIUM = 3
+    MEDIUM_HIGH = 4
+    HIGH = 5
+
+# Dataclasses para estructuras de datos principales
+@dataclass
+class Credentials:
+    """Credenciales profesionales de un microexperto"""
+    degrees: List[str]
+    certifications: List[str]
+    years_experience: int
+    current_position: str
+    company: str
+    publications: List[str] = None
+    patents: List[str] = None
+    
+    def validation_score(self) -> float:
+        """Calcula un puntaje básico de validación basado en credenciales"""
+        score = min(self.years_experience / 20, 1.0) * 0.4  # Experiencia (max 40%)
+        score += min(len(self.degrees) / 3, 1.0) * 0.2      # Educación (max 20%)
+        score += min(len(self.certifications) / 5, 1.0) * 0.2  # Certificaciones (max 20%)
+        
+        # Publicaciones y patentes (max 20%)
+        pub_pat_score = 0
+        if self.publications:
+            pub_pat_score += min(len(self.publications) / 10, 0.5)
+        if self.patents:
+            pub_pat_score += min(len(self.patents) / 5, 0.5)
+        score += pub_pat_score * 0.2
+        
+        return min(score, 1.0)  # Normalizar a máximo 1.0
+
+@dataclass
+class Specialization:
+    """Especialización de un microexperto"""
+    sector: Sector
+    sub_domains: List[str]
+    specific_companies: List[str] = None
+    technologies: List[str] = None
+    
+    def relevance_for_company(self, company: str) -> float:
+        """Calcula la relevancia de esta especialización para una empresa específica"""
+        if self.specific_companies and company in self.specific_companies:
+            return 1.0
+        # Implementación simplificada - en producción usaría NLP y datos externos
+        return 0.5  # Valor por defecto para demostración
+
+@dataclass
+class Analysis:
+    """Análisis proporcionado por un microexperto"""
+    id: str
+    expert_id: str
+    company_ticker: str
+    timestamp: datetime.datetime
+    timeframe: AnalysisTimeframe
+    analysis_type: AnalysisType
+    confidence_level: ConfidenceLevel
+    prediction: Dict[str, Any]  # Estructura flexible para diferentes tipos de predicciones
+    rationale: str
+    key_indicators: Dict[str, Any]
+    potential_risks: List[str]
+    metadata: Dict[str, Any] = None
+    
+    def difficulty_score(self) -> float:
+        """Calcula la dificultad de la predicción basada en varios factores"""
+        # Factores que aumentan la dificultad:
+        # - Predicciones a largo plazo
+        # - Baja confianza general del mercado (volatilidad)
+        # - Predicciones contrarias al consenso
+        
+        # Implementación simplificada
+        timeframe_difficulty = {
+            AnalysisTimeframe.SHORT_TERM: 0.3,
+            AnalysisTimeframe.MEDIUM_TERM: 0.5,
+            AnalysisTimeframe.LONG_TERM: 0.8,
+            AnalysisTimeframe.VERY_LONG_TERM: 1.0
+        }
+        
+        base_difficulty = timeframe_difficulty[self.timeframe]
+        
+        # Ajustar por otros factores (simplificado)
+        if self.metadata and 'market_consensus_alignment' in self.metadata:
+            # Si va contra el consenso, es más difícil
+            consensus_alignment = float(self.metadata['market_consensus_alignment'])
+            if consensus_alignment < 0:
+                base_difficulty *= (1.2 - (0.2 * consensus_alignment))  # Aumenta dificultad
+        
+        return min(base_difficulty, 1.0)
+
+@dataclass
+class PerformanceMetric:
+    """Métricas de rendimiento para evaluación de expertos"""
+    expert_id: str
+    accuracy_score: float  # 0-1
+    calibration_score: float  # Qué tan bien calibradas están sus estimaciones de confianza
+    consistency_score: float  # Consistencia a lo largo del tiempo
+    timeliness_score: float  # Qué tan temprano identifica tendencias
+    last_updated: datetime.datetime
+    
+    def overall_score(self) -> float:
+        """Calcula una puntuación general ponderada"""
+        weights = {
+            'accuracy': 0.4,
+            'calibration': 0.2,
+            'consistency': 0.2,
+            'timeliness': 0.2
+        }
+        
+        return (self.accuracy_score * weights['accuracy'] +
+                self.calibration_score * weights['calibration'] +
+                self.consistency_score * weights['consistency'] +
+                self.timeliness_score * weights['timeliness'])
+
+# Clases principales del sistema
+class MicroExpert:
+    """Representa a un experto especializado en la plataforma"""
+    
+    def __init__(self, 
+                 id: str,
+                 name: str,
+                 credentials: Credentials,
+                 specializations: List[Specialization],
+                 contact_info: Dict[str, str],
+                 date_joined: datetime.datetime):
+        self.id = id
+        self.name = name
+        self.credentials = credentials
+        self.specializations = specializations
+        self.contact_info = contact_info
+        self.date_joined = date_joined
+        self.reputation_score = 0.5  # Comienza con un valor neutral
+        self.performance_metrics = None
+        self.analyses_count = 0
+        self.verified = False
+    
+    def verify(self, verification_level: str = "basic") -> bool:
+        """Verifica las credenciales del experto"""
+        # En una implementación real, esto involucraría verificaciones externas
+        if verification_level == "basic":
+            credential_score = self.credentials.validation_score()
+            if credential_score > 0.7:
+                self.verified = True
+                logger.info(f"Expert {self.id} verified with score {credential_score}")
+                return True
+        return False
+    
+    def update_reputation(self, performance_metrics: PerformanceMetric) -> None:
+        """Actualiza la reputación basada en métricas de rendimiento"""
+        self.performance_metrics = performance_metrics
+        
+        # Cálculo de reputación con decaimiento temporal
+        base_score = performance_metrics.overall_score()
+        experience_factor = min(self.analyses_count / 100, 1.0)  # Más análisis = más confiable
+        
+        # Fórmula que da más peso a expertos con más experiencia
+        self.reputation_score = (0.3 + (0.7 * experience_factor)) * base_score
+        logger.info(f"Updated reputation for expert {self.id} to {self.reputation_score}")
+    
+    def relevance_for_analysis(self, company_ticker: str, analysis_type: AnalysisType) -> float:
+        """Determina la relevancia del experto para un análisis específico"""
+        # Simplificado - en producción usaría mapeos de empresas a sectores y subdominios
+        max_relevance = 0.0
+        for specialization in self.specializations:
+            relevance = specialization.relevance_for_company(company_ticker)
+            max_relevance = max(max_relevance, relevance)
+        
+        # Ajustar por tipo de análisis y experiencia
+        type_adjustment = 1.0  # Simplificado
+        experience_factor = min(self.analyses_count / 50, 1.0)
+        
+        return max_relevance * type_adjustment * (0.5 + (0.5 * experience_factor))
+    
+    def to_dict(self) -> Dict:
+        """Convierte el objeto a un diccionario para serialización"""
+        return {
+            "id": self.id,
+            "name": self.name,
+            "credentials": {
+                "degrees": self.credentials.degrees,
+                "certifications": self.credentials.certifications,
+                "years_experience": self.credentials.years_experience,
+                "current_position": self.credentials.current_position,
+                "company": self.credentials.company,
+                "publications": self.credentials.publications,
+                "patents": self.credentials.patents
+            },
+            "specializations": [
+                {
+                    "sector": s.sector.value,
+                    "sub_domains": s.sub_domains,
+                    "specific_companies": s.specific_companies,
+                    "technologies": s.technologies
+                } for s in self.specializations
+            ],
+            "contact_info": self.contact_info,
+            "date_joined": self.date_joined.isoformat(),
+            "reputation_score": self.reputation_score,
+            "analyses_count": self.analyses_count,
+            "verified": self.verified
+        }
+
+
+class AnalysisRepository:
+    """Repositorio para almacenar y recuperar análisis"""
+    
+    def __init__(self):
+        self.analyses = {}  # id -> Analysis
+        self.company_analyses = {}  # ticker -> List[Analysis]
+        self.expert_analyses = {}  # expert_id -> List[Analysis]
+    
+    def add_analysis(self, analysis: Analysis) -> None:
+        """Agrega un nuevo análisis al repositorio"""
+        self.analyses[analysis.id] = analysis
+        
+        # Indexar por empresa
+        if analysis.company_ticker not in self.company_analyses:
+            self.company_analyses[analysis.company_ticker] = []
+        self.company_analyses[analysis.company_ticker].append(analysis)
+        
+        # Indexar por experto
+        if analysis.expert_id not in self.expert_analyses:
+            self.expert_analyses[analysis.expert_id] = []
+        self.expert_analyses[analysis.expert_id].append(analysis)
+        
+        logger.info(f"Added analysis {analysis.id} for {analysis.company_ticker} by expert {analysis.expert_id}")
+    
+    def get_analysis(self, analysis_id: str) -> Optional[Analysis]:
+        """Recupera un análisis por su ID"""
+        return self.analyses.get(analysis_id)
+    
+    def get_analyses_for_company(self, ticker: str, 
+                                timeframe: Optional[AnalysisTimeframe] = None,
+                                limit: int = 100,
+                                sort_by_date: bool = True) -> List[Analysis]:
+        """Recupera análisis para una empresa específica"""
+        analyses = self.company_analyses.get(ticker, [])
+        
+        if timeframe:
+            analyses = [a for a in analyses if a.timeframe == timeframe]
+        
+        if sort_by_date:
+            analyses = sorted(analyses, key=lambda a: a.timestamp, reverse=True)
+        
+        return analyses[:limit]
+    
+    def get_analyses_by_expert(self, expert_id: str, limit: int = 100) -> List[Analysis]:
+        """Recupera análisis realizados por un experto específico"""
+        analyses = self.expert_analyses.get(expert_id, [])
+        analyses = sorted(analyses, key=lambda a: a.timestamp, reverse=True)
+        return analyses[:limit]
+    
+    def get_recent_analyses(self, days: int = 7, limit: int = 100) -> List[Analysis]:
+        """Recupera análisis recientes dentro de un período de tiempo"""
+        cutoff_date = datetime.datetime.now() - datetime.timedelta(days=days)
+        recent = [a for a in self.analyses.values() if a.timestamp >= cutoff_date]
+        recent = sorted(recent, key=lambda a: a.timestamp, reverse=True)
+        return recent[:limit]
+
+
+class ExpertRepository:
+    """Repositorio para almacenar y recuperar información de expertos"""
+    
+    def __init__(self):
+        self.experts = {}  # id -> MicroExpert
+        self.sector_experts = {}  # Sector -> List[MicroExpert]
+    
+    def add_expert(self, expert: MicroExpert) -> None:
+        """Agrega un nuevo experto al repositorio"""
+        self.experts[expert.id] = expert
+        
+        # Indexar por sectores
+        for specialization in expert.specializations:
+            sector = specialization.sector
+            if sector not in self.sector_experts:
+                self.sector_experts[sector] = []
+            self.sector_experts[sector].append(expert)
+        
+        logger.info(f"Added expert {expert.id} ({expert.name}) to repository")
+    
+    def get_expert(self, expert_id: str) -> Optional[MicroExpert]:
+        """Recupera un experto por su ID"""
+        return self.experts.get(expert_id)
+    
+    def get_experts_by_sector(self, sector: Sector) -> List[MicroExpert]:
+        """Recupera expertos especializados en un sector específico"""
+        return self.sector_experts.get(sector, [])
+    
+    def get_experts_for_company(self, ticker: str, min_relevance: float = 0.5) -> List[Tuple[MicroExpert, float]]:
+        """
+        Encuentra expertos relevantes para una empresa específica
+        Retorna una lista de tuplas (experto, puntuación de relevancia)
+        """
+        # En producción, usaría una base de datos de mapeo empresa->sector
+        # Simplificado para este prototipo
+        company_sector = self._get_company_sector(ticker)
+        
+        if not company_sector:
+            return []
+        
+        experts = self.get_experts_by_sector(company_sector)
+        
+        # Calcular relevancia para cada experto
+        expert_relevance = []
+        for expert in experts:
+            relevance = max([s.relevance_for_company(ticker) for s in expert.specializations])
+            if relevance >= min_relevance:
+                expert_relevance.append((expert, relevance))
+        
+        # Ordenar por relevancia
+        return sorted(expert_relevance, key=lambda x: x[1], reverse=True)
+    
+    def _get_company_sector(self, ticker: str) -> Optional[Sector]:
+        """Determina el sector de una empresa (simplificado)"""
+        # Mapeo simplificado para demostración
+        sector_map = {
+            "AAPL": Sector.TECHNOLOGY,
+            "MSFT": Sector.TECHNOLOGY,
+            "GOOGL": Sector.TECHNOLOGY,
+            "AMZN": Sector.CONSUMER,
+            "META": Sector.COMMUNICATION,
+            "JNJ": Sector.HEALTHCARE,
+            "PFE": Sector.HEALTHCARE,
+            "XOM": Sector.ENERGY,
+            "JPM": Sector.FINANCE,
+            "BAC": Sector.FINANCE
+        }
+        return sector_map.get(ticker)
+
+
+class AnalysisAggregator:
+    """Motor de agregación inteligente para análisis de expertos"""
+    
+    def __init__(self, analysis_repo: AnalysisRepository, expert_repo: ExpertRepository):
+        self.analysis_repo = analysis_repo
+        self.expert_repo = expert_repo
+    
+    def aggregate_company_analysis(self, 
+                                  ticker: str, 
+                                  timeframe: AnalysisTimeframe,
+                                  max_age_days: int = 30,
+                                  min_expert_reputation: float = 0.3) -> Dict[str, Any]:
+        """
+        Agrega análisis de múltiples expertos para una empresa específica
+        Retorna un análisis consolidado con métricas de confianza
+        """
+        # Obtener análisis relevantes
+        all_analyses = self.analysis_repo.get_analyses_for_company(ticker)
+        
+        # Filtrar por timeframe y edad
+        cutoff_date = datetime.datetime.now() - datetime.timedelta(days=max_age_days)
+        analyses = [
+            a for a in all_analyses 
+            if a.timeframe == timeframe and a.timestamp >= cutoff_date
+        ]
+        
+        if not analyses:
+            logger.warning(f"No recent analyses found for {ticker} with timeframe {timeframe.value}")
+            return {
+                "ticker": ticker,
+                "timeframe": timeframe.value,
+                "status": "insufficient_data",
+                "timestamp": datetime.datetime.now().isoformat(),
+                "message": "Insufficient data for aggregation"
+            }
+        
+        # Obtener expertos y sus reputaciones
+        expert_weights = {}
+        for analysis in analyses:
+            expert = self.expert_repo.get_expert(analysis.expert_id)
+            if expert and expert.reputation_score >= min_expert_reputation:
+                # Peso basado en reputación y dificultad del análisis
+                difficulty = analysis.difficulty_score()
+                recency_factor = self._calculate_recency_factor(analysis.timestamp)
+                weight = expert.reputation_score * (1 + difficulty) * recency_factor
+                expert_weights[analysis.id] = weight
+        
+        # Filtrar análisis de expertos con reputación suficiente
+        weighted_analyses = [a for a in analyses if a.id in expert_weights]
+        
+        if not weighted_analyses:
+            logger.warning(f"No analyses from reputable experts for {ticker}")
+            return {
+                "ticker": ticker,
+                "timeframe": timeframe.value,
+                "status": "no_qualified_experts",
+                "timestamp": datetime.datetime.now().isoformat(),
+                "message": "No analyses from qualified experts available"
+            }
+        
+        # Normalizar pesos
+        total_weight = sum(expert_weights.values())
+        normalized_weights = {k: v/total_weight for k, v in expert_weights.items()}
+        
+        # Agregar predicciones (simplificado - en producción sería más sofisticado)
+        aggregated_prediction = self._aggregate_predictions(weighted_analyses, normalized_weights)
+        
+        # Calcular nivel de confianza agregado
+        confidence_scores = [a.confidence_level.value for a in weighted_analyses]
+        weighted_confidence = sum(c * normalized_weights[a.id] 
+                                 for c, a in zip(confidence_scores, weighted_analyses))
+        
+        # Identificar riesgos comunes
+        all_risks = [risk for a in weighted_analyses for risk in a.potential_risks]
+        risk_frequency = {}
+        for risk in all_risks:
+            risk_frequency[risk] = risk_frequency.get(risk, 0) + 1
+        
+        top_risks = sorted(risk_frequency.items(), key=lambda x: x[1], reverse=True)[:5]
+        
+        # Construir resultado
+        result = {
+            "ticker": ticker,
+            "timeframe": timeframe.value,
+            "status": "success",
+            "timestamp": datetime.datetime.now().isoformat(),
+            "aggregated_prediction": aggregated_prediction,
+            "confidence_level": weighted_confidence,
+            "confidence_description": self._confidence_to_description(weighted_confidence),
+            "expert_count": len(weighted_analyses),
+            "top_risks": [r[0] for r in top_risks],
+            "consensus_level": self._calculate_consensus_level(weighted_analyses),
+            "most_recent_analysis": max(a.timestamp for a in weighted_analyses).isoformat(),
+            "contributing_experts": [
+                {
+                    "id": a.expert_id,
+                    "weight": normalized_weights[a.id],
+                    "confidence": a.confidence_level.value
+                }
+                for a in weighted_analyses
+            ]
+        }
+        
+        logger.info(f"Generated aggregated analysis for {ticker} with {len(weighted_analyses)} expert contributions")
+        return result
+    
+    def _calculate_recency_factor(self, timestamp: datetime.datetime) -> float:
+        """Calcula un factor de recencia para dar más peso a análisis más recientes"""
+        days_old = (datetime.datetime.now() - timestamp).days
+        # Decaimiento exponencial - análisis más recientes tienen más peso
+        return np.exp(-0.05 * days_old)
+    
+    def _aggregate_predictions(self, analyses: List[Analysis], weights: Dict[str, float]) -> Dict[str, Any]:
+        """Agrega predicciones de múltiples análisis con ponderación"""
+        # Simplificado para demostración - en producción sería más sofisticado
+        # y manejaría diferentes tipos de predicciones
+        
+        # Asumimos que las predicciones tienen una estructura común
+        sample_keys = list(analyses[0].prediction.keys())
+        
+        result = {}
+        for key in sample_keys:
+            # Verificar si el valor es numérico
+            if isinstance(analyses[0].prediction[key], (int, float)):
+                # Promedio ponderado para valores numéricos
+                weighted_sum = sum(a.prediction[key] * weights[a.id] for a in analyses)
+                result[key] = weighted_sum
+            elif isinstance(analyses[0].prediction[key], str):
+                # Para valores categóricos, usamos votación ponderada
+                votes = {}
+                for analysis in analyses:
+                    value = analysis.prediction[key]
+                    votes[value] = votes.get(value, 0) + weights[analysis.id]
+                
+                # Seleccionar el valor con mayor peso
+                result[key] = max(votes.items(), key=lambda x: x[1])[0]
+        
+        return result
+    
+    def _confidence_to_description(self, confidence_value: float) -> str:
+        """Convierte un valor numérico de confianza a una descripción textual"""
+        if confidence_value >= 4.5:
+            return "Very High Confidence"
+        elif confidence_value >= 3.5:
+            return "High Confidence"
+        elif confidence_value >= 2.5:
+            return "Moderate Confidence"
+        elif confidence_value >= 1.5:
+            return "Low Confidence"
+        else:
+            return "Very Low Confidence"
+    
+    def _calculate_consensus_level(self, analyses: List[Analysis]) -> float:
+        """
+        Calcula el nivel de consenso entre los análisis
+        Retorna un valor entre 0 (sin consenso) y 1 (consenso total)
+        """
+        # Simplificado - en producción usaría métricas estadísticas más sofisticadas
+        
+        # Extraer predicciones numéricas para comparar
+        numeric_predictions = {}
+        
+        # Identificar claves numéricas comunes
+        sample_keys = list(analyses[0].prediction.keys())
+        numeric_keys = [k for k in sample_keys if isinstance(analyses[0].prediction[k], (int, float))]
+        
+        if not numeric_keys:
+            return 0.5  # Valor por defecto si no hay predicciones numéricas
+        
+        # Calcular variación para cada métrica numérica
+        variations = []
+        for key in numeric_keys:
+            values = [a.prediction[key] for a in analyses]
+            if len(values) > 1:
+                # Coeficiente de variación normalizado
+                mean_val = np.mean(values)
+                if mean_val != 0:
+                    cv = np.std(values) / abs(mean_val)
+                    variations.append(min(cv, 1.0))  # Limitar a 1.0 para evitar valores extremos
+        
+        if not variations:
+            return 0.5
+        
+        # Convertir variación a consenso (menor variación = mayor consenso)
+        avg_variation = np.mean(variations)
+        consensus = 1.0 - avg_variation
+        
+        return max(0.0, min(consensus, 1.0))  # Limitar entre 0 y 1
+
+
+class PerformanceEvaluator:
+    """Evalúa el rendimiento de los expertos comparando predicciones con resultados reales"""
+    
+    def __init__(self, analysis_repo: AnalysisRepository, expert_repo: ExpertRepository):
+        self.analysis_repo = analysis_repo
+        self.expert_repo = expert_repo
+        self.market_data = {}  # En producción, esto sería una interfaz a datos de mercado reales
+    
+    def evaluate_expert(self, expert_id: str) -> PerformanceMetric:
+        """Evalúa el rendimiento general de un experto"""
+        expert = self.expert_repo.get_expert(expert_id)
+        if not expert:
+            raise ValueError(f"Expert with ID {expert_id} not found")
+        
+        analyses = self.analysis_repo.get_analyses_by_expert(expert_id)
+        
+        # Filtrar análisis que ya pueden ser evaluados (tienen resultados)
+        evaluable_analyses = [a for a in analyses if self._is_evaluable(a)]
+        
+        if not evaluable_analyses:
+            logger.warning(f"No evaluable analyses found for expert {expert_id}")
+            # Retornar métricas neutrales si no hay suficientes datos
+            return PerformanceMetric(
+                expert_id=expert_id,
+                accuracy_score=0.5,
+                calibration_score=0.5,
+                consistency_score=0.5,
+                timeliness_score=0.5,
+                last_updated=datetime.datetime.now()
+            )
+        
+        # Calcular métricas individuales
+        accuracy = self._calculate_accuracy(evaluable_analyses)
+        calibration = self._calculate_calibration(evaluable_analyses)
+        consistency = self._calculate_consistency(evaluable_analyses)
+        timeliness = self._calculate_timeliness(evaluable_analyses)
+        
+        # Crear y retornar métricas de rendimiento
+        metrics = PerformanceMetric(
+            expert_id=expert_id,
+            accuracy_score=accuracy,
+            calibration_score=calibration,
+            consistency_score=consistency,
+            timeliness_score=timeliness,
+            last_updated=datetime.datetime.now()
+        )
+        
+        logger.info(f"Evaluated expert {expert_id} with overall score {metrics.overall_score()}")
+        return metrics
+    
+    def _is_evaluable(self, analysis: Analysis) -> bool:
+        """Determina si un análisis puede ser evaluado (tiene resultados disponibles)"""
+        # En producción, verificaría si ha pasado suficiente tiempo según el timeframe
+        # y si tenemos datos reales para comparar
+        
+        # Simulación simplificada
+        analysis_age = (datetime.datetime.now() - analysis.timestamp).days
+        
+        timeframe_days = {
+            AnalysisTimeframe.SHORT_TERM: 90,      # 3 meses
+            AnalysisTimeframe.MEDIUM_TERM: 365,    # 1 año
+            AnalysisTimeframe.LONG_TERM: 1095,     # 3 años
+            AnalysisTimeframe.VERY_LONG_TERM: 1825 # 5 años
+        }
+        
+        required_days = timeframe_days[analysis.timeframe]
+        
+        # Verificar si ha pasado suficiente tiempo
+        if analysis_age < required_days:
+            return False
+        
+        # Verificar si tenemos datos reales para comparar
+        # (en producción, verificaríamos la base de datos de resultados reales)
+        return analysis.company_ticker in self.market_data
+    
+    def _calculate_accuracy(self, analyses: List[Analysis]) -> float:
+        """Calcula la precisión de las predicciones del experto"""
+        # Simplificado - en producción usaría métricas específicas por tipo de predicción
+        
+        if not analyses:
+            return 0.5
+        
+        # Simulación de cálculo de precisión
+        # En producción, compararía con datos reales del mercado
+        accuracy_scores = []
+        
+        for analysis in analyses:
+            # Simular un score de precisión entre 0 y 1
+            # En producción, esto compararía predicciones con resultados reales
+            simulated_accuracy = 0.5 + (np.random.random() * 0.5)
+            
+            # Ajustar por dificultad (predicciones más difíciles tienen más peso)
+            difficulty = analysis.difficulty_score()
+            weighted_accuracy = simulated_accuracy * (1 + difficulty)
+            
+            accuracy_scores.append(weighted_accuracy)
+        
+        # Normalizar resultado final entre 0 y 1
+        avg_accuracy = np.mean(accuracy_scores) / 2.0
+        return min(avg_accuracy, 1.0)
+    
+    def _calculate_calibration(self, analyses: List[Analysis]) -> float:
+        """
+        Evalúa qué tan bien calibradas están las estimaciones de confianza del experto
+        (si dice 80% de confianza, debería acertar ~80% de las veces)
+        """
+        # Simplificado para demostración
+        # En producción, compararía niveles de confianza declarados con tasas de acierto reales
+        
+        if not analyses:
+            return 0.5
+        
+        # Simular calibración
+        calibration_error = np.random.random() * 0.3  # Error entre 0 y 0.3
+        calibration_score = 1.0 - calibration_error
+        
+        return calibration_score
+    
+    def _calculate_consistency(self, analyses: List[Analysis]) -> float:
+        """Evalúa la consistencia del experto a lo largo del tiempo"""
+        if len(analyses) < 3:
+            return 0.5
+        
+        # En producción, mediría la variabilidad en la calidad de las predicciones
+        # Simplificado para demostración
+        consistency = 0.7 + (np.random.random() * 0.3)
+        
+        return consistency
+    
+    def _calculate_timeliness(self, analyses: List[Analysis]) -> float:
+        """
+        Evalúa qué tan temprano el experto identifica tendencias antes que el mercado general
+        """
+        # Simplificado para demostración
+        # En producción, compararía fechas de análisis con puntos de inflexión en datos de mercado
+        
+        if not analyses:
+            return 0.5
+        
+        # Simular puntuación de oportunidad
+        timeliness = 0.6 + (np.random.random() * 0.4)
+        
+        return timeliness
+
+
+class InvestorDashboard:
+    """Interfaz para presentar recomendaciones y análisis a los inversores"""
+    
+    def __init__(self, 
+                 aggregator: AnalysisAggregator, 
+                 analysis_repo: AnalysisRepository,
+                 expert_repo: ExpertRepository):
+        self.aggregator = aggregator
+        self.analysis_repo = analysis_repo
+        self.expert_repo = expert_repo
+    
+    def get_company_recommendation(self, 
+                                  ticker: str, 
+                                  timeframe: AnalysisTimeframe = AnalysisTimeframe.MEDIUM_TERM) -> Dict[str, Any]:
+        """Obtiene una recomendación agregada para una empresa específica"""
+        return self.aggregator.aggregate_company_analysis(ticker, timeframe)
+    
+    def get_sector_overview(self, sector: Sector) -> Dict[str, Any]:
+        """Genera una visión general de un sector basada en análisis de expertos"""
+        # Simplificado - en producción obtendría empresas del sector de una base de datos
+        sector_companies = self._get_companies_in_sector(sector)
+        
+        sector_data = {
+            "sector": sector.value,
+            "timestamp": datetime.datetime.now().isoformat(),
+            "companies": []
+        }
+        
+        for ticker in sector_companies:
+            try:
+                # Obtener análisis agregado para cada empresa
+                company_analysis = self.aggregator.aggregate_company_analysis(
+                    ticker, 
+                    AnalysisTimeframe.MEDIUM_TERM,
+                    max_age_days=60
+                )
+                
+                # Simplificar para la visión general
+                if company_analysis["status"] == "success":
+                    sector_data["companies"].append({
+                        "ticker": ticker,
+                        "prediction_summary": self._simplify_prediction(company_analysis["aggregated_prediction"]),
+                        "confidence": company_analysis["confidence_level"],
+                        "expert_count": company_analysis["expert_count"]
+                    })
+            except Exception as e:
+                logger.error(f"Error processing {ticker} for sector overview: {str(e)}")
+        
+        # Calcular métricas del sector
+        if sector_data["companies"]:
+            avg_confidence = np.mean([c["confidence"] for c in sector_data["companies"]])
+            sector_data["average_confidence"] = avg_confidence
+            sector_data["confidence_description"] = self._confidence_description(avg_confidence)
+            sector_data["company_count"] = len(sector_data["companies"])
+        
+        return sector_data
+    
+    def get_expert_insights(self, expert_id: str, limit: int = 5) -> Dict[str, Any]:
+        """Obtiene los análisis más recientes de un experto específico"""
+        expert = self.expert_repo.get_expert(expert_id)
+        if not expert:
+            return {"status": "error", "message": f"Expert with ID {expert_id} not found"}
+        
+        analyses = self.analysis_repo.get_analyses_by_expert(expert_id, limit)
+        
+        result = {
+            "expert_id": expert_id,
+            "expert_name": expert.name,
+            "reputation_score": expert.reputation_score,
+            "analyses": []
+        }
+        
+        for analysis in analyses:
+            result["analyses"].append({
+                "id": analysis.id,
+                "company": analysis.company_ticker,
+                "timestamp": analysis.timestamp.isoformat(),
+                "timeframe": analysis.timeframe.value,
+                "confidence": analysis.confidence_level.value,
+                "summary": self._generate_analysis_summary(analysis)
+            })
+        
+        return result
+    
+    def generate_portfolio_recommendations(self, 
+                                          holdings: Dict[str, float],
+                                          risk_tolerance: float = 0.5) -> Dict[str, Any]:
+        """
+        Genera recomendaciones para un portafolio existente
+        
+        Args:
+            holdings: Diccionario de {ticker: peso_en_portafolio}
+            risk_tolerance: Nivel de tolerancia al riesgo (0-1)
+        """
+        recommendations = {
+            "timestamp": datetime.datetime.now().isoformat(),
+            "portfolio_size": len(holdings),
+            "risk_tolerance": risk_tolerance,
+            "holdings_analyzed": [],
+            "actions_recommended": []
+        }
+        
+        # Analizar cada posición
+        for ticker, weight in holdings.items():
+            try:
+                analysis = self.aggregator.aggregate_company_analysis(
+                    ticker,
+                    AnalysisTimeframe.MEDIUM_TERM
+                )
+                
+                if analysis["status"] == "success":
+                    holding_analysis = {
+                        "ticker": ticker,
+                        "weight": weight,
+                        "outlook": self._extract_outlook(analysis),
+                        "confidence": analysis["confidence_level"],
+                        "expert_count": analysis["expert_count"]
+                    }
+                    
+                    recommendations["holdings_analyzed"].append(holding_analysis)
+                    
+                    # Determinar acción recomendada
+                    action = self._determine_portfolio_action(
+                        holding_analysis["outlook"],
+                        holding_analysis["confidence"],
+                        weight,
+                        risk_tolerance
+                    )
+                    
+                    if action["type"] != "hold":
+                        recommendations["actions_recommended"].append(action)
+            
+            except Exception as e:
+                logger.error(f"Error analyzing holding {ticker}: {str(e)}")
+        
+        # Ordenar acciones por prioridad
+        recommendations["actions_recommended"].sort(key=lambda x: x["priority"], reverse=True)
+        
+        return recommendations
+    
+    def _get_companies_in_sector(self, sector: Sector) -> List[str]:
+        """Obtiene empresas en un sector específico (simplificado)"""
+        # En producción, esto vendría de una base de datos
+        sector_companies = {
+            Sector.TECHNOLOGY: ["AAPL", "MSFT", "GOOGL"],
+            Sector.HEALTHCARE: ["JNJ", "PFE"],
+            Sector.FINANCE: ["JPM", "BAC"],
+            Sector.ENERGY: ["XOM"],
+            Sector.CONSUMER: ["AMZN"],
+            Sector.COMMUNICATION: ["META"]
+        }
+        
+        return sector_companies.get(sector, [])
+    
+    def _simplify_prediction(self, prediction: Dict[str, Any]) -> Dict[str, Any]:
+        """Simplifica una predicción para visualización"""
+        # Simplificado para demostración
+        # En producción, extraería los indicadores clave más relevantes
+        
+        if not prediction:
+            return {}
+        
+        # Extraer elementos clave (asumiendo una estructura común)
+        simplified = {}
+        
+        key_metrics = ["price_target", "growth_rate", "recommendation", "outlook"]
+        for key in key_metrics:
+            if key in prediction:
+                simplified[key] = prediction[key]
+        
+        return simplified
+    
+    def _confidence_description(self, confidence_value: float) -> str:
+        """Convierte un valor de confianza a descripción textual"""
+        if confidence_value >= 4.5:
+            return "Very High"
+        elif confidence_value >= 3.5:
+            return "High"
+        elif confidence_value >= 2.5:
+            return "Moderate"
+        elif confidence_value >= 1.5:
+            return "Low"
+        else:
+            return "Very Low"
+    
+    def _generate_analysis_summary(self, analysis: Analysis) -> str:
+        """Genera un resumen textual de un análisis"""
+        # En producción, usaría NLG (Natural Language Generation)
+        # Simplificado para demostración
+        
+        confidence_text = self._confidence_description(analysis.confidence_level.value)
+        
+        if "recommendation" in analysis.prediction:
+            rec = analysis.prediction["recommendation"]
+            return f"{confidence_text} confidence {rec} recommendation based on {analysis.analysis_type.value} analysis"
+        
+        if "outlook" in analysis.prediction:
+            outlook = analysis.prediction["outlook"]
+            return f"{confidence_text} confidence {outlook} outlook for {analysis.timeframe.value}"
+        
+        # Resumen genérico
+        return f"{confidence_text} confidence analysis for {analysis.timeframe.value} timeframe"
+    
+    def _extract_outlook(self, analysis: Dict[str, Any]) -> str:
+        """Extrae la perspectiva general de un análisis agregado"""
+        if analysis["status"] != "success":
+            return "unknown"
+        
+        prediction = analysis["aggregated_prediction"]
+        
+        # Intentar extraer de diferentes campos posibles
+        if "outlook" in prediction:
+            return prediction["outlook"]
+        
+        if "recommendation" in prediction:
+            rec = prediction["recommendation"].lower()
+            if "buy" in rec or "strong buy" in rec:
+                return "positive"
+            elif "sell" in rec or "strong sell" in rec:
+                return "negative"
+            else:
+                return "neutral"
+        
+        # Si hay un precio objetivo, comparar con precio actual (simulado)
+        if "price_target" in prediction and "current_price" in prediction:
+            target = prediction["price_target"]
+            current = prediction["current_price"]
+            change = (target - current) / current
+            
+            if change > 0.1:
+                return "positive"
+            elif change < -0.1:
+                return "negative"
+            else:
+                return "neutral"
+        
+        return "neutral"  # Valor por defecto
+    
+    def _determine_portfolio_action(self, 
+                                   outlook: str, 
+                                   confidence: float, 
+                                   current_weight: float,
+                                   risk_tolerance: float) -> Dict[str, Any]:
+        """Determina la acción recomendada para una posición del portafolio"""
+        # Simplificado para demostración
+        # En producción, usaría un modelo más sofisticado
+        
+        # Factores de ajuste basados en confianza y tolerancia al riesgo
+        confidence_factor = confidence / 5.0  # Normalizar a 0-1
+        risk_factor = risk_tolerance
+        
+        # Determinar dirección de la acción
+        if outlook == "positive":
+            direction = "increase"
+        elif outlook == "negative":
+            direction = "decrease"
+        else:
+            return {"type": "hold", "ticker": "", "priority": 0}
+        
+        # Calcular magnitud del ajuste
+        magnitude = confidence_factor * risk_factor
+        
+        if direction == "increase":
+            # Limitar aumento según peso actual
+            if current_weight > 0.15:
+                # Ya es una posición grande
+                magnitude *= 0.5
+            target_weight = current_weight * (1 + magnitude)
+            target_weight = min(target_weight, 0.25)  # Limitar a 25% máximo
+            
+            priority = confidence * magnitude * 10
+            
+            return {
+                "type": "increase",
+                "ticker": "",  # Se rellenaría con el ticker real
+                "current_weight": current_weight,
+                "target_weight": target_weight,
+                "confidence": confidence,
+                "priority": priority
+            }
+        else:  # decrease
+            target_weight = current_weight * (1 - magnitude)
+            
+            priority = confidence * magnitude * 10
+            
+            return {
+                "type": "decrease",
+                "ticker": "",  # Se rellenaría con el ticker real
+                "current_weight": current_weight,
+                "target_weight": target_weight,
+                "confidence": confidence,
+                "priority": priority
+            }
+
+
+class ColectaSystem:
+    """Clase principal que integra todos los componentes del sistema"""
+    
+    def __init__(self):
+        # Inicializar repositorios
+        self.expert_repo = ExpertRepository()
+        self.analysis_repo = AnalysisRepository()
+        
+        # Inicializar componentes del sistema
+        self.aggregator = AnalysisAggregator(self.analysis_repo, self.expert_repo)
+        self.evaluator = PerformanceEvaluator(self.analysis_repo, self.expert_repo)
+        self.dashboard = InvestorDashboard(self.aggregator, self.analysis_repo, self.expert_repo)
+        
+        logger.info("COLECTA system initialized")
+    
+    def register_expert(self, 
+                       name: str,
+                       credentials: Dict[str, Any],
+                       specializations: List[Dict[str, Any]],
+                       contact_info: Dict[str, str]) -> str:
+        """Registra un nuevo experto en el sistema"""
+        # Crear ID único
+        expert_id = str(uuid.uuid4())
+        
+        # Crear objeto de credenciales
+        creds = Credentials(
+            degrees=credentials.get("degrees", []),
+            certifications=credentials.get("certifications", []),
+            years_experience=credentials.get("years_experience", 0),
+            current_position=credentials.get("current_position", ""),
+            company=credentials.get("company", ""),
+            publications=credentials.get("publications", []),
+            patents=credentials.get("patents", [])
+        )
+        
+        # Crear especializaciones
+        specs = []
+        for spec in specializations:
+            try:
+                sector = Sector(spec.get("sector", ""))
+                specs.append(Specialization(
+                    sector=sector,
+                    sub_domains=spec.get("sub_domains", []),
+                    specific_companies=spec.get("specific_companies", []),
+                    technologies=spec.get("technologies", [])
+                ))
+            except ValueError:
+                logger.warning(f"Invalid sector: {spec.get('sector')}")
+        
+        # Crear y registrar experto
+        expert = MicroExpert(
+            id=expert_id,
+            name=name,
+            credentials=creds,
+            specializations=specs,
+            contact_info=contact_info,
+            date_joined=datetime.datetime.now()
+        )
+        
+        # Verificación básica
+        expert.verify()
+        
+        # Agregar al repositorio
+        self.expert_repo.add_expert(expert)
+        
+        logger.info(f"Registered new expert: {name} with ID {expert_id}")
+        return expert_id
+    
+    def submit_analysis(self, 
+                       expert_id: str,
+                       company_ticker: str,
+                       timeframe: str,
+                       analysis_type: str,
+                       confidence_level: int,
+                       prediction: Dict[str, Any],
+                       rationale: str,
+                       key_indicators: Dict[str, Any],
+                       potential_risks: List[str],
+                       metadata: Dict[str, Any] = None) -> str:
+        """Registra un nuevo análisis de un experto"""
+        # Verificar que el experto existe
+        expert = self.expert_repo.get_expert(expert_id)
+        if not expert:
+            raise ValueError(f"Expert with ID {expert_id} not found")
+        
+        # Convertir valores de enumeración
+        try:
+            timeframe_enum = AnalysisTimeframe(timeframe)
+            analysis_type_enum = AnalysisType(analysis_type)
+            confidence_enum = ConfidenceLevel(confidence_level)
+        except ValueError as e:
+            raise ValueError(f"Invalid enumeration value: {str(e)}")
+        
+        # Crear ID único para el análisis
+        analysis_id = str(uuid.uuid4())
+        
+        # Crear objeto de análisis
+        analysis = Analysis(
+            id=analysis_id,
+            expert_id=expert_id,
+            company_ticker=company_ticker,
+            timestamp=datetime.datetime.now(),
+            timeframe=timeframe_enum,
+            analysis_type=analysis_type_enum,
+            confidence_level=confidence_enum,
+            prediction=prediction,
+            rationale=rationale,
+            key_indicators=key_indicators,
+            potential_risks=potential_risks,
+            metadata=metadata
+        )
+        
+        # Registrar el análisis
+        self.analysis_repo.add_analysis(analysis)
+        
+        # Actualizar contador de análisis del experto
+        expert.analyses_count += 1
+        
+        logger.info(f"Registered new analysis {analysis_id} for {company_ticker} by expert {expert_id}")
+        return analysis_id
+    
+    def evaluate_experts(self) -> None:
+        """Evalúa el rendimiento de todos los expertos"""
+        for expert_id in self.expert_repo.experts:
+            try:
+                metrics = self.evaluator.evaluate_expert(expert_id)
+                expert = self.expert_repo.get_expert(expert_id)
+                expert.update_reputation(metrics)
+                logger.info(f"Updated metrics for expert {expert_id}")
+            except Exception as e:
+                logger.error(f"Error evaluating expert {expert_id}: {str(e)}")
+    
+    def get_company_recommendation(self, ticker: str, timeframe: str = "Medium Term (3-12 months)") -> Dict[str, Any]:
+        """Obtiene recomendación agregada para una empresa"""
+        try:
+            timeframe_enum = AnalysisTimeframe(timeframe)
+            return self.dashboard.get_company_recommendation(ticker, timeframe_enum)
+        except ValueError:
+            raise ValueError(f"Invalid timeframe: {timeframe}")
+    
+    def get_sector_overview(self, sector: str) -> Dict[str, Any]:
+        """Obtiene visión general de un sector"""
+        try:
+            sector_enum = Sector(sector)
+            return self.dashboard.get_sector_overview(sector_enum)
+        except ValueError:
+            raise ValueError(f"Invalid sector: {sector}")
+    
+    def get_portfolio_recommendations(self, holdings: Dict[str, float], risk_tolerance: float) -> Dict[str, Any]:
+        """Obtiene recomendaciones para un portafolio"""
+        return self.dashboard.generate_portfolio_recommendations(holdings, risk_tolerance)
+    
+    def export_system_state(self, filename: str) -> None:
+        """Exporta el estado actual del sistema a un archivo JSON"""
+        state = {
+            "experts": [expert.to_dict() for expert in self.expert_repo.experts.values()],
+            "analyses_count": len(self.analysis_repo.analyses),
+            "timestamp": datetime.datetime.now().isoformat()
+        }
+        
+        with open(filename, 'w') as f:
+            json.dump(state, f, indent=2)
+        
+        logger.info(f"Exported system state to {filename}")
+
+
+# Ejemplo de uso del sistema
+def demo_colecta_system():
+    """Demostración del funcionamiento del sistema COLECTA"""
+    # Crear instancia del sistema
+    colecta = ColectaSystem()
+    
+    # Registrar algunos expertos de ejemplo
+    tech_expert_id = colecta.register_expert(
+        name="Dr. Sarah Chen",
+        credentials={
+            "degrees": ["Ph.D. Computer Science", "M.S. Electrical Engineering"],
+            "certifications": ["AWS Solutions Architect", "Google Cloud Professional"],
+            "years_experience": 15,
+            "current_position": "Principal Engineer",
+            "company": "Silicon Valley Tech Corp"
+        },
+        specializations=[
+            {
+                "sector": "Technology",
+                "sub_domains": ["Cloud Computing", "AI/ML Infrastructure", "Semiconductor Design"],
+                "specific_companies": ["MSFT", "GOOGL", "NVDA", "AMD"],
+                "technologies": ["Cloud Architecture", "TPU/GPU Acceleration", "Quantum Computing"]
+            }
+        ],
+        contact_info={
+            "email": "sarah.chen@example.com",
+            "phone": "+1-555-123-4567",
+            "linkedin": "linkedin.com/in/sarahchen"
+        }
+    )
+    
+    healthcare_expert_id = colecta.register_expert(
+        name="Dr. James Rodriguez",
+        credentials={
+            "degrees": ["M.D. Harvard Medical School", "Ph.D. Immunology"],
+            "certifications": ["Board Certified Oncologist", "Clinical Research Certification"],
+            "years_experience": 20,
+            "current_position": "Chief Medical Officer",
+            "company": "BioTech Innovations",
+            "publications": [
+                "Novel approaches in cancer immunotherapy",
+                "Clinical outcomes of mRNA vaccine technology"
+            ]
+        },
+        specializations=[
+            {
+                "sector": "Healthcare",
+                "sub_domains": ["Oncology", "Immunotherapy", "mRNA Technology"],
+                "specific_companies": ["JNJ", "PFE", "MRNA", "GILD"],
+                "technologies": ["CAR-T Therapy", "mRNA Platforms", "Antibody-Drug Conjugates"]
+            }
+        ],
+        contact_info={
+            "email": "j.rodriguez@example.com",
+            "phone": "+1-555-987-6543",
+            "linkedin": "linkedin.com/in/jamesrodriguez"
+        }
+    )
+    
+    # Registrar algunos análisis de ejemplo
+    msft_analysis_id = colecta.submit_analysis(
+        expert_id=tech_expert_id,
+        company_ticker="MSFT",
+        timeframe="Medium Term (3-12 months)",
+        analysis_type="Fundamental",
+        confidence_level=4,  # High confidence
+        prediction={
+            "price_target": 350.0,
+            "growth_rate": 0.15,
+            "recommendation": "Buy",
+            "outlook": "positive",
+            "revenue_growth": 0.18,
+            "margin_expansion": 0.02
+        },
+        rationale="""
+        Microsoft's Azure cloud business continues to show strong momentum with 28% YoY growth.
+        The integration of OpenAI technology across their product suite creates significant
+        differentiation and new revenue opportunities. Their enterprise footprint gives them
+        a strong advantage in AI adoption compared to competitors.
+        """,
+        key_indicators={
+            "cloud_market_share": 0.22,
+            "ai_integration_progress": "advanced",
+            "enterprise_adoption_rate": "accelerating",
+            "margin_trend": "expanding"
+        },
+        potential_risks=[
+            "Increased regulatory scrutiny on AI deployments",
+            "Potential slowdown in enterprise IT spending",
+            "Competitive pressure from Google and Amazon in cloud services",
+            "Currency headwinds in international markets"
+        ],
+        metadata={
+            "market_consensus_alignment": 0.2,  # Slightly more positive than consensus
+            "data_sources": ["earnings calls", "customer interviews", "industry reports"]
+        }
+    )
+    
+    jnj_analysis_id = colecta.submit_analysis(
+        expert_id=healthcare_expert_id,
+        company_ticker="JNJ",
+        timeframe="Long Term (1-3 years)",
+        analysis_type="Innovation",
+        confidence_level=3,  # Medium confidence
+        prediction={
+            "price_target": 185.0,
+            "growth_rate": 0.08,
+            "recommendation": "Hold",
+            "outlook": "neutral",
+            "pipeline_success_rate": 0.35,
+            "market_share_change": 0.01
+        },
+        rationale="""
+        Johnson & Johnson's pharmaceutical pipeline shows promise, particularly in oncology,
+        but faces challenges in other therapeutic areas. The recent spin-off of consumer health
+        business allows better focus but creates near-term uncertainty. Their medical device
+        segment is showing signs of recovery post-pandemic but lags innovation compared to
+        specialized competitors.
+        """,
+        key_indicators={
+            "late_stage_pipeline_assets": 12,
+            "breakthrough_designations": 3,
+            "r&d_productivity_index": 0.82,
+            "patent_cliff_exposure": "moderate"
+        },
+        potential_risks=[
+            "Ongoing litigation liabilities",
+            "Patent expirations for key drugs in 2025-2026",
+            "Increasing pricing pressure in US market",
+            "Integration challenges from recent acquisitions"
+        ],
+        metadata={
+            "market_consensus_alignment": -0.1,  # Slightly more negative than consensus
+            "data_sources": ["clinical trial results", "regulatory filings", "physician surveys"]
+        }
+    )
+    
+    # Simular evaluación de expertos
+    colecta.evaluate_experts()
+    
+    # Obtener recomendación para una empresa
+    msft_recommendation = colecta.get_company_recommendation("MSFT")
+    print("\n=== Microsoft Recommendation ===")
+    print(json.dumps(msft_recommendation, indent=2))
+    
+    # Obtener visión general de un sector
+    tech_sector = colecta.get_sector_overview("Technology")
+    print("\n=== Technology Sector Overview ===")
+    print(json.dumps(tech_sector, indent=2))
+    
+    # Obtener recomendaciones para un portafolio
+    portfolio = {
+        "MSFT": 0.15,
+        "AAPL": 0.20,
+        "GOOGL": 0.10,
+        "JNJ": 0.10,
+        "JPM": 0.10,
+        "AMZN": 0.15,
+        "XOM": 0.05,
+        "PFE": 0.05,
+        "META": 0.10
+    }
+    
+    portfolio_recommendations = colecta.get_portfolio_recommendations(portfolio, risk_tolerance=0.7)
+    print("\n=== Portfolio Recommendations ===")
+    print(json.dumps(portfolio_recommendations, indent=2))
+    
+    # Exportar estado del sistema
+    colecta.export_system_state("colecta_system_state.json")
+    print("\nSystem state exported to colecta_system_state.json")
+
+
+if __name__ == "__main__":
+    demo_colecta_system()
+```
+
+Este código implementa un prototipo funcional de la plataforma COLECTA con las siguientes características:
+
+1. **Arquitectura modular** con clases bien definidas para cada componente del sistema:
+   - `MicroExpert` para gestionar expertos y sus credenciales
+   - `Analysis` para capturar análisis estructurados
+   - `AnalysisAggregator` para combinar conocimientos de múltiples expertos
+   - `PerformanceEvaluator` para evaluar la precisión de los expertos
+   - `InvestorDashboard` para presentar recomendaciones a los inversores
+
+2. **Sistema de reputación dinámico** que evalúa a los expertos basándose en:
+   - Precisión histórica de sus predicciones
+   - Calibración de sus niveles de confianza
+   - Dificultad de las predicciones realizadas
+   - Consistencia a lo largo del tiempo
+
+3. **Captura estructurada de conocimiento** con:
+   - Predicciones cuantitativas y cualitativas
+   - Rationales detallados
+   - Indicadores clave específicos por sector
+   - Análisis de riesgos potenciales
+
+4. **Motor de agregación inteligente** que:
+   - Pondera las contribuciones según la reputación del experto
+   - Ajusta por la dificultad de las predicciones
+   - Da más peso a análisis más recientes
+   - Calcula niveles de consenso entre expertos
+
+5. **Interfaz para inversores** que proporciona:
+   - Recomendaciones específicas por empresa
+   - Visiones generales de sectores
+   - Recomendaciones personalizadas para portafolios
+   - Seguimiento de expertos específicos
+
+La implementación incluye manejo de errores, logging detallado y una función de demostración que muestra el funcionamiento del sistema con datos de ejemplo.

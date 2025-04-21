@@ -1,0 +1,6 @@
+{
+    "vix_threshold": 27.588000106811524,
+    "extreme_move_threshold": 0.03181112934933028,
+    "total_circuit_breaker_days": 1,
+    "percentage_circuit_breaker_days": 1.3157894736842104
+}

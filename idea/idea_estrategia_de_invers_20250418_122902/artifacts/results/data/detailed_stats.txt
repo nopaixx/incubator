@@ -1,0 +1,23 @@
+ESTADÍSTICAS DETALLADAS DE LA ESTRATEGIA
+=====================================
+
+Período: 2023-01-03 00:00:00 a 2025-04-17 00:00:00
+Días de trading: 575
+Retorno total: -8.58%
+Retorno anualizado: -3.86%
+Volatilidad anualizada: 6.56%
+Sharpe ratio: -0.89
+Sortino ratio: -0.41
+Máximo drawdown: -11.83%
+Calmar ratio: -0.33
+Win rate: 2.96%
+
+ESTADÍSTICAS POR RÉGIMEN
+========================
+
+Régimen 1:
+  Días: 152
+  Retorno anualizado: -14.06%
+  Volatilidad anualizada: 12.76%
+  Sharpe ratio: -1.10
+

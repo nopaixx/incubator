@@ -1,0 +1,45 @@
+=== INFORME DE BACKTEST ===
+
+Ticker: CMI
+Período: 2015-10-19 a 2023-12-29
+Capital inicial: $100,000.00
+Capital final: $95,845.14
+
+--- MÉTRICAS DE RENDIMIENTO ---
+Retorno total: -4.15%
+Retorno anualizado: -0.52%
+Volatilidad anualizada: 1.25%
+Ratio de Sharpe: -0.41
+Drawdown máximo: -4.82%
+Ratio de Calmar: -0.11
+
+--- ESTADÍSTICAS DE OPERACIONES ---
+Total de operaciones: 6
+Tasa de acierto: 16.67%
+Factor de beneficio: 0.17
+Ganancia promedio: 4.25%
+Pérdida promedio: -5.03%
+
+--- ANÁLISIS DE REGÍMENES ---
+Régimen Bajista:
+  - Retorno medio: 0.71%
+  - Volatilidad: 36.10%
+  - RSI medio: 67.75
+
+Régimen Neutral:
+  - Retorno medio: 0.20%
+  - Volatilidad: 21.06%
+  - RSI medio: 61.01
+
+Régimen Alcista:
+  - Retorno medio: -0.42%
+  - Volatilidad: 25.41%
+  - RSI medio: 35.06
+
+--- CONCLUSIONES ---
+La estrategia muestra un rendimiento pobre con un Sharpe de -0.41.
+La estrategia funciona mejor en régimen Bajista y peor en régimen Alcista.
+
+Recomendaciones:
+- Mejorar la tasa de acierto ajustando los criterios de entrada.
+- Optimizar la relación riesgo/recompensa para mejorar el factor de beneficio.

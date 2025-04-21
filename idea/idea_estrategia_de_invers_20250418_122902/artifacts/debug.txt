@@ -1,0 +1,1324 @@
+[2025-04-20 10:53:49,472] DEBUG: Obtenidos 503 símbolos del S&P 500
+[2025-04-20 10:53:49,472] DEBUG: Seleccionados 10 símbolos para el universo
+[2025-04-20 10:53:50,088] DEBUG: Descargados datos para 10 símbolos
+[2025-04-20 10:53:50,096] DEBUG: Después de filtrado: 10 símbolos (eliminados 0)
+[2025-04-20 10:53:50,099] DEBUG: Iniciando backtest con 153 días de trading
+[2025-04-20 10:53:50,247] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-10 00:00:00
+[2025-04-20 10:53:50,247] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50,374] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-11 00:00:00
+[2025-04-20 10:53:50,374] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50,493] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-12 00:00:00
+[2025-04-20 10:53:50,494] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50,624] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-13 00:00:00
+[2025-04-20 10:53:50,624] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50,759] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-16 00:00:00
+[2025-04-20 10:53:50,760] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:50,883] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-17 00:00:00
+[2025-04-20 10:53:50,883] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,039] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-18 00:00:00
+[2025-04-20 10:53:51,039] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,186] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-19 00:00:00
+[2025-04-20 10:53:51,186] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,333] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-20 00:00:00
+[2025-04-20 10:53:51,334] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,468] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-23 00:00:00
+[2025-04-20 10:53:51,468] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,598] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-24 00:00:00
+[2025-04-20 10:53:51,599] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,724] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-25 00:00:00
+[2025-04-20 10:53:51,724] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:51,860] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-26 00:00:00
+[2025-04-20 10:53:51,860] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,007] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-27 00:00:00
+[2025-04-20 10:53:52,007] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,136] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-30 00:00:00
+[2025-04-20 10:53:52,136] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,267] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-01 00:00:00
+[2025-04-20 10:53:52,267] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,395] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-02 00:00:00
+[2025-04-20 10:53:52,396] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,541] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-03 00:00:00
+[2025-04-20 10:53:52,541] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,679] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-04 00:00:00
+[2025-04-20 10:53:52,679] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,810] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-07 00:00:00
+[2025-04-20 10:53:52,810] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,961] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-08 00:00:00
+[2025-04-20 10:53:52,961] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:52,961] DEBUG: Buscando pares cointegrados para 2024-10-08 00:00:00
+[2025-04-20 10:53:52,962] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:53:53,344] DEBUG: Probados 45 pares, encontrados 1 cointegrados, 0 válidos
+[2025-04-20 10:53:53,344] DEBUG: Encontrados 0 pares para fecha 2024-10-08 00:00:00
+[2025-04-20 10:53:53,344] DEBUG: Gestionando cartera para 2024-10-08 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:53:53,344] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:53:53,480] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-09 00:00:00
+[2025-04-20 10:53:53,480] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:53,610] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-10 00:00:00
+[2025-04-20 10:53:53,610] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:53,773] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-11 00:00:00
+[2025-04-20 10:53:53,773] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:53,911] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-14 00:00:00
+[2025-04-20 10:53:53,911] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,036] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-15 00:00:00
+[2025-04-20 10:53:54,037] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,196] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-16 00:00:00
+[2025-04-20 10:53:54,197] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,326] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-17 00:00:00
+[2025-04-20 10:53:54,326] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,444] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-18 00:00:00
+[2025-04-20 10:53:54,444] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,570] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-21 00:00:00
+[2025-04-20 10:53:54,571] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,707] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-22 00:00:00
+[2025-04-20 10:53:54,707] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,834] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-23 00:00:00
+[2025-04-20 10:53:54,834] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:54,946] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-24 00:00:00
+[2025-04-20 10:53:54,947] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,069] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-25 00:00:00
+[2025-04-20 10:53:55,069] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,195] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-28 00:00:00
+[2025-04-20 10:53:55,195] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,310] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-29 00:00:00
+[2025-04-20 10:53:55,311] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,428] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-30 00:00:00
+[2025-04-20 10:53:55,428] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,553] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-31 00:00:00
+[2025-04-20 10:53:55,554] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,711] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-01 00:00:00
+[2025-04-20 10:53:55,711] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,865] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-04 00:00:00
+[2025-04-20 10:53:55,865] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:55,985] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-05 00:00:00
+[2025-04-20 10:53:55,985] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56,141] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-06 00:00:00
+[2025-04-20 10:53:56,141] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56,142] DEBUG: Buscando pares cointegrados para 2024-11-06 00:00:00
+[2025-04-20 10:53:56,142] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:53:56,466] DEBUG: Probados 45 pares, encontrados 1 cointegrados, 0 válidos
+[2025-04-20 10:53:56,466] DEBUG: Encontrados 0 pares para fecha 2024-11-06 00:00:00
+[2025-04-20 10:53:56,466] DEBUG: Gestionando cartera para 2024-11-06 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:53:56,466] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:53:56,613] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-07 00:00:00
+[2025-04-20 10:53:56,614] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56,768] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-08 00:00:00
+[2025-04-20 10:53:56,768] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:56,909] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-11 00:00:00
+[2025-04-20 10:53:56,910] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,041] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-12 00:00:00
+[2025-04-20 10:53:57,041] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,157] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-13 00:00:00
+[2025-04-20 10:53:57,158] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,294] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-14 00:00:00
+[2025-04-20 10:53:57,294] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,502] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-15 00:00:00
+[2025-04-20 10:53:57,502] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,662] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-18 00:00:00
+[2025-04-20 10:53:57,662] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,796] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-19 00:00:00
+[2025-04-20 10:53:57,797] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:57,924] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-20 00:00:00
+[2025-04-20 10:53:57,925] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,049] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-21 00:00:00
+[2025-04-20 10:53:58,049] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,185] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-22 00:00:00
+[2025-04-20 10:53:58,185] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,343] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-25 00:00:00
+[2025-04-20 10:53:58,343] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,471] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-26 00:00:00
+[2025-04-20 10:53:58,472] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,595] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-27 00:00:00
+[2025-04-20 10:53:58,595] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,725] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-29 00:00:00
+[2025-04-20 10:53:58,725] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:58,868] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-02 00:00:00
+[2025-04-20 10:53:58,868] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59,219] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-03 00:00:00
+[2025-04-20 10:53:59,220] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59,498] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-04 00:00:00
+[2025-04-20 10:53:59,498] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59,671] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-05 00:00:00
+[2025-04-20 10:53:59,671] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59,832] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-06 00:00:00
+[2025-04-20 10:53:59,832] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:53:59,832] DEBUG: Buscando pares cointegrados para 2024-12-06 00:00:00
+[2025-04-20 10:53:59,833] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:00,168] DEBUG: Probados 45 pares, encontrados 3 cointegrados, 0 válidos
+[2025-04-20 10:54:00,168] DEBUG: Encontrados 0 pares para fecha 2024-12-06 00:00:00
+[2025-04-20 10:54:00,168] DEBUG: Gestionando cartera para 2024-12-06 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:54:00,168] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:00,335] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-09 00:00:00
+[2025-04-20 10:54:00,336] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00,487] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-10 00:00:00
+[2025-04-20 10:54:00,487] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00,613] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-11 00:00:00
+[2025-04-20 10:54:00,613] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00,784] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-12 00:00:00
+[2025-04-20 10:54:00,785] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:00,902] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-13 00:00:00
+[2025-04-20 10:54:00,902] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,037] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-16 00:00:00
+[2025-04-20 10:54:01,038] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,156] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-17 00:00:00
+[2025-04-20 10:54:01,156] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,276] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-18 00:00:00
+[2025-04-20 10:54:01,277] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,413] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-19 00:00:00
+[2025-04-20 10:54:01,414] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,565] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-20 00:00:00
+[2025-04-20 10:54:01,566] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,705] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-23 00:00:00
+[2025-04-20 10:54:01,705] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,836] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-24 00:00:00
+[2025-04-20 10:54:01,836] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:01,996] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-26 00:00:00
+[2025-04-20 10:54:01,996] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,124] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-27 00:00:00
+[2025-04-20 10:54:02,124] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,281] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-30 00:00:00
+[2025-04-20 10:54:02,281] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,438] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-31 00:00:00
+[2025-04-20 10:54:02,438] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,568] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-02 00:00:00
+[2025-04-20 10:54:02,568] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,687] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-03 00:00:00
+[2025-04-20 10:54:02,687] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,838] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-06 00:00:00
+[2025-04-20 10:54:02,838] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:02,968] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-07 00:00:00
+[2025-04-20 10:54:02,969] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03,092] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-08 00:00:00
+[2025-04-20 10:54:03,092] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03,092] DEBUG: Buscando pares cointegrados para 2025-01-08 00:00:00
+[2025-04-20 10:54:03,093] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:03,414] DEBUG: Probados 45 pares, encontrados 1 cointegrados, 0 válidos
+[2025-04-20 10:54:03,414] DEBUG: Encontrados 0 pares para fecha 2025-01-08 00:00:00
+[2025-04-20 10:54:03,414] DEBUG: Gestionando cartera para 2025-01-08 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:54:03,414] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:03,543] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-10 00:00:00
+[2025-04-20 10:54:03,544] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03,674] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-13 00:00:00
+[2025-04-20 10:54:03,675] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03,798] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-14 00:00:00
+[2025-04-20 10:54:03,798] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:03,917] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-15 00:00:00
+[2025-04-20 10:54:03,917] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,043] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-16 00:00:00
+[2025-04-20 10:54:04,043] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,168] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-17 00:00:00
+[2025-04-20 10:54:04,168] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,298] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-21 00:00:00
+[2025-04-20 10:54:04,299] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,449] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-22 00:00:00
+[2025-04-20 10:54:04,449] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,571] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-23 00:00:00
+[2025-04-20 10:54:04,571] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,699] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-24 00:00:00
+[2025-04-20 10:54:04,700] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,841] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-27 00:00:00
+[2025-04-20 10:54:04,841] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:04,999] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-28 00:00:00
+[2025-04-20 10:54:04,999] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05,142] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-29 00:00:00
+[2025-04-20 10:54:05,142] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05,342] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-30 00:00:00
+[2025-04-20 10:54:05,342] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05,472] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-31 00:00:00
+[2025-04-20 10:54:05,472] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05,753] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-03 00:00:00
+[2025-04-20 10:54:05,753] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:05,867] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-04 00:00:00
+[2025-04-20 10:54:05,867] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06,033] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-05 00:00:00
+[2025-04-20 10:54:06,033] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06,205] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-06 00:00:00
+[2025-04-20 10:54:06,205] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06,332] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-07 00:00:00
+[2025-04-20 10:54:06,332] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06,470] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-10 00:00:00
+[2025-04-20 10:54:06,471] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:06,471] DEBUG: Buscando pares cointegrados para 2025-02-10 00:00:00
+[2025-04-20 10:54:06,471] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:06,805] DEBUG: Probados 45 pares, encontrados 2 cointegrados, 1 válidos
+[2025-04-20 10:54:06,805] DEBUG: Encontrados 1 pares para fecha 2025-02-10 00:00:00
+[2025-04-20 10:54:06,805] DEBUG: Gestionando cartera para 2025-02-10 00:00:00. Pares activos: 0, Pares disponibles: 1
+[2025-04-20 10:54:06,805] DEBUG: Evaluando 1 nuevos pares para 5 slots disponibles
+[2025-04-20 10:54:07,006] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:54:07,006] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:07,142] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-11 00:00:00
+[2025-04-20 10:54:07,142] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07,261] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-12 00:00:00
+[2025-04-20 10:54:07,262] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07,392] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-13 00:00:00
+[2025-04-20 10:54:07,392] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07,529] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-14 00:00:00
+[2025-04-20 10:54:07,529] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07,662] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-18 00:00:00
+[2025-04-20 10:54:07,663] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07,804] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-19 00:00:00
+[2025-04-20 10:54:07,804] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:07,926] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-20 00:00:00
+[2025-04-20 10:54:07,926] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,062] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-21 00:00:00
+[2025-04-20 10:54:08,062] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,191] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-24 00:00:00
+[2025-04-20 10:54:08,191] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,313] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-25 00:00:00
+[2025-04-20 10:54:08,313] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,438] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-26 00:00:00
+[2025-04-20 10:54:08,439] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,570] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-27 00:00:00
+[2025-04-20 10:54:08,570] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,702] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-28 00:00:00
+[2025-04-20 10:54:08,702] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,840] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-03 00:00:00
+[2025-04-20 10:54:08,840] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:08,966] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-04 00:00:00
+[2025-04-20 10:54:08,966] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,091] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-05 00:00:00
+[2025-04-20 10:54:09,092] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,222] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-06 00:00:00
+[2025-04-20 10:54:09,222] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,368] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-07 00:00:00
+[2025-04-20 10:54:09,368] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,495] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-10 00:00:00
+[2025-04-20 10:54:09,496] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,626] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-11 00:00:00
+[2025-04-20 10:54:09,627] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,746] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-12 00:00:00
+[2025-04-20 10:54:09,747] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:09,747] DEBUG: Buscando pares cointegrados para 2025-03-12 00:00:00
+[2025-04-20 10:54:09,748] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:10,083] DEBUG: Probados 45 pares, encontrados 3 cointegrados, 0 válidos
+[2025-04-20 10:54:10,083] DEBUG: Encontrados 0 pares para fecha 2025-03-12 00:00:00
+[2025-04-20 10:54:10,083] DEBUG: Gestionando cartera para 2025-03-12 00:00:00. Pares activos: 0, Pares disponibles: 0
+[2025-04-20 10:54:10,084] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:10,352] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-13 00:00:00
+[2025-04-20 10:54:10,352] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10,503] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-14 00:00:00
+[2025-04-20 10:54:10,503] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10,638] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-17 00:00:00
+[2025-04-20 10:54:10,638] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10,770] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-18 00:00:00
+[2025-04-20 10:54:10,770] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:10,916] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-19 00:00:00
+[2025-04-20 10:54:10,917] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,073] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-20 00:00:00
+[2025-04-20 10:54:11,074] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,209] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-21 00:00:00
+[2025-04-20 10:54:11,210] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,346] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-24 00:00:00
+[2025-04-20 10:54:11,346] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,489] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-25 00:00:00
+[2025-04-20 10:54:11,489] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,629] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-26 00:00:00
+[2025-04-20 10:54:11,629] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,766] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-27 00:00:00
+[2025-04-20 10:54:11,766] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:11,927] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-28 00:00:00
+[2025-04-20 10:54:11,928] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,051] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-31 00:00:00
+[2025-04-20 10:54:12,051] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,209] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-01 00:00:00
+[2025-04-20 10:54:12,210] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,368] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-02 00:00:00
+[2025-04-20 10:54:12,368] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,527] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-03 00:00:00
+[2025-04-20 10:54:12,527] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,668] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-04 00:00:00
+[2025-04-20 10:54:12,669] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,795] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-07 00:00:00
+[2025-04-20 10:54:12,796] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:12,951] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-08 00:00:00
+[2025-04-20 10:54:12,951] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:13,108] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-09 00:00:00
+[2025-04-20 10:54:13,108] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:13,234] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-10 00:00:00
+[2025-04-20 10:54:13,234] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:13,234] DEBUG: Buscando pares cointegrados para 2025-04-10 00:00:00
+[2025-04-20 10:54:13,235] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:13,567] DEBUG: Probados 45 pares, encontrados 2 cointegrados, 1 válidos
+[2025-04-20 10:54:13,567] DEBUG: Encontrados 1 pares para fecha 2025-04-10 00:00:00
+[2025-04-20 10:54:13,567] DEBUG: Gestionando cartera para 2025-04-10 00:00:00. Pares activos: 0, Pares disponibles: 1
+[2025-04-20 10:54:13,568] DEBUG: Evaluando 1 nuevos pares para 5 slots disponibles
+[2025-04-20 10:54:13,772] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:54:13,772] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:54:13,916] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-11 00:00:00
+[2025-04-20 10:54:13,917] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14,076] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-14 00:00:00
+[2025-04-20 10:54:14,076] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14,316] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-15 00:00:00
+[2025-04-20 10:54:14,317] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14,466] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-16 00:00:00
+[2025-04-20 10:54:14,467] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:14,604] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-17 00:00:00
+[2025-04-20 10:54:14,605] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:54:15,678] DEBUG: Procesando ventana 1/2: 2024-01-02 00:00:00 - 2025-01-02 00:00:00
+[2025-04-20 10:54:15,678] DEBUG: Buscando pares cointegrados para 2024-10-01 00:00:00
+[2025-04-20 10:54:15,679] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:16,029] DEBUG: Probados 45 pares, encontrados 5 cointegrados, 0 válidos
+[2025-04-20 10:54:16,029] DEBUG: Encontrados 0 pares cointegrados para ventana 1
+[2025-04-20 10:54:16,029] DEBUG: Sin retornos para ventana 1
+[2025-04-20 10:54:16,030] DEBUG: Procesando ventana 2/2: 2024-04-03 00:00:00 - 2025-04-04 00:00:00
+[2025-04-20 10:54:16,030] DEBUG: Buscando pares cointegrados para 2025-01-01 00:00:00
+[2025-04-20 10:54:16,031] DEBUG: Símbolos válidos para análisis de pares: 10
+[2025-04-20 10:54:16,403] DEBUG: Probados 45 pares, encontrados 6 cointegrados, 6 válidos
+[2025-04-20 10:54:16,403] DEBUG: Encontrados 6 pares cointegrados para ventana 2
+[2025-04-20 10:54:16,403] DEBUG: Evaluando par 1: DTE-K (beta=0.4411)
+[2025-04-20 10:54:16,472] DEBUG: Par DTE-K añadido con 1 señales
+[2025-04-20 10:54:16,472] DEBUG: Evaluando par 2: IDXX-RTX (beta=-0.1616)
+[2025-04-20 10:54:16,540] DEBUG: Par IDXX-RTX añadido con 1 señales
+[2025-04-20 10:54:16,540] DEBUG: Evaluando par 3: IDXX-K (beta=-0.1289)
+[2025-04-20 10:54:16,611] DEBUG: Par IDXX-K añadido con 1 señales
+[2025-04-20 10:54:16,612] DEBUG: Evaluando par 4: IDXX-LIN (beta=-0.0852)
+[2025-04-20 10:54:16,686] DEBUG: Par IDXX-LIN añadido con 1 señales
+[2025-04-20 10:54:16,686] DEBUG: Evaluando par 5: IDXX-LHX (beta=-0.0812)
+[2025-04-20 10:54:16,759] DEBUG: Par IDXX-LHX añadido con 1 señales
+[2025-04-20 10:56:26,060] DEBUG: Obtenidos 503 símbolos del S&P 500
+[2025-04-20 10:56:26,060] DEBUG: Obtenidos 503 símbolos del S&P 500
+[2025-04-20 10:56:26,060] DEBUG: Seleccionados 100 símbolos para el universo
+[2025-04-20 10:56:26,060] DEBUG: Seleccionados 100 símbolos para el universo
+[2025-04-20 10:56:28,188] DEBUG: Descargados datos para 100 símbolos
+[2025-04-20 10:56:28,188] DEBUG: Descargados datos para 100 símbolos
+[2025-04-20 10:56:28,238] DEBUG: Después de filtrado: 99 símbolos (eliminados 1)
+[2025-04-20 10:56:28,238] DEBUG: Después de filtrado: 99 símbolos (eliminados 1)
+[2025-04-20 10:56:28,240] DEBUG: Iniciando backtest con 153 días de trading
+[2025-04-20 10:56:28,240] DEBUG: Iniciando backtest con 153 días de trading
+[2025-04-20 10:56:28,442] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-10 00:00:00
+[2025-04-20 10:56:28,442] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-10 00:00:00
+[2025-04-20 10:56:28,442] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,442] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,568] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-11 00:00:00
+[2025-04-20 10:56:28,568] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-11 00:00:00
+[2025-04-20 10:56:28,568] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,568] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,693] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-12 00:00:00
+[2025-04-20 10:56:28,693] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-12 00:00:00
+[2025-04-20 10:56:28,693] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,693] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,821] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-13 00:00:00
+[2025-04-20 10:56:28,821] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-13 00:00:00
+[2025-04-20 10:56:28,822] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,822] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,944] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-16 00:00:00
+[2025-04-20 10:56:28,944] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-16 00:00:00
+[2025-04-20 10:56:28,944] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:28,944] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,151] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-17 00:00:00
+[2025-04-20 10:56:29,151] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-17 00:00:00
+[2025-04-20 10:56:29,151] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,151] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,276] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-18 00:00:00
+[2025-04-20 10:56:29,276] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-18 00:00:00
+[2025-04-20 10:56:29,276] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,276] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,432] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-19 00:00:00
+[2025-04-20 10:56:29,432] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-19 00:00:00
+[2025-04-20 10:56:29,432] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,432] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,601] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-20 00:00:00
+[2025-04-20 10:56:29,601] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-20 00:00:00
+[2025-04-20 10:56:29,601] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,601] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,727] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-23 00:00:00
+[2025-04-20 10:56:29,727] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-23 00:00:00
+[2025-04-20 10:56:29,728] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,728] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,867] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-24 00:00:00
+[2025-04-20 10:56:29,867] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-24 00:00:00
+[2025-04-20 10:56:29,867] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,867] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,992] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-25 00:00:00
+[2025-04-20 10:56:29,992] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-25 00:00:00
+[2025-04-20 10:56:29,992] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:29,992] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,133] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-26 00:00:00
+[2025-04-20 10:56:30,133] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-26 00:00:00
+[2025-04-20 10:56:30,134] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,134] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,281] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-27 00:00:00
+[2025-04-20 10:56:30,281] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-27 00:00:00
+[2025-04-20 10:56:30,281] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,281] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,420] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-30 00:00:00
+[2025-04-20 10:56:30,420] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-09-30 00:00:00
+[2025-04-20 10:56:30,420] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,420] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,557] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-01 00:00:00
+[2025-04-20 10:56:30,557] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-01 00:00:00
+[2025-04-20 10:56:30,557] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,557] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,705] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-02 00:00:00
+[2025-04-20 10:56:30,705] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-02 00:00:00
+[2025-04-20 10:56:30,707] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,707] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,848] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-03 00:00:00
+[2025-04-20 10:56:30,848] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-03 00:00:00
+[2025-04-20 10:56:30,849] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,849] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,987] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-04 00:00:00
+[2025-04-20 10:56:30,987] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-04 00:00:00
+[2025-04-20 10:56:30,987] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:30,987] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31,116] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-07 00:00:00
+[2025-04-20 10:56:31,116] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-07 00:00:00
+[2025-04-20 10:56:31,116] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31,116] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31,254] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-08 00:00:00
+[2025-04-20 10:56:31,254] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-08 00:00:00
+[2025-04-20 10:56:31,254] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31,254] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:56:31,254] DEBUG: Buscando pares cointegrados para 2024-10-08 00:00:00
+[2025-04-20 10:56:31,254] DEBUG: Buscando pares cointegrados para 2024-10-08 00:00:00
+[2025-04-20 10:56:31,257] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:56:31,257] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:56:31,257] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:56:31,257] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:56:41,419] DEBUG: Probados 1225 pares, encontrados 42 cointegrados, 8 válidos
+[2025-04-20 10:56:41,419] DEBUG: Probados 1225 pares, encontrados 42 cointegrados, 8 válidos
+[2025-04-20 10:56:41,419] DEBUG: Encontrados 8 pares para fecha 2024-10-08 00:00:00
+[2025-04-20 10:56:41,419] DEBUG: Encontrados 8 pares para fecha 2024-10-08 00:00:00
+[2025-04-20 10:56:41,419] DEBUG: Gestionando cartera para 2024-10-08 00:00:00. Pares activos: 0, Pares disponibles: 8
+[2025-04-20 10:56:41,419] DEBUG: Gestionando cartera para 2024-10-08 00:00:00. Pares activos: 0, Pares disponibles: 8
+[2025-04-20 10:56:41,419] DEBUG: Evaluando 8 nuevos pares para 15 slots disponibles
+[2025-04-20 10:56:41,419] DEBUG: Evaluando 8 nuevos pares para 15 slots disponibles
+[2025-04-20 10:56:41,889] DEBUG: Añadiendo nuevo par GEHC-MA con posición 1.0
+[2025-04-20 10:56:41,889] DEBUG: Añadiendo nuevo par GEHC-MA con posición 1.0
+[2025-04-20 10:56:42,122] DEBUG: Añadiendo nuevo par GEHC-TPR con posición 1.0
+[2025-04-20 10:56:42,122] DEBUG: Añadiendo nuevo par GEHC-TPR con posición 1.0
+[2025-04-20 10:56:43,249] DEBUG: Añadidos 2 nuevos pares a la cartera
+[2025-04-20 10:56:43,249] DEBUG: Añadidos 2 nuevos pares a la cartera
+[2025-04-20 10:56:43,249] DEBUG: Cartera actualizada: 2 pares activos
+[2025-04-20 10:56:43,249] DEBUG: Cartera actualizada: 2 pares activos
+[2025-04-20 10:56:43,249] DEBUG: Retorno diario: -0.0188% (bruto: 0.0312%, costos: 0.0500%)
+[2025-04-20 10:56:43,249] DEBUG: Retorno diario: -0.0188% (bruto: 0.0312%, costos: 0.0500%)
+[2025-04-20 10:56:43,386] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-09 00:00:00
+[2025-04-20 10:56:43,386] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-09 00:00:00
+[2025-04-20 10:56:43,386] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.20, z_exit=0.00
+[2025-04-20 10:56:43,386] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.20, z_exit=0.00
+[2025-04-20 10:56:43,387] DEBUG: Retorno diario: -0.2711% (bruto: -0.2211%, costos: 0.0500%)
+[2025-04-20 10:56:43,387] DEBUG: Retorno diario: -0.2711% (bruto: -0.2211%, costos: 0.0500%)
+[2025-04-20 10:56:43,525] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-10 00:00:00
+[2025-04-20 10:56:43,525] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-10 00:00:00
+[2025-04-20 10:56:43,525] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.42, z_exit=0.00
+[2025-04-20 10:56:43,525] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.42, z_exit=0.00
+[2025-04-20 10:56:43,525] DEBUG: Retorno diario: -0.1315% (bruto: -0.0815%, costos: 0.0500%)
+[2025-04-20 10:56:43,525] DEBUG: Retorno diario: -0.1315% (bruto: -0.0815%, costos: 0.0500%)
+[2025-04-20 10:56:43,650] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-11 00:00:00
+[2025-04-20 10:56:43,650] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-11 00:00:00
+[2025-04-20 10:56:43,651] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.66, z_exit=0.00
+[2025-04-20 10:56:43,651] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.66, z_exit=0.00
+[2025-04-20 10:56:43,651] DEBUG: Retorno diario: -0.2621% (bruto: -0.2121%, costos: 0.0500%)
+[2025-04-20 10:56:43,651] DEBUG: Retorno diario: -0.2621% (bruto: -0.2121%, costos: 0.0500%)
+[2025-04-20 10:56:43,777] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-14 00:00:00
+[2025-04-20 10:56:43,777] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-14 00:00:00
+[2025-04-20 10:56:43,778] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.93, z_exit=0.00
+[2025-04-20 10:56:43,778] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.93, z_exit=0.00
+[2025-04-20 10:56:43,778] DEBUG: Retorno diario: -0.2176% (bruto: -0.1676%, costos: 0.0500%)
+[2025-04-20 10:56:43,778] DEBUG: Retorno diario: -0.2176% (bruto: -0.1676%, costos: 0.0500%)
+[2025-04-20 10:56:43,913] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-15 00:00:00
+[2025-04-20 10:56:43,913] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-15 00:00:00
+[2025-04-20 10:56:43,913] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:43,913] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:43,914] DEBUG: Retorno diario: -0.9332% (bruto: -0.8832%, costos: 0.0500%)
+[2025-04-20 10:56:43,914] DEBUG: Retorno diario: -0.9332% (bruto: -0.8832%, costos: 0.0500%)
+[2025-04-20 10:56:44,049] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-16 00:00:00
+[2025-04-20 10:56:44,049] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-16 00:00:00
+[2025-04-20 10:56:44,050] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,050] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,050] DEBUG: Retorno diario: -1.7295% (bruto: -1.6795%, costos: 0.0500%)
+[2025-04-20 10:56:44,050] DEBUG: Retorno diario: -1.7295% (bruto: -1.6795%, costos: 0.0500%)
+[2025-04-20 10:56:44,192] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-17 00:00:00
+[2025-04-20 10:56:44,192] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-17 00:00:00
+[2025-04-20 10:56:44,192] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,192] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,192] DEBUG: Retorno diario: 0.7999% (bruto: 0.8499%, costos: 0.0500%)
+[2025-04-20 10:56:44,192] DEBUG: Retorno diario: 0.7999% (bruto: 0.8499%, costos: 0.0500%)
+[2025-04-20 10:56:44,420] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-18 00:00:00
+[2025-04-20 10:56:44,420] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-18 00:00:00
+[2025-04-20 10:56:44,420] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,420] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,421] DEBUG: Retorno diario: 0.1952% (bruto: 0.2452%, costos: 0.0500%)
+[2025-04-20 10:56:44,421] DEBUG: Retorno diario: 0.1952% (bruto: 0.2452%, costos: 0.0500%)
+[2025-04-20 10:56:44,564] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-21 00:00:00
+[2025-04-20 10:56:44,564] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-21 00:00:00
+[2025-04-20 10:56:44,564] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,564] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,564] DEBUG: Retorno diario: -1.2216% (bruto: -1.1716%, costos: 0.0500%)
+[2025-04-20 10:56:44,564] DEBUG: Retorno diario: -1.2216% (bruto: -1.1716%, costos: 0.0500%)
+[2025-04-20 10:56:44,703] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-22 00:00:00
+[2025-04-20 10:56:44,703] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-22 00:00:00
+[2025-04-20 10:56:44,703] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,703] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,704] DEBUG: Retorno diario: -0.0109% (bruto: 0.0391%, costos: 0.0500%)
+[2025-04-20 10:56:44,704] DEBUG: Retorno diario: -0.0109% (bruto: 0.0391%, costos: 0.0500%)
+[2025-04-20 10:56:44,837] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-23 00:00:00
+[2025-04-20 10:56:44,837] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-23 00:00:00
+[2025-04-20 10:56:44,838] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,838] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,838] DEBUG: Retorno diario: 0.0256% (bruto: 0.0756%, costos: 0.0500%)
+[2025-04-20 10:56:44,838] DEBUG: Retorno diario: 0.0256% (bruto: 0.0756%, costos: 0.0500%)
+[2025-04-20 10:56:44,974] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-24 00:00:00
+[2025-04-20 10:56:44,974] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-24 00:00:00
+[2025-04-20 10:56:44,975] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,975] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:44,975] DEBUG: Retorno diario: -0.5187% (bruto: -0.4687%, costos: 0.0500%)
+[2025-04-20 10:56:44,975] DEBUG: Retorno diario: -0.5187% (bruto: -0.4687%, costos: 0.0500%)
+[2025-04-20 10:56:45,111] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-25 00:00:00
+[2025-04-20 10:56:45,111] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-25 00:00:00
+[2025-04-20 10:56:45,112] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,112] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,112] DEBUG: Retorno diario: -3.1847% (bruto: -3.1347%, costos: 0.0500%)
+[2025-04-20 10:56:45,112] DEBUG: Retorno diario: -3.1847% (bruto: -3.1347%, costos: 0.0500%)
+[2025-04-20 10:56:45,332] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-28 00:00:00
+[2025-04-20 10:56:45,332] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-28 00:00:00
+[2025-04-20 10:56:45,333] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,333] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,333] DEBUG: Retorno diario: -2.9824% (bruto: -2.9324%, costos: 0.0500%)
+[2025-04-20 10:56:45,333] DEBUG: Retorno diario: -2.9824% (bruto: -2.9324%, costos: 0.0500%)
+[2025-04-20 10:56:45,454] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-29 00:00:00
+[2025-04-20 10:56:45,454] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-29 00:00:00
+[2025-04-20 10:56:45,454] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,454] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,454] DEBUG: Retorno diario: 0.1136% (bruto: 0.1636%, costos: 0.0500%)
+[2025-04-20 10:56:45,454] DEBUG: Retorno diario: 0.1136% (bruto: 0.1636%, costos: 0.0500%)
+[2025-04-20 10:56:45,583] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-30 00:00:00
+[2025-04-20 10:56:45,583] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-30 00:00:00
+[2025-04-20 10:56:45,583] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,583] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,583] DEBUG: Retorno diario: 1.4101% (bruto: 1.4601%, costos: 0.0500%)
+[2025-04-20 10:56:45,583] DEBUG: Retorno diario: 1.4101% (bruto: 1.4601%, costos: 0.0500%)
+[2025-04-20 10:56:45,703] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-31 00:00:00
+[2025-04-20 10:56:45,703] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-10-31 00:00:00
+[2025-04-20 10:56:45,704] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,704] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,704] DEBUG: Retorno diario: 2.6208% (bruto: 2.6708%, costos: 0.0500%)
+[2025-04-20 10:56:45,704] DEBUG: Retorno diario: 2.6208% (bruto: 2.6708%, costos: 0.0500%)
+[2025-04-20 10:56:45,821] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-01 00:00:00
+[2025-04-20 10:56:45,821] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-01 00:00:00
+[2025-04-20 10:56:45,821] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,821] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:45,822] DEBUG: Retorno diario: -1.5496% (bruto: -1.4996%, costos: 0.0500%)
+[2025-04-20 10:56:45,822] DEBUG: Retorno diario: -1.5496% (bruto: -1.4996%, costos: 0.0500%)
+[2025-04-20 10:56:46,047] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-04 00:00:00
+[2025-04-20 10:56:46,047] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-04 00:00:00
+[2025-04-20 10:56:46,047] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46,047] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46,047] DEBUG: Retorno diario: -0.4042% (bruto: -0.3542%, costos: 0.0500%)
+[2025-04-20 10:56:46,047] DEBUG: Retorno diario: -0.4042% (bruto: -0.3542%, costos: 0.0500%)
+[2025-04-20 10:56:46,184] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-05 00:00:00
+[2025-04-20 10:56:46,184] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-05 00:00:00
+[2025-04-20 10:56:46,185] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46,185] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46,185] DEBUG: Retorno diario: 0.9075% (bruto: 0.9575%, costos: 0.0500%)
+[2025-04-20 10:56:46,185] DEBUG: Retorno diario: 0.9075% (bruto: 0.9575%, costos: 0.0500%)
+[2025-04-20 10:56:46,310] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-06 00:00:00
+[2025-04-20 10:56:46,310] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-06 00:00:00
+[2025-04-20 10:56:46,310] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46,310] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:46,310] DEBUG: Buscando pares cointegrados para 2024-11-06 00:00:00
+[2025-04-20 10:56:46,310] DEBUG: Buscando pares cointegrados para 2024-11-06 00:00:00
+[2025-04-20 10:56:46,313] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:56:46,313] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:56:46,313] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:56:46,313] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:56:57,156] DEBUG: Probados 1225 pares, encontrados 78 cointegrados, 6 válidos
+[2025-04-20 10:56:57,156] DEBUG: Probados 1225 pares, encontrados 78 cointegrados, 6 válidos
+[2025-04-20 10:56:57,156] DEBUG: Encontrados 6 pares para fecha 2024-11-06 00:00:00
+[2025-04-20 10:56:57,156] DEBUG: Encontrados 6 pares para fecha 2024-11-06 00:00:00
+[2025-04-20 10:56:57,156] DEBUG: Gestionando cartera para 2024-11-06 00:00:00. Pares activos: 2, Pares disponibles: 6
+[2025-04-20 10:56:57,156] DEBUG: Gestionando cartera para 2024-11-06 00:00:00. Pares activos: 2, Pares disponibles: 6
+[2025-04-20 10:56:57,380] DEBUG: Cerrando posición para par GEHC-MA
+[2025-04-20 10:56:57,380] DEBUG: Cerrando posición para par GEHC-MA
+[2025-04-20 10:56:57,608] DEBUG: Cerrando posición para par GEHC-TPR
+[2025-04-20 10:56:57,608] DEBUG: Cerrando posición para par GEHC-TPR
+[2025-04-20 10:56:57,608] DEBUG: Evaluando 6 nuevos pares para 15 slots disponibles
+[2025-04-20 10:56:57,608] DEBUG: Evaluando 6 nuevos pares para 15 slots disponibles
+[2025-04-20 10:56:58,990] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:56:58,990] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:56:58,991] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:56:58,991] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:56:59,119] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-07 00:00:00
+[2025-04-20 10:56:59,119] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-07 00:00:00
+[2025-04-20 10:56:59,119] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59,119] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59,272] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-08 00:00:00
+[2025-04-20 10:56:59,272] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-08 00:00:00
+[2025-04-20 10:56:59,273] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59,273] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59,399] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-11 00:00:00
+[2025-04-20 10:56:59,399] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-11 00:00:00
+[2025-04-20 10:56:59,399] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59,399] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:56:59,516] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-12 00:00:00
+[2025-04-20 10:56:59,516] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-12 00:00:00
+[2025-04-20 10:56:59,517] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.70, z_exit=0.00
+[2025-04-20 10:56:59,517] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.70, z_exit=0.00
+[2025-04-20 10:56:59,646] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-13 00:00:00
+[2025-04-20 10:56:59,646] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-13 00:00:00
+[2025-04-20 10:56:59,646] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.43, z_exit=0.00
+[2025-04-20 10:56:59,646] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.43, z_exit=0.00
+[2025-04-20 10:56:59,773] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-14 00:00:00
+[2025-04-20 10:56:59,773] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-14 00:00:00
+[2025-04-20 10:56:59,773] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.19, z_exit=0.00
+[2025-04-20 10:56:59,773] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.19, z_exit=0.00
+[2025-04-20 10:56:59,983] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-15 00:00:00
+[2025-04-20 10:56:59,983] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-15 00:00:00
+[2025-04-20 10:56:59,983] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.41, z_exit=0.00
+[2025-04-20 10:56:59,983] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.41, z_exit=0.00
+[2025-04-20 10:57:00,109] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-18 00:00:00
+[2025-04-20 10:57:00,109] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-18 00:00:00
+[2025-04-20 10:57:00,110] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.17, z_exit=0.00
+[2025-04-20 10:57:00,110] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.17, z_exit=0.00
+[2025-04-20 10:57:00,382] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-19 00:00:00
+[2025-04-20 10:57:00,382] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-19 00:00:00
+[2025-04-20 10:57:00,383] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,383] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,566] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-20 00:00:00
+[2025-04-20 10:57:00,566] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-20 00:00:00
+[2025-04-20 10:57:00,567] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,567] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,794] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-21 00:00:00
+[2025-04-20 10:57:00,794] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-21 00:00:00
+[2025-04-20 10:57:00,794] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,794] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,933] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-22 00:00:00
+[2025-04-20 10:57:00,933] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-22 00:00:00
+[2025-04-20 10:57:00,933] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:00,933] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,211] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-25 00:00:00
+[2025-04-20 10:57:01,211] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-25 00:00:00
+[2025-04-20 10:57:01,211] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,211] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,340] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-26 00:00:00
+[2025-04-20 10:57:01,340] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-26 00:00:00
+[2025-04-20 10:57:01,341] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,341] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,472] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-27 00:00:00
+[2025-04-20 10:57:01,472] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-27 00:00:00
+[2025-04-20 10:57:01,472] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,472] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,598] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-29 00:00:00
+[2025-04-20 10:57:01,598] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-11-29 00:00:00
+[2025-04-20 10:57:01,599] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,599] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,726] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-02 00:00:00
+[2025-04-20 10:57:01,726] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-02 00:00:00
+[2025-04-20 10:57:01,726] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,726] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,866] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-03 00:00:00
+[2025-04-20 10:57:01,866] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-03 00:00:00
+[2025-04-20 10:57:01,866] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:01,866] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,022] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-04 00:00:00
+[2025-04-20 10:57:02,022] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-04 00:00:00
+[2025-04-20 10:57:02,022] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,022] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,244] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-05 00:00:00
+[2025-04-20 10:57:02,244] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-05 00:00:00
+[2025-04-20 10:57:02,244] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,244] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,378] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-06 00:00:00
+[2025-04-20 10:57:02,378] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-06 00:00:00
+[2025-04-20 10:57:02,379] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,379] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:02,379] DEBUG: Buscando pares cointegrados para 2024-12-06 00:00:00
+[2025-04-20 10:57:02,379] DEBUG: Buscando pares cointegrados para 2024-12-06 00:00:00
+[2025-04-20 10:57:02,381] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:02,381] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:02,381] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:02,381] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:12,733] DEBUG: Probados 1225 pares, encontrados 63 cointegrados, 5 válidos
+[2025-04-20 10:57:12,733] DEBUG: Probados 1225 pares, encontrados 63 cointegrados, 5 válidos
+[2025-04-20 10:57:12,733] DEBUG: Encontrados 5 pares para fecha 2024-12-06 00:00:00
+[2025-04-20 10:57:12,733] DEBUG: Encontrados 5 pares para fecha 2024-12-06 00:00:00
+[2025-04-20 10:57:12,733] DEBUG: Gestionando cartera para 2024-12-06 00:00:00. Pares activos: 0, Pares disponibles: 5
+[2025-04-20 10:57:12,733] DEBUG: Gestionando cartera para 2024-12-06 00:00:00. Pares activos: 0, Pares disponibles: 5
+[2025-04-20 10:57:12,734] DEBUG: Evaluando 5 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:12,734] DEBUG: Evaluando 5 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:13,854] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:57:13,854] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:57:13,854] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:57:13,854] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:57:14,105] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-09 00:00:00
+[2025-04-20 10:57:14,105] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-09 00:00:00
+[2025-04-20 10:57:14,105] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,105] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,260] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-10 00:00:00
+[2025-04-20 10:57:14,260] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-10 00:00:00
+[2025-04-20 10:57:14,260] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,260] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,405] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-11 00:00:00
+[2025-04-20 10:57:14,405] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-11 00:00:00
+[2025-04-20 10:57:14,406] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,406] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,556] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-12 00:00:00
+[2025-04-20 10:57:14,556] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-12 00:00:00
+[2025-04-20 10:57:14,556] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,556] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,731] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-13 00:00:00
+[2025-04-20 10:57:14,731] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-13 00:00:00
+[2025-04-20 10:57:14,732] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,732] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,880] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-16 00:00:00
+[2025-04-20 10:57:14,880] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-16 00:00:00
+[2025-04-20 10:57:14,880] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:14,880] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,036] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-17 00:00:00
+[2025-04-20 10:57:15,036] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-17 00:00:00
+[2025-04-20 10:57:15,036] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,036] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,162] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-18 00:00:00
+[2025-04-20 10:57:15,162] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-18 00:00:00
+[2025-04-20 10:57:15,163] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,163] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,300] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-19 00:00:00
+[2025-04-20 10:57:15,300] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-19 00:00:00
+[2025-04-20 10:57:15,300] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,300] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,440] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-20 00:00:00
+[2025-04-20 10:57:15,440] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-20 00:00:00
+[2025-04-20 10:57:15,440] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,440] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,565] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-23 00:00:00
+[2025-04-20 10:57:15,565] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-23 00:00:00
+[2025-04-20 10:57:15,565] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,565] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,705] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-24 00:00:00
+[2025-04-20 10:57:15,705] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-24 00:00:00
+[2025-04-20 10:57:15,705] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,705] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,831] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-26 00:00:00
+[2025-04-20 10:57:15,831] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-26 00:00:00
+[2025-04-20 10:57:15,831] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,831] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,969] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-27 00:00:00
+[2025-04-20 10:57:15,969] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-27 00:00:00
+[2025-04-20 10:57:15,969] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:15,969] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,098] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-30 00:00:00
+[2025-04-20 10:57:16,098] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-30 00:00:00
+[2025-04-20 10:57:16,098] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,098] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,254] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-31 00:00:00
+[2025-04-20 10:57:16,254] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2024-12-31 00:00:00
+[2025-04-20 10:57:16,255] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,255] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,385] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-02 00:00:00
+[2025-04-20 10:57:16,385] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-02 00:00:00
+[2025-04-20 10:57:16,385] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,385] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,511] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-03 00:00:00
+[2025-04-20 10:57:16,511] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-03 00:00:00
+[2025-04-20 10:57:16,511] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,511] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,646] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-06 00:00:00
+[2025-04-20 10:57:16,646] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-06 00:00:00
+[2025-04-20 10:57:16,647] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,647] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,774] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-07 00:00:00
+[2025-04-20 10:57:16,774] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-07 00:00:00
+[2025-04-20 10:57:16,774] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,774] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,911] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-08 00:00:00
+[2025-04-20 10:57:16,911] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-08 00:00:00
+[2025-04-20 10:57:16,911] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,911] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:16,911] DEBUG: Buscando pares cointegrados para 2025-01-08 00:00:00
+[2025-04-20 10:57:16,911] DEBUG: Buscando pares cointegrados para 2025-01-08 00:00:00
+[2025-04-20 10:57:16,913] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:16,913] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:16,913] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:16,913] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:27,511] DEBUG: Probados 1225 pares, encontrados 76 cointegrados, 10 válidos
+[2025-04-20 10:57:27,511] DEBUG: Probados 1225 pares, encontrados 76 cointegrados, 10 válidos
+[2025-04-20 10:57:27,511] DEBUG: Encontrados 10 pares para fecha 2025-01-08 00:00:00
+[2025-04-20 10:57:27,511] DEBUG: Encontrados 10 pares para fecha 2025-01-08 00:00:00
+[2025-04-20 10:57:27,511] DEBUG: Gestionando cartera para 2025-01-08 00:00:00. Pares activos: 0, Pares disponibles: 10
+[2025-04-20 10:57:27,511] DEBUG: Gestionando cartera para 2025-01-08 00:00:00. Pares activos: 0, Pares disponibles: 10
+[2025-04-20 10:57:27,511] DEBUG: Evaluando 10 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:27,511] DEBUG: Evaluando 10 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:29,831] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:57:29,831] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:57:29,831] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:57:29,831] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:57:29,961] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-10 00:00:00
+[2025-04-20 10:57:29,961] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-10 00:00:00
+[2025-04-20 10:57:29,961] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:29,961] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,089] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-13 00:00:00
+[2025-04-20 10:57:30,089] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-13 00:00:00
+[2025-04-20 10:57:30,090] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,090] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,216] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-14 00:00:00
+[2025-04-20 10:57:30,216] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-14 00:00:00
+[2025-04-20 10:57:30,216] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,216] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,344] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-15 00:00:00
+[2025-04-20 10:57:30,344] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-15 00:00:00
+[2025-04-20 10:57:30,344] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,344] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,472] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-16 00:00:00
+[2025-04-20 10:57:30,472] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-16 00:00:00
+[2025-04-20 10:57:30,472] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,472] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,600] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-17 00:00:00
+[2025-04-20 10:57:30,600] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-17 00:00:00
+[2025-04-20 10:57:30,600] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,600] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,731] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-21 00:00:00
+[2025-04-20 10:57:30,731] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-21 00:00:00
+[2025-04-20 10:57:30,732] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:30,732] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,001] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-22 00:00:00
+[2025-04-20 10:57:31,001] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-22 00:00:00
+[2025-04-20 10:57:31,001] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,001] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,129] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-23 00:00:00
+[2025-04-20 10:57:31,129] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-23 00:00:00
+[2025-04-20 10:57:31,130] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,130] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,267] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-24 00:00:00
+[2025-04-20 10:57:31,267] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-24 00:00:00
+[2025-04-20 10:57:31,267] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,267] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,525] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-27 00:00:00
+[2025-04-20 10:57:31,525] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-27 00:00:00
+[2025-04-20 10:57:31,525] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,525] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,656] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-28 00:00:00
+[2025-04-20 10:57:31,656] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-28 00:00:00
+[2025-04-20 10:57:31,657] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,657] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,922] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-29 00:00:00
+[2025-04-20 10:57:31,922] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-29 00:00:00
+[2025-04-20 10:57:31,923] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:31,923] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,129] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-30 00:00:00
+[2025-04-20 10:57:32,129] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-30 00:00:00
+[2025-04-20 10:57:32,129] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,129] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,264] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-31 00:00:00
+[2025-04-20 10:57:32,264] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-01-31 00:00:00
+[2025-04-20 10:57:32,265] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,265] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,394] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-03 00:00:00
+[2025-04-20 10:57:32,394] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-03 00:00:00
+[2025-04-20 10:57:32,394] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,394] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,648] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-04 00:00:00
+[2025-04-20 10:57:32,648] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-04 00:00:00
+[2025-04-20 10:57:32,648] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,648] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,844] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-05 00:00:00
+[2025-04-20 10:57:32,844] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-05 00:00:00
+[2025-04-20 10:57:32,845] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,845] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,976] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-06 00:00:00
+[2025-04-20 10:57:32,976] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-06 00:00:00
+[2025-04-20 10:57:32,976] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:32,976] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33,114] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-07 00:00:00
+[2025-04-20 10:57:33,114] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-07 00:00:00
+[2025-04-20 10:57:33,115] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33,115] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33,258] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-10 00:00:00
+[2025-04-20 10:57:33,258] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-10 00:00:00
+[2025-04-20 10:57:33,259] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33,259] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:57:33,259] DEBUG: Buscando pares cointegrados para 2025-02-10 00:00:00
+[2025-04-20 10:57:33,259] DEBUG: Buscando pares cointegrados para 2025-02-10 00:00:00
+[2025-04-20 10:57:33,261] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:33,261] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:33,261] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:33,261] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:43,693] DEBUG: Probados 1225 pares, encontrados 70 cointegrados, 12 válidos
+[2025-04-20 10:57:43,693] DEBUG: Probados 1225 pares, encontrados 70 cointegrados, 12 válidos
+[2025-04-20 10:57:43,693] DEBUG: Encontrados 12 pares para fecha 2025-02-10 00:00:00
+[2025-04-20 10:57:43,693] DEBUG: Encontrados 12 pares para fecha 2025-02-10 00:00:00
+[2025-04-20 10:57:43,693] DEBUG: Gestionando cartera para 2025-02-10 00:00:00. Pares activos: 0, Pares disponibles: 12
+[2025-04-20 10:57:43,693] DEBUG: Gestionando cartera para 2025-02-10 00:00:00. Pares activos: 0, Pares disponibles: 12
+[2025-04-20 10:57:43,693] DEBUG: Evaluando 12 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:43,693] DEBUG: Evaluando 12 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:45,000] DEBUG: Añadiendo nuevo par PHM-K con posición 1.0
+[2025-04-20 10:57:45,000] DEBUG: Añadiendo nuevo par PHM-K con posición 1.0
+[2025-04-20 10:57:46,314] DEBUG: Añadidos 1 nuevos pares a la cartera
+[2025-04-20 10:57:46,314] DEBUG: Añadidos 1 nuevos pares a la cartera
+[2025-04-20 10:57:46,314] DEBUG: Cartera actualizada: 1 pares activos
+[2025-04-20 10:57:46,314] DEBUG: Cartera actualizada: 1 pares activos
+[2025-04-20 10:57:46,314] DEBUG: Retorno diario: 0.6245% (bruto: 0.6745%, costos: 0.0500%)
+[2025-04-20 10:57:46,314] DEBUG: Retorno diario: 0.6245% (bruto: 0.6745%, costos: 0.0500%)
+[2025-04-20 10:57:46,441] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-11 00:00:00
+[2025-04-20 10:57:46,441] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-11 00:00:00
+[2025-04-20 10:57:46,442] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.75, z_exit=0.00
+[2025-04-20 10:57:46,442] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.75, z_exit=0.00
+[2025-04-20 10:57:46,442] DEBUG: Retorno diario: 0.7164% (bruto: 0.7664%, costos: 0.0500%)
+[2025-04-20 10:57:46,442] DEBUG: Retorno diario: 0.7164% (bruto: 0.7664%, costos: 0.0500%)
+[2025-04-20 10:57:46,567] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-12 00:00:00
+[2025-04-20 10:57:46,567] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-12 00:00:00
+[2025-04-20 10:57:46,567] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.58, z_exit=0.00
+[2025-04-20 10:57:46,567] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.58, z_exit=0.00
+[2025-04-20 10:57:46,567] DEBUG: Retorno diario: -1.2759% (bruto: -1.2259%, costos: 0.0500%)
+[2025-04-20 10:57:46,567] DEBUG: Retorno diario: -1.2759% (bruto: -1.2259%, costos: 0.0500%)
+[2025-04-20 10:57:46,707] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-13 00:00:00
+[2025-04-20 10:57:46,707] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-13 00:00:00
+[2025-04-20 10:57:46,707] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.74, z_exit=0.00
+[2025-04-20 10:57:46,707] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.74, z_exit=0.00
+[2025-04-20 10:57:46,707] DEBUG: Retorno diario: 0.5904% (bruto: 0.6404%, costos: 0.0500%)
+[2025-04-20 10:57:46,707] DEBUG: Retorno diario: 0.5904% (bruto: 0.6404%, costos: 0.0500%)
+[2025-04-20 10:57:46,873] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-14 00:00:00
+[2025-04-20 10:57:46,873] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-14 00:00:00
+[2025-04-20 10:57:46,874] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.56, z_exit=0.00
+[2025-04-20 10:57:46,874] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.56, z_exit=0.00
+[2025-04-20 10:57:46,874] DEBUG: Retorno diario: 0.6009% (bruto: 0.6509%, costos: 0.0500%)
+[2025-04-20 10:57:46,874] DEBUG: Retorno diario: 0.6009% (bruto: 0.6509%, costos: 0.0500%)
+[2025-04-20 10:57:47,003] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-18 00:00:00
+[2025-04-20 10:57:47,003] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-18 00:00:00
+[2025-04-20 10:57:47,003] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.50, z_exit=0.00
+[2025-04-20 10:57:47,003] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.50, z_exit=0.00
+[2025-04-20 10:57:47,003] DEBUG: Retorno diario: -1.7934% (bruto: -1.7434%, costos: 0.0500%)
+[2025-04-20 10:57:47,003] DEBUG: Retorno diario: -1.7934% (bruto: -1.7434%, costos: 0.0500%)
+[2025-04-20 10:57:47,140] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-19 00:00:00
+[2025-04-20 10:57:47,140] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-19 00:00:00
+[2025-04-20 10:57:47,141] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.65, z_exit=0.00
+[2025-04-20 10:57:47,141] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.65, z_exit=0.00
+[2025-04-20 10:57:47,141] DEBUG: Retorno diario: -0.8106% (bruto: -0.7606%, costos: 0.0500%)
+[2025-04-20 10:57:47,141] DEBUG: Retorno diario: -0.8106% (bruto: -0.7606%, costos: 0.0500%)
+[2025-04-20 10:57:47,386] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-20 00:00:00
+[2025-04-20 10:57:47,386] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-20 00:00:00
+[2025-04-20 10:57:47,386] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.82, z_exit=0.00
+[2025-04-20 10:57:47,386] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.82, z_exit=0.00
+[2025-04-20 10:57:47,386] DEBUG: Retorno diario: 0.8580% (bruto: 0.9080%, costos: 0.0500%)
+[2025-04-20 10:57:47,386] DEBUG: Retorno diario: 0.8580% (bruto: 0.9080%, costos: 0.0500%)
+[2025-04-20 10:57:47,518] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-21 00:00:00
+[2025-04-20 10:57:47,518] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-21 00:00:00
+[2025-04-20 10:57:47,518] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:57:47,518] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.00, z_exit=0.00
+[2025-04-20 10:57:47,518] DEBUG: Retorno diario: -2.7688% (bruto: -2.7188%, costos: 0.0500%)
+[2025-04-20 10:57:47,518] DEBUG: Retorno diario: -2.7688% (bruto: -2.7188%, costos: 0.0500%)
+[2025-04-20 10:57:47,702] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-24 00:00:00
+[2025-04-20 10:57:47,702] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-24 00:00:00
+[2025-04-20 10:57:47,703] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.20, z_exit=0.00
+[2025-04-20 10:57:47,703] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.20, z_exit=0.00
+[2025-04-20 10:57:47,703] DEBUG: Retorno diario: -1.4572% (bruto: -1.4072%, costos: 0.0500%)
+[2025-04-20 10:57:47,703] DEBUG: Retorno diario: -1.4572% (bruto: -1.4072%, costos: 0.0500%)
+[2025-04-20 10:57:47,830] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-25 00:00:00
+[2025-04-20 10:57:47,830] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-25 00:00:00
+[2025-04-20 10:57:47,830] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.42, z_exit=0.00
+[2025-04-20 10:57:47,830] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.42, z_exit=0.00
+[2025-04-20 10:57:47,830] DEBUG: Retorno diario: 4.4241% (bruto: 4.4741%, costos: 0.0500%)
+[2025-04-20 10:57:47,830] DEBUG: Retorno diario: 4.4241% (bruto: 4.4741%, costos: 0.0500%)
+[2025-04-20 10:57:47,957] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-26 00:00:00
+[2025-04-20 10:57:47,957] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-26 00:00:00
+[2025-04-20 10:57:47,957] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.66, z_exit=0.00
+[2025-04-20 10:57:47,957] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.66, z_exit=0.00
+[2025-04-20 10:57:47,957] DEBUG: Retorno diario: -1.6793% (bruto: -1.6293%, costos: 0.0500%)
+[2025-04-20 10:57:47,957] DEBUG: Retorno diario: -1.6793% (bruto: -1.6293%, costos: 0.0500%)
+[2025-04-20 10:57:48,099] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-27 00:00:00
+[2025-04-20 10:57:48,099] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-27 00:00:00
+[2025-04-20 10:57:48,099] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.92, z_exit=0.00
+[2025-04-20 10:57:48,099] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.92, z_exit=0.00
+[2025-04-20 10:57:48,099] DEBUG: Retorno diario: -1.4353% (bruto: -1.3853%, costos: 0.0500%)
+[2025-04-20 10:57:48,099] DEBUG: Retorno diario: -1.4353% (bruto: -1.3853%, costos: 0.0500%)
+[2025-04-20 10:57:48,229] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-28 00:00:00
+[2025-04-20 10:57:48,229] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-02-28 00:00:00
+[2025-04-20 10:57:48,230] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,230] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,230] DEBUG: Retorno diario: 0.0343% (bruto: 0.0843%, costos: 0.0500%)
+[2025-04-20 10:57:48,230] DEBUG: Retorno diario: 0.0343% (bruto: 0.0843%, costos: 0.0500%)
+[2025-04-20 10:57:48,361] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-03 00:00:00
+[2025-04-20 10:57:48,361] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-03 00:00:00
+[2025-04-20 10:57:48,361] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,361] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,362] DEBUG: Retorno diario: -1.4465% (bruto: -1.3965%, costos: 0.0500%)
+[2025-04-20 10:57:48,362] DEBUG: Retorno diario: -1.4465% (bruto: -1.3965%, costos: 0.0500%)
+[2025-04-20 10:57:48,613] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-04 00:00:00
+[2025-04-20 10:57:48,613] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-04 00:00:00
+[2025-04-20 10:57:48,614] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,614] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,614] DEBUG: Retorno diario: 0.9684% (bruto: 1.0184%, costos: 0.0500%)
+[2025-04-20 10:57:48,614] DEBUG: Retorno diario: 0.9684% (bruto: 1.0184%, costos: 0.0500%)
+[2025-04-20 10:57:48,749] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-05 00:00:00
+[2025-04-20 10:57:48,749] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-05 00:00:00
+[2025-04-20 10:57:48,750] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,750] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,750] DEBUG: Retorno diario: 2.9268% (bruto: 2.9768%, costos: 0.0500%)
+[2025-04-20 10:57:48,750] DEBUG: Retorno diario: 2.9268% (bruto: 2.9768%, costos: 0.0500%)
+[2025-04-20 10:57:48,881] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-06 00:00:00
+[2025-04-20 10:57:48,881] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-06 00:00:00
+[2025-04-20 10:57:48,881] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,881] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:48,882] DEBUG: Retorno diario: 2.0805% (bruto: 2.1305%, costos: 0.0500%)
+[2025-04-20 10:57:48,882] DEBUG: Retorno diario: 2.0805% (bruto: 2.1305%, costos: 0.0500%)
+[2025-04-20 10:57:49,008] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-07 00:00:00
+[2025-04-20 10:57:49,008] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-07 00:00:00
+[2025-04-20 10:57:49,009] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:49,009] DEBUG: Parámetros actualizados para régimen 1: z_entry=3.00, z_exit=0.00
+[2025-04-20 10:57:49,009] DEBUG: Retorno diario: -0.3958% (bruto: -0.3458%, costos: 0.0500%)
+[2025-04-20 10:57:49,009] DEBUG: Retorno diario: -0.3958% (bruto: -0.3458%, costos: 0.0500%)
+[2025-04-20 10:57:49,150] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-10 00:00:00
+[2025-04-20 10:57:49,150] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-10 00:00:00
+[2025-04-20 10:57:49,151] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.70, z_exit=0.00
+[2025-04-20 10:57:49,151] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.70, z_exit=0.00
+[2025-04-20 10:57:49,151] DEBUG: Retorno diario: -0.5226% (bruto: -0.4726%, costos: 0.0500%)
+[2025-04-20 10:57:49,151] DEBUG: Retorno diario: -0.5226% (bruto: -0.4726%, costos: 0.0500%)
+[2025-04-20 10:57:49,270] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-11 00:00:00
+[2025-04-20 10:57:49,270] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-11 00:00:00
+[2025-04-20 10:57:49,271] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.43, z_exit=0.00
+[2025-04-20 10:57:49,271] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.43, z_exit=0.00
+[2025-04-20 10:57:49,271] DEBUG: Retorno diario: -1.3564% (bruto: -1.3064%, costos: 0.0500%)
+[2025-04-20 10:57:49,271] DEBUG: Retorno diario: -1.3564% (bruto: -1.3064%, costos: 0.0500%)
+[2025-04-20 10:57:49,400] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-12 00:00:00
+[2025-04-20 10:57:49,400] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-12 00:00:00
+[2025-04-20 10:57:49,400] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.67, z_exit=0.00
+[2025-04-20 10:57:49,400] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.67, z_exit=0.00
+[2025-04-20 10:57:49,400] DEBUG: Buscando pares cointegrados para 2025-03-12 00:00:00
+[2025-04-20 10:57:49,400] DEBUG: Buscando pares cointegrados para 2025-03-12 00:00:00
+[2025-04-20 10:57:49,403] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:49,403] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:57:49,403] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:49,403] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:57:59,745] DEBUG: Probados 1225 pares, encontrados 98 cointegrados, 5 válidos
+[2025-04-20 10:57:59,745] DEBUG: Probados 1225 pares, encontrados 98 cointegrados, 5 válidos
+[2025-04-20 10:57:59,745] DEBUG: Encontrados 5 pares para fecha 2025-03-12 00:00:00
+[2025-04-20 10:57:59,745] DEBUG: Encontrados 5 pares para fecha 2025-03-12 00:00:00
+[2025-04-20 10:57:59,745] DEBUG: Gestionando cartera para 2025-03-12 00:00:00. Pares activos: 1, Pares disponibles: 5
+[2025-04-20 10:57:59,745] DEBUG: Gestionando cartera para 2025-03-12 00:00:00. Pares activos: 1, Pares disponibles: 5
+[2025-04-20 10:57:59,964] DEBUG: Cerrando posición para par PHM-K
+[2025-04-20 10:57:59,964] DEBUG: Cerrando posición para par PHM-K
+[2025-04-20 10:57:59,964] DEBUG: Evaluando 5 nuevos pares para 15 slots disponibles
+[2025-04-20 10:57:59,964] DEBUG: Evaluando 5 nuevos pares para 15 slots disponibles
+[2025-04-20 10:58:01,408] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:58:01,408] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:58:01,408] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:58:01,408] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:58:01,620] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-13 00:00:00
+[2025-04-20 10:58:01,620] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-13 00:00:00
+[2025-04-20 10:58:01,620] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.67, z_exit=0.00
+[2025-04-20 10:58:01,620] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.67, z_exit=0.00
+[2025-04-20 10:58:01,777] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-14 00:00:00
+[2025-04-20 10:58:01,777] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-14 00:00:00
+[2025-04-20 10:58:01,777] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.41, z_exit=0.00
+[2025-04-20 10:58:01,777] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.41, z_exit=0.00
+[2025-04-20 10:58:01,913] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-17 00:00:00
+[2025-04-20 10:58:01,913] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-17 00:00:00
+[2025-04-20 10:58:01,914] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.17, z_exit=0.00
+[2025-04-20 10:58:01,914] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.17, z_exit=0.00
+[2025-04-20 10:58:02,141] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-18 00:00:00
+[2025-04-20 10:58:02,141] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-18 00:00:00
+[2025-04-20 10:58:02,142] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:58:02,142] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.95, z_exit=0.00
+[2025-04-20 10:58:02,346] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-19 00:00:00
+[2025-04-20 10:58:02,346] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-19 00:00:00
+[2025-04-20 10:58:02,346] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.75, z_exit=0.00
+[2025-04-20 10:58:02,346] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.75, z_exit=0.00
+[2025-04-20 10:58:02,484] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-20 00:00:00
+[2025-04-20 10:58:02,484] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-20 00:00:00
+[2025-04-20 10:58:02,484] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.93, z_exit=0.00
+[2025-04-20 10:58:02,484] DEBUG: Parámetros actualizados para régimen 1: z_entry=1.93, z_exit=0.00
+[2025-04-20 10:58:02,623] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-21 00:00:00
+[2025-04-20 10:58:02,623] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-21 00:00:00
+[2025-04-20 10:58:02,623] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.12, z_exit=0.00
+[2025-04-20 10:58:02,623] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.12, z_exit=0.00
+[2025-04-20 10:58:02,849] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-24 00:00:00
+[2025-04-20 10:58:02,849] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-24 00:00:00
+[2025-04-20 10:58:02,850] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.33, z_exit=0.00
+[2025-04-20 10:58:02,850] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.33, z_exit=0.00
+[2025-04-20 10:58:02,993] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-25 00:00:00
+[2025-04-20 10:58:02,993] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-25 00:00:00
+[2025-04-20 10:58:02,994] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:02,994] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,135] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-26 00:00:00
+[2025-04-20 10:58:03,135] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-26 00:00:00
+[2025-04-20 10:58:03,136] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,136] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,275] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-27 00:00:00
+[2025-04-20 10:58:03,275] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-27 00:00:00
+[2025-04-20 10:58:03,275] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,275] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,406] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-28 00:00:00
+[2025-04-20 10:58:03,406] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-28 00:00:00
+[2025-04-20 10:58:03,407] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,407] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,542] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-31 00:00:00
+[2025-04-20 10:58:03,542] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-03-31 00:00:00
+[2025-04-20 10:58:03,543] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,543] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,685] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-01 00:00:00
+[2025-04-20 10:58:03,685] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-01 00:00:00
+[2025-04-20 10:58:03,685] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,685] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,809] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-02 00:00:00
+[2025-04-20 10:58:03,809] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-02 00:00:00
+[2025-04-20 10:58:03,809] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,809] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,939] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-03 00:00:00
+[2025-04-20 10:58:03,939] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-03 00:00:00
+[2025-04-20 10:58:03,939] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:03,939] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,075] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-04 00:00:00
+[2025-04-20 10:58:04,075] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-04 00:00:00
+[2025-04-20 10:58:04,076] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,076] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,198] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-07 00:00:00
+[2025-04-20 10:58:04,198] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-07 00:00:00
+[2025-04-20 10:58:04,198] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,198] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,335] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-08 00:00:00
+[2025-04-20 10:58:04,335] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-08 00:00:00
+[2025-04-20 10:58:04,335] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,335] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,487] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-09 00:00:00
+[2025-04-20 10:58:04,487] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-09 00:00:00
+[2025-04-20 10:58:04,487] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,487] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,699] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-10 00:00:00
+[2025-04-20 10:58:04,699] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-10 00:00:00
+[2025-04-20 10:58:04,699] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,699] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:04,699] DEBUG: Buscando pares cointegrados para 2025-04-10 00:00:00
+[2025-04-20 10:58:04,699] DEBUG: Buscando pares cointegrados para 2025-04-10 00:00:00
+[2025-04-20 10:58:04,702] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:04,702] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:04,702] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:04,702] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:16,582] DEBUG: Probados 1225 pares, encontrados 74 cointegrados, 9 válidos
+[2025-04-20 10:58:16,582] DEBUG: Probados 1225 pares, encontrados 74 cointegrados, 9 válidos
+[2025-04-20 10:58:16,582] DEBUG: Encontrados 9 pares para fecha 2025-04-10 00:00:00
+[2025-04-20 10:58:16,582] DEBUG: Encontrados 9 pares para fecha 2025-04-10 00:00:00
+[2025-04-20 10:58:16,582] DEBUG: Gestionando cartera para 2025-04-10 00:00:00. Pares activos: 0, Pares disponibles: 9
+[2025-04-20 10:58:16,582] DEBUG: Gestionando cartera para 2025-04-10 00:00:00. Pares activos: 0, Pares disponibles: 9
+[2025-04-20 10:58:16,582] DEBUG: Evaluando 9 nuevos pares para 15 slots disponibles
+[2025-04-20 10:58:16,582] DEBUG: Evaluando 9 nuevos pares para 15 slots disponibles
+[2025-04-20 10:58:18,754] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:58:18,754] DEBUG: Añadidos 0 nuevos pares a la cartera
+[2025-04-20 10:58:18,754] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:58:18,754] DEBUG: Cartera actualizada: 0 pares activos
+[2025-04-20 10:58:18,894] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-11 00:00:00
+[2025-04-20 10:58:18,894] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-11 00:00:00
+[2025-04-20 10:58:18,894] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:18,894] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,034] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-14 00:00:00
+[2025-04-20 10:58:19,034] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-14 00:00:00
+[2025-04-20 10:58:19,035] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,035] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,178] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-15 00:00:00
+[2025-04-20 10:58:19,178] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-15 00:00:00
+[2025-04-20 10:58:19,179] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,179] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,320] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-16 00:00:00
+[2025-04-20 10:58:19,320] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-16 00:00:00
+[2025-04-20 10:58:19,321] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,321] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,462] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-17 00:00:00
+[2025-04-20 10:58:19,462] DEBUG: Datos insuficientes para entrenar modelo de clustering en 2025-04-17 00:00:00
+[2025-04-20 10:58:19,463] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:19,463] DEBUG: Parámetros actualizados para régimen 1: z_entry=2.57, z_exit=0.00
+[2025-04-20 10:58:21,038] DEBUG: Procesando ventana 1/2: 2024-01-02 00:00:00 - 2025-01-02 00:00:00
+[2025-04-20 10:58:21,038] DEBUG: Procesando ventana 1/2: 2024-01-02 00:00:00 - 2025-01-02 00:00:00
+[2025-04-20 10:58:21,038] DEBUG: Buscando pares cointegrados para 2024-10-01 00:00:00
+[2025-04-20 10:58:21,038] DEBUG: Buscando pares cointegrados para 2024-10-01 00:00:00
+[2025-04-20 10:58:21,041] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:21,041] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:21,041] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:21,041] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:32,512] DEBUG: Probados 1225 pares, encontrados 26 cointegrados, 6 válidos
+[2025-04-20 10:58:32,512] DEBUG: Probados 1225 pares, encontrados 26 cointegrados, 6 válidos
+[2025-04-20 10:58:32,512] DEBUG: Encontrados 6 pares cointegrados para ventana 1
+[2025-04-20 10:58:32,512] DEBUG: Encontrados 6 pares cointegrados para ventana 1
+[2025-04-20 10:58:32,512] DEBUG: Evaluando par 1: LYB-BIIB (beta=-0.3034)
+[2025-04-20 10:58:32,512] DEBUG: Evaluando par 1: LYB-BIIB (beta=-0.3034)
+[2025-04-20 10:58:32,600] DEBUG: Par LYB-BIIB añadido con 1 señales
+[2025-04-20 10:58:32,600] DEBUG: Par LYB-BIIB añadido con 1 señales
+[2025-04-20 10:58:32,600] DEBUG: Evaluando par 2: UHS-JPM (beta=1.0474)
+[2025-04-20 10:58:32,600] DEBUG: Evaluando par 2: UHS-JPM (beta=1.0474)
+[2025-04-20 10:58:32,685] DEBUG: Par UHS-JPM añadido con 1 señales
+[2025-04-20 10:58:32,685] DEBUG: Par UHS-JPM añadido con 1 señales
+[2025-04-20 10:58:32,685] DEBUG: Evaluando par 3: EXR-GEN (beta=0.8975)
+[2025-04-20 10:58:32,685] DEBUG: Evaluando par 3: EXR-GEN (beta=0.8975)
+[2025-04-20 10:58:32,772] DEBUG: Par EXR-GEN añadido con 1 señales
+[2025-04-20 10:58:32,772] DEBUG: Par EXR-GEN añadido con 1 señales
+[2025-04-20 10:58:32,772] DEBUG: Evaluando par 4: AIZ-LHX (beta=0.7313)
+[2025-04-20 10:58:32,772] DEBUG: Evaluando par 4: AIZ-LHX (beta=0.7313)
+[2025-04-20 10:58:32,859] DEBUG: Par AIZ-LHX añadido con 1 señales
+[2025-04-20 10:58:32,859] DEBUG: Par AIZ-LHX añadido con 1 señales
+[2025-04-20 10:58:32,859] DEBUG: Evaluando par 5: MLM-LYB (beta=2.6959)
+[2025-04-20 10:58:32,859] DEBUG: Evaluando par 5: MLM-LYB (beta=2.6959)
+[2025-04-20 10:58:32,945] DEBUG: Par MLM-LYB añadido con 1 señales
+[2025-04-20 10:58:32,945] DEBUG: Par MLM-LYB añadido con 1 señales
+[2025-04-20 10:58:32,945] DEBUG: Evaluando par 6: MSFT-LHX (beta=1.0529)
+[2025-04-20 10:58:32,945] DEBUG: Evaluando par 6: MSFT-LHX (beta=1.0529)
+[2025-04-20 10:58:33,032] DEBUG: Par MSFT-LHX añadido con 1 señales
+[2025-04-20 10:58:33,032] DEBUG: Par MSFT-LHX añadido con 1 señales
+[2025-04-20 10:58:33,035] DEBUG: Procesando ventana 2/2: 2024-04-03 00:00:00 - 2025-04-04 00:00:00
+[2025-04-20 10:58:33,035] DEBUG: Procesando ventana 2/2: 2024-04-03 00:00:00 - 2025-04-04 00:00:00
+[2025-04-20 10:58:33,035] DEBUG: Buscando pares cointegrados para 2025-01-01 00:00:00
+[2025-04-20 10:58:33,035] DEBUG: Buscando pares cointegrados para 2025-01-01 00:00:00
+[2025-04-20 10:58:33,038] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:33,038] DEBUG: Símbolos válidos para análisis de pares: 99
+[2025-04-20 10:58:33,038] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:33,038] DEBUG: Limitado a 50 símbolos para eficiencia
+[2025-04-20 10:58:45,395] DEBUG: Probados 1225 pares, encontrados 69 cointegrados, 20 válidos
+[2025-04-20 10:58:45,395] DEBUG: Probados 1225 pares, encontrados 69 cointegrados, 20 válidos
+[2025-04-20 10:58:45,395] DEBUG: Encontrados 20 pares cointegrados para ventana 2
+[2025-04-20 10:58:45,395] DEBUG: Encontrados 20 pares cointegrados para ventana 2
+[2025-04-20 10:58:45,395] DEBUG: Evaluando par 1: BKNG-WMB (beta=0.5593)
+[2025-04-20 10:58:45,395] DEBUG: Evaluando par 1: BKNG-WMB (beta=0.5593)
+[2025-04-20 10:58:45,485] DEBUG: Par BKNG-WMB añadido con 1 señales
+[2025-04-20 10:58:45,485] DEBUG: Par BKNG-WMB añadido con 1 señales
+[2025-04-20 10:58:45,485] DEBUG: Evaluando par 2: CAH-BMY (beta=0.4928)
+[2025-04-20 10:58:45,485] DEBUG: Evaluando par 2: CAH-BMY (beta=0.4928)
+[2025-04-20 10:58:45,577] DEBUG: Par CAH-BMY añadido con 1 señales
+[2025-04-20 10:58:45,577] DEBUG: Par CAH-BMY añadido con 1 señales
+[2025-04-20 10:58:45,577] DEBUG: Evaluando par 3: ES-PNW (beta=0.6876)
+[2025-04-20 10:58:45,577] DEBUG: Evaluando par 3: ES-PNW (beta=0.6876)
+[2025-04-20 10:58:45,670] DEBUG: Par ES-PNW añadido con 1 señales
+[2025-04-20 10:58:45,670] DEBUG: Par ES-PNW añadido con 1 señales
+[2025-04-20 10:58:45,670] DEBUG: Evaluando par 4: ABNB-CDNS (beta=1.1000)
+[2025-04-20 10:58:45,670] DEBUG: Evaluando par 4: ABNB-CDNS (beta=1.1000)
+[2025-04-20 10:58:45,761] DEBUG: Par ABNB-CDNS añadido con 1 señales
+[2025-04-20 10:58:45,761] DEBUG: Par ABNB-CDNS añadido con 1 señales
+[2025-04-20 10:58:45,762] DEBUG: Evaluando par 5: WST-PNW (beta=-0.7925)
+[2025-04-20 10:58:45,762] DEBUG: Evaluando par 5: WST-PNW (beta=-0.7925)
+[2025-04-20 10:58:45,855] DEBUG: Par WST-PNW añadido con 1 señales
+[2025-04-20 10:58:45,855] DEBUG: Par WST-PNW añadido con 1 señales
+[2025-04-20 10:58:45,855] DEBUG: Evaluando par 6: HSY-ALL (beta=0.1267)
+[2025-04-20 10:58:45,855] DEBUG: Evaluando par 6: HSY-ALL (beta=0.1267)
+[2025-04-20 10:58:45,946] DEBUG: Par HSY-ALL añadido con 1 señales
+[2025-04-20 10:58:45,946] DEBUG: Par HSY-ALL añadido con 1 señales
+[2025-04-20 10:58:45,947] DEBUG: Evaluando par 7: CDNS-DHI (beta=-0.1091)
+[2025-04-20 10:58:45,947] DEBUG: Evaluando par 7: CDNS-DHI (beta=-0.1091)
+[2025-04-20 10:58:46,039] DEBUG: Par CDNS-DHI añadido con 1 señales
+[2025-04-20 10:58:46,039] DEBUG: Par CDNS-DHI añadido con 1 señales
+[2025-04-20 10:58:46,039] DEBUG: Evaluando par 8: IDXX-ALL (beta=-0.0699)
+[2025-04-20 10:58:46,039] DEBUG: Evaluando par 8: IDXX-ALL (beta=-0.0699)
+[2025-04-20 10:58:46,131] DEBUG: Par IDXX-ALL añadido con 1 señales
+[2025-04-20 10:58:46,131] DEBUG: Par IDXX-ALL añadido con 1 señales
+[2025-04-20 10:58:46,131] DEBUG: Evaluando par 9: IDXX-TXN (beta=-0.1252)
+[2025-04-20 10:58:46,131] DEBUG: Evaluando par 9: IDXX-TXN (beta=-0.1252)
+[2025-04-20 10:58:46,223] DEBUG: Par IDXX-TXN añadido con 1 señales
+[2025-04-20 10:58:46,223] DEBUG: Par IDXX-TXN añadido con 1 señales
+[2025-04-20 10:58:46,223] DEBUG: Evaluando par 10: IDXX-MPWR (beta=-0.0283)
+[2025-04-20 10:58:46,223] DEBUG: Evaluando par 10: IDXX-MPWR (beta=-0.0283)
+[2025-04-20 10:58:46,312] DEBUG: Par IDXX-MPWR añadido con 1 señales
+[2025-04-20 10:58:46,312] DEBUG: Par IDXX-MPWR añadido con 1 señales
+[2025-04-20 10:58:46,312] DEBUG: Evaluando par 11: BKNG-CNC (beta=-0.5704)
+[2025-04-20 10:58:46,312] DEBUG: Evaluando par 11: BKNG-CNC (beta=-0.5704)
+[2025-04-20 10:58:46,401] DEBUG: Par BKNG-CNC añadido con 1 señales
+[2025-04-20 10:58:46,401] DEBUG: Par BKNG-CNC añadido con 1 señales
+[2025-04-20 10:58:46,402] DEBUG: Evaluando par 12: IDXX-DOC (beta=-0.1431)
+[2025-04-20 10:58:46,402] DEBUG: Evaluando par 12: IDXX-DOC (beta=-0.1431)
+[2025-04-20 10:58:46,494] DEBUG: Par IDXX-DOC añadido con 1 señales
+[2025-04-20 10:58:46,494] DEBUG: Par IDXX-DOC añadido con 1 señales
+[2025-04-20 10:58:46,494] DEBUG: Evaluando par 13: IDXX-WELL (beta=-0.1856)
+[2025-04-20 10:58:46,494] DEBUG: Evaluando par 13: IDXX-WELL (beta=-0.1856)
+[2025-04-20 10:58:46,584] DEBUG: Par IDXX-WELL añadido con 1 señales
+[2025-04-20 10:58:46,584] DEBUG: Par IDXX-WELL añadido con 1 señales
+[2025-04-20 10:58:46,584] DEBUG: Evaluando par 14: IDXX-BSX (beta=-0.0953)
+[2025-04-20 10:58:46,584] DEBUG: Evaluando par 14: IDXX-BSX (beta=-0.0953)
+[2025-04-20 10:58:46,675] DEBUG: Par IDXX-BSX añadido con 1 señales
+[2025-04-20 10:58:46,675] DEBUG: Par IDXX-BSX añadido con 1 señales
+[2025-04-20 10:58:46,675] DEBUG: Evaluando par 15: WST-WELL (beta=-0.5317)
+[2025-04-20 10:58:46,675] DEBUG: Evaluando par 15: WST-WELL (beta=-0.5317)
+[2025-04-20 10:58:46,762] DEBUG: Par WST-WELL añadido con 1 señales
+[2025-04-20 10:58:46,762] DEBUG: Par WST-WELL añadido con 1 señales

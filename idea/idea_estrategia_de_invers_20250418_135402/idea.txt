@@ -1,0 +1,217 @@
+# IDEA FINAL: ESTRATEGIA DE INVERSIÓN NEUTRAL AL MERCADO CON SELECCIÓN ADAPTATIVA DE FACTORES
+
+## Descripción
+
+Esta estrategia market-neutral busca generar alpha consistente mediante la selección dinámica de acciones basada en meta-factores fundamentales, adaptándose a diferentes regímenes de mercado. El enfoque combina la robustez de factores tradicionales con un sistema adaptativo que ajusta exposiciones según las condiciones de mercado, manteniendo neutralidad frente a movimientos generales del mercado.
+
+## Características principales
+
+- **Arquitectura por capas**: Sistema que separa la generación de señales base, la identificación de regímenes y la ejecución adaptativa
+- **Enfoque parsimonioso**: Utiliza meta-factores compuestos en lugar de múltiples factores individuales
+- **Adaptabilidad**: Ajusta exposiciones según regímenes de mercado identificados
+- **Neutralidad**: Mantiene exposición neta cercana a cero con controles para neutralidad sectorial y de beta
+- **Gestión de riesgos integrada**: Incorpora límites de concentración y presupuestos de riesgo dinámicos
+- **Implementabilidad**: Diseñada específicamente para funcionar con datos disponibles en yfinance
+
+## Detalles de la Implementación
+
+### 1. Universo de Inversión
+
+- **Base**: Componentes del S&P 500
+- **Actualización**: Trimestral para incorporar cambios en la composición del índice
+- **Filtros de liquidez**: Excluir acciones con volumen diario promedio (20 días) < $5M
+
+### 2. Construcción de Meta-Factores
+
+Cuatro meta-factores fundamentales construidos con datos disponibles en yfinance:
+
+1. **Valor**:
+   - Ratio Precio/Beneficio (P/E)
+   - Ratio Precio/Valor Contable (P/B)
+   - Ratio Precio/Flujo de Caja (P/CF)
+   - Ponderación: Promedio simple con winsorización al 2.5%
+
+2. **Calidad**:
+   - Ingresos Netos/Precio (como proxy de ROE)
+   - Flujo de Caja Libre/Precio (como proxy de margen operativo)
+   - Desviación estándar de rendimientos a 3 años (estabilidad)
+   - Ponderación: 40% para cada ratio financiero, 20% para estabilidad
+
+3. **Momentum**:
+   - Rendimiento relativo a 3 meses
+   - Rendimiento relativo a 6 meses
+   - Rendimiento relativo a 12 meses
+   - Ponderación: 20% para 3M, 30% para 6M, 50% para 12M
+
+4. **Volatilidad Baja**:
+   - Beta a 1 año contra S&P 500
+   - Volatilidad realizada a 60 días
+   - Drawdown máximo en 1 año
+   - Ponderación: 40% beta, 40% volatilidad, 20% drawdown
+
+**Proceso de normalización**:
+```
+Para cada componente de meta-factor:
+1. Calcular z-score dentro del universo
+2. Aplicar winsorización al 2.5% (limitar valores extremos)
+3. Combinar componentes según ponderaciones definidas
+4. Aplicar suavizado exponencial (α=0.7) para reducir ruido
+```
+
+### 3. Sistema de Identificación de Regímenes
+
+Enfoque basado en reglas transparente con tres regímenes:
+
+1. **Baja volatilidad/Tendencial**: VIX < percentil 60 histórico
+2. **Alta volatilidad/Crisis**: VIX > percentil 75 histórico
+3. **Transición**: Valores intermedios
+
+**Variables de estado observables**:
+- VIX (obtenido de yfinance como ^VIX)
+- Pendiente de curva de rendimiento (diferencia entre rendimientos de bonos a 10 y 2 años, usando ETFs como TLT y SHY como proxies)
+- Spread de crédito (ratio de precio entre ETFs HYG y LQD)
+
+**Función de transición suave**:
+```
+Para evitar cambios bruscos entre regímenes:
+1. Calcular probabilidades de pertenencia a cada régimen
+2. Aplicar media móvil exponencial (EMA) a estas probabilidades
+3. Asignar régimen según máxima probabilidad suavizada
+4. Permitir transición gradual de exposiciones entre regímenes
+```
+
+### 4. Ponderación Adaptativa de Factores
+
+En lugar de optimización compleja, implementar un sistema de ajuste incremental:
+
+```
+1. Establecer ponderaciones base para meta-factores:
+   - Valor: 25%
+   - Calidad: 25%
+   - Momentum: 25%
+   - Volatilidad Baja: 25%
+
+2. Ajustar según régimen actual:
+   - Baja volatilidad: +10% a Momentum, -10% a Volatilidad Baja
+   - Alta volatilidad: +10% a Volatilidad Baja, +5% a Calidad, -15% a Momentum
+   - Transición: +5% a Valor, +5% a Calidad, -10% a Momentum
+
+3. Implementar "circuit breakers":
+   - Si drawdown de un factor > 10% en 1 mes: reducir exposición en 50%
+   - Si drawdown de un factor > 15% en 3 meses: reducir exposición en 25%
+```
+
+### 5. Selección y Ponderación de Acciones
+
+```
+1. Para cada acción, calcular puntuación compuesta:
+   Puntuación = Σ(Valor_Meta-Factor_i × Ponderación_Adaptativa_i)
+
+2. Rankear acciones dentro de cada sector GICS
+
+3. Selección:
+   - Posiciones largas: Quintil superior en cada sector
+   - Posiciones cortas: Quintil inferior en cada sector
+
+4. Ponderación:
+   - Base: Igual ponderación dentro de cada sector
+   - Ajuste: Inversamente proporcional a volatilidad (1/σ)
+   - Normalización: Escalar para mantener exposición larga = exposición corta = 100%
+```
+
+### 6. Gestión de Riesgos
+
+**Neutralización de exposiciones**:
+- Sector: Exposición neta por sector dentro de ±5% del benchmark
+- Beta: Mantener beta de cartera en 0±0.05
+- Tamaño: Neutralidad con tolerancia de ±0.1 desviación estándar
+
+**Límites de concentración**:
+- Posición máxima por acción: Mínimo entre 3% y 3 veces su peso en el índice
+- Exposición máxima por sector: Ponderación en índice ±5%
+
+**Gestión de riesgos específicos**:
+- Exposición a factores: Limitar exposición a cualquier meta-factor a máximo 40% del riesgo total
+- Monitoreo de correlaciones: Reducir exposiciones cuando correlaciones entre factores excedan 0.7
+
+### 7. Rebalanceo y Ejecución
+
+**Frecuencia de rebalanceo**:
+- Rebalanceo completo: Mensual (último día hábil)
+- Ajustes parciales: Semanales, basados en "distancia a objetivo"
+
+**Sistema de rebalanceo eficiente**:
+```
+1. Calcular portfolio objetivo semanal
+2. Para cada posición, calcular desviación del objetivo:
+   Desviación = |Peso_Actual - Peso_Objetivo| / Peso_Objetivo
+3. Ejecutar trades solo cuando:
+   - Desviación > 10% en régimen de baja volatilidad
+   - Desviación > 15% en régimen de transición
+   - Desviación > 20% en régimen de alta volatilidad
+4. Implementar "trade netting" para reducir rotación innecesaria
+```
+
+### 8. Manejo de Datos y Calidad
+
+**Detección de outliers**:
+- Método: Median Absolute Deviation (MAD) con umbral de 3.5
+- Tratamiento: Winsorización al percentil 1% y 99%
+
+**Manejo de datos faltantes**:
+- Para datos fundamentales: Usar último valor disponible si < 90 días
+- Para precios: Imputación basada en rendimiento sectorial promedio
+- Flag de confianza: Asignar puntuación 0-1 basada en completitud y actualidad
+
+**Eventos corporativos**:
+- Dividendos y splits: Ajuste automático usando datos de yfinance
+- Fusiones/adquisiciones: Excluir acciones afectadas durante 20 días posteriores al anuncio
+
+### 9. Validación y Monitoreo
+
+**Backtesting robusto**:
+- Período: Mínimo 10 años (2012-2022)
+- Método: Walk-forward con "time embargo"
+- Ventanas: 2 años entrenamiento, 6 meses validación, sin solapamiento
+
+**Análisis de sensibilidad**:
+- Variar cada parámetro clave en ±30%
+- Identificar parámetros con alta sensibilidad para monitoreo especial
+
+**Métricas de evaluación**:
+- Primarias: Sharpe ratio, máximo drawdown, alpha vs. S&P 500
+- Secundarias: Turnover, exposición a factores, tracking error
+
+**Monitoreo post-implementación**:
+- Dashboard diario con métricas clave
+- Alertas automáticas para desviaciones significativas
+- Análisis de atribución de rendimiento mensual
+
+### 10. Expectativas de Desempeño
+
+- Sharpe ratio esperado: 1.0-1.5 después de costos
+- Capacidad estimada: $100-150M con alpha decay <20%
+- Drawdown máximo esperado: 15-20% en períodos de crisis
+- Turnover anual: 200-300%
+- Beta objetivo: 0±0.05
+- Tracking error vs. S&P 500: 4-6% anualizado
+
+### 11. Consideraciones de Implementación Técnica
+
+**Requisitos de datos**:
+- Acceso a yfinance para datos de precios, volúmenes y datos fundamentales básicos
+- Frecuencia de actualización: Diaria para precios, semanal para fundamentales
+- Almacenamiento local de datos históricos para reducir llamadas a API
+
+**Pipeline de procesamiento**:
+1. Extracción y limpieza de datos (diaria)
+2. Cálculo de meta-factores (semanal)
+3. Identificación de régimen (semanal)
+4. Generación de portfolio objetivo (semanal)
+5. Señales de rebalanceo (diaria)
+
+**Período de entrenamiento inicial**:
+- Mínimo 2 años de datos históricos antes de implementación en vivo
+- Fase de paper trading de 3 meses para validación final
+
+Esta estrategia market-neutral combina la solidez de factores fundamentales probados con un sistema adaptativo que responde a cambios en las condiciones de mercado, todo implementable con datos disponibles en yfinance. Su diseño por capas permite identificar fuentes reales de alpha mientras mantiene robustez ante diferentes entornos de mercado.
