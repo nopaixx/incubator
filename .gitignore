@@ -1,4 +1,5 @@
 /notebooks/*
+/notebooks2/*
 .ipyn*
 .env
 *.pyc
